@@ -1,22 +1,26 @@
-# El camino para aprender React
+# El Camino para aprender React
 
-En el repositorio oficial del libro de código abierto [El camino para aprender React](https://www.robinwieruch.de/the-road-to-learn-react/). Puedes encontrar tambien el [Código Fuente ](https://github.com/rwieruch/hackernews-client).
+El repositorio oficial para [El Camino para aprender React](https://www.robinwieruch.de/the-road-to-learn-react/). Además, aquí puedes encontrar el [Código Fuente ](https://github.com/rwieruch/hackernews-client) y [El Curso Completo](https://roadtoreact.com/). Si quieres dejar un reseña sobre el libro, puedes hacerlo en [Amazon](https://www.amazon.com/dp/B077HJFCQX?tag=21moves-20) ó [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react).
 
 ## Actualizaciones, ayuda y soporte
 
-* Obtener actualizaciones del libro por [E-Mail](https://www.getrevue.co/profile/rwieruch) o [Twitter](https://twitter.com/rwieruch)
+* Obtener actualizaciones del libro mediante [E-Mail](https://www.getrevue.co/profile/rwieruch) o [Twitter](https://twitter.com/rwieruch)
 * Obtener ayuda, mientras aprendes React con el libro o enseñar a otros, en el canal oficial [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
-* Find out how you can [Support the Book](https://www.robinwieruch.de/about/)
+* Averigua de que manera puedes [Apoyar El Libro](https://www.robinwieruch.de/about/)
 
 ## Contribuir
 
-Puedes ayudar a mejorar el libro abriendo Pull Requests (PR) e issues.
+Puedes ayudar a mejorar el libro abriendo Issues y Pull Requests (PR).
 
-Puede abrir cualquier PR que corrige la ortografía o  que explica una cierta lección con más detalle. Al escribir este libro técnico, te cegas rapidamente sobre que necesita más explicación y en lo que ya está bien explicado.
+Puede abrir cualquier PR para corregir errores ortográficos o  que explicar determinada lección con más detalle. Al escribir un libro técnico, es dificil distinguir entre qué necesita una mayor explicación y lo que ya está bien explicado.
 
-Además, puede abrir issues cuando tengas problemas. Con el fin de hacer la solución para el problema tan fácil como sea posible, por favor proporciona un par de detalles tales como log de errores, impresiones de pantalla, en cual página del libro ocurrió, tu versión de node (linea de comandos: node -v) y un enlace a tu propio repositorio. No todos estos detalles son obligatorios, pero la mayoría de ellos ayudan a solucionar el error y a mejorar el libro.
+Además, puedes abrir Issues cuando tengas problemas. Con el fin de hacer la solución para el problema tan fácil como sea posible, por favor proporciona detalles tales como log de errores e impresiones de pantalla, en cual página del libro ocurrió, tu versión de node (linea de comandos: node -v) y un enlace a tu repositorio. No todos estos detalles son obligatorios, pero pueden ayudar a solucionar el error y a mejorar el libro.
 
 ---
 
 Gracias por tu ayuda,
 Robin
+
+## Se un Patrón
+
+El camino para Aprender React es un ebook gratuito que le permite a todo el mundo aprender acerca de React. Este tipo de material educativo necesita de tu apoyo para mantenerse vivo. Robin Wieruch también escribe mucho contenido educativo en [su sitio web](https://www.robinwieruch.de/). Puedes apoyarlo convirtiendote en su [Patrón en Patreon](https://www.patreon.com/rwieruch).
