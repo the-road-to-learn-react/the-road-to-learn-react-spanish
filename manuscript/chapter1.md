@@ -1,87 +1,89 @@
 # Introducción a React
 
-El capitulo te da una introducción a React. Podrías preguntarte: ¿Por qué debo aprender React en primer lugar? El capítulo podría darte la respuesta a esa pregunta. Después te sumergiras en el ecosistema iniciando tu primera aplicación React. En el camino se te dará una introducción a JSX y ReactDOM. Prepárate para tu primer componente React.
+Este capítulo te brinda una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Este capítulo puede darte la respuesta a esa pregunta. Después, te sumergiras en el ecosistema maquetando tu primera aplicación React. En el camino, conocerás además JSX y ReactDOM. Así que prepárate para tu primer componente React.
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías molestarte en aprender React?** En los últimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá del uso de jQuery. La lista no es exhaustiva. Existe una amplia gama de frameworks SPA. Cuando consideramos las fechas de lanzamiento, la mayoría de ellos están en la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías molestarte en aprender React?** En los últimos años las single page aplications ([SPA](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá del uso de JavaScript puro (Vainilla JavaScript) y jQuery. La lista de estas populares soluciones no es exhaustiva. Existe una amplia gama de frameworks SPA. Y cuando consideras las fechas de lanzamiento, la mayoría de ellos están en la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
-La versión inicial de React fue creada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Sólo te permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace posible crear aplicaciones de una sola página(SPA).
+La versión inicial de React fue lanzada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la capa vista. Es la V en [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador) (modelo vista controlador). Esta librería sólo te permite renderizar componentes como elementos visibles en un navegador. Sin embargo, todo el ecosistema alrededor de React hace que sea posible crear aplicaciones de una sola página.
 
-¿Pero por que deberías considerar usar React sobre la primera generación de Frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un Framework. La idea detrás de ella: Su vista es una jerarquía de componentes ensamblables.
+¿Pero, por qué deberías considerar usar React en vez de la primera generación de frameworks SPA? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React solo te ayuda a construir tu capa de vista. Es una biblioteca y no un framework. La idea detrás de ella: La capa vista es una jerarquía de componentes ensamblables.
 
-En React, puedes centrarte en tu vista antes de introducir más aspectos en tu aplicación. Cada otro aspecto es otro componente de su SPA. Estos bloques de construcción son esenciales para construir una aplicación madura. Vienen con dos ventajas.
+En React, puedes centrarte en la capa vista antes de agregar más aspectos a tu aplicación. Cada otro aspecto es otro componente de la SPA. Estos bloques de construcción son esenciales para construir una aplicación madura, y aportan dos grandes beneficios.
 
-Primera puedes aprender los bloques de construcción paso a paso. No tienes que preocuparte de entenderlos por completo. Es diferente de un framework que te da cada bloque de construcción desde el principio. Este libro se centra en React como el primer bloque de construcción. Más bloques de construcción vienen con el tiempo.
+Primero, puedes aprender a usar los bloques de construcción paso a paso. No tienes que preocuparte por entenderlos totalmente. Esto es muy diferente a un framework que te da cada bloque de construcción desde el principio. Este libro se centra en React como el primer bloque de construcción. Más bloques de construcción vendrán eventualmente.
 
-En segundo lugar todos los bloques de construcción son intercambiables. Esto hace que el ecosistema alrededor de React sea un lugar muy innovador. Múltiples soluciones están compitiendo entre sí. Puedes elegir la solución más atractiva para ti y tu caso de uso.
+En segundo lugar, todos los bloques de construcción son intercambiables. Esto hace que el ecosistema alrededor de React un sitio muy innovador. Múltiples soluciones compiten entre sí, así que puedes elegir la solución que resulte más atractiva para ti y tu caso de uso.
 
-La primera generación de Frameworks SPA llegó a nivel empresarial. Son más rígidos. React permanece innovador y se adoptó por varias empresas líderes de pensamiento tecnológico como [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y se conforman con React y su propio ecosistema.
+La primera generación de Frameworks SPA llegó a nivel empresarial, y son más rígidos. React permanece innovador y es adoptado por varias empresas líderes en tecnología cómo [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todos ellos invierten en el futuro de React y están contentos con la librería y el ecosistema que lo rodea.
 
-React es probablemente una de las mejores opciones para la construcción de aplicaciones de una sola página hoy en día. Sólo ofrece la capa de vista, pero el ecosistema de React es un framework completo, flexible e intercambiable . React tiene una API simple, un ecosistema impresionante y una gran comunidad. Puedes leer acerca de mis experiencias del por qué me mudé de Angular a React. Recomiendo encarecidamente tener una comprensión de por qué elegiría React sobre otro Framework o biblioteca. Después de todo, todo el mundo está interesado en experimentar a donde nos guiará React en 2017 y más allá.
+Hoy en día, React es probablemente una de las mejores opciones para la construcción de aplicaciones de una sola página. Sólo se encarga de la capa de vista, [pero en conjunto con su ecosistema conforma un framework completo, flexible e intercambiable](https://www.robinwieruch.de/essential-react-libraries-framework/). React cuenta con una API ligera, un ecosistema impresionante y una gran comunidad. Puedes leer acerca de mis experiencias sobre [por qué me mudé de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/). Recomiendo encarecidamente entender claramente por qué elegirías React sobre otro framework o biblioteca. Después de todo, todo el mundo está interesado en saber a donde nos llevará React en el 2017 y los años por venir.
 
 ### Ejercicios
 
-* Leer acerca de [por qué me moví de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
+* Lee acerca de [por qué me cambié de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
+* Lee acerca de [el flexible ecosistema de React](https://www.robinwieruch.de/essential-react-libraries-framework/)
+* Lee acerca de [cómo aprender a usar un framework](https://www.robinwieruch.de/how-to-learn-framework/)
 
 ## Requerimientos
 
-Antes de que empieces a leer el libro, debes familiarizarte con HTML, CSS y JavaScript (ES5). El libro enseñará JavaScript ES6 y un poco mas. Si vienes de un marco o biblioteca SPA diferente, ya deberías estar familiarizado con los conceptos básicos. Si acabas de comenzar en el desarrollo web, deberías sentirte cómodo con HTML, CSS y JavaScript ES5 para aprender React. Les animo a que se unan al canal oficial para del libro [Slack ](https://slack-the-road-to-learn-react.wieruch.com/) para obtener ayuda o ayudar a otros.
+Antes de que empieces a leer el libro, debes estar familiarizado con los fundamentos del desarrollo web. Se espera que sepas utilizar HTML, CSS y JavaScript. Debes saber también lo que el término [API](https://www.robinwieruch.de/what-is-an-api-javascript/) significa, pues usarás APIs a lo largo del libro. Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wieruch.com/) oficial del libro para obtener ayuda, ó ayudar a otros.
 
-Cada desarrollador necesita herramientas para crear aplicaciones. Necesitarás un editor (IDE) y una herramienta de terminal (línea de comandos). Puedes leer mi configuración de desarrollador para organizar tus herramientas: [Configuración del desarrollador](https://www.robinwieruch.de/developer-setup/). Se ajusta para los usuarios de Mac, pero puedes sustituir la mayoría de las herramientas para otro sistema operativo.
+### Editor y Terminal
 
-El editor se utiliza para organizar y escribir tu código. La terminal se utiliza para ejecutar comandos. Un comando puede iniciar tu aplicación, ejecutar pruebas o instalar otras bibliotecas para tu proyecto.
+¿Y qué hay acerca del entorno de desarrollo? Necesitarás un editor ó IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para organizar tus herramientas, está pensada para los usuarios de Mac, sin embargo, todas las herramientas que necesitarás están disponibles para varios sistemas operativos.
 
-Por último, pero no menos importante, necesitarás instalar [node and npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en el camino para aprender React. Se instalarán paquetes de node externos a través de npm (gestor de paquetes de node). Estos paquetes de node pueden ser bibliotecas o entornos completos.
+Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estes realizando los ejercicios en el libro, para mantener tus projectos en repositorios de GitHub. Aquí dispones de una [pequeña guía]() sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
-Puedes verificar tus versiones de node y npm en la línea de comandos. Si no obtienes ninguna salida en la terminal, primero debes instalar node y npm. Estas son mis versiones:
+### Node y npm
+
+Por último, pero no menos importante, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en el camino para aprender React. Se instalarán paquetes de node externos a través de npm (gestor de paquetes de node por sus siglas en Inglés). Estos paquetes de node pueden ser bibliotecas ó entornos completos.
+
+Puedes verificar la versiones instaladas de Node y npm, respectivamente, en la línea de comandos. Si no obtienes ninguna salida en la terminal, significa que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
 ~~~~~~~~
 node --version
-*v8.1.3
+*v8.9.4
 npm --version
-*v5.0.4
+*v5.6.0
 ~~~~~~~~
 
-## node y npm
+## Node y npm
 
-Este capítulo te dará un pequeño curso intensivo en nodo y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si estás familiarizado con ambos, puedes omitir el capítulo.
+Este capítulo te brinda un pequeño curso intensivo sobre Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con ellas, puedes omitir este capítulo.
 
-El **manejador de paquetes de node** (npm) permite instalar **paquetes externos** desde la línea de comandos. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o entornos completos. Son las dependencias de tu aplicación. Puedes instalar estos paquetes en tu carpeta de paquetes de node global o en tu carpeta de proyecto local.
+El **manejador de paquetes de Node** (npm) permite instalar **paquetes externos** desde la línea de comandos. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o frameworks enteros. Ellos representan dependencias de tu aplicación, y puedes instalar, ya sea en tu carpeta global de paquetes de Node o en la carpeta local de tu proyecto.
 
-Los paquetes de node globales son accesibles desde cualquier lugar del terminal y solo hay que instalarlos una vez. Puedes instalar un paquete globalmente escribiendo en tu terminal:
+Los paquetes globales de Node son accesibles desde cualquier lugar de la terminal y solo hay que instalarlos una vez en el directorio global. Puedes instalar un paquete globalmente escribiendo en la terminal:
 
 ~~~~~~~~
 npm install -g <paquete>
 ~~~~~~~~
 
-La  bandera `-g` indica a npm que debe instalar el paquete globalmente. Los paquetes locales se utilizan en tu aplicación. Por ejemplo, React como una librería será un paquete local que puede ser requerido en tu aplicación para su uso. Puedes instalarlo a través de la terminal escribiendo:
+La  etiqueta `-g` indica a npm que debe instalar el paquete globalmente. Los paquetes locales son utilizados en tu aplicación. Por ejemplo, React como una librería será un paquete local, y puede ser requerido en tu aplicación para su uso. Puedes instalarlo a través de la terminal escribiendo:
 
 ~~~~~~~~
 npm install <paquete>
 ~~~~~~~~
 
-En el caso de React sería:
+En el caso de React, sería:
 
 ~~~~~~~~
 npm install react
 ~~~~~~~~
 
-El paquete instalado aparecerá automáticamente en una carpeta llamada *node_modules/*. Pero ten cuidado. Siempre que instales un paquete local no debes olvidar la bandera `--save`:
+El paquete instalado aparecerá automáticamente en una carpeta llamada *node_modules/* y será agregado al archivo *package.json* junto a las otras dependencias de tu aplicación.
 
-~~~~~~~~
-npm install --save <package>
-~~~~~~~~
-
-La bandera `--save` le indica a npm que debe almacenar el paquete requerido en un archivo llamado *package.json*. El archivo se puede encontrar en la carpeta del proyecto.
-
-Sin embargo no todas las carpetas del proyecto vienen con un archivo package.json. Hay un comando npm para inicializar un proyecto npm y así un  archivo *package.json*. Solo cuando tienes ese archivo, puedes instalar un nuevo paquete localmente vía npm.
+Ahora, ¿cómo inicializar la carpeta *node_modules/* y el archivo *package.json* en tu proyecto? Para ello existe un comando que inicia un proyecto npm que incluye automáticamente un archivo *package.json*. Solo cuando tu proyecto posee este archivo, puedes instalar nuevos paquetes locales vía npm.
 
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
 
-La bandera `-y` es un acceso directo para inicializar todos los valores predeterminados en tu *package.json*. Si no la usas, tienes que decidir cómo configurar el archivo.
+La etiqueta `-y` es un acceso directo para inicializar todos los valores predeterminados en el archivo *package.json* correspondiente. De no utilizarla, tienes que decidir cómo configurar el archivo.
+
+Inmediatamente después de inicializar tu proyecto npm estás listo para instalar nuevos paquetes via `npm install <paquete>`.
 
 Algo más sobre el archivo *package.json*. El archivo permite que compartas tu proyecto con otros desarrolladores sin compartir todos los paquetes node. El archivo contiene todas las referencias de los paquetes node utilizados en tu proyecto. Estos paquetes son llamados dependencias. Cualquiera puede copiar tu proyecto sin las dependencias. Las dependencias son referenciadas en el archivo *package.json*. Alguien que copie tu proyecto puede instalar todos los paquetes usando `npm install` en la línea de comandos.
 
@@ -91,51 +93,55 @@ Quiero cubrir un comando npm más para prevenir confusiones:
 npm install --save-dev <package>
 ~~~~~~~~
 
-La bandera `--save-dev` indica que el paquete node es solo usado en el entorno de desarrollo. No será usado en producción cuando deployes tu aplicación en un servidor. Que tipo de paquete sería ese? Imagina que quieres testear tu aplicación con la ayuda de un paquete node. Necesitas instalar ese paquete a través npm, pero quieres excluirlo de tu entorno de producción. Allí ya no desearás testear tu aplicación. Ya debería estar probada y funcionar para todos los usuarios. Este es solo un caso de uso donde querrás usar la bandera `--save-dev`. 
+La etiqueta `--save-dev` indica que el paquete node es solo usado en el entorno de desarrollo. No será usado en producción cuando cuelgues tu aplicación en un servidor. ¿Qué tipo de paquete sería ese? Imagina que quieres probar tu aplicación con la ayuda de un paquete Node. Necesitas instalar ese paquete a través npm, pero quieres excluirlo de tu entorno de producción. Las pruebas solo se realizan durante el proceso de desarrollo, más no cuando tu aplicación está ya funcionando en producción. En ese nivel debería estar ya probada, y funcionando para todos los usuarios. Este es solo un caso de uso donde querrás usar la etiqueta `--save-dev`. 
 
-Encontraras mas comandos npm en el camino. Pero estos serán suficientes por ahora.
+Por ahora estos son todos los comandos que necesitas, pero en el camino encontrarás más de ellos.
 
 ### Ejercicios:
 
-* Configurar un proyecto npm inicial 
-  * crear una nueva carpeta con `mkdir <nombre_de_la_carpeta>`
-  * navegue a la carpeta con `cd <nombre_de_la_carpeta>`
-  * ejecute `npm init -y`
-  * instale un paquete local como React con `npm install --save react`
+* configura un proyecto npm
+  * crea una nueva carpeta con `mkdir <nombre_de_la_carpeta>`
+  * navega hasta la carpeta con `cd <nombre_de_la_carpeta>`
+  * ejecuta `npm init -y`
+  * instala un paquete local, como React, con `npm install --save react`
   * échale un vistazo al archivo *package.json* y a la carpeta *node_modules/*
   * descubre como desinstalar el paquete node *react*
-* leer mas sobre [npm](https://docs.npmjs.com/)
+* lee más sobre [npm](https://docs.npmjs.com/)
 
 ## Instalación
 
-Hay varios enfoques para comenzar con una aplicación React.
+Existen varios enfoques a la hora de comenzar con una aplicación React.
 
-La primera es usar un CDN. Eso puede sonar más complicado de lo que es. Un CDN es una [red de entrega de contenidos](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos). Muchas compañías tienen CDNs que almacenan públicamente archivos para los usuarios. Estos archivos pueden ser librerías como React. Después de todo una librería puede ser solo un archivo JavaScript. Se pueden alojar en algún lugar y se pueden requerir en tu aplicación.
+El primero, es usar una [red de entrega de contenidos](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), ó mejor conocida cómo CDN (Content Delivery Network). Esto puede sonar más complicado de lo que es. Muchas compañías tienen CDNs que almacenan públicamente archivos para sus usuarios. Archivos que pueden ser una librería, cómo React, después de todo una librería puede ser solo un archivo JavaScript. Se alojan en algún lugar y puedes requerirlas en tu aplicación.
 
-Cómo usar un CDN para comenzar con React? Puedes insertar la etiqueta `<script>` en su código HTML que apunta a una url de CDN. Para empezar en React necesitas dos archivos (librerías): *react* y *react-dom*.
+¿Cómo usar un CDN para comenzar con React? Puedes insertar la etiqueta `<script>` en tu código HTML apuntando a la url correspondiente al CDN que deseas utilizar. Para empezar en React necesitas dos archivos (librerías): *react* y *react-dom*.
 
-```js
-<script src="https://unpkg.com/react@15/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
-```
+~~~~~~~~
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+~~~~~~~~
 
-Pero por qué deberías usar un CDN cuando tienes npm para instalar paquetes node (librerías)?
+¿Pero por qué usar un CDN cuando tienes npm para instalar paquetes Node, cómo React?
 
-Cuando tu aplicación tiene un archivo *package.json*, puedes instalar *react* y *react-dom* desde la línea de comandos. El requisito es que la carpeta se inicialice como proyecto npm con un archivo *package.json*. Puedes instalar múltiples paquetes en una línea con npm.
+Cuando tu aplicación tiene un archivo *package.json*, puedes instalar *react* y *react-dom* desde la línea de comandos. El único requisito es que la carpeta se inicialice como  un proyecto npm, utilizando `npm init -y` con un archivo *package.json*. Puedes instalar múltiples paquetes en una línea con npm.
 
 ~~~~~~~~
 npm install --save react react-dom
 ~~~~~~~~
 
-Ese enfoque se utiliza a menudo para añadir React a una aplicación existente.
+El enfoque expuesto anteriormente se utiliza a menudo para añadir React a una aplicación existente que es administrada con npm.
 
-Desafortunadamente eso no es todo. Tendrías que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX - la sintaxis de React - y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis. La configuración incluye una gran cantidad de configuración y herramientas. Puede ser abrumador para los principiantes molestarse con toda la configuración de React.
+Desafortunadamente eso no es todo. También tienes que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX (la sintaxis de React) y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis.
 
-Por esta razón, Facebook introdujo *create-react-app* como una solución de configuración cero. El siguiente capítulo te mostrará cómo configurar tu aplicación.
+Siguiendo este enfoque se deben incluir muchas herramientas y configuraciones manualmente, esto puede resultar abrumador para los principiantes molestarse con toda la configuración de React.
+
+Por esta razón, Facebook introdujo *create-react-app* como una solución que ahorra tiempo y esfuerzo al usuario encargandose de la mayor parte del proceso de configuración.
+
+El siguiente capítulo te mostrará cómo iniciar la construcción de tu aplicación con esta herramienta.
 
 ### Ejercicios:
 
-* leer mas sobre [React installations](https://facebook.github.io/react/docs/installation.html)
+* leer más sobre [instalación de React](https://facebook.github.io/react/docs/installation.html)
 
 ## Instalación de configuración-cero
 
@@ -147,7 +153,7 @@ Para empezar, necesitaras instalar el paquete a tus paquetes globales node. Desp
 npm install -g create-react-app
 ~~~~~~~~
 
-Puedes comprobar la versión de *create-react-app* para verificar una instalación correcta en la linea de comandos:
+Puedes comprobar la versión de *create-react-app* para verificar una instalación correcta en la línea de comandos:
 
 ~~~~~~~~
 create-react-app --version
