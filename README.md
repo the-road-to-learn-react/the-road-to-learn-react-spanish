@@ -2,7 +2,7 @@
 
 El repositorio oficial para [El Camino para aprender React](https://www.robinwieruch.de/the-road-to-learn-react/). Además, aquí puedes encontrar el [Código Fuente ](https://github.com/rwieruch/hackernews-client) y [El Curso Completo](https://roadtoreact.com/). Si quieres dejar un reseña sobre el libro, puedes hacerlo en [Amazon](https://www.amazon.com/dp/B077HJFCQX?tag=21moves-20) ó [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react).
 
-## Actualizaciones, ayuda y soporte
+## Actualizaciones, Ayuda y Soporte
 
 * Obtener actualizaciones del libro mediante [e-Mail](https://www.getrevue.co/profile/rwieruch) o [Twitter](https://twitter.com/rwieruch)
 * Obtener ayuda, mientras aprendes React con el libro o enseñar a otros, en el canal oficial [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
