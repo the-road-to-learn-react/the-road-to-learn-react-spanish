@@ -60,14 +60,14 @@ Los paquetes globales de Node son accesibles desde cualquier lugar de la termina
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-npm install -g <package>
+npm install -g <paquete>
 ~~~~~~~~
 
 La  etiqueta `-g` indica a npm que debe instalar el paquete globalmente. Los paquetes locales son utilizados en tu aplicación. Por ejemplo, React como una librería será un paquete local, y puede ser requerido en tu aplicación para su uso. Puedes instalarlo a través de la terminal escribiendo:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-npm install <package>
+npm install <paquete>
 ~~~~~~~~
 
 En el caso de React, sería:
@@ -96,7 +96,7 @@ Quiero cubrir un comando npm más, para prevenir confusiones:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-npm install --save-dev <package>
+npm install --save-dev <paquete>
 ~~~~~~~~
 
 La etiqueta `--save-dev` indica que el paquete node es solo usado en el entorno de desarrollo. No será usado en producción cuando cuelgues tu aplicación en un servidor. ¿Qué tipo de paquete sería ese? Imagina que quieres probar tu aplicación con la ayuda de un paquete Node. Necesitas instalar ese paquete a través npm, pero quieres excluirlo de tu entorno de producción. Las pruebas solo se realizan durante el proceso de desarrollo, más no cuando tu aplicación está ya funcionando en producción. En ese nivel debería estar ya probada, y funcionando para todos los usuarios. Este es solo un caso de uso donde querrás usar la etiqueta `--save-dev`. 
@@ -286,7 +286,7 @@ El **elemento** que es devuelto se especifica en el método `render()`. Los elem
 
 Muy pronto, verás donde el componente App es instanciado. De lo contrario, no podrás ver la salida renderizada en el navegador, ¿verdad? El componente App es sólo la declaración, por si solo no puede ser utilizado. Para utilizar dicho componente podrías instanciar el componente en algún lugar de tu JSX con `<App />`.
 
-El contenido en el bloque de código perteneciente al método `render()` se parece bastante a HTML, pero es JSX. JSX te permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Es por eso que un buen punto de partida, es utilizar HTML básico en tu JSX. A continuación, puedes empezar a insertar expresiones JavaScript entre llaves.
+El contenido en el bloque de código perteneciente al método `render()` se parece bastante a HTML, pero es JSX. JSX te permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Es por eso que un buen punto de partida, es utilizar HTML básico en tu JSX. A continuación, puedes empezar a insertar expresiones JavaScript entre corchetes.
 
 Primero vamos a eliminar todo el contenido distractor en el archivo.
 
@@ -346,9 +346,9 @@ Además, probablemente notaste el atributo `className`, este refleja el atributo
 
 ## ES6 const y let
 
-Supongo que notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 viene con dos opciones más para declarar sus variables: `const` y `let`. En JavaScript ES6 rara vez encontrarás `var`. Daremos una explicación para `const` y `let`:
+Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos opciones para declarar variables: `const` y `let`. En JavaScript ES6 rara vez encontrarás `var`. Ahora, una explicación sobre `const` y `let`:
 
-Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada, modificada). Adoptas estructuras de datos inmutables al usarlo. Una vez que se define la estructura de datos, no se puede cambiar.
+Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, adopta estructuras de datos inmutables al usarlo. Una vez que se define la estructura de datos, no se puede cambiar.
 
 ```js
 // No permitido
@@ -356,7 +356,7 @@ const helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ```
 
-Una variable declarada con `let` puede mutar.
+Por otra parte, una variable declarada con `let` puede mutar.
 
 ```js
 // Permitido
@@ -364,9 +364,9 @@ let helloWorld = 'Welcome to the Road to learn React';
 helloWorld = 'Bye Bye React';
 ```
 
-Lo usarás cuando necesites reasignar una variable.
+Se puede utilizar cuando el valor de una variable debe ser reasignado.
 
-Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando la variable es un array o un objeto, el valor que tiene puede ser alterado. El valor que tiene no es inmutable.
+Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando la variable es un array o un objeto, el valor que tiene puede ser alterado, es deci su valor no es inmutable.
 
 ```js
 // allowed
@@ -376,11 +376,13 @@ const helloWorld = {
 helloWorld.text = 'Bye Bye React';
 ```
 
-Pero ¿cuándo usar cada una? Hay diferentes opiniones sobre su uso. Sugiero usar `const` cada que puedas. Indica que desea mantener su estructura de datos inmutable aunque los valores en objetos y arreglos se pueden modificar. Si desea modificar la variable, puede utilizar `let`.
+Pero ¿cuando usar cada una? Hay diferentes opiniones sobre su uso. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable, aunque los valores en objetos y arreglos se puedan modificar.
 
-La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser tu opción por defecto cuando se define una variable. Sin embargo, en objetos complejos los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
+Si se desea modificar el valor de la variable más adelante, se puede utilizar `let`.
 
-En su aplicación debe utilizar `const` sobre `var`.
+La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable. Sin embargo, en objetos complejos, los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
+
+En tu aplicación utiliza `const` sobre `var`.
 
 ```js
 import React, { Component } from 'react';
@@ -406,13 +408,13 @@ export default App;
 
 * lee más sobre ES6 [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 * lee más sobre ES6 [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
-* investigue más sobre estructuras de datos inmutables
+* investigua más acerca de las estructuras de datos inmutables
   * ¿Por qué tienen sentido en la programación en general?
   * ¿Por qué se utilizan en React y su ecosistema?
 
 ## ReactDOM
 
-Antes de continuar con el componente App, es posible que desee ver dónde se utiliza. Se encuentra en tu punto de entrada al mundo de React: el archivo *src/index.js*.
+Antes de continuar con el componente App, es posible que quieras ver dónde se utiliza. Este se encuentra en tu punto de entrada al mundo de React: el archivo *src/index.js*.
 
 ```js
 import React from 'react';
@@ -426,11 +428,11 @@ ReactDOM.render(
 );
 ```
 
-Básicamente `ReactDOM.render()` usa un nodo DOM en tu HTML para reemplazarlo con tu JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en tu aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
+Básicamente `ReactDOM.render()` selecciona un nodo DOM en tu HTML para reemplazarlo con JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
 
-`ReactDOM.render()` espera dos argumentos.
+`ReactDOM.render()` por defecto espera dos argumentos.
 
-El primer argumento es JSX que se renderizara. El segundo argumento especifica el lugar en el que la aplicación React se insertará en tu código HTML. Espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* para encontrar el atributo id.
+El primer argumento es JSX, que es renderizado. El segundo argumento especifica el lugar en el que la aplicación React se insertará en tu código HTML. En este ejemplo, espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* puedes encontrar dicho elemento.
 
 En la implementación `ReactDOM.render()` ya tiene tu componente App. Sin embargo, sería bueno pasar JSX más simple, siempre y cuando sea JSX. No tiene que ser una instancia de un componente.
 
@@ -448,11 +450,11 @@ ReactDOM.render(
 
 ## Módulo Hot Reloading
 
-Hay una cosa que usted puede hacer en el archivo *src/index.js* para mejorar su experiencia como desarrollador.
+Hay una cosa quepuedes hacer en el archivo *src/index.js* para mejorar tu experiencia como desarrollador.
 
-En *create-react-app* ya es una ventaja que el navegador actualice automáticamente la página cuando cambia el código fuente. Inténtelo cambiando la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe actualizar la página. Pero puedes hacerlo mejor.
+En *create-react-app* ya es una ventaja que el navegador actualice automáticamente la página tan pronto el código fuente cambia. Inténtalo cambiando la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe actualizar la página. Sin embargo, esto puede hacerse de una mejor manera.
 
-Modulo Hot Reloading (HMR) es una herramienta para recargar su aplicación en el navegador. El navegador no actualiza la página. Puede activarlo fácilmente en *create-react-app*. En tu *src/index.js* - tu punto de entrada de React -  tienes que agregar una pequeña configuración.
+Modulo Hot Reloading (HMR) es una herramienta para recargar tu aplicación en el navegador. Es decir, el navegador no actualiza la página. En *create-react-app* puede ser fácilmente activado, solo necesitas agregar unas pocas líneas de código en tu *src/index.js* - tu punto de entrada de React -,
 
 ```js
 import React from 'react';
@@ -469,24 +471,26 @@ if (module.hot) {
 }
 ```
 
-Eso es todo. Intente cambiar de nuevo la variable `hellowWorld` en tu archivo *src/App.js*. El navegador no debe actualizar la página, pero la aplicación vuelve a cargar y muestra la salida correcta. HMR viene con múltiples ventajas:
+Eso es todo. Ahora, intenta cambiar de nuevo la variable `hellowWorld` en tu archivo *src/App.js*. El navegador no actualizará la página, sin embargo, notarás que la aplicación vuelve a cargar y muestra la salida correcta. HMR ofrece múltiples ventajas:
 
-Imagine que está depurando su código con declaraciones `console.log()`. Estas declaraciones permanecerán en la consola de desarrolladores, incluso si cambia su código, porque el navegador ya no actualiza la página. Eso puede ser conveniente para fines de depuración.
+Imagina que está depurando tu código con declaraciones `console.log()`. Estas declaraciones permanecerán en la consola de desarrolladores, incluso si el código cambia, pues, el navegador ya no actualiza la página. Esto puede ser muy convenienta al momento de depurar.
 
-En una aplicación en crecimiento, una actualización de página demora su productividad. Tienes que esperar hasta que la página se cargue. Una recarga de página puede tardar varios segundos en una aplicación grande. HMR quita esta desventaja.
+En una aplicación en crecimiento, una actualización de página retrasa la productividad. Tienes que esperar hasta que la página se cargue, y una recarga de página puede tardar varios segundos en una aplicación grande. HMR soluciona esta debilidad.
 
-El mayor beneficio es que puede mantener el estado de la aplicación con HMR. Imagine que tiene un diálogo en su aplicación con varios pasos y que está en el paso 3. Básicamente es un mago. Sin HMR cambiaría el código fuente y su navegador actualizará la página. Usted tendría que abrir el cuadro de diálogo de nuevo y sin tener que navegar desde el paso 1 al paso 3. Con HMR su diálogo permanece abierto en el paso 3. Mantiene el estado de la aplicación aunque el código fuente cambie. La aplicación misma se vuelve a cargar, pero no la página.
+Sin embargo, el mayor beneficio que ofrece HMR es que puede mantener el estado de la aplicación. Imagina que tienes un diálogo en su aplicación con varios pasos y que estás en el paso 3. Básicamente es un mago. Sin HMR el código fuente cambiaría y el navegador actualizaría la página. Después tendrías que abrir el cuadro de diálogo nuevamente y navegar desde el paso 1 al paso 3. 
+
+Con HMR el diálogo permanece abierto en el paso 3. Es decir, mantiene el estado de la aplicación, aunque el código fuente cambie. La aplicación misma se vuelve a cargar, pero no la página.
 
 ### Ejercicios:
 
-* cambia el código fuente de *src/App.js* algunas veces para ver HMR en acción
-* ver los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) po Dan Abramov
+* cambia el código fuente de *src/App.js* varias veces para ver a HMR en acción
+* ver los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) por Dan Abramov
 
 ## JavaScript complejo en JSX
 
-Volvamos al componente App. Hasta ahora se han renderizado algunas variables primitivas en su JSX. Ahora usted comenzará a renderizar una lista de artículos.La lista será datos artificiales en el principio, pero más tarde obtendrás los datos de una API externa. Eso será mucho más emocionante.
+Volvamos al componente App. Hasta ahora logramos renderizar algunas variables primitivas en JSX. Ahora, comenzarás a renderizar una lista de artículos. La lista, al principio, contendrá datos artificiales, pero más tarde obtendrás los datos de una API externa, lo que será mucho más emocionante.
 
-Primero tienes que definir la lista de elementos.
+Primero, define la lista de elementos.
 
 ```js
 import React, { Component } from 'react';
@@ -516,9 +520,11 @@ class App extends Component {
 }
 ```
 
-Los datos artificiales reflejarán los datos que extraeremos más adelante de la API. Un elemento de la lista tiene un título, una url y un autor. Además viene con un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
+Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento de la lista tiene un título, una url y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
 
-Ahora puede utilizar la función de `map` JavaScript incorporada en su JSX. Te permite iterar sobre tu lista de elementos para mostrarlos. Como se mencionó, usará llaves para encapsular la expresión JavaScript en su JSX.
+Ahora, puedes utilizar el método `map` de JavaScript incorporandola en tu código JSX.
+
+El método `map` permite iterar sobre tu lista de elementos para poder mostrarlos. Recuerda qué debes encapsular la expresión JavaScript dentro del código JSX usando corchetes. 
 
 ```js
 class App extends Component {
@@ -537,9 +543,9 @@ class App extends Component {
 export default App;
 ```
 
-Eso es bastante poderoso en JSX. Por lo general, es posible que haya utilizado `map` para convertir una lista de elementos a otra lista de elementos. Esta vez utiliza `map` para convertir una lista de elementos en elementos HTML.
+Esto es bastante poderoso en JSX. Es posible que antes utilizaras `map` para convertir una lista de elementos a otra lista de elementos, pero esta vez utilizas este método para convertir una lista de elementos a elementos HTML.
 
-Hasta ahora, sólo se mostrará el `título` de cada elemento. Pero vamos a mostrar algunas más de las propiedades del artículo.
+Hasta ahora, sólo se mostrará el `título` de cada elemento en la lista. A continuación, vamos a mostrar otras propiedades del artículo.
 
 ```js
 class App extends Component {
@@ -567,9 +573,9 @@ class App extends Component {
 export default App;
 ```
 
-Puede ver cómo la función map está simplemente en línea en su JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad url del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
+Puedes ver cómo la método map está en línea en tu JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad url del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
 
-React hará todo el trabajo por usted y mostrara cada elemento. Pero debe agregar un helper para que React alcance su máximo potencial y mejore su rendimiento. Debe asignar un atributo key a cada elemento de lista. Así, React es capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambia. Los elementos artificiales de la lista ya vienen con un identificador.
+React hará todo el trabajo por ti y mostrará cada elemento. Aunque es necesario agregar un helper para que React alcance su máximo potencial y mejore su rendimiento. Debes asignar un atributo clave a cada elemento de lista. Así, React es capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambia. Los elementos artificiales de la lista incluyen un identificador por defecto.
 
 ```js
 {
@@ -588,7 +594,7 @@ React hará todo el trabajo por usted y mostrara cada elemento. Pero debe agrega
 }
 ```
 
-Debe asegurarse de que el atributo key es un identificador estable. No cometa el error de usar el índice de elementos en el array. El índice del array no es del todo estable. Por ejemplo, cuando la lista cambia su orden, React tendrá dificultades para identificar los elementos correctamente.
+Asegurate de que el atributo clave es un identificador estable. No cometas el error de usar el índice del elemento en el array. El índice del array no es del todo estable. Por ejemplo, cuando la lista cambia su orden, y React tendrá dificultades para identificar los elementos correctamente.
 
 ```js
 // don't do this
@@ -601,45 +607,45 @@ Debe asegurarse de que el atributo key es un identificador estable. No cometa el
 })}
 ```
 
-Ahora mostrarás los dos elementos de la lista. Puedes iniciar tu aplicación, abrir tu navegador y ver los dos elementos de la lista desplegados.
+De esta manera se mostrarán los dos elementos de la lista. Puedes iniciar tu aplicación, abrir tu navegador y ver los dos elementos de la lista desplegados.
 
 ### Ejercicios:
 
 * lee más sobre [React lists and keys](https://facebook.github.io/react/docs/lists-and-keys.html)
-* recapitular el [standard built-in Array functionalities in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* Utilice más expresiones JavaScript por tu cuenta en JSX
+* repasar [funcionalidades estandard para Arreglos en JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* Utiliza más expresiones JavaScript por tu cuenta en JSX
 
-## ES6 Arrow Functions
+## Funciones Flecha en ES6 (Arrow Functions)
 
-JavaScript ES6 introduce arrow functions. Una expresión arrow function es más corta que una expresión de función.
+JavaScript ES6 introduce funciones flecha. Las expresiones de función flecha resultan más cortas que expresiones de funcion.
 
 ```js
-// function expression
+// expresión de función
 function () { ... }
 
-// arrow function expression
+// expresión de función flecha
 () => { ... }
 ```
 
-Pero tienes que ser consciente de sus funcionalidades. Uno de ellos es un comportamiento diferente con el objeto `this`. Una function expression siempre define su propio objeto `this`. Arrow function expressions aún tienen el objeto `this` del contexto cerrado. No se confunda al usar `this` en una arrow function.
+Por supuesto, tienes que ser consciente de sus funcionalidades. Una de ellos es su comportamiento especial con el objeto `this`. Una expresión de función siempre define su propio objeto `this`. Las expresiones de función flecha aún tienen el objeto `this` en el contexto cerrado. No te confundas al usar `this` en una función flecha.
 
-Hay otro hecho valioso sobre las arrow function con respecto al paréntesis. Puedes quitar los paréntesis cuando la función sólo obtiene un argumento, pero tienen que mantenerlos cuando tengas múltiples argumentos.
+Hay otro hecho valioso sobre las funciones flecha con respecto al paréntesis. Puedes quitar los paréntesis cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
 
 ```js
-// allowed
+// permitido
 item => { ... }
 
-// allowed
+// permitido
 (item) => { ... }
 
-// not allowed
+// no permitido
 item, key => { ... }
 
-// allowed
+// permitido
 (item, key) => { ... }
 ```
 
-Sin embargo, echemos un vistazo a la función `map`. Puedes escribirla de manera aún más concisa con una ES6 arrow function.
+Ahora, echemos un vistazo a la función `map`. Puedes escribirla de manera más concisa con una función flecha ES6.
 
 ```js
 { list.map(item => {
@@ -656,7 +662,7 @@ Sin embargo, echemos un vistazo a la función `map`. Puedes escribirla de manera
 })}
 ```
 
-Además, puede eliminar el *cuerpo del bloque* de la ES6 arrow function. En un *cuerpo conciso* un return implícito se adjunta así que usted puede quitar la declaración return. Eso sucederá más a menudo en el libro, así que asegúrese de entender la diferencia entre un cuerpo de bloque y un cuerpo conciso.
+Además, puede eliminar el *cuerpo del bloque* de la función flecha ES6. En un *cuerpo conciso* un return implícito se adjunta de modo que se puede quitar la declaración return. Esto sucederá más a menudo en el libro, así que asegúrate de entender la diferencia entre un cuerpo de bloque y un cuerpo conciso dentro de funciones flecha.
 
 ```js
 { list.map(item =>
@@ -671,19 +677,19 @@ Además, puede eliminar el *cuerpo del bloque* de la ES6 arrow function. En un *
 )}
 ```
 
-Ahora su JSX se ve más conciso y legible. Omite la sentencia function, las llaves y la declaración return.
+Ahora tu código JSX es más conciso y legible. Pues, omite la sentencia "function", los corchetes y la declaración return.
 
 ### Ejercicios:
 
-* lee más sobre [ES6 arrow functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+* lee más sobre [funciones flecha ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ## ES6 Classes
 
-JavaScript ES6 introdujo clases. Una clase se utiliza comúnmente en lenguajes de programación orientados a objetos. JavaScript fue y es muy flexible en sus paradigmas de programación. Puedes hacer programación funcional y programación orientada a objetos lado a lado para sus casos de uso particulares.
+JavaScript ES6 introduce clases. Una clase se utiliza comúnmente en lenguajes de programación orientados a objetos. JavaScript fué y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional cómo con programación orientada a objetos lado a lado para sus casos de uso particulares.
 
-Aunque React adopta la programación funcional, por ejemplo con estructuras de datos inmutables, las clases se utilizan para declarar componentes. Se les llama componentes clase ES6. React mezcla las partes buenas de ambos paradigmas de programación.
+Aunque React adopta el paradigma programación funcional, con estructuras de datos inmutables, por ejemplo, las clases se utilizan para declarar componentes, se les llama componentes de clase ES6. React mezcla las partes buenas de ambos paradigmas de programación.
 
-Consideremos la siguiente clase Developer para examinar una clase de JavaScript ES6 sin pensar en un componente
+Consideremos la siguiente clase Developer, para examinar una clase de JavaScript ES6 sin pensar en componentes React.
 
 ```js
 class Developer {
@@ -700,9 +706,9 @@ class Developer {
 
 Una clase tiene un constructor para hacerla instanciable. El constructor puede tomar argumentos para asignarlos a la instancia de clase. Además, una clase puede definir funciones. Dado que la función está asociada a una clase, se llama método. A veces se referencia como un método de clase.
 
-La clase Developer es sólo la declaración de clase. Puedes crear varias instancias de la clase invocándola. It is similar to the ES6 class component, que tiene una declaración, pero tienes que usarlo en otro lugar para instanciarlo.
+La clase Developer es sólo la declaración de clase. Es válido crear varias instancias de la clase invocándola. Es similar al componente de clase ES6, que tiene una declaración, pero debe ser usado en otro lugar para instanciarlo.
 
-Veamos cómo se puede instanciar la clase y cómo se pueden utilizar sus métodos.
+Veamos cómo se puede instanciar la clase y cómo utilizar sus métodos.
 
 ```js
 const robin = new Developer('Robin', 'Wieruch');
@@ -724,35 +730,35 @@ class App extends Component {
 }
 ```
 
-La clase App se extiende de `Component`. Básicamente, se declara el componente App, pero se extiende desde otro componente.¿Qué significa extender? En la programación orientada a objetos tienes el principio de herencia. Se utiliza para pasar funcionalidades de una clase a otra clase.
+La clase App se extiende de `Component`. Básicamente, se declara el componente App, pero este se extiende desde otro componente. Pero, ¿Qué significa extender? En la programación orientada a objetos se emplea el principio de herencia, que hace posible pasar funcionalidades de una clase a otra clase.
 
-La clase App extiende la funcionalidad de la clase Component. Para ser más específico, hereda funcionalidades de la clase Component. El componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Una de estas funcionalidades, un método, que ya utilizaste: el método `render()`. Pero aprenderás más funcionalidades.
+La clase App extiende la funcionalidad de la clase Component. Para ser más específicos, App hereda funcionalidades de la clase Component. El componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Una de estas funcionalidades es un método que ya utilizaste, el método `render()`. Aprenderás más funcionalidades de este más adelante.
 
 La clase `Component` encapsula todas las funcionalidades de React que un desarrollador no necesita ver. Permite a los desarrolladores utilizar clases como componentes en React.
 
-Los métodos que un `Component` React expone es la interfaz pública. Uno de estos métodos tiene que sobrescribirse, los otros no necesitan ser sobrescritos. Aprenderá acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo posterior. El método `render()`iene que ser sobrescrito, porque define la salida de un React `Component`.
+Uno de los métodos que un `Component` React expone es la interfaz pública. Uno de estos métodos tiene que sobrescribirse, los otros no necesitan ser sobrescritos. Aprenderá acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo posterior. El metodo `render()` tiene que ser sobreescrito, porque define la salida de React `Component`.
 
-Ahora conoce los conceptos básicos de las clases de JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes. Como dije, aprenderá más sobre los métodos de Componente cuando el libro describa los métodos del ciclo de vida React.
+Ahora ya conoces los conceptos básicos de las clases de JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes. Aprenderás más sobre los métodos de Componente cuando el libro describa los métodos del ciclo de vida de React.
 
 ### Ejercicios:
 
 * lee más sobre [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
 
-Has aprendido a arrancar tu propia aplicación React! Repasemos los últimos capítulos:
+¡Has aprendido a arrancar tu propia aplicación React! Repasemos brevemente los últimos capítulos:
 
 * React
   * create-react-app arranca una aplicación React
   * JSX mezcla HTML y JavaScript para definir los componentes React
   * componentes, instancias y elementos son cosas diferentes
-  * `ReactDOM.render()` es un punto de entrada para una aplicación React
-  * funciones JavaScript incorporadas se pueden utilizar en JSX
-    * map puede utilizarse para renderizar una lista de elementos como elementos HTML
+  * `ReactDOM.render()` es un punto de entrada para renderizar componentes React en el DOM
+  * funciones JavaScript incorporadas pueden ser utilizadas en JSX
+    * `map` puede utilizarse para renderizar una lista de elementos como elementos HTML
 * ES6
-  * Declaraciones de variables con `const` y `let` para casos de uso particulares
-  * arrow functions pueden utilizarse para acortar las declaraciones de funciones
+  * Declaraciones de variables con `const` y `let` pueden ser utilizadas en casos de uso partículares
+  * las funciones flecha pueden utilizarse para acortar las declaraciones de funciones
   * las clases se utilizan para definir componentes en React
 
-Tiene sentido hacer una pausa en este punto. Internalizar lo aprendido y aplicarlos por su cuenta. Puedes experimentar con el código fuente que ha escrito hasta ahora.
+Tiene sentido hacer una pausa en este punto. Internalizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que escribiste hasta ahora.
 
-Puede encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/0c5a701170dcc72fe68bdd594df3a6522f58fbb3).
+El código fuente está disponible en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/0c5a701170dcc72fe68bdd594df3a6522f58fbb3).
