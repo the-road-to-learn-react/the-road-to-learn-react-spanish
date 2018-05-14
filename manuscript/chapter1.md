@@ -375,7 +375,7 @@ Una variable declarada con `const` no se puede volver a asignar o volver a decla
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// No permitido
+// no permitido
 const helloWorld = 'Bienvenido al Camino para aprender React';
 helloWorld = 'Bye Bye React';
 ~~~~~~~~
@@ -385,9 +385,9 @@ Por otra parte, una variable declarada con `let` puede mutar.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// Permitido
+// permitido
 let helloWorld = 'Bienvenido al Camino para aprender React';
-helloWorld = 'Bye Bye React';
+helloWorld = 'Hasta luego, React';
 ~~~~~~~~
 
 Se puede utilizar `let` cuando el valor de una variable debe ser reasignado.
@@ -396,11 +396,11 @@ Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `cons
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// allowed
+// permitido
 const helloWorld = {
   text: 'Bienvenido al Camino para aprender React'
 };
-helloWorld.text = 'Bye Bye React';
+helloWorld.text = 'Hasta luego, React';
 ~~~~~~~~
 
 Pero ¿cuándo usar una u otra opción? Hay diferentes opiniones sobre esto. Sugiero usar `const` siempre que sea posible, indicando que se desea mantener la estructura de datos inmutable, aunque los valores en objetos y arreglos se puedan modificar.
@@ -486,7 +486,7 @@ Hay algo que puedes hacer en el archivo *src/index.js* para mejorar tu experienc
 
 En *create-react-app* ya es una ventaja que el navegador recargue automáticamente la página tan pronto el código fuente cambia. Inténtalo cambiando la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe recargar la página automáticamente. Sin embargo, esto puede hacerse de una mejor manera.
 
-Modulo Hot Reloading (HMR) es una herramienta para actualizar tu aplicación en el navegador. Es decir, el navegador no actualiza la página entera. En *create-react-app* puede ser fácilmente activado, solo necesitas agregar unas pocas líneas de código en tu *src/index.js* - tu punto de entrada de React -,
+Modulo Hot Reloading (HMR por sus siglas en Inglés) es una herramienta para actualizar tu aplicación en el navegador. Es decir, el navegador no actualiza la página entera. En *create-react-app* puede ser fácilmente activado, solo necesitas agregar unas pocas líneas de código en tu *src/index.js* - tu punto de entrada de React -,
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
