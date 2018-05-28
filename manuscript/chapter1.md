@@ -266,7 +266,7 @@ Los scripts son definidos en el archivo *package.json*. Tu aplicación React est
 
 ## Introducción a JSX
 
-Ahora conocerás JSX, la sintaxis empleada por React. Como fuemencionado antes, *create-react-app* ya ha iniciado una aplicación estándar. Todos los archivos vienen con implementaciones predeterminadas. Es tiempo de sumergirnos en el código fuente.
+Ahora conocerás JSX, la sintaxis empleada por React. Como fué mencionado antes, *create-react-app* ya ha iniciado una aplicación estándar. Todos los archivos vienen con implementaciones predeterminadas. Es tiempo de sumergirnos en el código fuente.
 
 El único archivo que debes tocar al principio será: *src/App.js*.
 
