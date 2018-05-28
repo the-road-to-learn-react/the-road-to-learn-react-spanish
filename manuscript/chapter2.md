@@ -1,22 +1,58 @@
 # Conceptos básicos en React
 
-El capítulo les guiará a través de los fundamentos de React. Cubre el estado y las interacciones en los componentes, porque los componentes estáticos son un poco aburridos, ¿no? Además, aprenderá sobre las diferentes maneras de declarar un componente y cómo mantener componentes ensamblables y reutilizables. Esté preparado para dar vida a sus componentes.
+Este capítulo te guiará a través de los aspectos básicos de React. Habla sobre lo que es el estado y las interacciones en componentes, pués, los componentes estáticos son un poco aburridos ¿no? Además, aprenderás diferentes maneras de declarar un componente y cómo mantenerlos ensamblables y reutilizables. Prepárate para darle vida a tus componentes.
 
 ## Estado interno del componente
 
-El estado interno del componente te permite almacenar, modificar y eliminar propiedades de tu componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
+El estado interno de un componente, también conocido cómo estado local, te permite almacenar, modificar y eliminar propiedades almacenadas en tu componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
 
-Vamos a introducir un constructor de clase donde se puede establecer el estado interno inicial del componente.
+A continuación, conozcamos el constructor de clase donde se puede establecer el estado interno inicial del componente.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
+class App extends Component {
+
+# leanpub-start-insert
+  constructor(props) {
+    super(props);
+  }
+# leanpub-end-insert
+
+  ...
+
+}
+~~~~~~~~
+
+El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. Más adelante conocerás más acerca de componentes de clase ES6.
+
+Es obligatorio llamar a `super(props);`, estableciendo así `this.props` en tu constructor en caso de que quieras acceder a el. De lo contrario, al intentar accesar a `this.props` en tu constructor, retornará `undefined`.
+
+Ahora, en tu caso, el estado inicial de tu componente debería ser la lista de elementos de muestra
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+const list = [
+  {
+    title: 'React',
+    url: 'https://facebook.github.io/react/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  ...
+];
+
 class App extends Component {
 
   constructor(props) {
     super(props);
 
+# leanpub-start-insert
     this.state = {
       list: list,
     };
+# leanpub-end-insert
   }
 
   ...
@@ -24,11 +60,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-En tu caso, el estado inicial es la lista artificial de elementos.
-Tenga en cuenta que tiene que llamar `super(props);` para llamar al constructor de la clase de extendida componente. Es obligatorio, ya que establece `this.props` en tu constructor. Debes seguir la mejor práctica, de lo contrario podrías encontrarte con errores en el futuro.
+El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fué definido fuera del componente. Ahora estás a punto de usar la lista proveniente del estado local en tu componente.
 
-El estado está ligado a la clase con el objeto `this`. Puedes acceder al estado en tu componente. Por ejemplo, se puede utilizar en el método  `render()`. Anteriormente, se asignó una lista estática de elementos. Ahora está a punto de usar la lista de su estado interno del componente.
-
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -37,7 +71,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.state.list.map(item =>
+# leanpub-start-insert
+        {this.state.list.map(item =>
+# leanpub-end-insert
           <div key={item.objectID}>
             <span>
               <a href={item.url}>{item.title}</a>
@@ -53,16 +89,16 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La lista es parte del componente ahora. Reside en el estado interno del componente.  Podría agregar artículos, cambiar artículos o quitar artículos en y de su lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puede simplemente cambiar el estado del componente interno y asegurarse de que el componente se vuelva a renderizar.
+Esta lista es parte del componente ahora, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de tu lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puede fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar.
 
-Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificar su estado. Lo conoceras en un capítulo siguiente.
+Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificar su estado. Este método lo conocerás en un próximo capítulo.
 
 ### Ejercicios:
 
 * experimenta con el estado interno
   * define mas estados uniciales en el contructor
   * usa el estado en tu metodo `render()`
-* leer mas sobre [the ES6 class constructor](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
+* lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
 ## Inicializador de objetos ES6
 
