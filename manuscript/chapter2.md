@@ -102,7 +102,7 @@ Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método 
 
 ## Inicializador de objetos ES6
 
-En JavaScript ES6 puedes utilizar una sintaxis de propiedad abreviada para inicializar tus objetos más concisos. Imagine la siguiente inicialización de objeto:
+En JavaScript ES6 puedes utilizar una sintaxis de propiedad abreviada para inicializar tus objetos de manera concisa. Imagina la siguiente inicialización de objeto:
 
 ~~~~~~~~
 const name = 'Robin';
@@ -112,7 +112,7 @@ const user = {
 };
 ~~~~~~~~
 
-Cuando el nombre de la propiedad en su objeto sea el mismo que su nombre de variable, puede hacer lo siguiente:
+Cuando el nombre de la propiedad en tu objeto sea el mismo que el nombre de tu variable, puedes hacer lo siguiente:
 
 ~~~~~~~~
 const name = 'Robin';
@@ -122,7 +122,7 @@ const user = {
 };
 ~~~~~~~~
 
-En su aplicación puede hacer lo mismo. El nombre de la variable de lista y el nombre de la propiedad de estado comparten el mismo nombre.
+En tu aplicación puedes hacer lo mismo. El nombre de la variable de lista y el nombre de la propiedad de estado comparten el mismo nombre.
 
 ~~~~~~~~
 // ES5
@@ -136,7 +136,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Otro buen ayudante son los nombres abreviados de métodos. En ES6 puedes inicializar métodos en un objeto más conciso.
+Los nombres abreviados de método, también te ayudarán mucho. En JavaScript ES6 puedes inicializar métodos en un objeto de manera mucho más concisa.
 
 ~~~~~~~~
 // ES5
@@ -154,7 +154,7 @@ const userService = {
 };
 ~~~~~~~~
 
-Por último, pero no menos importante, se le permite usar nombres de propiedad calculados en ES6.
+Por último, pero no menos importante, en JavaScript ES6 está permitido utilizar nombres de propiedad calculados.
 
 ~~~~~~~~
 // ES5
@@ -169,18 +169,20 @@ const user = {
 };
 ~~~~~~~~
 
-Los nombres de propiedad calculadas podrían no tener sentido aún. ¿Por qué las necesitarias? En un capítulo futuro del libro llegarás a un punto en el que puedras usarlo.
+Por ahora, los nombres de propiedad calculados podrían no tener mucho sentido para ti. ¿Por qué los necesitarías? En un capítulo posterior del libro responderemos esta interrogante cuándo tengas que utilizarlos para insertar valores en un objeto de manera dinámica..
 
 ### Ejercicios:
 
 * experimenta con el inicializador de objetos ES6
-* leer más sobre [ES6 object initializer](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+* lee más sobre [inicializador de objetos ES&](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
 ## Flujo de datos unidireccional
 
-Ahora tienes un estado interno en tu componente App. Sin embargo, no has manipulado el estado interno todavía. El estado es estático y por lo tanto tambien lo es el componente. Una buena manera de experimentar la manipulación del estado es tener alguna interacción de componentes.
+Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado dicho estado interno todavía. El estado es estático y por lo tanto también lo es el componente. 
 
-Vamos a agregar un botón para cada elemento en la lista mostrada. El botón dice "Dismiss" y eliminará el elemento de la lista. Podría ser útil eventualmente cuando sólo desea mantener una lista de elementos no leídos.
+Una buena manera de experimentar la manipulación del estado es tener alguna interacción de componentes.
+
+Vamos a agregar un botón para cada elemento en la lista mostrada. El botón dice "Dismiss" y descartar el elemento de la lista. Podría ser útil eventualmente, cuando sólo deseas mantener una lista de elementos no leídos, y eliminar los elementos en los que no estás interesado.
 
 ~~~~~~~~
 class App extends Component {
@@ -214,11 +216,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Como puedes ver el metodo `onDismiss()` en la funcion `onClick` queda cerrada por otra función. Sólo de esa manera usted puede colarse en la propiedad `objectID`. De lo contrario, tendría que definir la función fuera. Sin embargo, utilizando una arrow fuction ES6, puedes hacerlo en línea.
+El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora debes enfocarde en el selector `onClick` perteneciente al elemento botón.
 
-Tenga en cuenta que los elementos con múltiples atributos se desordenan en una línea en algún momento. Es por eso que el elemento de botón se utiliza con multilineas e identado para mantenerlo legible. Pero no es obligatorio. Es sólo un estilo de código recomendable.
+Como puedes ver, el método `onDismiss()` en la función `onClick` está encerrado dentro de otra función. De esta manera puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado. Una manera alternativa sería, definiendo la función fuera del selector `onClick`, y solamente pasar la función definida al selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-Ahora tienes que implementar la funcionalidad `onDismiss()`. Se necesita un id del item para identificar el elemento a descartar. La función está vinculada a la clase y se convierte así en un método de clase. Tienes que enlazar métodos de clase en el constructor. Además tienes que definir su funcionalidad en tu clase.
+¿Notaste las multilíneas para el elemento botón? Dat ecuenta que elementos con multiples atributos se desordenan cómo en una línea en algún momento. Es por eso que el elemento de botón se utiliza con multilíneas e identado, manteniendolo legible. Esto no es obligatorio, es sólo una pequeña recomendación.
+
+Ahora tienes que implementar la funcionalidad `onDismiss()`. Se necesita un id para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, es por ello que accesas a el con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
 
 ~~~~~~~~
 class App extends Component {
@@ -243,53 +247,110 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora puede definir lo que sucede dentro del método de clase. Puesto que usted desea quitar el artículo clicado de su lista, puedes hacerlo con la funcionalidad de filtro de array incorporada. La función de filtro toma una función para evaluar cada elemento de la lista. Si la evaluación de un item es true, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
+En el siguiente paso, tienes que definir su funcionalidad, la lógica, en tu clase. Métodos de clase pueden ser definidos de la siguiente manera.
 
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list,
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+# leanpub-start-insert
+  onDismiss(id) {
+    ...
+  }
+# leanpub-end-insert
+
+  render() {
+    ...
+  }
+}
+~~~~~~~~
+
+Ahora puede definir lo que sucede dentro del método de clase. Básicamente, quieres quitar de la lista el artículo identificado con el id y almacenar una lista actualizada en tu estado local. Al final, la lista actualizada será usada en el método `render()` para mostrarse en pantalla. El elemento removido no debería ser visible ahora.
+
+ Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un item es true, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
+
+
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
+# leanpub-start-insert
+  const updatedList = this.state.list.filter(function isNotId(item) {
+    return item.objectID !== id;
+  });
+# leanpub-end-insert
+}
+~~~~~~~~
 
+En el siguiente paso, puedes extraer la función y pasarla a la función filtro.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+onDismiss(id) {
+# leanpub-start-insert
   function isNotId(item) {
     return item.objectID !== id;
   }
 
   const updatedList = this.state.list.filter(isNotId);
+# leanpub-end-insert
 }
 ~~~~~~~~
 
-Puede hacerlo de forma más concisa utilizando nuevamente una función ES6 arrow function.
+Puede hacerlo de forma más concisa utilizando nuevamente una función flecha ES6.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
+# leanpub-start-insert
   const isNotId = item => item.objectID !== id;
   const updatedList = this.state.list.filter(isNotId);
+# leanpub-end-insert
 }
 ~~~~~~~~
 
-Podrías incluso hacerlo en una línea, como lo hicimos en el controlador `onClick()` del botón - pero puede ser menos legible.
+Podrías incluso hacerlo en una línea, como lo hiciste en el selector `onClick()` del botón, pero podría ser menos legible.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
+# leanpub-start-insert
   const updatedList = this.state.list.filter(item => item.objectID !== id);
+# leanpub-end-insert
 }
 ~~~~~~~~
 
-La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, finalmente puede utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
+La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, finalmente puedes utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 onDismiss(id) {
   const isNotId = item => item.objectID !== id;
   const updatedList = this.state.list.filter(isNotId);
+# leanpub-start-insert
   this.setState({ list: updatedList });
+# leanpub-end-insert
 }
 ~~~~~~~~
 
-Ahora vuelve a ejecutar tu aplicación y prueba el boton "Dismiss". Deberia de funcionar. Lo que acabas de experimentar es el **Flujo de datos unidireccional** en React. Usted activa una acción en su vista - con `onClick()` - una funcion o método de clase modifica el estado del componente interno y el metodo `render()` del componente se ejecuta de nuevo para actualizar la vista.
+Ahora, vuelve a ejecutar tu aplicación y prueba el botón "Dismiss". Debería funcionar correctamente.
 
-![Internal state update with unidirectional data flow](images/set-state-to-render-unidirectional.png)
+Esto que acabas de experimentar, en React se conoce como **flujo de datos unidireccional**. Ejecitas una acción en la capa de vistas con `onClick()`, y acto seguido una función o método de clase modifica el estado interno del componente y el metodo `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
+
+![Actualización del estado interno con flujo de datos unidireccional](images/set-state-to-render-unidirectional.png)
 
 ### Ejercicios:
 
-* leer mas sobre [El estado y el ciclo de vida de React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* leer más sobre [El estado y el ciclo de vida de React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Interacciones con Formularios y Eventos
 
