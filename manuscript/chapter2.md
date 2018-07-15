@@ -4,7 +4,7 @@ Este capítulo te guiará a través de los aspectos básicos de React. Habla sob
 
 ## Estado interno del componente
 
-El estado interno de un componente, también conocido cómo estado local, te permite almacenar, modificar y eliminar propiedades almacenadas en tu componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
+El estado interno de un componente, también conocido cómo estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
 
 A continuación, conozcamos el constructor de clase donde se puede establecer el estado interno inicial del componente.
 
@@ -25,9 +25,9 @@ class App extends Component {
 
 El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. Más adelante conocerás más acerca de componentes de clase ES6.
 
-Es obligatorio llamar a `super(props);`, estableciendo así `this.props` en tu constructor en caso de que quieras acceder a el. De lo contrario, al intentar accesar a `this.props` en tu constructor, retornará `undefined`.
+Es obligatorio llamar a `super(props);`, estableciendo así `this.props` dentro de tu constructor, en caso de que quieras acceder a el. De lo contrario, al intentar accesar a `this.props` retornará `undefined`.
 
-Ahora, en tu caso, el estado inicial de tu componente debería ser la lista de elementos de muestra
+Ahora, en tu caso, el estado inicial en tu componente debería ser la lista de elementos de muestra.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -60,7 +60,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fué definido fuera del componente. Ahora estás a punto de usar la lista proveniente del estado local en tu componente.
+El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fué definido fuera del componente. Ahora, usarás la lista proveniente del estado local dentro de tu componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,21 +89,22 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esta lista es parte del componente ahora, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de tu lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puede fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar.
+Esta lista es parte del componente ahora, pues, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de esta lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
 
-Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificar su estado. Este método lo conocerás en un próximo capítulo.
+Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificarlo. Este método lo conocerás en un próximo capítulo.
 
 ### Ejercicios:
 
 * experimenta con el estado interno
-  * define mas estados uniciales en el contructor
-  * usa el estado en tu metodo `render()`
+  * define mas estados iniciales dentro del contructor
+  * usa y accede al estado dentro de tu metodo `render()`
 * lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
-## Inicializador de objetos ES6
+## Inicializador de Objetos ES6
 
-En JavaScript ES6 puedes utilizar una sintaxis de propiedad abreviada para inicializar tus objetos de manera concisa. Imagina la siguiente inicialización de objeto:
+En JavaScript ES6 puedes utilizar una sintaxis abreviada para inicializar objetos de manera concisa. Imagina la siguiente inicialización de objeto:
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const name = 'Robin';
 
@@ -112,8 +113,9 @@ const user = {
 };
 ~~~~~~~~
 
-Cuando el nombre de la propiedad en tu objeto sea el mismo que el nombre de tu variable, puedes hacer lo siguiente:
+Cuando el nombre de una propiedad dentro de un objeto es igual al nombre de la variable, puedes hacer lo siguiente:
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const name = 'Robin';
 
@@ -124,6 +126,7 @@ const user = {
 
 En tu aplicación puedes hacer lo mismo. El nombre de la variable de lista y el nombre de la propiedad de estado comparten el mismo nombre.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 this.state = {
@@ -136,8 +139,10 @@ this.state = {
 };
 ~~~~~~~~
 
-Los nombres abreviados de método, también te ayudarán mucho. En JavaScript ES6 puedes inicializar métodos en un objeto de manera mucho más concisa.
+Los nombres abreviados de método también te ayudarán mucho. En JavaScript ES6 puedes inicializar métodos en un objeto de manera más concisa.
 
+
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 var userService = {
@@ -154,8 +159,9 @@ const userService = {
 };
 ~~~~~~~~
 
-Por último, pero no menos importante, en JavaScript ES6 está permitido utilizar nombres de propiedad calculados.
+Y por último pero no menos importante, en JavaScript ES6 es posible utilizar nombres de propiedad calculados.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 var user = {
@@ -169,7 +175,7 @@ const user = {
 };
 ~~~~~~~~
 
-Por ahora, los nombres de propiedad calculados podrían no tener mucho sentido para ti. ¿Por qué los necesitarías? En un capítulo posterior del libro responderemos esta interrogante cuándo tengas que utilizarlos para insertar valores en un objeto de manera dinámica..
+Es posible que los nombres de propiedad calculados suenen cómo algo extraño para ti en este momento. ¿Por qué los necesitarías? En un capítulo posterior del libro, responderemos esta interrogante cuándo los utilizes para insertar valores dentro de un objeto de manera dinámica.
 
 ### Ejercicios:
 
@@ -178,12 +184,11 @@ Por ahora, los nombres de propiedad calculados podrían no tener mucho sentido p
 
 ## Flujo de datos unidireccional
 
-Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado dicho estado interno todavía. El estado es estático y por lo tanto también lo es el componente. 
+Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado su estado interno todavía. El estado es estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
 
-Una buena manera de experimentar la manipulación del estado es tener alguna interacción de componentes.
+Agreguemos un botón a cada elemento de la lista a continuación. El botón tendra el nombre "Dismiss" y permitirá remover dicho elemento de la lista. Será útil eventualmente, cómo cuando sólo desees mantener una lista de elementos no leídos, y eliminar los elementos en los que no estes interesado.
 
-Vamos a agregar un botón para cada elemento en la lista mostrada. El botón dice "Dismiss" y descartar el elemento de la lista. Podría ser útil eventualmente, cuando sólo deseas mantener una lista de elementos no leídos, y eliminar los elementos en los que no estás interesado.
-
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -192,7 +197,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        { this.state.list.map(item =>
+        {this.state.list.map(item =>
           <div key={item.objectID}>
             <span>
               <a href={item.url}>{item.title}</a>
@@ -200,6 +205,7 @@ class App extends Component {
             <span>{item.author}</span>
             <span>{item.num_comments}</span>
             <span>{item.points}</span>
+# leanpub-start-insert
             <span>
               <button
                 onClick={() => this.onDismiss(item.objectID)}
@@ -208,6 +214,7 @@ class App extends Component {
                 Dismiss
               </button>
             </span>
+# leanpub-end-insert
           </div>
         )}
       </div>
@@ -216,14 +223,16 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora debes enfocarde en el selector `onClick` perteneciente al elemento botón.
+El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora enfocate en el selector `onClick` perteneciente al elemento `button`.
 
-Como puedes ver, el método `onDismiss()` en la función `onClick` está encerrado dentro de otra función. De esta manera puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado. Una manera alternativa sería, definiendo la función fuera del selector `onClick`, y solamente pasar la función definida al selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
+Como puedes ver, el método `onDismiss()` en la función `onClick` está encerrado dentro de otra función. De esta manera puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería, definiendo la función fuera del selector `onClick`, y solamente pasar la función definida al selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas para el elemento botón? Dat ecuenta que elementos con multiples atributos se desordenan cómo en una línea en algún momento. Es por eso que el elemento de botón se utiliza con multilíneas e identado, manteniendolo legible. Esto no es obligatorio, es sólo una pequeña recomendación.
+¿Notaste las multilíneas para el elemento `button`? Elementos con multiples atributos en una sola línea eventualmentese desordenan. Es por eso que para definir el elemento `button` y sus propiedades se utilizan multilíneas e identado, manteniendo todo legible. Esto no es obligatorio, sólo una pequeña recomendación.
 
-Ahora tienes que implementar la funcionalidad `onDismiss()`. Se necesita un id para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, es por ello que accesas a el con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
+Ahora, tienes que implementar la funcionalidad `onDismiss()`. Se necesita un `id` para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, por esta razón accesas a el con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
 
+
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -234,11 +243,9 @@ class App extends Component {
       list,
     };
 
+# leanpub-start-insert
     this.onDismiss = this.onDismiss.bind(this);
-  }
-
-  onDismiss(id) {
-    ...
+# leanpub-end-insert
   }
 
   render() {
@@ -275,9 +282,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora puede definir lo que sucede dentro del método de clase. Básicamente, quieres quitar de la lista el artículo identificado con el id y almacenar una lista actualizada en tu estado local. Al final, la lista actualizada será usada en el método `render()` para mostrarse en pantalla. El elemento removido no debería ser visible ahora.
+Ahora, puedes definir lo que sucede dentro del método de clase. Básicamente, quieres quitar de la lista el artículo identificado con el `id` y almacenar una lista actualizada en tu estado local. Al final, la lista actualizada será usada dentro del método `render()` para mostrarse en pantalla. El elemento removido no debería ser visible ahora.
 
- Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un item es true, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
+ Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un item resulta en verdadero, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
 
 
 {title="src/App.js",lang=javascript}
@@ -306,7 +313,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Puede hacerlo de forma más concisa utilizando nuevamente una función flecha ES6.
+Esto puede hacercerse de forma más concisa utilizando una función flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -318,7 +325,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Podrías incluso hacerlo en una línea, como lo hiciste en el selector `onClick()` del botón, pero podría ser menos legible.
+Podrías incluso hacerlo en una línea, como hiciste con el selector `onClick()` del botón, aunque podría ser menos legible.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -329,7 +336,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, finalmente puedes utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
+La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, puedes utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -344,13 +351,13 @@ onDismiss(id) {
 
 Ahora, vuelve a ejecutar tu aplicación y prueba el botón "Dismiss". Debería funcionar correctamente.
 
-Esto que acabas de experimentar, en React se conoce como **flujo de datos unidireccional**. Ejecitas una acción en la capa de vistas con `onClick()`, y acto seguido una función o método de clase modifica el estado interno del componente y el metodo `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
+Esto que acabas de experimentar, dentro de React es conocido como **flujo de datos unidireccional**. Ejecutas una acción en la capa de vistas con `onClick()`, acto seguido una función o método de clase modifica el estado interno del componente y el metodo `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
 
 ![Actualización del estado interno con flujo de datos unidireccional](images/set-state-to-render-unidirectional.png)
 
 ### Ejercicios:
 
-* leer más sobre [El estado y el ciclo de vida de React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* leer más sobre [El estado y ciclos de vida en React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Interacciones con Formularios y Eventos
 
@@ -1046,7 +1053,7 @@ Ahora usted tiene un componente funcional ligero sin estado. Una vez que necesit
 
 ## Estilización de Componentes
 
-Vamos a añadir un estilo básico a su aplicación y componentes. Puedes reutilizar los archivos *src/App.css* y *src/index.css*. Estos archivos deben estar ya en su proyecto desde que lo inició con create-react-app. Tambien deben ser importados en sus archivos *src/App.js* y *src/index.js*. He preparado algunos CSS que puede simplemente copiar y pegar en estos archivos, pero no dude en utilizar su propio estilo.
+Vamos a añadir un estilo básico a nuestra aplicación y sus componentes. Puedes reutilizar los archivos *src/App.css* y *src/index.css*. Estos archivos deben estar ya en su proyecto desde que lo inició con create-react-app. Tambien deben ser importados en sus archivos *src/App.js* y *src/index.js*. He preparado algunos CSS que puede simplemente copiar y pegar en estos archivos, pero no dude en utilizar su propio estilo.
 
 ~~~~~~~~
 body {
@@ -1270,9 +1277,9 @@ const smallColumn = {
 };
 ~~~~~~~~
 
-Después de eso podríaa utilizarlo en tus columnass: `<span style={smallColumn}>`.
+Después de eso podrías utilizarlo en tus columnass: `<span style={smallColumn}>`.
 
-En general, usted encontrará diferentes opiniones y soluciones para el estilo en React. Usaste puro estilo CSS y en línea ahora. Es suficiente para empezar.
+En general, te encontrarás con diferentes opiniones y soluciones para el estilo en React. Justo utilizaste puro estilo CSS y en línea ahora. Es suficiente para empezar.
 
 No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer sobre ellos y aplicarlos por su cuenta. Pero si eres nuevo en React, te recomendaría que te mantengas puro estilo CSS y en línea por ahora.
 
@@ -1281,13 +1288,13 @@ No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer s
 * [styled-components](https://github.com/styled-components/styled-components)
 * [CSS Modules](https://github.com/css-modules/css-modules)
 
-¡Has aprendido los fundamentos para escribir tu propia aplicación React! Repasemos los últimos capítulos:
+¡Has aprendido los fundamentos de React que te permitirán escribir tus propias aplicaciónes! Repasemos los últimos capítulos:
 
 * React
   * usar `this.state` y `setState()` para administrar el estado del componente interno
   * utilizar formularios y eventos en React para agregar interacciones
   * flujo de datos unidireccional es un concepto importante en React
-  * componer componentes con hijos y componentes reutilizables
+  * declarar componentes con hijos y componentes reutilizables
   * uso e implementación de componentes de clase ES6 y componentes funcionales sin estado
   * enfoques para diseñar sus componentes
 * ES6
@@ -1298,6 +1305,6 @@ No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer s
 * General
   * funciones de orden superior
 
-Una vez más tiene sentido tomar un descanso. Interiorizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que has escrito hasta ahora. Además puede leer más en la  [documentación oficial](https://facebook.github.io/react/docs/installation.html).
+Una vez más, tiene sentido tomar un descanso. Interiorizar lo aprendido y aplicarlo por ti mismo. Puedes experimentar con el código fuente que has escrito hasta ahora. También puedes conocer más en la  [documentación oficial](https://facebook.github.io/react/docs/installation.html).
 
-Puedes encontrar el código fuente en el [repositorio oficial ](https://github.com/rwieruch/hackernews-client/tree/2705dcd1a2027c4a6ecb8132428b399785afdfa5).
+El código fuente está disponible en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/2705dcd1a2027c4a6ecb8132428b399785afdfa5).

@@ -832,6 +832,6 @@ Ahora que ya conoces los conceptos básicos de las clases de JavaScript ES6 y c�
   * las funciones flecha pueden utilizarse para acortar las declaraciones de funciones
   * las clases se utilizan para definir componentes en React
 
-Tiene sentido hacer una pausa en este punto. Internalizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que escribiste hasta ahora.
+Es sensato hacer una pausa en este punto. Internalizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que escribiste hasta ahora.
 
 El código fuente está disponible en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/0c5a701170dcc72fe68bdd594df3a6522f58fbb3).
