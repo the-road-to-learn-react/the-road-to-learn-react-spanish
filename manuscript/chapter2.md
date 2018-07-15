@@ -359,6 +359,393 @@ Esto que acabas de experimentar, dentro de React es conocido como **flujo de dat
 
 * leer más sobre [El estado y ciclos de vida en React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
+## Enlaces (Bindings)
+
+Es importante aprender acerca de Enlaces dentro de clases de JavaScript al momento de utilizar componentes de clase React ES6. En el capítulo anterior, enlazaste tu método de clase `onDismiss()` dentro del constructor.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      list,
+    };
+
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  ...
+}
+~~~~~~~~
+
+¿Por qué es necesario hacer esto? Enlazar es necesario, porque los métodos de clase no enlazan `this` de manera automática a la instancia de la clase. Veamos esta idea en acción con la ayuda del siguiente componente de clase ES6.
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+El componente se renderiza sin problema, pero cuando presiones el botón, recibirás el mensaje `undefined` en la consola de desarrollador. Esto es uno de los principales generadores de bugs en React, pues, si quieres acceder a `this.state` desde tu método de clase, esto no será posible porque `this` es `undefined`. Por lo tanto, para poder acceder a `this` desde tus métodos de clase tienes que enlazar los métodos de clase a `this`.
+
+En el siguiente componente el método de clase está enlazado adecuadamente en el constructor de clase.
+
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+# leanpub-start-insert
+  constructor() {
+    super();
+
+    this.onClickMe = this.onClickMe.bind(this);
+  }
+# leanpub-end-insert
+
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+Al probar nuevamente el botón, el objeto `this`, más específicamente la instancia de clase, debería estar definido y podrás acceder a `this.state`.
+
+El enlace a métodos de clase pueden pasar en cualquier otra parte también. Como por ejemplo, en el método de clase `render()`.
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe() {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+# leanpub-start-insert
+        onClick={this.onClickMe.bind(this)}
+# leanpub-end-insert
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+Pero deberías evitarlo, debido a que el método de clase sería enlazado cada vez que se ejecute el método `render()`. Básicamente el se ejecuta caa vez que tu componente se actualiza, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor, debes enlazarlo solo una vez al principio, cuando el componente es instanciado. Es una mejor manera de hacerlo.
+
+Otra cosa que algunas personas hacen de vez en cuando es: Definir la lógica de negocios de sus métodos de clase dentro del constructor.
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  constructor() {
+    super();
+
+# leanpub-start-insert
+    this.onClickMe = () => {
+      console.log(this);
+    }
+# leanpub-end-insert
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+Debes evitarlo también, pues, con el tiempo desordenará tu constructor. El constructor solo está allí para instanciar tu clase y tudas sus propiedades. Es por esta razón que la lógica de negocios de los métodos de clase deben ser definidos fuera del constructor
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  constructor() {
+    super();
+
+    this.doSomething = this.doSomething.bind(this);
+    this.doSomethingElse = this.doSomethingElse.bind(this);
+  }
+
+  doSomething() {
+    // do something
+  }
+
+  doSomethingElse() {
+    // do something else
+  }
+
+  ...
+}
+~~~~~~~~
+
+Por último pero no menos importante, vale la pena mencionar que los métodos de clase pueden ser auto-enlazados utilizando funciones flecha de JavaScript ES6.
+
+{title="Code Playground",lang=javascript}
+~~~~~~~~
+class ExplainBindingsComponent extends Component {
+  onClickMe = () => {
+    console.log(this);
+  }
+
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+      >
+        Click Me
+      </button>
+    );
+  }
+}
+~~~~~~~~
+
+Si el enlazamiento repetitivo dentro del constructor te resulta molesto, puedes hacer esto en vez. La documentación oficial de React sugiere que se enlacen los métodos de clase dentro del constructor, por eso, el libro adoptará este enfoque también.
+
+### Ejercicios:
+
+* Prueba los diferentes tipos de enlace mencionados anteriormente y logea en la consola (console.log) el objeto `this`
+
+## Manejadores de Eventos (Event Handler)
+
+En esta sección adquirirás un mayor entendimiendo acerca de los manejadores de eventos en elementos. En tu aplicación. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+...
+
+<button
+  onClick={() => this.onDismiss(item.objectID)}
+  type="button"
+>
+  Dismiss
+</button>
+
+...
+~~~~~~~~
+
+Esto ya representa un caso de uso complejo porque tienes que pasar un valor al método de clase y por lo tanto, debes colocarlo dentro de otra función flecha. Básicamente, lo que debe ser pasado al manejador de evento es una función. El siguiente código no funcionaría, el método de clase sería ejecutado inmediatamente al abrir la aplicación dentro de el navegador.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+...
+
+<button
+  onClick={this.onDismiss(item.objectID)}
+  type="button"
+>
+  Dismiss
+</button>
+
+...
+~~~~~~~~
+
+Al usar `onClick={doSomething()}`, la función `doSomething()` se ejecutaría de inmediato al momento de abrir la aplicación en el navegador. La expresión pasada al manejador es evaluada. Y cómo el valor retornado por la función no es una función, nada pasaría al presionar el botón. Pero, al utilizar `onClick={doSomething}` donde `doSomething` es una función, esta sería ejecutada al momento de presionar el botón. Y la misma regla aplica para el método de clase `onDismiss()` que es usado en tu aplicación.
+
+Sin embargo, utilizar `onclick={this.onDismiss}` no sería suficiente, porque de alguna manera la propiedad `item.objectID` debe ser pasada al método de clase para identificar el elemento que va a ser eliminado. Por eso puede ser colocado cómo parámetro dentro de otra función y acceder a la propiedad. A este concepto se le conoce cómo función de orden superior en JavaScript y será explicado más adelante.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+...
+
+<button
+  onClick={() => this.onDismiss(item.objectID)}
+  type="button"
+>
+  Dismiss
+</button>
+
+...
+~~~~~~~~
+
+Una alternativa sería definir la función externa en otra parte y solo pasar la función definida ya definida al manejador, o mejor dicho, solo invocar la función desde dicho manejador.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  ...
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.list.map(item => {
+# leanpub-start-insert
+          const onHandleDismiss = () =>
+            this.onDismiss(item.objectID);
+# leanpub-end-insert
+
+          return (
+            <div key={item.objectID}>
+              <span>
+                <a href={item.url}>{item.title}</a>
+              </span>
+              <span>{item.author}</span>
+              <span>{item.num_comments}</span>
+              <span>{item.points}</span>
+              <span>
+                <button
+# leanpub-start-insert
+                  onClick={onHandleDismiss}
+# leanpub-end-insert
+                  type="button"
+                >
+                  Dismiss
+                </button>
+              </span>
+            </div>
+          );
+        }
+        )}
+      </div>
+    );
+  }
+}
+~~~~~~~~
+
+Después de todo, debe ser una función lo que es pasado al manejador del elemento. Cómo ejemplo, prueba este código:
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  ...
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.list.map(item =>
+            ...
+            <span>
+              <button
+# leanpub-start-insert
+                onClick={console.log(item.objectID)}
+# leanpub-end-insert
+                type="button"
+              >
+                Dismiss
+              </button>
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+~~~~~~~~
+
+Este correrá al abrir la aplicación en el navegador, pero no cuando presiones el botón. Mientras que la siguiente pieza de código solo correrá cuando presiones el botón. Es decir, la función será ejecutada cuando acciones el manejador.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+...
+
+<button
+# leanpub-start-insert
+  onClick={function () {
+    console.log(item.objectID)
+  }}
+# leanpub-end-insert
+  type="button"
+>
+  Dismiss
+</button>
+
+...
+~~~~~~~~
+
+De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha de JavaScript ES6. Similar a lo que hicimos con el método de clase `ondismiss()`.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+...
+
+<button
+# leanpub-start-insert
+  onClick={() => console.log(item.objectID)}
+# leanpub-end-insert
+  type="button"
+>
+  Dismiss
+</button>
+
+...
+~~~~~~~~
+
+A menudo, principiantes en React encuentran dificil el tema de usar funciones dentro de manejadores de eventos. Por eso, intento explicarlo en mayor detalle aquí. Al final, deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+  ...
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.list.map(item =>
+          <div key={item.objectID}>
+            ...
+            <span>
+# leanpub-start-insert
+              <button
+                onClick={() => this.onDismiss(item.objectID)}
+                type="button"
+              >
+                Dismiss
+              </button>
+# leanpub-end-insert
+            </span>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+~~~~~~~~
+
+Otra tema relevante en cuánto a rendimiento, es la implicación de utilizar funciones flecha en los manejadores de eventos. Por ejemplo, el manejador `onClick` para el método `onDismiss()` está envolviendo el método dentro de otra función flecha para así poder captar el identificador del elemento. Así, cada vez que el método `render()` se ejecuta, el manejador instancia una función flecha de orden superior. Esto `puede` impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o colomuna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las inplicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora, vale la pena que te enfoques meramente en aprender React.
+
+### Ejercicios:
+
+* Experimenta con diferentes formas de utilizar funciones dentro del manejador `onClick` de tu botón
+
 ## Interacciones con Formularios y Eventos
 
 Añadamos otra interacción para experimentar formularios y eventos en React. La interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
