@@ -1,10 +1,10 @@
 # Conceptos básicos en React
 
-Este capítulo te guiará a través de los aspectos básicos de React. Habla sobre lo que es el estado y las interacciones en componentes, pués, los componentes estáticos son un poco aburridos ¿no? Además, aprenderás diferentes maneras de declarar un componente y cómo mantenerlos ensamblables y reutilizables. Prepárate para darle vida a tus componentes.
+Este capítulo te guiará a través de los aspectos básicos de React. Expone lo que es el estado y las interacciones dentro de componentes, pues, los componentes estáticos son un poco aburridos ¿no? Además, explorarás distintas maneras de declarar un componente y cómo mantenerlos reutilizables. Prepárate para darle vida a tus componentes.
 
 ## Estado interno del componente
 
-El estado interno de un componente, también conocido cómo estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
+El estado interno de un componente, también conocido como estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
 
 A continuación, conozcamos el constructor de clase donde se puede establecer el estado interno inicial del componente.
 
@@ -25,7 +25,7 @@ class App extends Component {
 
 El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. Más adelante conocerás más acerca de componentes de clase ES6.
 
-Es obligatorio llamar a `super(props);`, estableciendo así `this.props` dentro de tu constructor, en caso de que quieras acceder a el. De lo contrario, al intentar accesar a `this.props` retornará `undefined`.
+Es obligatorio llamar a `super(props);`, estableciendo así `this.props` dentro de tu constructor, en caso de que quieras acceder a él. De lo contrario, al intentar accesar a `this.props` retornará `undefined`.
 
 Ahora, en tu caso, el estado inicial en tu componente debería ser la lista de elementos de muestra.
 
@@ -60,7 +60,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fué definido fuera del componente. Ahora, usarás la lista proveniente del estado local dentro de tu componente.
+El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fue definido fuera del componente. Ahora, usarás la lista proveniente del estado local dentro de tu componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,15 +89,15 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esta lista es parte del componente ahora, pues, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de esta lista. Cada vez que cambies el estado del componente, el metodo `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
+Esta lista es parte del componente ahora, pues, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de esta lista. Cada vez que cambies el estado del componente, el método `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
 
 Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificarlo. Este método lo conocerás en un próximo capítulo.
 
 ### Ejercicios:
 
 * experimenta con el estado interno
-  * define mas estados iniciales dentro del contructor
-  * usa y accede al estado dentro de tu metodo `render()`
+  * define más estados iniciales dentro del constructor
+  * usa y accede al estado dentro de tu método `render()`
 * lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
 ## Inicializador de Objetos ES6
@@ -175,7 +175,7 @@ const user = {
 };
 ~~~~~~~~
 
-Es posible que los nombres de propiedad calculados suenen cómo algo extraño para ti en este momento. ¿Por qué los necesitarías? En un capítulo posterior del libro, responderemos esta interrogante cuándo los utilizes para insertar valores dentro de un objeto de manera dinámica.
+Es posible que los nombres de propiedad calculados suenen cómo algo extraño para ti en este momento. ¿Por qué los necesitarías? En un capítulo posterior del libro, responderemos esta interrogante cuándo los utilices para insertar valores dentro de un objeto de manera dinámica.
 
 ### Ejercicios:
 
@@ -186,7 +186,7 @@ Es posible que los nombres de propiedad calculados suenen cómo algo extraño pa
 
 Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado su estado interno todavía. El estado es estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
 
-Agreguemos un botón a cada elemento de la lista a continuación. El botón tendra el nombre "Dismiss" y permitirá remover dicho elemento de la lista. Será útil eventualmente, cómo cuando sólo desees mantener una lista de elementos no leídos, y eliminar los elementos en los que no estes interesado.
+Agreguemos un botón a cada elemento de la lista a continuación. El botón tendrá el nombre "Dismiss" y permitirá remover dicho elemento de la lista. Será útil eventualmente, cómo cuando sólo desees mantener una lista de elementos no leídos, y eliminar los elementos en los que no estés interesado.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -223,13 +223,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora enfocate en el selector `onClick` perteneciente al elemento `button`.
+El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora enfócate en el selector `onClick` perteneciente al elemento `button`.
 
 Como puedes ver, el método `onDismiss()` en la función `onClick` está encerrado dentro de otra función. De esta manera puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería, definiendo la función fuera del selector `onClick`, y solamente pasar la función definida al selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas para el elemento `button`? Elementos con multiples atributos en una sola línea eventualmentese desordenan. Es por eso que para definir el elemento `button` y sus propiedades se utilizan multilíneas e identado, manteniendo todo legible. Esto no es obligatorio, sólo una pequeña recomendación.
+¿Notaste las multilíneas para el elemento `button`? Elementos con múltiples atributos en una sola línea eventualmente se desordenan. Es por eso que para definir el elemento `button` y sus propiedades se utilizan multilíneas e identado, manteniendo todo legible. Esto no es obligatorio, sólo una pequeña recomendación.
 
-Ahora, tienes que implementar la funcionalidad `onDismiss()`. Se necesita un `id` para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, por esta razón accesas a el con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
+Ahora, tienes que implementar la funcionalidad `onDismiss()`. Se necesita un `id` para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, por esta razón se debe accesar a él con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
 
 
 {title="src/App.js",lang=javascript}
@@ -284,7 +284,7 @@ class App extends Component {
 
 Ahora, puedes definir lo que sucede dentro del método de clase. Básicamente, quieres quitar de la lista el artículo identificado con el `id` y almacenar una lista actualizada en tu estado local. Al final, la lista actualizada será usada dentro del método `render()` para mostrarse en pantalla. El elemento removido no debería ser visible ahora.
 
- Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un item resulta en verdadero, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
+ Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un ítem resulta en verdadero, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
 
 
 {title="src/App.js",lang=javascript}
@@ -313,7 +313,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Esto puede hacercerse de forma más concisa utilizando una función flecha ES6.
+Esto puede hacerse de forma más concisa utilizando una función flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -336,7 +336,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, puedes utilizar el metodo de clase `setState()` para actualizar la lista en el estado interno del componente.
+La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, puedes utilizar el método de clase `setState()` para actualizar la lista en el estado interno del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -351,7 +351,7 @@ onDismiss(id) {
 
 Ahora, vuelve a ejecutar tu aplicación y prueba el botón "Dismiss". Debería funcionar correctamente.
 
-Esto que acabas de experimentar, dentro de React es conocido como **flujo de datos unidireccional**. Ejecutas una acción en la capa de vistas con `onClick()`, acto seguido una función o método de clase modifica el estado interno del componente y el metodo `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
+Esto que acabas de experimentar, dentro de React es conocido como **flujo de datos unidireccional**. Ejecutas una acción en la capa de vistas con `onClick()`, acto seguido una función o método de clase modifica el estado interno del componente y el método `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
 
 ![Actualización del estado interno con flujo de datos unidireccional](images/set-state-to-render-unidirectional.png)
 
@@ -437,7 +437,7 @@ class ExplainBindingsComponent extends Component {
 
 Al probar nuevamente el botón, el objeto `this`, más específicamente la instancia de clase, debería estar definido y podrás acceder a `this.state`.
 
-El enlace a métodos de clase pueden pasar en cualquier otra parte también. Como por ejemplo, en el método de clase `render()`.
+El enlace a métodos de clase puede pasar en cualquier otra parte también. Como por ejemplo, en el método de clase `render()`.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -461,7 +461,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Pero deberías evitarlo, debido a que el método de clase sería enlazado cada vez que se ejecute el método `render()`. Básicamente el se ejecuta caa vez que tu componente se actualiza, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor, debes enlazarlo solo una vez al principio, cuando el componente es instanciado. Es una mejor manera de hacerlo.
+Pero deberías evitarlo, debido a que el método de clase sería enlazado cada vez que se ejecute el método `render()`. Básicamente él se ejecuta cada vez que tu componente se actualiza, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor, debes enlazarlo solo una vez al principio, cuando el componente es instanciado. Es una mejor manera de hacerlo.
 
 Otra cosa que algunas personas hacen de vez en cuando es: Definir la lógica de negocios de sus métodos de clase dentro del constructor.
 
@@ -491,7 +491,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Debes evitarlo también, pues, con el tiempo desordenará tu constructor. El constructor solo está allí para instanciar tu clase y tudas sus propiedades. Es por esta razón que la lógica de negocios de los métodos de clase deben ser definidos fuera del constructor
+Debes evitarlo también, pues, con el tiempo desordenará tu constructor. El constructor solo está allí para instanciar tu clase y todas sus propiedades. Es por esta razón que la lógica de negocios de los métodos de clase debe ser definida fuera del constructor
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -545,7 +545,7 @@ Si el enlazamiento repetitivo dentro del constructor te resulta molesto, puedes 
 
 ## Manejadores de Eventos (Event Handler)
 
-En esta sección adquirirás un mayor entendimiendo acerca de los manejadores de eventos en elementos. En tu aplicación. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
+En esta sección adquirirás un mayor entendimiento acerca de los manejadores de eventos en elementos. En tu aplicación. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -561,7 +561,7 @@ En esta sección adquirirás un mayor entendimiendo acerca de los manejadores de
 ...
 ~~~~~~~~
 
-Esto ya representa un caso de uso complejo porque tienes que pasar un valor al método de clase y por lo tanto, debes colocarlo dentro de otra función flecha. Básicamente, lo que debe ser pasado al manejador de evento es una función. El siguiente código no funcionaría, el método de clase sería ejecutado inmediatamente al abrir la aplicación dentro de el navegador.
+Esto ya representa un caso de uso complejo porque tienes que pasar un valor al método de clase y por lo tanto, debes colocarlo dentro de otra función flecha. Básicamente, lo que debe ser pasado al manejador de evento es una función. El siguiente código no funcionaría, el método de clase sería ejecutado inmediatamente al abrir la aplicación dentro del navegador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -709,7 +709,7 @@ De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha d
 ...
 ~~~~~~~~
 
-A menudo, principiantes en React encuentran dificil el tema de usar funciones dentro de manejadores de eventos. Por eso, intento explicarlo en mayor detalle aquí. Al final, deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
+A menudo, principiantes encuentran complicado el tema de usar funciones dentro de manejadores de eventos. Por eso, intento explicarlo en mayor detalle aquí. Al final, deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -740,7 +740,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Otra tema relevante en cuánto a rendimiento, es la implicación de utilizar funciones flecha en los manejadores de eventos. Por ejemplo, el manejador `onClick` para el método `onDismiss()` está envolviendo el método dentro de otra función flecha para así poder captar el identificador del elemento. Así, cada vez que el método `render()` se ejecuta, el manejador instancia una función flecha de orden superior. Esto `puede` impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o colomuna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las inplicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora, vale la pena que te enfoques meramente en aprender React.
+Otro tema relevante en cuánto a rendimiento, es la implicación de utilizar funciones flecha en los manejadores de eventos. Por ejemplo, el manejador `onClick` para el método `onDismiss()` está envolviendo el método dentro de otra función flecha para así poder captar el identificador del elemento. Así, cada vez que el método `render()` se ejecuta, el manejador instancia una función flecha de orden superior. Esto `puede` impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o columna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las implicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora, vale la pena que te enfoques meramente en aprender React.
 
 ### Ejercicios:
 
@@ -748,10 +748,11 @@ Otra tema relevante en cuánto a rendimiento, es la implicación de utilizar fun
 
 ## Interacciones con Formularios y Eventos
 
-Añadamos otra interacción para experimentar formularios y eventos en React. La interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
+Añadamos otra interacción para conocer acerca de formularios y eventos en React. La interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
 
-Primero defina su campo de entrada en su JSX.
+Primero, define el campo de entrada en tu JSX.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -760,10 +761,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+# leanpub-start-insert
         <form>
           <input type="text" />
         </form>
-        { this.state.list.map(item =>
+# leanpub-end-insert
+        {this.state.list.map(item =>
           ...
         )}
       </div>
@@ -772,10 +775,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-En el escenario siguiente, se escribirá en el campo y se filtrará la lista temporalmente por el término de búsqueda. Para poder filtrar la lista, necesitas el valor del campo de entrada para actualizar el estado. Pero, ¿cómo acceder al valor? Puede utilizar **eventos sintéticos** en  React para acceder a la carga útil del evento.
+En el escenario siguiente, escribirás dentro del campo establecido y se filtrará la lista temporalmente por el término de búsqueda especificado. Para poder filtrar la lista, necesitas el valor del campo de entrada para actualizar el estado. Pero, ¿cómo acceder al valor? En React, puedes utilizar **eventos sintéticos**  para acceder al valor que necesitas de este evento.
 
-Vamos a definir una funcion callbakc `onChange()` para el campo de entrada.
+Vamos a definir un manejador `onChange()` para el campo de entrada.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -785,10 +789,12 @@ class App extends Component {
     return (
       <div className="App">
         <form>
+# leanpub-start-insert
           <input
             type="text"
             onChange={this.onSearchChange}
           />
+# leanpub-end-insert
         </form>
         ...
       </div>
@@ -797,8 +803,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La función está vinculada al componente y, por tanto, un método de clase de nuevo. Tienes que vincular y definir el métodos.
+La función está vinculada al componente y, por tanto, un método de clase nuevamente. Es necesario que vincules y definas dicho método.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -809,11 +816,33 @@ class App extends Component {
       list,
     };
 
+# leanpub-start-insert
     this.onSearchChange = this.onSearchChange.bind(this);
+# leanpub-end-insert
     this.onDismiss = this.onDismiss.bind(this);
   }
 
+# leanpub-start-insert
   onSearchChange() {
+    ...
+  }
+# leanpub-end-insert
+
+  ...
+}
+~~~~~~~~
+
+Al usar un manejador en un elemento obtienes acceso al evento sintetico de React dentro de la función callback.
+
+{title="src/App.js",lang=javascript}
+~~~~~~~~
+class App extends Component {
+
+  ...
+
+# leanpub-start-insert
+  onSearchChange(event) {
+# leanpub-end-insert
     ...
   }
 
@@ -821,23 +850,27 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El argumento del método le da acceso al evento React sintético. El evento tiene el valor del campo de entrada en su objeto de destino. Ahora puedes manipular el estado para el término de búsqueda:
+El evento tiene el valor del campo de entrada en su objeto de destino. Por lo que es posible actualizar el estado local con el término de búsqueda utilizando `this.setState()` nuevamente.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
   ...
 
   onSearchChange(event) {
+# leanpub-start-insert
     this.setState({ searchTerm: event.target.value });
+# leanpub-end-insert
   }
 
   ...
 }
 ~~~~~~~~
 
-Además hay que definir el estado inicial para el `searchTerm` en el constructor
+Adicionalmente, hay que definir el estado inicial para la propiedad `searchTerm` en el constructor. El campo de entrada debería estar vacío al principio y por lo tanto el valor debería ser una cadena de texto vacía (empty string).
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -846,7 +879,9 @@ class App extends Component {
 
     this.state = {
       list,
+# leanpub-start-insert
       searchTerm: '',
+# leanpub-end-insert
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -857,8 +892,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora almacena el valor de entrada en su estado de componente interno cada vez que el valor en el campo de entrada cambia. Sin embargo, la lista no se actualiza todavía. Deberá filtrar la lista temporalmente en función del `searchTerm`. Eso es bastante simple. Antes de asignar la lista puede aplicar un filtro en ella. Ya ha utilizado la funcionalidad de filtro JavaScript incorporada.
+Ahora, el valor de entrada es almacenado en su estado de componente interno cada vez que el valor en el campo de entrada cambia.
 
+Una pequeña observación acerca de actualizar el estado local en un componente React. Sería justo asumir que al actualizar `searchTerm` con `this.setState()` la lista debe ser pasada también, con el fin de preservarla. Pero no es ese el caso. `this.setState()`, este preserva las propiedades de su hermano dentro del estado del objeto al momento de actualizar una propiedad específica en él.
+
+Volvamos a la aplicación. Esta lista no está filtrada todavía basándose en la información del campo de entrada que es almacenado en el estado local. Básicamente, se busca filtrar la lista de manera temporal, en base al elemento `searchTerm`. Ya tienes todo lo necesario para filtrarla. Entonces ¿cómo filtrarla de manera temporalmente? Dentro de tu método `render()` puedes aplicar un filtro. Dicho filtro solo evaluaría si `searchTerm` coincide con el título de la propiedad del elemento. Ya utilizaste la función incorporada de JavaScript `filter` anteriormente, así que hagámoslo nuevamente. Es posible agregar primero la función `filter` antes de la función `map`, porque `filter` retorna un nuevo array, por lo que la función `map` resulta ser muy conveniente en esta ocasión.
+
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -873,7 +913,9 @@ class App extends Component {
             onChange={this.onSearchChange}
           />
         </form>
-        { this.state.list.filter(...).map(item =>
+# leanpub-start-insert
+        {this.state.list.filter(...).map(item =>
+# leanpub-end-insert
           ...
         )}
       </div>
@@ -882,18 +924,21 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Aproximemos la función de filtro de una manera diferente esta vez. Queremos definir el argumento del filtro - la funcion - fuera de nuestro componente de clase ES6. Allí no tenemos acceso al estado del componente - por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar el `searchTerm` a la función de filtro y tienen que devolver una nueva función para evaluar la condición. Eso se llama una función de orden superior.
+Ahora analicemos la función `filter` de otra manera. Queremos definir el argumento de `filter` (la función que es pasada cómo parámetro a `filter`) fuera de nuestro componente de clase ES6. Desde allí no se tiene acceso al estado del componente y por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar `searchTerm` a la función de filtro y esta tiene que devolver una nueva función para evaluar la condición. Eso se llama una función de orden superior.
 
-Normalmente no mencionaría las funciones de orden superior, pero en un libro de React tiene total sentido. Tiene sentido conocer las funciones de orden superior, Porque React trata con un concepto llamado componentes de orden superior. Conocerás el concepto más adelante en el libro. Ahora de nuevo, vamos a enfocarnos en la funcionalidad del filtro.
+Normalmente no mencionaría las funciones de orden superior, pero en un libro acerca de React esto es necesario. Es necesario saber sobre las funciones de orden superior, porque React trata con un concepto llamado componentes de orden superior. Conocerás el concepto más adelante en el libro. Por ahora, volvamos a enfocarnos en la función `filter` y su funcionalidad.
 
-Primero tienes que definir la función de orden superior fuera de tu clase.
+Primero, tienes que definir la función de orden superior fuera de tu componente `App`.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
+# leanpub-start-insert
 function isSearched(searchTerm) {
-  return function(item) {
+  return function (item) {
     // some condition which returns true or false
   }
 }
+# leanpub-end-insert
 
 class App extends Component {
 
@@ -902,15 +947,17 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La función toma el `searchTerm` y devuelve otra función que toma un elemento. La función devuelta se utilizará para filtrar la lista en función de la condición definida en la función.
+La función `isSearched()` toma `searchTerm` cómo parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta será utilizada para filtrar la lista en base a la condición definida dentro de la función.
 
 Let's define the condition.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 function isSearched(searchTerm) {
-  return function(item) {
-    return !searchTerm ||
-      item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  return function (item) {
+# leanpub-start-insert
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+# leanpub-end-insert
   }
 }
 
@@ -979,8 +1026,8 @@ Ahora la funcionalidad de búsqueda debería funcionar ahora. Pruebala.
 
 ### Ejercicios:
 
-* leer mas sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
-* leer mas sobre [funciones de orden](https://en.wikipedia.org/wiki/Higher-order_function)
+* leer más sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
+* leer más sobre [funciones de orden](https://en.wikipedia.org/wiki/Higher-order_function)
 
 ## Desestructuración ES6
 
@@ -1055,11 +1102,11 @@ Pero como el libro utiliza JavaScript ES6 la mayor parte del tiempo, debes atene
 
 ### Ejercicios:
 
-* leer mas sobre [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* leer más sobre [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ## Componentes Controlados
 
-Ya has aprendido sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado que a su vez filtra la lista. El estado fue cambiado, el metodo `render()` e ejecuta de nuevo y utiliza el estado reciente `searchTerm` para aplicar la condición de filtro.
+Ya has aprendido sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado que a su vez filtra la lista. El estado fue cambiado, el método `render()` e ejecuta de nuevo y utiliza el estado reciente `searchTerm` para aplicar la condición de filtro.
 
 ¿Pero no nos olvidamos de algo en el elemento de entrada? Una etiqueta de entrada HTML viene con un atributo `value`. El atributo valor normalmente tiene el valor que se muestra en el campo de entrada - en nuestro caso la propiedad `searchTerm`. Sin embargo, parece que no lo necesitamos en React.
 
@@ -1096,7 +1143,7 @@ Toda la gestión interna del estado y el flujo de datos unidireccional podría s
 
 ### Ejercicios:
 
-* leer mas sobre [React forms](https://facebook.github.io/react/docs/forms.html)
+* leer más sobre [React forms](https://facebook.github.io/react/docs/forms.html)
 
 ## Dividir Componentes
 
@@ -1267,7 +1314,7 @@ Ahora el texto "Search" debe estar visible al lado de su campo de entrada. Cuand
 
 ### Ejercicios:
 
-* leer mas sobre [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+* leer más sobre [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
 
 ## Componentes Reutilizables
 
@@ -1350,7 +1397,7 @@ Ahora, siempre que no haya ninguna propiedad `className`, ll valor será una cad
 
 ### Ejercicios:
 
-* leer mas sobre [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
+* leer más sobre [ES6 default parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Default_parameters)
 
 ## Declaraciones de componentes
 
@@ -1436,7 +1483,7 @@ Ahora usted tiene un componente funcional ligero sin estado. Una vez que necesit
 ### Ejercicios:
 
 * Refactorizar el componente de tabla y botón a componentes funcionales sin estado
-* leer mas sobre [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
+* leer más sobre [ES6 class components and functional stateless components](https://facebook.github.io/react/docs/components-and-props.html)
 
 ## Estilización de Componentes
 
