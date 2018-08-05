@@ -16,11 +16,11 @@ Ya conoces dos métodos de ciclo de vida en un componente de clase ES6: `constru
 
 El constructor sólo se llama cuando se crea una instancia del componente y se inserta en el DOM. El componente se instancia. Ese proceso se llama montaje del componente.
 
-El método `render()` también se llama durante el proceso de montaje, pero también cuando el componente actualiza. Cada vez que el estado o las props de un componente cambian, se llama al metodo `render()`.
+El método `render()` también se llama durante el proceso de montaje, pero también cuando el componente actualiza. Cada vez que el estado o las props de un componente cambian, se llama al método `render()`.
 
 Ahora ya sabes más acerca de los dos métodos del ciclo de vida y cuándo se llaman. Ya los has utilizado. Pero hay más de ellos.
 
-El montaje de un componente tiene dos métodos de ciclo de vida más: `componentWillMount()` y `componentDidMount()`. El constructor se llama primero, `componentWillMount()` se llama antes del metodo `render()` y `componentDidMount()` se llama después del metodo `render()`.
+El montaje de un componente tiene dos métodos de ciclo de vida más: `componentWillMount()` y `componentDidMount()`. El constructor se llama primero, `componentWillMount()` se llama antes del método `render()` y `componentDidMount()` se llama después del método `render()`.
 
 En general, el proceso de montaje tiene 4 métodos de ciclo de vida. Se invocan en el siguiente orden:
 
@@ -29,7 +29,7 @@ En general, el proceso de montaje tiene 4 métodos de ciclo de vida. Se invocan 
 * render()
 * componentDidMount()
 
-Pero ¿que pasa con la actualización del ciclo de vida de un camponente que sucede cuando el estado o las propiedades cambian? En general, tiene 5 métodos de ciclo de vida en el siguiente orden:
+Pero ¿que pasa con la actualización del ciclo de vida de un componente que sucede cuando el estado o las propiedades cambian? En general, tiene 5 métodos de ciclo de vida en el siguiente orden:
 
 * componentWillReceiveProps()
 * shouldComponentUpdate()
@@ -43,11 +43,11 @@ Después de todo, no es necesario conocer todos estos métodos de ciclo de vida 
 
 * **constructor(props)** - Se llama cuando el componente se inicializa. Puedes establecer un estado inicial del componente y vincular métodos de clase útiles durante ese método de ciclo de vida.
 
-* **componentWillMount()** - Se llama antes del metodo del `render()`. Es por eso que podría ser utilizado para establecer el estado del componente interno, Porque no activará una segunda renderización del componente. Generalmente se recomienda utilizar el `constructor()` para establecer el estado inicial.
+* **componentWillMount()** - Se llama antes del método del `render()`. Es por eso que podría ser utilizado para establecer el estado del componente interno, Porque no activará una segunda renderización del componente. Generalmente se recomienda utilizar el `constructor()` para establecer el estado inicial.
 
 * **render()** - Este método del ciclo de vida es obligatorio y devuelve los elementos como una salida del componente. El método debe ser puro y por lo tanto no debe modificar el estado del componente. Recibe como entrada propiedades (props) y estados (state) y regresa un elemento.
 
-* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el momento perfecto para realizar una solicitud asincrónica para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el metodo `render()`.
+* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el momento perfecto para realizar una solicitud asincrónica para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el método `render()`.
 
 * **componentWillReceiveProps(nextProps)** - Se llama durante la actualización de un ciclo de vida. Como entrada recibirá las siguientes props . Puedes comparar las props siguientes con las anteriores (`this.props`) para aplicar un comportamiento diferente basado en la diferencia. Además, puede establecer el estado en función de las siguientes props.
 
@@ -146,13 +146,13 @@ Muchas cosas suceden en el código. Pensé en romperlo en pedazos más pequeños
 
 En primer lugar, puedes eliminar la lista artificial de elementos, porque regresas un resultado de la API de Hacker News. El estado inicial de su componente tiene un resultado vacío y un término de búsqueda predeterminado. El mismo término de búsqueda predeterminado se utiliza en el campo de búsqueda y en su primera solicitud.
 
-En segundo lugar, utilizas el metodo `componentDidMount()` para obtener los datos después de que el componente se montó. En la primera búsqueda, el término de búsqueda predeterminado del estado del componente se utiliza. Obtendrá historias relacionadas con "redux", porque ese es el parámetro predeterminado.
+En segundo lugar, utilizas el método `componentDidMount()` para obtener los datos después de que el componente se montó. En la primera búsqueda, el término de búsqueda predeterminado del estado del componente se utiliza. Obtendrá historias relacionadas con "redux", porque ese es el parámetro predeterminado.
 
 En tercer lugar, la búsqueda nativa se utiliza. Las cadenas de plantilla de JavaScript ES6 le permiten componer la url con el `searchTerm`. TLa url es el argumento de la función API de búsqueda nativa. La respuesta necesita ser transformada en json, es un paso obligatorio en una búsqueda nativa, y finalmente se puede establecer en el estado del componente interno.
 
 Por último, pero no menos importante, no olvide vincular sus nuevos métodos de componentes.
 
-Ahora puede utilizar los datos obtenidos en lugar de la lista artificial de elementos.Sin embargo, tienes que tener cuidado otra vez. El resultado no es sólo una lista de datos. [Es un objeto complejo con meta información y una lista de éxitos (historias).](https://hn.algolia.com/api) Puede emitir el estado interno con `console.log(this.state);` ent tu metodo `render()` para visualizarlo.
+Ahora puede utilizar los datos obtenidos en lugar de la lista artificial de elementos.Sin embargo, tienes que tener cuidado otra vez. El resultado no es sólo una lista de datos. [Es un objeto complejo con meta información y una lista de éxitos (historias).](https://hn.algolia.com/api) Puede emitir el estado interno con `console.log(this.state);` ent tu método `render()` para visualizarlo.
 
 Utilizemos el resultado para mostrarlo. Pero lo preveeremos de renderizar cualquier cosa - return null - cuando no hay resultado. Una vez que la solicitud a la API tuvo éxito, el resultado se guarda en el estado y el componente App se volverá a renderizar con el estado actualizado.
 
@@ -180,7 +180,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el metodo `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asincrónica. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
+Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el método `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asincrónica. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
 
 Utilizó la API de recuperación nativa que es compatible con la mayoría de los navegadores para realizar una solicitud asincrónica a una API. La configuración de *create-react-app* garantiza su compatibilidad con todos los navegadores. Hay paquetes de terceros de node que puedes usar para sustituir la API de búsqueda nativa: [superagent](https://github.com/visionmedia/superagent) y [axios](https://github.com/mzabriskie/axios).
 
@@ -194,7 +194,7 @@ Regresa a tu aplicación: La lista de hits debe ser visible ahor. Pero el boton 
 
 ## ES6 Operadores de propagación
 
-El botón "Dismiss" no funciona porque el metodo `onDismiss()` no tiene conocimiento del objeto complejo resultante. Cambiemos eso:
+El botón "Dismiss" no funciona porque el método `onDismiss()` no tiene conocimiento del objeto complejo resultante. Cambiemos eso:
 
 ~~~~~~~~
 onDismiss(id) {
@@ -308,7 +308,7 @@ El boton "Dismiss" debería funcionar de nuevo.
 El renderizado condicional se introduce muy temprano en las aplicaciones React. Sucede cuando se quiere tomar la decisión de renderizar uno u otro elemento. A veces significa renderizar un elemento o nada. Después de todo, una representación condicional de uso más simple puede ser expresada por una sentencia if-else en JSX.
 
 
-El objeto `resultante` en el estado de interno del componente es nulo al principio. Hasta el momento, el componente App no ​​devuelve elementos cuando el resultado no ha llegado de la API. Eso ya es un renderizado condicional, porque vuelves antes del metodo `render()` por cierta condición. El componente App no renderiza nada o sus elementos.
+El objeto `resultante` en el estado de interno del componente es nulo al principio. Hasta el momento, el componente App no ​​devuelve elementos cuando el resultado no ha llegado de la API. Eso ya es un renderizado condicional, porque vuelves antes del método `render()` por cierta condición. El componente App no renderiza nada o sus elementos.
 
 Pero vamos un paso más allá. Tiene más sentido envolver el componente Table, que es el único componente que depende del resultado, en un renderizado condicional independiente. Todo lo demás se debe mostrar, aunque no hay ningún `resultado` aún. Simplemente puede utilizar una expresión ternaria en su JSX.
 
@@ -380,7 +380,7 @@ Después de todo, debería poder ver los datos obtenidos en tu aplicación. Todo
 
 Ahora cuando utilices el campo de búsqueda, filtrarás la lista. Sin embargo eso está sucediendo en el lado del cliente. Ahora vas a utilizar la API de Hacker News para buscar en el servidor. De lo contrario, sólo te ocuparías de la primera respuesta de la API que recibiste de `componentDidMount()` con el parámetro del término de búsqueda predeterminado.
 
-Puede definir un metodo `onSubmit()` en su componente de clase ES6, que obtenga resultados de la API de Hacker News. Será la misma búsqueda que en tu metodo `componentDidMount()`. Pero lo buscara con el término modificado de la entrada del campo de búsqueda.
+Puede definir un método `onSubmit()` en su componente de clase ES6, que obtenga resultados de la API de Hacker News. Será la misma búsqueda que en tu método `componentDidMount()`. Pero lo buscara con el término modificado de la entrada del campo de búsqueda.
 
 ~~~~~~~~
 class App extends Component {
@@ -415,7 +415,7 @@ El componente de búsqueda obtiene un botón adicional. El botón tiene que acti
 
 Como alternativa, podría rebatir (retrasar) la funcion `onChange()` y ahorrarte el botón, pero añadiría más complejidad en este momento. Vamos a mantenerlo simple sin un rebote.
 
-Primero, pasa el metodo `onSearchSubmit()` a tu componente de búsqueda.
+Primero, pasa el método `onSearchSubmit()` a tu componente de búsqueda.
 
 ```js
 class App extends Component {
@@ -502,7 +502,7 @@ const Table = ({ list, onDismiss }) =>
   </div>
 ```
 
-Ahora cuando intentes buscar, notarás que el navegador se recarga. Es el comportamiento nativo del navegador para un callback en un formulario. En React, a menudo encontrarás el metodo de evento `preventDefault()` para suprimir el comportamiento nativo del navegador.
+Ahora cuando intentes buscar, notarás que el navegador se recarga. Es el comportamiento nativo del navegador para un callback en un formulario. En React, a menudo encontrarás el método de evento `preventDefault()` para suprimir el comportamiento nativo del navegador.
 
 ```js
 onSearchSubmit(event) {
@@ -838,7 +838,7 @@ Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`,
 
 La funcionalidad de búsqueda debería funcionar de nuevo. Almacena todos los resultados de la API de Hacker News.
 
-Además, el metodo `onDismiss()` necesita ser mejorado. Todavía se ocupa del objeto `result`. Ahora tiene que tratar con múltiples `results`.
+Además, el método `onDismiss()` necesita ser mejorado. Todavía se ocupa del objeto `result`. Ahora tiene que tratar con múltiples `results`.
 
 ~~~~~~~~
   onDismiss(id) {

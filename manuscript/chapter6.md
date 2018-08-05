@@ -1,16 +1,16 @@
-# State Management in React and beyond
+# Manejo del Estado en React y mucho más
 
-You have learned the basics of state management in React already in the previous chapters. This chapter digs a bit deeper into the topic. You will learn best practices, how to apply them and why you could consider using a third party state management library.
+Ya aprendiste los conceptos básicos del manejo del estado en React en los capítulos previos. Este capítulo profundiza un poco más en el tema. Aprenderás las mejores prácticas, como aplicarlas y porque podrías considerar usar otra librería del manejo del estado.
 
-## Lifting State
+## Traspaso del Estado
 
-Only the App component is a stateful ES6 component in your application. It handles a lot of application state and logic (methods). Maybe you have noticed that you pass a lot of properties to your Table component. Most of the props are only used in the component. It makes no sense that the App component knows about them.
+El único componente con estado en tu aplicación, usando ES6, es el componente App. Se encarga de gran parte del estado y lógica(métodos) de la aplicación. Quizás hayas notado que pasaste muchas propiedades a tu componente Table. La mayoría de las propiedades sólo se usan en el componente. No tiene sentido que el componente App conozca estas propiedades.
 
-The sort functionality is only handled in the Table component. You could move it closer to the Table component. The App component doesn't need to know about it at all. The process of refactoring substate from one component to another is known as *lifting state*. In your case you want to move state that isn't used in the App component closer to the Table component. The state moves down from parent to child component.
+La funcionalidad sort solamente se maneja en el componente Table. Podrías mover esta funcionalidad más cerca del componente Table. Ya que el componente App no necesita saber nada de ella. El proceso de refactorización de un subestado desde un componente a otro es conocido como *traspaso del estado*. En tu caso quieres mover el estado, que no es usado en el componente App, más cerca del componente Table. El estado baja del padre al componente hijo.
 
-In order to deal with state and methods in the Table component, it has to become an ES6 class component. The refactoring from functional stateless component to ES6 class component is straight forward.
+Para tratar con los estados y métodos en el componente Table, este tiene que convertirse en un componente de clase usando ES6. La refactorización de componente funcional sin estado a un componente de clase usando ES6, es sencilla.
 
-Your Table component as a functional stateless component:
+Tu componente Table como un componente funcional sin estado:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -32,7 +32,7 @@ const Table = ({
 }
 ~~~~~~~~
 
-Can get refactored to an ES6 class component:
+Puede refactorizarse a un componente de clase usando ES6:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
