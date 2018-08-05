@@ -4,7 +4,7 @@ Este capítulo sirve cómo una introducción a React. Quizá te preguntas: ¿Por
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías aprender React?** En los últimos años las Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript Puro (Vanilla JavaScript) y jQuery. Existe una amplia gama de frameworks SPA. De los que acabamos de mencionar, la mayoría pertenece a la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías aprender React?** En los últimos años las Single Page Applications ó Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript Puro (Vanilla JavaScript) y jQuery. Existe una amplia gama de frameworks SPA. De los que acabamos de mencionar, la mayoría pertenece a la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
 La versión inicial de React fue lanzada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la capa de vistas. Es la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería sólo permite renderizar componentes como elementos visibles en un navegador. Sin embargo, gracias a todo el ecosistema React, es posible crear aplicaciones de una sola página.
 
@@ -94,7 +94,7 @@ npm init -y
 
 La etiqueta `-y` es un acceso directo para inicializar todos los valores predeterminados en el archivo *package.json* correspondiente. De no utilizarla, tienes que decidir cómo configurar el archivo.
 
-Inmediatamente, con tu npm inicializado en tu carpeta de proyecto, estás listo para instalar nuevos paquetes via `npm install <paquete>`.
+Inmediatamente, con npm inicializado en tu carpeta de proyecto, estás listo para instalar nuevos paquetes via `npm install <paquete>`.
 
 Un dato extra sobre el archivo *package.json*. Este archivo permite que compartas tu proyecto con otros desarrolladores sin compartir todos los paquetes node. Contiene todas las referencias de los paquetes node utilizados en tu proyecto. Y estos paquetes son llamados dependencias. Cualquiera puede copiar tu proyecto sin las dependencias, pues, estas son referenciadas en el archivo *package.json*. Así, cuando alguien copia tu proyecto, puede instalar todos las dependencias usando `npm install` en la terminal.
 
@@ -128,13 +128,13 @@ Por ahora estos son todos los comandos que necesitas, pero en el camino encontra
 
 ## Instalación
 
-Existen varios enfoques a la hora de comenzar con una aplicación React.
+Existen varias maneras de comenzar una aplicación React.
 
-El primero, es usar una [Red de Entrega de Contenidos](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), ó mejor conocida cómo Content Delivery Network (CDN por sus siglas en Inglés).
+La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), ó Red de Entrega de Contenidos (CDN por sus siglas en Inglés).
 
-Esto puede sonar más complicado de lo que es. Muchas compañías tienen CDNs que almacenan públicamente archivos para sus usuarios. Archivos que pueden ser una librería cómo React, después de todo una librería puede ser solo un archivo JavaScript. Se alojan en algún lugar y puedes requerirlas en tu aplicación.
+Esto puede sonar complicado, pero no lo es. Muchas compañías tienen CDNs que almacenan públicamente archivos para sus usuarios. Archivos que pueden ser una librería como React, (una librería puede ser solo un archivo JavaScript) se alojan en algún lugar y puedes luego requerirlos en tu aplicación.
 
-¿Cómo usar un CDN para comenzar con React? Puedes insertar la etiqueta `<script>` en tu código HTML apuntando a la url correspondiente al CDN que deseas utilizar. Para empezar en React necesitas dos archivos (librerías): *react* y *react-dom*.
+¿Cómo usar una CDN en React? Puedes hacerlo insertando la etiqueta `<script>` en tu código HTML, con la url de la CDN que desees utilizar. Para React necesitas dos archivos (librerías): *react* y *react-dom*.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -142,34 +142,34 @@ Esto puede sonar más complicado de lo que es. Muchas compañías tienen CDNs qu
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ~~~~~~~~
 
-¿Pero por qué usar un CDN cuando tienes npm para instalar paquetes Node, cómo React?
+¿Pero, por qué usar una CDN cuando tienes npm para instalar paquetes Node como React?
 
-Cuando tu aplicación tiene un archivo *package.json*, puedes instalar *react* y *react-dom* desde la terminal. El único requisito es que la carpeta se inicialice como  un proyecto npm, utilizando `npm init -y` con un archivo *package.json*. Puedes instalar múltiples paquetes en una línea con npm.
+Cuando tu aplicación tiene un archivo *package.json* es posible instalar *react* y *react-dom* desde la terminal. El único requisito es que la carpeta esté inicializada como  un proyecto npm, lo puedes hacer utilizando `npm init -y` tal como se mostró anteriormente. Es posible instalar múltiples paquetes en una misma línea a la vez con npm.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
 npm install react react-dom
 ~~~~~~~~
 
-El enfoque expuesto anteriormente se utiliza a menudo para añadir React a una aplicación existente que es administrada con npm.
+El enfoque anterior se utiliza a menudo para añadir React a una aplicación existente administrada con npm.
 
-Desafortunadamente eso no es todo. También debes que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX (la sintaxis de React) y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis.
+Desafortunadamente, aquí no termina el asunto. También hay que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX (la sintáxis de React) y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis.
 
-Siguiendo este enfoque se deben incluir muchas herramientas y configuraciones manualmente, lo cuál puede resultar abrumador para los principiantes, en otras palabras, toda la configuración de React debe realizarse manualmente.
+Este enfoque es poco practico, se deben incluir muchas herramientas y configuraciones de forma manual. Puede resultar abrumador realizar manualmente toda la configuración de React.
 
-Por esta razón, Facebook desarrolló *create-react-app*, como una solución que ahorra tiempo y esfuerzo al usuario, encargándose esta de la mayor parte del proceso de configuración.
+Para facilitar esta tarea, Facebook desarrolló *create-react-app*, como una solución que ahorra tiempo y esfuerzo al usuario, encargándose esta de la mayor parte del proceso de configuración.
 
-El siguiente capítulo te mostrará cómo iniciar la construcción de tu aplicación con esta herramienta.
+El siguiente capítulo muestra cómo iniciar con el desarrollo de tu aplicación con esta herramienta.
 
 ### Ejercicios:
 
-* leer más sobre [instalación de React](https://facebook.github.io/react/docs/installation.html)
+* leer más sobre [cómo instalar React](https://facebook.github.io/react/docs/installation.html)
 
-## Cero configuraciones
+## Cero Configuraciones
 
-En El Camino para aprender React usarás [create-react-app](https://github.com/facebookincubator/create-react-app) para iniciar el desarrollo tu aplicación. Este kit introducido por Facebook en 2016, te permite rápidamente empezar a trabajar en tu aplicación sin preocuparte por la configuración. La gente [lo recomienda a los principiantes en un 96%](https://twitter.com/dan_abramov/status/806985854099062785). Cuando utilizas *create-react-app* las herramientas y configuración evolucionan en segundo plano, mientras que el foco se mantiene en la implementación de la aplicación.
+En El Camino para aprender React usarás [create-react-app](https://github.com/facebookincubator/create-react-app) para iniciar el desarrollo tu aplicación. Este kit lanzado por Facebook en 2016, permite rápidamente empezar a trabajar en tu aplicación sin preocuparte por configuraciones. La gente [lo recomienda a principiantes en un 96%](https://twitter.com/dan_abramov/status/806985854099062785). Cuando utilizas *create-react-app* las herramientas y configuración evolucionan en segundo plano, mientras que el foco se mantiene en la implementación de la aplicación.
 
-Para empezar, deberás agregar el paquete a tus paquetes globales de Node. Después de eso siempre estará disponible en la terminal para inicializar nuevas aplicaciones React.
+Para empezar, deberás agregar el *create-react-app* a tus paquetes globales de Node. A partir de ahora estará disponible en la terminal para inicializar nuevas aplicaciones React.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -184,7 +184,7 @@ create-react-app --version
 *v1.5.1
 ~~~~~~~~
 
-Ahora, puedes comenzar con el desarrollo de tu primera aplicaciónReact. La llamaremos *hackernews*, claro, puedes escoger un nombre distinto. Iniciar tu aplicación tomará unos pocos segundos. Después de esto, simplemente navega hasta dentro de la carpeta con tu terminal:
+Ahora, puedes comenzar con el desarrollo de tu primera aplicación React. La llamaremos *hackernews*, puedes escoger un nombre distinto. Iniciar tu aplicación tomará unos pocos segundos. Después de esto, simplemente navega hasta el nuevo directorio con tu terminal:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -192,7 +192,7 @@ create-react-app hackernews
 cd hackernews
 ~~~~~~~~
 
-Ahora, puedes abrir la aplicación en tu editor. La siguiente estructura de carpetas o variación de esta depende de la versión de *create-react-app* que tengas instalada, deberías poder ver algo cómo esto:
+Ya puedes abrir la aplicación en tu editor de texto. La siguiente estructura de carpetas o variación de esta depende de la versión de *create-react-app* que tengas instalada, deberías poder ver algo cómo esto:
 
 {title="Folder Structure",lang="text"}
 ~~~~~~~~
@@ -215,11 +215,11 @@ hackernews/
     registerServiceWorker.js
 ~~~~~~~~
 
-Una pequeña descripción de cada una de las carpetas y archivos que encontrarás dentro de tu recien creado directorio. Está bien si no entiendes todo al principio.
+A continuación, una pequeña descripción de cada una de las carpetas y archivos que encontrarás dentro del directorio recien creado. Está bien si no entiendes todo al principio.
 
-* **README.md:** La extensión .md indica que el archivo es de formato "markdown". Markdown es un lenguaje de marcado ligero con sintaxis de texto plano. Muchos códigos fuente de proyectos incluyen un archivo *README.md* que te dan instrucciones acerca del proyecto. Cuando estés subiendo tu proyecto a una plataforma cómo GitHub, eventualmente el archivo *README.md* mostrará promisoriamente su contenido cuando alguien acceda al repositorio. Cómo utilizaste *create-react-app*, tu archivo *README.md* debería ser igual al que se puede observar en el [repositorio de GitHub create-react-app](https://github.com/facebookincubator/create-react-app) oficial.
+* **README.md:** La extensión .md indica que el archivo está en formato "markdown". Markdown es un lenguaje de marcado ligero con sintáxis de texto plano. Muchos códigos fuente de proyectos incluyen un archivo *README.md* con instrucciones acerca del proyecto. Cuando estés subiendo tu proyecto a una plataforma cómo GitHub, eventualmente el archivo *README.md* mostrará promisoriamente su contenido cuando alguien acceda al repositorio. Como utilizaste *create-react-app*, tu archivo *README.md* debería ser igual al que se puede observar en el [repositorio GitHub de create-react-app](https://github.com/facebookincubator/create-react-app) oficial.
 
-* **node_modules/:** Esta carpeta contiene todos los paquetes de node que han sido instalados via npm. Cómo utilizaste *create-react-app* para inicializar tu aplicación, en tu nueva carpeta debes poder ver un par de módulos de node instalados para ti. Usualmente nunca tocarás esta carpeta, pues, con npm puedes instalar y desinstalar paquetes Node desde la terminal.
+* **node_modules/:** Esta carpeta contiene todos los paquetes de node que han sido instalados via npm. Como utilizaste *create-react-app* para inicializar tu aplicación, en carpeta correspondiente debes poder ver un par de módulos Node ya instalados. Usualmente nunca tocarás esta carpeta, pues, con npm puedes instalar y desinstalar paquetes Node desde la terminal.
 
 * **package.json:** El archivo te muestra una lista de las dependencias de paquetes Node y un conjunto de otras configuraciones referentes al proyecto.
 
@@ -231,25 +231,23 @@ Una pequeña descripción de cada una de las carpetas y archivos que encontrará
 
 * **manifest.json** y **registerServiceWorker.js:** Por los momentos no te preocupes acerca de lo que estos archivos hacen, no los necesitaremos en este proyecto. 
 
-Después de todo, no necesitas tocar los archivos que acabamos de mencionar. Para comenzar, todo lo que necesitas está localizado en la carpeta *src/*. La mayor atención recae sobre el archivo *src/App.js*, que utilizaremos para implementar componentes React.
+No necesitas tocar los archivos que acabamos de mencionar. Por ahora todo lo que necesitas está localizado en la carpeta *src/* y la mayor atención recae sobre el archivo *src/App.js*, que utilizaremos para implementar componentes React.
 
 Más adelante, podrás dividir los componentes React en múltiples archivos con uno o más componentes dentro.
 
-Adicionalmente, encontrarás un archivo *src/App.test.js* para pruebas y uno *src/index.js* cómo punto de entrada al mundo de React. Explorarás ambos archivos en un capítulo próximo. Además, hay un archivo *src/index.css* y un archivo *src/App.css* que sirven para darle estilos a tu aplicación y sus componentes. Todos un estilo por defecto.
+Adicionalmente, encontrarás un archivo *src/App.test.js* para pruebas y uno *src/index.js* cómo punto de entrada al mundo React. Explorarás ambos archivos en un capítulo próximo. Además, hay un archivo *src/index.css* y un archivo *src/App.css* que sirven para darle estilos a tu aplicación y sus componentes. Todos un estilo por defecto.
 
-La aplicación *create-react-app*  es un proyecto npm.
-
-Puedes utilizar npm para instalar y desinstalar paquetes de node en tu proyecto. Y cuenta con los siguientes scripts npm, disponibles en la terminal:
+La aplicación *create-react-app*  es un proyecto npm, puedes utilizar npm para instalar y desinstalar paquetes Node en tu proyecto. Adicionalmente incluye algunos scripts que puedes ejecutar desde la terminal:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-// ejecuta la aplicación en http://localhost:3000
+# Runs the application in http://localhost:3000
 npm start
 
-// ejecuta las pruebas
+# Runs the tests
 npm test
 
-// prepara la aplicación para el nivel de producción
+# Builds the application for production
 npm run build
 ~~~~~~~~
 
@@ -832,6 +830,6 @@ Ahora que ya conoces los conceptos básicos de las clases de JavaScript ES6 y c�
   * las funciones flecha pueden utilizarse para acortar las declaraciones de funciones
   * las clases se utilizan para definir componentes en React
 
-Es sensato hacer una pausa en este punto. Internalizar lo aprendido y aplicarlo por tu cuenta. Puedes experimentar con el código fuente que escribiste hasta ahora.
+Es sensato que te detengas en este punto. Internaliza lo aprendido y aplícalo por tu cuenta. Puedes experimentar con el código fuente que has hasta ahora.
 
 El código fuente está disponible en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/0c5a701170dcc72fe68bdd594df3a6522f58fbb3).
