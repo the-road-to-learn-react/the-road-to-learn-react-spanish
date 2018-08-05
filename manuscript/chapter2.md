@@ -543,7 +543,7 @@ Si el enlazamiento repetitivo dentro del constructor te resulta molesto, puedes 
 
 * Prueba los diferentes tipos de enlace mencionados anteriormente y logea en la consola (console.log) el objeto `this`
 
-## Manejadores de Eventos (Event Handler)
+## Manejador de Eventos (Event Handler)
 
 En esta sección adquirirás un mayor entendimiento acerca de los manejadores de eventos en elementos. En tu aplicación. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
 
@@ -947,7 +947,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La función `isSearched()` toma `searchTerm` cómo parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta será utilizada para filtrar la lista en base a la condición definida dentro de la función.
+La función `isSearched()` toma a `searchTerm` como parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta será utilizada para filtrar la lista en base a la condición definida dentro de la función.
 
 Let's define the condition.
 

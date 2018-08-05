@@ -1,6 +1,6 @@
 # Introducción a React
 
-Este capítulo te brinda una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Este capítulo puede darte la respuesta a esa pregunta. Después, te sumergirá en el ecosistema, maquetando tu primera aplicación React. En el camino además conocerás JSX y ReactDOM. Así que prepárate para tu primer componente React.
+Este capítulo te brinda una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Este capítulo te dará la respuesta a esa pregunta. Y después te sumergirá en el ecosistema React, maquetando tu primera aplicación. En el camino también aprenderás sobre JSX y ReactDOM. Prepárate para crear tu primer componente React.
 
 ## Hola, mi nombre es React.
 
