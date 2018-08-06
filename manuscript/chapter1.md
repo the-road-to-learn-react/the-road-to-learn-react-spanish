@@ -4,7 +4,7 @@ Este capítulo sirve como una introducción a React. Quizá te preguntas: ¿Por 
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías aprender React?** En los últimos años las Single Page Applications ó Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Existe una amplia gama de frameworks SPA. De los que acabamos de mencionar, la mayoría pertenece a la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+**¿Por qué deberías aprender React?** En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Existe una amplia gama de frameworks SPA. De los que acabamos de mencionar, la mayoría pertenece a la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
 
 La versión inicial de React fue lanzada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la capa de vistas. Es la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería sólo permite renderizar componentes como elementos visibles en un navegador. Sin embargo, gracias a todo el ecosistema React, es posible crear aplicaciones de una sola página.
 
@@ -34,17 +34,17 @@ React sólo se encarga de la capa de vista, [pero gracias a su amplio ecosistema
 
 Antes de seguir avanzando debes estar familiarizado con los fundamentos del desarrollo web. Se espera que sepas trabajar con HTML, CSS y JavaScript, además de lo que significa el término [API](https://www.robinwieruch.de/what-is-an-api-javascript/), estarás usando esto durante todo el libro.
 
-Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wieruch.com/) oficial del libro para obtener ayuda ó ayudar a otros.
+Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wieruch.com/) oficial del libro para obtener ayuda o ayudar a otros.
 
 ### Editor y Terminal
 
-¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano ó IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos.
+¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos.
 
 Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
 ### Node y npm
 
-Por último pero no menos importante, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas ó frameworks completos.
+Por último pero no menos importante, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
 
 Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de la terminal. Si no obtienes ninguna salida en la terminal, así que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
@@ -130,7 +130,7 @@ Por ahora estos son todos los comandos que necesitas, pero en el camino encontra
 
 Existen varias maneras de comenzar una aplicación React.
 
-La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), ó Red de Entrega de Contenidos (CDN por sus siglas en Inglés).
+La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), o Red de Entrega de Contenidos (CDN por sus siglas en Inglés).
 
 Esto puede sonar complicado, pero no lo es. Muchas compañías tienen CDNs que almacenan públicamente archivos para sus usuarios. Archivos que pueden ser una librería como React, (una librería puede ser sólo un archivo JavaScript) se alojan en algún lugar y puedes luego requerirlos en tu aplicación.
 
@@ -295,7 +295,7 @@ export default App;
 
 No te dejes intimidar por las instrucciones import/export y la declaración de clases. Estas características pertenecen a JavaScript ES6, volveremos a ellas más adelante.
 
-Dentro del archivo *src/App.js* se encuentra un **React ES6 class component ó componente de clase React ES6** con el nombre `App`. Esto es una declaración de componente.
+Dentro del archivo *src/App.js* se encuentra un **React ES6 class component o componente de clase React ES6** con el nombre `App`. Esto es una declaración de componente.
 
 Básicamente, después de haber declarado un componente puedes utilizarlo como elemento en cualquier parte de tu aplicación produciendo una **instancia** de tu **componente**, o mejor dicho: Instanciando el componente.
 
@@ -359,7 +359,7 @@ Además, probablemente notaste el atributo `className`. Este es similar al atrib
 ### Ejercicios:
 
 * define más variables y renderízalas en tu JSX
-  * utiliza un complex object ó objeto complejo en español, para representar a un usuario con nombre y apellido
+  * utiliza un complex object u objeto complejo en español, para representar a un usuario con nombre y apellido
   * renderiza las propiedades del usuario utilizando JSX
 * lee más sobre [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
 * lee más sobre [componentes, elementos e instancias en React](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
@@ -370,7 +370,7 @@ Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScr
 
 Ahora, una explicación sobre `const` y `let`:
 
-Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada ó modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
+Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -455,7 +455,7 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Básicamente `ReactDOM.render()` selecciona un nodo DOM perteneciente al HTML de tu aplicación para reemplazarlo con JSX. Así es como puedes integrar fácilmente React a cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React ó una aplicación completa.
+Básicamente `ReactDOM.render()` selecciona un nodo DOM perteneciente al HTML de tu aplicación para reemplazarlo con JSX. Así es como puedes integrar fácilmente React a cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
 
 `ReactDOM.render()` por defecto requiere dos argumentos:
 
@@ -480,7 +480,7 @@ ReactDOM.render(
 
 ## Reemplazo de Módulos en Caliente
 
-Hot Module Replacement ó Reemplazo de Módulos en Caliente (HMR por sus siglas en Inglés) es una iteresante característica que puedes implementar en el archivo *src/index.js* para mejorar tu experiencia como desarrollador. Pero es opcional y puede que resulte abrumador al principio.
+Hot Module Replacement o Reemplazo de Módulos en Caliente (HMR por sus siglas en Inglés) es una iteresante característica que puedes implementar en el archivo *src/index.js* para mejorar tu experiencia como desarrollador. Pero es opcional y puede que resulte abrumador al principio.
 
 En *create-react-app* ya es una ventaja que el navegador recargue automáticamente la página tan pronto el código fuente cambia. Inténtalo, cambia la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe recargar la página automáticamente. Sin embargo, esto puede hacerse de una mejor manera.
 
