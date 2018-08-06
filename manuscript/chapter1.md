@@ -163,7 +163,7 @@ El siguiente capítulo muestra cómo iniciar con el desarrollo de tu aplicación
 
 ### Ejercicios:
 
-* leer más sobre [cómo instalar React](https://facebook.github.io/react/docs/installation.html)
+* lee más acerca de [cómo instalar React](https://facebook.github.io/react/docs/installation.html)
 
 ## Cero Configuraciones
 
@@ -219,25 +219,25 @@ A continuación, una pequeña descripción de cada una de las carpetas y archivo
 
 * **README.md:** La extensión .md indica que el archivo está en formato "markdown". Markdown es un lenguaje de marcado ligero con sintaxis de texto plano. Muchos códigos fuente de proyectos incluyen un archivo *README.md* con instrucciones acerca del proyecto. Cuando estés subiendo tu proyecto a una plataforma cómo GitHub, eventualmente el archivo *README.md* mostrará promisoriamente su contenido cuando alguien acceda al repositorio. Como utilizaste *create-react-app*, tu archivo *README.md* debería ser igual al que se puede observar en el [repositorio GitHub de create-react-app](https://github.com/facebookincubator/create-react-app) oficial.
 
-* **node_modules/:** Esta carpeta contiene todos los paquetes Node que han sido instalados vía npm. Como utilizaste *create-react-app* para inicializar tu aplicación, debes de poder ver un par de módulos Node ya instalados. Usualmente nunca tocarás esta carpeta, pues, con npm puedes instalar y desinstalar paquetes Node desde la terminal.
+* **node_modules/:** Contiene todos los paquetes Node que han sido instalados vía npm. Como utilizaste *create-react-app* para inicializar tu aplicación, debes de poder ver un par de módulos Node ya instalados. Usualmente nunca tocarás esta carpeta, pues, con npm puedes instalar y desinstalar paquetes Node desde la terminal.
 
-* **package.json:** El archivo te muestra una lista de las dependencias de paquetes Node y un conjunto de otras configuraciones referentes al proyecto.
+* **package.json:** Muestra una lista de las dependencias de paquetes Node y un conjunto de otras configuraciones referentes al proyecto.
 
-* **.gitignore:** El archivo indica todos los archivos y carpetas que no serán añadidos a tu repositorio de git. Archivos que sólo vivirán en el proyecto local.
+* **.gitignore:** Especifíca los archivos y carpetas que no serán añadidos a tu repositorio de git. Archivos que sólo vivirán en el proyecto local.
 
-* **public/:** La carpeta almacena todos los archivos raíz de desarrollo, como por ejemplo *public/index.html*, este índice es el que se muestra en la dirección localhost:3000 cuando estás desarrollando tu aplicación. *create-react-app* viene ya configurado para relacionar este archivo índice con todos los scripts en la carpeta *src/*.
+* **public/:** Almacena todos los archivos raíz de desarrollo, como por ejemplo *public/index.html*, este índice es el que se muestra en la dirección localhost:3000 cuando estás desarrollando tu aplicación. *create-react-app* viene ya configurado para relacionar este archivo índice con todos los scripts en la carpeta *src/*.
 
-* **build/:** La carpeta será creada cuando el proyecto se esté preparando para la etapa de producción y contendrá todos tus archivos relacionados a esta etapa de desarrollo. Todo tu código escrito en las carpetas *src/* y *public/* serán empaquetados en un par de archivos y posicionados en la carpeta *build/* cuando tu proyecto se esté compilando.
+* **build/:** Esta carpeta será creada cuando el proyecto se esté preparando para la etapa de producción y contendrá todos los archivos relacionados a esta etapa de desarrollo. Todo el código escrito en las carpetas *src/* y *public/* serán empaquetados en un par de archivos y posicionados en la carpeta *build/* cuando el proyecto se esté compilando.
 
 * **manifest.json** y **registerServiceWorker.js:** Por el momento no te preocupes acerca de lo que estos archivos hacen, no los necesitaremos en este proyecto. 
 
 No necesitas tocar los archivos que acabamos de mencionar. Por ahora todo lo que necesitas está localizado en la carpeta *src/* y la mayor atención recae sobre el archivo *src/App.js*, que utilizaremos para implementar componentes React.
 
-Más adelante, podrás dividir los componentes React en múltiples archivos con uno o más componentes dentro.
+Más adelante, podrás dividir los componentes React en múltiples archivos, con uno o más componentes dentro de cada archivo.
 
-Adicionalmente, encontrarás un archivo *src/App.test.js* para pruebas y uno *src/index.js* como punto de entrada al mundo React. Explorarás ambos archivos en un capítulo próximo. Además, hay un archivo *src/index.css* y un archivo *src/App.css* que sirven para darle estilos a tu aplicación y sus componentes. Todos un estilo por defecto.
+Adicionalmente, encontrarás un archivo *src/App.test.js* para pruebas y uno *src/index.js* como punto de entrada al mundo React. Explorarás ambos archivos en capítulos próximos. También existe un archivo *src/index.css* y un archivo *src/App.css* que sirven para darle estilos a tu aplicación y sus componentes. Estos ya incluyen algunos estilos por defecto.
 
-La aplicación *create-react-app*  es un proyecto npm, puedes utilizar npm para instalar y desinstalar paquetes Node en tu proyecto. Adicionalmente incluye algunos scripts que puedes ejecutar desde la terminal:
+La aplicación *create-react-app*  es un proyecto npm, puedes utilizar npm para instalar y desinstalar paquetes Node en tu proyecto, adicionalmente, incluye algunos scripts que puedes ejecutar desde la terminal:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -251,7 +251,7 @@ npm test
 npm run build
 ~~~~~~~~
 
-Los scripts son definidos en el archivo *package.json*. Tu aplicación React está inicializada, y la mejor parte viene en los ejercicios a continuación, donde finalmente correrás tu aplicación en el navegador.
+Estos scripts se encuentran definidos en el archivo *package.json*. Tu aplicación React se encuentra ya inicializadoa, y lo mejor está por venir, cuándo ejecutes tu aplicación en el navegador.
 
 ### Ejercicios:
 
@@ -264,9 +264,9 @@ Los scripts son definidos en el archivo *package.json*. Tu aplicación React est
 
 ## Introducción a JSX
 
-Ahora conocerás JSX, la sintaxis empleada por React. Como fue mencionado antes, *create-react-app* ya ha iniciado una aplicación estándar. Todos los archivos vienen con implementaciones predeterminadas. Es tiempo de sumergirnos en el código fuente.
+Ahora conocerás JSX, la sintaxis empleada por React. Como fue mencionado antes, *create-react-app* ya ha iniciado una aplicación estándar. Todos los archivos incluyen implementaciones predeterminadas. Es tiempo de sumergirnos en el código fuente.
 
-El único archivo que debes tocar al principio será: *src/App.js*.
+El único archivo que manipularás por ahora es: *src/App.js*.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -293,21 +293,21 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-No te dejes confundir por las instrucciones import/export y la declaración de clases. Estas características pertenecen a JavaScript ES6. Volveremos a ellas en un capítulo posterior.
+No te dejes intimidar por las instrucciones import/export y la declaración de clases. Estas características pertenecen a JavaScript ES6, volveremos a ellas más adelante.
 
-En el archivo tienes un **componente de clase React ES6** con el nombre `App`. Esto es una declaración de componente.
+Dentro del archivo *src/App.js* se encuentra un **React ES6 class component ó componente de clase React ES6** con el nombre `App`. Esto es una declaración de componente.
 
-Básicamente, después de haber declarado un componente, puedes utilizarlo como elemento en cualquier parte de tu aplicación produciendo una **instancia** de tu **componente**, o mejor dicho: Instanciando el componente.
+Básicamente, después de haber declarado un componente puedes utilizarlo como elemento en cualquier parte de tu aplicación produciendo una **instancia** de tu **componente**, o mejor dicho: Instanciando el componente.
 
-El **elemento** que es devuelto se especifica en el método `render()`. Los elementos son de lo que están hechos los componentes. Es muy útil comprender las diferencias entre los términos componente, instancia y elemento.
+El **elemento** que es devuelto se especifica dentro del método `render()`. Los elementos son de lo que están hechos los componentes. Es útil que entiendas las diferencias entre los términos "componente", "instancia" y "elemento".
 
-En un momento verás donde se instancia el componente `App`, que es lo que te permite ver la salida renderizada en el navegador.
+En un momento verás donde se instancia el componente `App` y cómo se renderiza en el navegador.
 
-El componente `App` es sólo la declaración y por si solo no puede ser utilizado. Para utilizar dicho componente podrías instanciar el componente en algún lugar de tu JSX con `<App />`.
+El componente `App` es sólo la declaración y por si solo no hará nada. Para utilizar dicho componente podrías instanciarlo en algún lugar de tu JSX con la etiqueta `<App />`.
 
-El contenido en el bloque de código perteneciente al método `render()` parece ser HTML, pero en realidad es JSX, y te permite mezclar HTML y JavaScript. Es potente pero confuso cuando estás acostumbrado a HTML simple. Por eso que un buen punto de partida, es comenzar utilizando HTML básico en tu JSX. A continuación, puedes empezar a insertar expresiones JavaScript entre corchetes.
+El contenido dentro del bloque de código perteneciente al método `render()` parece ser HTML, pero en realidad es JSX, y te permite mezclar HTML y JavaScript. Es potente, pero confuso cuando estás acostumbrado a HTML simple. Por eso que un buen punto de partida es comenzar utilizando HTML básico en tu JSX. Las expresiones JavaScript las puedes utilizar insertándolas entre corchetes.
 
-Primero vamos a eliminar todo el contenido distractor en el archivo.
+Primero, vamos a eliminar todo el contenido por defecto que es retornado por `render` y agregar nuestro propio HTML.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -354,15 +354,15 @@ export default App;
 
 Cuando inicies tu aplicación desde la terminal con `npm start` todo debería funcionar.
 
-Además, probablemente notaste el atributo `className`, este refleja el atributo estándar `class` en HTML. Debido a razones técnicas, JSX tuvo que varios atributos internos de HTML. Puedes encontrar todos los [atributos HTML compatibles con JSX en la documentación de React](https://facebook.github.io/react/docs/dom-elements.html). En tu camino para aprender React te encontrarás con más atributos JSX.
+Además, probablemente notaste el atributo `className`. Este es similar al atributo estándar `class` en HTML. Debido a razones técnicas, JSX tuvo que reemplazar varios atributos internos de HTML. Puedes ver todos los [atributos HTML compatibles con JSX en la documentación de React](https://facebook.github.io/react/docs/dom-elements.html) aquí. Más adelante conoceremos nuevos atributos JSX.
 
 ### Ejercicios:
 
 * define más variables y renderízalas en tu JSX
-  * utiliza un objeto complejo para representar a un usuario con nombre y apellido
-  * renderiza las propiedades del usuario en tu JSX
+  * utiliza un complex object, objeto complejo en español, para representar a un usuario con nombre y apellido
+  * renderiza las propiedades del usuario utilizando JSX
 * lee más sobre [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
-* lee más sobre [componentes React, elementos e instancias](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
+* lee más sobre [componentes, elementos e instancias en React](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
 
 ## ES6 const y let
 
@@ -521,7 +521,7 @@ Con HMR el diálogo permanece abierto en el paso 3. Es decir, mantiene el estado
 ### Ejercicios:
 
 * cambia el código fuente de *src/App.js* varias veces para ver a HMR en acción
-* ver los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) por Dan Abramov
+* mira los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) por Dan Abramov
 
 ## JavaScript complejo en JSX
 
