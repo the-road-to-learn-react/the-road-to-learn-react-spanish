@@ -1,6 +1,6 @@
 # Introducción a React
 
-Este capítulo sirve cómo una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Aquí encontrarás la respuesta a esta interrogante. Y después, te sumergirás en el ecosistema al crear tu primera aplicación utilizando la librería React. En el camino además conocerás JSX y ReactDOM. Así que prepárate para darle vida a tu primer componente React.
+Este capítulo sirve como una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Aquí encontrarás la respuesta a esta interrogante. Y después, te sumergirás en el ecosistema al crear tu primera aplicación utilizando la librería React. En el camino además conocerás JSX y ReactDOM. Así que prepárate para darle vida a tu primer componente React.
 
 ## Hola, mi nombre es React.
 
@@ -359,18 +359,18 @@ Además, probablemente notaste el atributo `className`. Este es similar al atrib
 ### Ejercicios:
 
 * define más variables y renderízalas en tu JSX
-  * utiliza un complex object, objeto complejo en español, para representar a un usuario con nombre y apellido
+  * utiliza un complex object ó objeto complejo en español, para representar a un usuario con nombre y apellido
   * renderiza las propiedades del usuario utilizando JSX
 * lee más sobre [JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
 * lee más sobre [componentes, elementos e instancias en React](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html)
 
 ## ES6 const y let
 
-Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos opciones para declarar variables: `const` y `let`. En JavaScript ES6 rara vez encontrarás `var`.
+Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos formas de declarar variables: `const` y `let`. En JavaScript ES6 rara vez utilizarás `var`.
 
 Ahora, una explicación sobre `const` y `let`:
 
-Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, adopta estructuras de datos inmutables al usarlo. Una vez que se define la estructura de datos, no se puede cambiar.
+Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada ó modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -381,7 +381,6 @@ helloWorld = 'Bye Bye React';
 
 Por otra parte, una variable declarada con `let` puede mutar.
 
-
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // permitido
@@ -391,7 +390,7 @@ helloWorld = 'Hasta luego, React';
 
 Se puede utilizar `let` cuando el valor de una variable debe ser reasignado.
 
-Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados, es decir los valores dentro del objeto o arreglo no son inmutables.
+Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados. Es decir, los valores dentro del objeto o arreglo no son inmutables.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -402,11 +401,11 @@ const helloWorld = {
 helloWorld.text = 'Hasta luego, React';
 ~~~~~~~~
 
-Pero ¿cuándo usar una u otra opción? Hay diferentes opiniones sobre esto. Sugiero usar `const` siempre que sea posible, indicando que se desea mantener la estructura de datos inmutable, aunque los valores en objetos y arreglos se puedan modificar.
+Pero ¿cuándo usar una u otra opción? Hay diferentes opiniones respecto a esto. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable aunque los valores en objetos y arreglos se puedan modificar.
 
 Si se quiere que el valor de la variable sea modificable, se puede utilizar `let`.
 
-La inmutabilidad es adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable. Sin embargo, en objetos complejos, los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
+La inmutabilidad es ampliamente adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable. Sin embargo, en objetos complejos, los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
 
 En tu aplicación utiliza `const` en vez de `var`.
 
@@ -436,12 +435,12 @@ export default App;
 * lee más sobre [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 * lee más sobre [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
 * investiga más acerca de las estructuras de datos inmutables
-  * ¿Por qué tienen sentido en la programación en general?
-  * ¿Por qué se utilizan en React y su ecosistema?
+  * ¿Por qué se utilizan en la programación en general?
+  * ¿Por qué se utilizan en React?
 
 ## ReactDOM
 
-Antes de continuar con el componente `App`, es posible que quieras ver dónde se utiliza. Este se encuentra en tu punto de entrada al mundo de React: el archivo *src/index.js*.
+Antes de volver a trabajar en el componente `App` es posible que quieras ver dónde es utilizado. Este se encuentra declarado dentro del archivo *src/index.js*.
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -456,15 +455,15 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Básicamente `ReactDOM.render()` selecciona un nodo DOM en tu HTML para reemplazarlo con JSX. Así es como puedes integrar fácilmente React en cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
+Básicamente `ReactDOM.render()` selecciona un nodo DOM perteneciente al HTML de tu aplicación para reemplazarlo con JSX. Así es como puedes integrar fácilmente React a cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React ó una aplicación completa.
 
-`ReactDOM.render()` por defecto espera dos argumentos:
+`ReactDOM.render()` por defecto requiere dos argumentos:
 
-El primero es JSX, que será renderizado.
+El primero es JSX que será renderizado.
 
-Y el segundo especifica el lugar en el que la aplicación React se insertará en tu código HTML. En este ejemplo, espera un elemento con un `id='root'`. Puedes abrir tu archivo *public/index.html* y encontrar allí dicho elemento.
+Y el segundo especifíca el lugar en el que la aplicación React será insertada dentro del código HTML de tu aplicación. En este ejemplo, se selecciona un elemento con `id='root'`. Puedes abrir el archivo *public/index.html* y encontrar allí dicho elemento.
 
-En el ejercicio `ReactDOM.render()` ya se incluye el componente `App`. Sin embargo con fines prácticos, pasemos código JSX más simple. Siempre y cuando sea JSX, no tiene que ser la instancia de un componente.
+En el ejercicio, `ReactDOM.render()` ya incluye el componente `App` como primer parámetro. Sin embargo, en el siguiente ejemplo utilizaremos código JSX simple y no la instancia de un componente. Todo esto para demostrar que al utilizar JSX simple no tienes es necesario instanciar un componente.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -476,8 +475,8 @@ ReactDOM.render(
 
 ### Ejercicios:
 
-* abre el *public/index.html* para ver dónde se conectan las aplicaciones React con tu HTML
-* lee más sobre [renderizando elementos en React](https://facebook.github.io/react/docs/rendering-elements.html)
+* abre *public/index.html* para ver dónde se conectan las aplicaciones React con el HTML de tu aplicación
+* lee más sobre cómo [renderizar elementos](https://facebook.github.io/react/docs/rendering-elements.html)
 
 ## Reemplazo de Módulos en Caliente
 
