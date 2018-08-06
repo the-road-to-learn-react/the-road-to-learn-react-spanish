@@ -479,13 +479,13 @@ ReactDOM.render(
 * abre el *public/index.html* para ver dónde se conectan las aplicaciones React con tu HTML
 * lee más sobre [renderizando elementos en React](https://facebook.github.io/react/docs/rendering-elements.html)
 
-## Reemplazo de Módulo Caliente
+## Reemplazo de Módulos en Caliente
 
-Reemplazo de Módulo Caliente(Hot Module Replacement) es una da las grandes cosas que puedes hacer en el archivo *src/index.js* para mejorar tu experiencia como desarrollador, pero es opcional y podría abrumarte como principiante en el aprendizaje de React.
+Hot Module Replacement ó Reemplazo de Módulos en Caliente (HMR por sus siglas en Inglés) es una iteresante característica que puedes implementar en el archivo *src/index.js* para mejorar tu experiencia como desarrollador. Pero es opcional y puede que resulte abrumador al principio.
 
-En *create-react-app* ya es una ventaja que el navegador recargue automáticamente la página tan pronto el código fuente cambia. Inténtalo cambiando la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe recargar la página automáticamente. Sin embargo, esto puede hacerse de una mejor manera.
+En *create-react-app* ya es una ventaja que el navegador recargue automáticamente la página tan pronto el código fuente cambia. Inténtalo, cambia la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe recargar la página automáticamente. Sin embargo, esto puede hacerse de una mejor manera.
 
-Reemplazo de Módulo Caliente (HMR por sus siglas en Inglés) es una herramienta para actualizar tu aplicación en el navegador. Es decir, el navegador no actualiza la página entera. En *create-react-app* puede ser fácilmente activado, sólo necesitas agregar unas pocas líneas de código en tu *src/index.js* - tu punto de entrada de React -,
+El Reemplazo de Módulo Caliente es una herramienta para actualizar tu aplicación dentro del navegador. Es decir, el navegador no actualiza la página entera. En *create-react-app* esta herramienta puede ser fácilmente activada, sólo necesitas agregar unas pocas líneas de código en tu *src/index.js* - tu punto de entrada de React -.
 
 {title="src/index.js",lang=javascript}
 ~~~~~~~~
@@ -514,7 +514,7 @@ Imagina que estás depurando tu código con declaraciones `console.log()`. Estas
 
 En una aplicación en crecimiento, una actualización de página retrasa la productividad. Tienes que esperar hasta que la página se cargue, y una recarga de página puede tardar varios segundos en una aplicación grande. HMR soluciona este inconveniente.
 
-Sin embargo, el mayor beneficio que ofrece HMR es que puede mantener el estado de la aplicación. Imagina que tienes un diálogo en tu aplicación con varios pasos y que estás en el paso 3. Sin HMR el código fuente cambiaría y el navegador actualizaría la página, después tendrías que abrir el cuadro de diálogo nuevamente y navegar desde el paso 1 al paso 3. 
+Sin embargo, el mayor beneficio que ofrece HMR es que puede mantener el estado de la aplicación. Imagina que tienes un diálogo en tu aplicación que consta de varios pasos y estás en el paso 3. Sin HMR el código fuente cambiaría y el navegador actualizaría la página, después tendrías que abrir el cuadro de diálogo nuevamente y navegar desde el paso 1 hasta el paso 3. 
 
 Con HMR el diálogo permanece abierto en el paso 3. Es decir, mantiene el estado de la aplicación, aunque el código fuente cambie. La aplicación misma vuelve a cargar, más no la página.
 
