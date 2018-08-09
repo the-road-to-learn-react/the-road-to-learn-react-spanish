@@ -241,13 +241,13 @@ La aplicación *create-react-app*  es un proyecto npm, puedes utilizar npm para 
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-# Runs the application in http://localhost:3000
+# Ejecuta la aplicación en http://localhost:3000
 npm start
 
-# Runs the tests
+# Ejecuta las pruebas
 npm test
 
-# Builds the application for production
+# Prepara la aplicación para la etapa de construcción
 npm run build
 ~~~~~~~~
 
@@ -522,11 +522,11 @@ Con HMR el diálogo permanece abierto en el paso 3. Es decir, mantiene el estado
 * cambia el código fuente de *src/App.js* varias veces para ver a HMR en acción
 * mira los primeros 10 minutos de [Live React: Hot Reloading with Time Travel](https://www.youtube.com/watch?v=xsSnOQynTHs) por Dan Abramov
 
-## JavaScript complejo en JSX
+## JavaScript avanzado en JSX
 
-Volvamos al componente `App`. Hasta ahora logramos renderizar algunas variables primitivas en JSX. Ahora, comenzarás a renderizar una lista de artículos. La lista en principio contendrá datos artificiales, pero más adelante recibirá los datos desde una API externa, lo que será mucho más emocionante.
+Volvamos a trabajar en el componente `App`. Hasta ahora logramos renderizar algunas variables primitivas con JSX. Ahora, comenzarás a renderizar una lista de artículos. La lista en principio contendrá datos artificiales, pero más adelante recibirá los datos desde una API externa, lo que será mucho más emocionante.
 
-Primero, tienes definir la lista de elementos.
+Primero, define la lista de elementos.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -559,11 +559,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento de la lista tiene un título, una URL y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
+Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento dentro de la lista (`const list`) tiene un título, una URL y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
 
-Ahora, puedes utilizar el método `map` de JavaScript incorporándolo en tu código JSX.
+Ahora, puedes utilizar el método `map` de JavaScript incorporándolo dentro del código JSX.
 
-El método `map` permite iterar sobre tu lista de elementos para poder mostrarlos. Recuerda qué debes encapsular la expresión JavaScript dentro del código JSX usando corchetes. 
+El método `map` permite iterar sobre la lista de elementos para poder mostrarlos. Recuerda que dentro del código JSX debes encerrar entre corchetes la expresión JavaScript. 
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -584,9 +584,9 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Esto resulta muy poderoso en JSX. Y es posible que antes utilizaras `map` para convertir una lista de elementos a otra lista de elementos, pero esta vez utilizas este método para convertir una lista de elementos a elementos HTML.
+Esto resulta muy al momento de trabajar con JSX. Es posible que antes hayas utilizado el método `map` para convertir una lista de elementos a otra lista de elementos, pero esta vez lo utilizas para convertir una lista de elementos a elementos HTML.
 
-Hasta ahora, sólo se mostrará el valor de la propiedad `title` correspondiente a cada elemento en la lista. A continuación, vamos a mostrar otras propiedades del artículo.
+Por ahora sólo se muestra el valor de la propiedad `title` correspondiente a cada elemento de la lista. A continuación, vamos a mostrar otras propiedades del artículo.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -616,11 +616,11 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Puedes ver cómo el método `map` está alineado en tu JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad URL del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
+Puedes ver como el método `map` está indentado dentro del código JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad URL del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
 
-React hará todo el trabajo por ti y mostrará cada elemento. Aunque es necesario agregar un helper para que React alcance su máximo potencial y mejore su rendimiento.
+React hará todo el trabajo por ti y mostrará cada elemento. Aunque es necesario agregar un helper o ayudante para que React alcance su máximo potencial y tenga un mejor rendimiento.
 
-Debes asignar un atributo clave a cada elemento de lista. Así, React será capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambie. Los elementos artificiales de la lista incluyen un identificador por defecto.
+Debes asignar un atributo clave a cada elemento de lista. Así, React será capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambie. Los elementos artificiales dentro de la lista creada anteriormente ya incluyen un identificador por defecto (`objectID`).
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -640,7 +640,7 @@ Debes asignar un atributo clave a cada elemento de lista. Así, React será capa
 })}
 ~~~~~~~~
 
-Asegúrate de que el atributo clave es un identificador estable. No cometas el error de usar el índice del elemento en el arreglo. El índice del arreglo no es del todo estable. Por ejemplo, cuando el orden de la lista cambie, React tendrá dificultades para identificar los elementos correctamente.
+Asegúrate de que el atributo clave tiene un valor estable. No cometas el error de usar el índice asignado para el elemento dentro del arreglo. El índice del arreglo no es del todo estable. Por ejemplo, cuando el orden de la lista cambie, React tendrá dificultades para identificar los elementos correctamente, pues cada elemento dentro de la lista tendrá ahora un orden y un índice distinto.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -654,17 +654,17 @@ Asegúrate de que el atributo clave es un identificador estable. No cometas el e
 })}
 ~~~~~~~~
 
-De esta manera se mostrarán los dos elementos de la lista. Puedes iniciar tu aplicación, abrir tu navegador y ver los dos elementos de la lista desplegados.
+Ahora puedes iniciar tu aplicación desde la terminal, abrir tu navegador y ver los dos elementos desplegados correspondientes a la lista que acabas de agregar al código de tu componente.
 
 ### Ejercicios:
 
-* lee más sobre [Llaves y listas en React](https://facebook.github.io/react/docs/lists-and-keys.html)
+* lee más sobre [llaves y listas de elementos en React](https://facebook.github.io/react/docs/lists-and-keys.html)
 * repasar [funcionalidades estándar para Arreglos en JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 * utiliza más expresiones JavaScript por tu cuenta en JSX
 
 ## Funciones Flecha en ES6 (Arrow Functions)
 
-JavaScript ES6 introduce funciones flecha. Las expresiones de función flecha resultan más cortas que expresiones de función.
+JavaScript ES6 incluye funciones flecha. Las expresiones de función flecha resultan más cortas que expresiones de función tradicionales.
 
 ```js
 
@@ -683,9 +683,9 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-Por supuesto, tienes que ser consciente de sus funcionalidades. Una de ellos es su comportamiento especial con el objeto `this`. Una expresión de función siempre define su propio objeto `this`. Las expresiones de función flecha aún tienen el objeto `this` en el contexto cerrado. No te confundas al usar `this` en una función flecha.
+Claro, tienes que ser consciente de sus funcionalidades. Una de ellas es su comportamiento especial con el objeto `this`. Una expresión de función siempre define su propio objeto `this`. Las expresiones de función flecha aún tienen el objeto `this` en el contexto cerrado. No te confundas al usar `this` en una función flecha.
 
-Hay otro hecho valioso sobre las funciones flecha con respecto al paréntesis. Puedes quitar los paréntesis cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
+Con respecto a los paréntesis en las funciones flecha ES6, puedes quitarlos cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -702,7 +702,7 @@ item, key => { ... }
 (item, key) => { ... }
 ~~~~~~~~
 
-Ahora, echemos un vistazo a la función `map`. Puedes escribirla de manera más concisa con una función flecha ES6.
+Ahora, revisemos nuevamente el método `map`. Puedes declararlo de manera más concisa con una función flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -722,7 +722,7 @@ Ahora, echemos un vistazo a la función `map`. Puedes escribirla de manera más 
 })}
 ~~~~~~~~
 
-Además, puede eliminar el *cuerpo del bloque* de la función flecha ES6. En un *cuerpo conciso* un `return` implícito se adjunta de modo que se puede quitar la declaración `return`. Esto sucederá más a menudo en el libro, así que asegúrate de entender la diferencia entre un cuerpo de bloque y un cuerpo conciso dentro de funciones flecha.
+Además, es válido eliminar el *cuerpo del bloque* de la función flecha ES6. En un *cuerpo conciso* un `return` implícito se adjunta, de modo que se puede quitar la declaración `return`. Esto sucederá a menudo en el libro, así que asegúrate de entender la diferencia entre un cuerpo de bloque y un cuerpo conciso dentro de las funciones flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -742,19 +742,19 @@ Además, puede eliminar el *cuerpo del bloque* de la función flecha ES6. En un 
 # leanpub-end-insert
 ~~~~~~~~
 
-Ahora tu código JSX es más conciso y legible. Pues omite la sentencia "function", los corchetes y la declaración `return`.
+Ahora tu código JSX es más conciso y legible. Al declarar `map` de esta manera, se omite la sentencia "function", los corchetes y la declaración `return`.
 
 ### Ejercicios:
 
 * lee más sobre [funciones flecha ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
-## ES6 Classes
+## Clases ES6 (ES6 Classes)
 
-JavaScript ES6 incluye clases. Una clase se utiliza comúnmente en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos lado a lado para sus casos de uso particulares.
+JavaScript ES6 incluye clases. Comunmente una clase se utiliza en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
 
- React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables, las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las partes buenas de ambos paradigmas de programación.
+ React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las mejores cualidades de ambos paradigmas de programación.
 
-Consideremos la siguiente clase `Developer` para examinar una clase de JavaScript ES6 sin pensar en componentes React.
+Considera la siguiente clase llamada `Developer` para examinar una clase de JavaScript ES6 sin pensar en componentes React.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -770,11 +770,11 @@ class Developer {
 }
 ~~~~~~~~
 
-Una clase tiene un constructor que permite instanciarla. Este constructor puede tomar argumentos y asignarlos a la instancia de clase. Además, una clase puede definir funciones, y dado que la función está asociada a una clase, se le llama método. A veces se referencia como un método de clase.
+Una clase tiene un constructor que permite instanciarla. Este constructor puede tomar argumentos y asignarlos a la instancia de la clase. Además, una clase puede definir funciones, y dado que la función está asociada a una clase, se le llama método de clase.
 
-La clase `Developer` es sólo la declaración de clase. Es válido crear varias instancias de una clase invocándola. Lo que resulta similar al componente de clase ES6, que tiene una declaración, pero debe ser usado en otro lugar para instanciarlo.
+En el ejemplo aterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo.
 
-Veamos cómo puedes instanciar una clase y utilizar sus métodos.
+Veámos cómo puedes instanciar una clase y utilizar sus métodos.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -783,7 +783,7 @@ console.log(robin.getName());
 // output: Robin Wieruch
 ~~~~~~~~
 
-React utiliza clases de JavaScript ES6 para componentes de clase ES6. Ya utilizaste un componente de clase ES6 anteriormente.
+React utiliza clases JavaScript ES6 en los componentes de clase ES6. Ya utilizaste un componente de clase ES6 anteriormente.
 
 
 {title="src/App.js",lang=javascript}
@@ -799,24 +799,24 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La clase `App` se extiende de `Component`. Básicamente, se declara el componente `App`, pero este se extiende desde otro componente.
+La clase `App` se extiende desde `Component`. Básicamente, se declara el componente `App`, pero este se extiende desde otro componente.
 
 ¿Qué significa extender? En la programación orientada a objetos se emplea el principio de herencia, que hace posible pasar funcionalidades de una clase a otra clase.
 
-La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más específicos, `App` hereda funcionalidades de la clase Component. El componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Y una de estas funcionalidades es un método que ya utilizaste, el método `render()`, del que conocerás otras funcionalidades más adelante.
+La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más específicos, `App` hereda funcionalidades de la clase Component. Este componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Y una de estas funcionalidades es un método que ya conoces, el método `render()` del que conocerás más funcionalidades más adelante.
 
 La clase `Component` encapsula todas las funcionalidades de React que un desarrollador no necesita ver. Permite a los desarrolladores utilizar las clases como componentes en React.
 
-Los métodos que expone React `Component` representan la interfaz pública. Uno de estos métodos debe ser sobreescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo posterior. El método `render()` tiene que ser sobreescrito, porque define la salida de React `Component`.
+Los métodos encapsulados dentro de la clase `Component` representan la interfaz pública. Uno de estos métodos debe ser sobreescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo próximo. El método `render()` tiene que ser sobreescrito, porque define la salida de React `Component`.
 
-Ahora que ya conoces los conceptos básicos de las clases de JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes, aprenderás más sobre los métodos de Componente cuando el libro describa los Métodos de Ciclo de Vida de React.
+Ahora que ya conoces los conceptos básicos de las clases JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes, aprenderás más sobre los métodos de Componente cuando el libro describa los Métodos de Ciclo de Vida de React.
 
 ### Ejercicios:
 
 * lee más sobre [Clases en ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
 
-¡Ahora sabes cómo iniciar tu propia aplicación React! Repasemos brevemente los visto en los últimos capítulos:
+¡Ahora sabes cómo arrancar tu propia aplicación React! Repasemos brevemente los visto en los últimos capítulos:
 
 * React
   * *create-react-app* arranca una aplicación React
@@ -830,6 +830,6 @@ Ahora que ya conoces los conceptos básicos de las clases de JavaScript ES6 y c�
   * las funciones flecha pueden utilizarse para acortar las declaraciones de funciones
   * las clases se utilizan para definir componentes en React
 
-Es sensato que te detengas en este punto. Internaliza lo aprendido y aplícalo por tu cuenta. Puedes experimentar con el código fuente que has hasta ahora.
+Es recomendable que te detengas en este punto. Internaliza lo aprendido y aplícalo por cuenta propia. Puedes experimentar con el código fuente que has escrito hasta ahora.
 
 El código fuente está disponible en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/0c5a701170dcc72fe68bdd594df3a6522f58fbb3).
