@@ -100,9 +100,9 @@ Pero ten cuidado. No cambies el estado directamente. Para modificarlo tienes que
   * usa y accede al estado dentro de tu método `render()`
 * lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
 
-## Inicializador de Objetos ES6
+## Inicializador de Objetos ES6 (ES6 Object Initializer)
 
-En JavaScript ES6 puedes utilizar una sintaxis abreviada para inicializar objetos de manera concisa. Imagina la siguiente inicialización de objeto:
+En JavaScript ES6 puedes utilizar sintaxis abreviada para inicializar objetos de manera concisa. Imagina la siguiente inicialización de objeto:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -124,7 +124,7 @@ const user = {
 };
 ~~~~~~~~
 
-En tu aplicación puedes hacer lo mismo. El nombre de la variable de lista y el nombre de la propiedad de estado comparten el mismo nombre.
+En tu aplicación puedes hacer lo mismo. El nombre de la variable `list` y el nombre de la propiedad de estado comparten el mismo nombre.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -139,14 +139,13 @@ this.state = {
 };
 ~~~~~~~~
 
-Los nombres abreviados de método también te ayudarán mucho. En JavaScript ES6 puedes inicializar métodos en un objeto de manera más concisa.
-
+Los nombres de método abreviados también te ayudarán mucho. En JavaScript ES6 puedes inicializar métodos dentro de un objeto de manera concisa también.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 var userService = {
-  getUserName: function (user) {
+  getUserName: function(user) {
     return user.firstname + ' ' + user.lastname;
   },
 };
@@ -159,7 +158,7 @@ const userService = {
 };
 ~~~~~~~~
 
-Y por último pero no menos importante, en JavaScript ES6 es posible utilizar nombres de propiedad calculados.
+Y por último, pero no menos importante, en JavaScript ES6 es posible utilizar nombres de propiedad calculados (computed property names).
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -175,12 +174,12 @@ const user = {
 };
 ~~~~~~~~
 
-Es posible que los nombres de propiedad calculados suenen cómo algo extraño para ti en este momento. ¿Por qué los necesitarías? En un capítulo posterior del libro, responderemos esta interrogante cuándo los utilices para insertar valores dentro de un objeto de manera dinámica.
+Probablemente los nombres de propiedad calculados suenen cómo algo extraño para ti en este momento. ¿Por qué los necesitarías? Más adelante responderemos esta interrogante, cuándo los utilices para insertar valores dentro de un objeto de manera dinámica.
 
 ### Ejercicios:
 
 * experimenta con el inicializador de objetos ES6
-* lee más sobre [inicializador de objetos ES&](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
+* lee más sobre el [inicializador de objetos ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
 ## Flujo de Datos Unidireccional
 
