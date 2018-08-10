@@ -183,9 +183,9 @@ Probablemente los nombres de propiedad calculados suenen cómo algo extraño par
 
 ## Flujo de Datos Unidireccional
 
-Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado su estado interno todavía. El estado es estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
+Ahora ya hay un estado interno inicializado dentro del componente `App`. Sin embargo aún no manipulas dicho estado interno. Este estado es aún estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
 
-Agreguemos un botón a cada elemento de la lista a continuación. El botón tendrá el nombre "Dismiss" y permitirá remover dicho elemento de la lista. Será útil eventualmente, cómo cuando sólo desees mantener una lista de elementos no leídos, y eliminar los elementos en los que no estés interesado.
+Agreguemos un botón a cada elemento de la lista presentada a continuación. El botón tendrá el nombre "Dismiss" y permitirá remover al elemento de la lista que lo contiene. Este botón eventualmente será útil, por ejemplo, cuando sólo quieras mantener una lista de elementos no leídos y eliminar los que no te interesen.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -222,13 +222,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El método de clase `onDismiss()` aún no está definido, nos haremos cargo de ello en un momento. Por ahora enfócate en el selector `onClick` perteneciente al elemento `button`.
+El método de clase `onDismiss()` aún no está definido, lo definiremos en un momento. Por ahora enfócate en el selector `onClick` del elemento `button`.
 
-Como puedes ver, el método `onDismiss()` en la función `onClick` está encerrado dentro de otra función. De esta manera puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería, definiendo la función fuera del selector `onClick`, y solamente pasar la función definida al selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
+Como puedes ver, el método `onDismiss()` de la función `onClick` está encerrado dentro de otra función. De esta manera, puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería definiendo la función fuera de `onClick`, e incluir solamente la función definida dentro del selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas para el elemento `button`? Elementos con múltiples atributos en una sola línea eventualmente se desordenan. Es por eso que para definir el elemento `button` y sus propiedades se utilizan multilíneas e identado, manteniendo todo legible. Esto no es obligatorio, sólo una pequeña recomendación.
+¿Notaste las multilíneas y el indentado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e identado, manteniendo así todo legible. Esto no es obligatorio, pero si muy recomendable.
 
-Ahora, tienes que implementar la funcionalidad `onDismiss()`. Se necesita un `id` para identificar el elemento a descartar. La función está vinculada a la clase y por lo tanto, se convierte así en un método de clase, por esta razón se debe accesar a él con `this.onDismiss()` y no `onDismiss()`. El objeto `this` representa la instanciación de tu clase. Ahora, para definir `onDismiss()` cómo método de clase, necesitas enlazarlo con el constructor.
+Ahora, tienes que implementar la función `onDismiss()`. Se necesita un `id` para identificar el elemento que se quiere eliminar. `onDismiss()` está vinculada a la clase `App` y por lo tanto se convierte en un método de clase, por esta razón se debe accesar a él con `this.onDismiss()` y no simplemente `onDismiss()`. El objeto `this` representa la relación de la clase. Ahora, para definir `onDismiss()` cómo método de clase necesitas enlazarlo con el constructor.
 
 
 {title="src/App.js",lang=javascript}
@@ -253,7 +253,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-En el siguiente paso, tienes que definir su funcionalidad, la lógica, en tu clase. Métodos de clase pueden ser definidos de la siguiente manera.
+Para el siguiente paso tienes que definir la funcionalidad lógica de `onDismiss()` dentro de la clase. Los métodos de clase pueden ser definidos como se muestra a continuación.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -281,9 +281,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora, puedes definir lo que sucede dentro del método de clase. Básicamente, quieres quitar de la lista el artículo identificado con el `id` y almacenar una lista actualizada en tu estado local. Al final, la lista actualizada será usada dentro del método `render()` para mostrarse en pantalla. El elemento removido no debería ser visible ahora.
+Ahora define lo que sucede dentro del método de clase. Básicamente, quieres eliminar de la lista un artículo identificado por medio de un `id` y actualizar la lista en el estado local del componente. Al final, la lista actualizada será usada dentro del método `render()` y se mostrará en pantalla sin el elemento que recien eliminaste.
 
- Puedes remover un elemento de una lista utilizando la funcionalidad de filtro de array. La función de filtro toma una función para evaluar cada elemento de la lista iterando sobre esta. Si la evaluación de un ítem resulta en verdadero, el elemento se queda en la lista. De lo contrario se eliminará. Además, la función devuelve una nueva lista y no altera la lista antigua. Mantiene la estructura de datos inmutables.
+ Puedes remover un elemento de una lista utilizando el método incorporado de JavaScript `filter()`. Este método crea una lista que contiene todos los elementos de la lista original que pasan la prueba establecida.
+ 
+El método `filter()` recibe como parámetro otra función e itera sobre los elementos dentro de una lista dada. Si la evaluación de un ítem resulta en verdadero, el elemento se queda en la lista, de lo contrario dicho elemento se elimina. Al finalizar devuelve una nueva lista con los resultados, sin alterar la lista original. `filter()` es compatible con la convención establecida para React que promueve las estructuras de datos inmutables.
 
 
 {title="src/App.js",lang=javascript}
@@ -297,7 +299,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-En el siguiente paso, puedes extraer la función y pasarla a la función filtro.
+En el siguiente paso, toma la función `isNotId()` que acabas de declarar y pasarla al método `filter()` como se muestra a continuación.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -312,7 +314,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Esto puede hacerse de forma más concisa utilizando una función flecha ES6.
+Es posible definir la función `isNotId()` de manera más concisa utilizando una función flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -324,7 +326,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Podrías incluso hacerlo en una línea, como hiciste con el selector `onClick()` del botón, aunque podría ser menos legible.
+Podrías incluso hacerlo todo en una sola línea, como hiciste con el selector `onClick()` del botón, aunque puede resultar difícil de leer.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -335,7 +337,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-La lista elimina ahora el elemento seleccionado. Sin embargo, el estado aún no se actualiza. Por lo tanto, puedes utilizar el método de clase `setState()` para actualizar la lista en el estado interno del componente.
+Ahora es posible eliminar de la lista al elemento cliqueado. Sin embargo, el estado aún no se actualiza. Para actualizar el estado interno del componente puedes utilizar el método de clase `setState()`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -348,15 +350,11 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Ahora, vuelve a ejecutar tu aplicación y prueba el botón "Dismiss". Debería funcionar correctamente.
-
-Esto que acabas de experimentar, dentro de React es conocido como **flujo de datos unidireccional**. Ejecutas una acción en la capa de vistas con `onClick()`, acto seguido una función o método de clase modifica el estado interno del componente y el método `render()` del componente se ejecuta de nuevo para actualizar la capa de vistas.
-
-![Actualización del estado interno con flujo de datos unidireccional](images/set-state-to-render-unidirectional.png)
+Ahora ejecuta nuevamente la aplicación y prueba el botón "Dismiss". Debe funcionar correctamente. Esto que acabas de experimentar se conoce como **Flujo de Datos Unidireccional**. Ejecutas una acción en la capa de vistas con `onClick()`, luego una función o método de clase modifica el estado interno del componente y acto seguido el respectivo método `render()` es ejecutado para actualizar la capa de vistas.
 
 ### Ejercicios:
 
-* leer más sobre [El estado y ciclos de vida en React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* lee más sobre [El estado y ciclos de vida en React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Enlaces (Bindings)
 
