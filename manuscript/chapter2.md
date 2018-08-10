@@ -1,12 +1,12 @@
-# Conceptos básicos en React
+# Conceptos Básicos en React
 
-Este capítulo te guiará a través de los aspectos básicos de React. Expone lo que es el estado y las interacciones dentro de componentes, pues, los componentes estáticos son un poco aburridos ¿no? Además, explorarás distintas maneras de declarar un componente y cómo mantenerlos reutilizables. Prepárate para darle vida a tus componentes.
+Este capítulo te guiará a través de los aspectos básicos de React.  Conocerás lo que es el estado y las interacciones dentro de componentes. Además, verás distintas maneras de declarar un componente y cómo hacerlos reutilizables. Prepárate para darle vida propia a tus componentes React.
 
-## Estado interno del componente
+## Estado interno de Un Componente
 
-El estado interno de un componente, también conocido como estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez cuando el componente se inicializa.
+El estado interno de un componente, también conocido como estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez al inicializar el componente.
 
-A continuación, conozcamos el constructor de clase donde se puede establecer el estado interno inicial del componente.
+A continuación, veámos el constructor de clase donde se puede establecer el estado interno inicial del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -23,18 +23,18 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. Más adelante conocerás más acerca de componentes de clase ES6.
+El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. En instantes conocerás más acerca de componentes de clase ES6, por ahora volvamos a `App`.
 
-Es obligatorio llamar a `super(props);`, estableciendo así `this.props` dentro de tu constructor, en caso de que quieras acceder a él. De lo contrario, al intentar accesar a `this.props` retornará `undefined`.
+Es obligatorio llamar a `super(props);`, pues habilita `this.props` dentro de tu constructor, para que puedas acceder a él. De lo contrario, al intentar accesar a `this.props`dentro de tu constructor retornará `undefined`.
 
-Ahora, en tu caso, el estado inicial en tu componente debería ser la lista de elementos de muestra.
+En tu caso, el estado inicial dentro del componente `App` debería ser la lista de elementos.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 const list = [
   {
     title: 'React',
-    url: 'https://facebook.github.io/react/',
+    url: 'https://reactjs.org/',
     author: 'Jordan Walke',
     num_comments: 3,
     points: 4,
@@ -60,7 +60,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El estado está ligado a la clase por medio del objeto `this`. Por lo tanto, puedes acceder al estado local dentro de todo el componente. Por ejemplo, puede ser utilizado en el método `render()`. Anteriormente mapeaste una lista estática de elementos en tu método `render()`, que fue definido fuera del componente. Ahora, usarás la lista proveniente del estado local dentro de tu componente.
+El estado está ligado a la clase por medio del objeto `this`, por tanto se puede acceder a este dentro de todo el componente. Por ejemplo, puedes usar el estado dentro del método `render()`. Anteriormente mapeaste una lista estática de elementos dentro del método `render()` que fue definida fuera del componente `App`. Ahora, accederás a la lista almacenada en el estado local dentro del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,9 +89,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esta lista es parte del componente ahora, pues, reside en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de esta lista. Cada vez que cambies el estado del componente, el método `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
+Esta lista es ahora parte del componente, es decir se encuentra almacenada en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de la lista. Cada vez que el estado del componente cambie, el método `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
 
-Pero ten cuidado. No cambies el estado directamente. Tienes que usar un método llamado `setState()` para modificarlo. Este método lo conocerás en un próximo capítulo.
+Pero ten cuidado. No cambies el estado directamente. Para modificarlo tienes que usar un método llamado `setState()`, que conocerás en un próximo capítulo.
 
 ### Ejercicios:
 
@@ -182,7 +182,7 @@ Es posible que los nombres de propiedad calculados suenen cómo algo extraño pa
 * experimenta con el inicializador de objetos ES6
 * lee más sobre [inicializador de objetos ES&](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer)
 
-## Flujo de datos unidireccional
+## Flujo de Datos Unidireccional
 
 Ahora tienes un estado interno en tu componente `App`. Sin embargo, no has manipulado su estado interno todavía. El estado es estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
 
