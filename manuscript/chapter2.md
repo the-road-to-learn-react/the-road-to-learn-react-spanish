@@ -354,11 +354,12 @@ Ahora ejecuta nuevamente la aplicación y prueba el botón "Dismiss". Debe funci
 
 ### Ejercicios:
 
-* lee más sobre [El estado y ciclos de vida en React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* lee más sobre [el estado y los ciclos de vida en componentes React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Enlaces (Bindings)
+Dentro del siguiente componente se muestra un método de clase enlazado correctamente en el constructor de clase.
 
-Es importante aprender acerca de Enlaces dentro de clases de JavaScript al momento de utilizar componentes de clase React ES6. En el capítulo anterior, enlazaste tu método de clase `onDismiss()` dentro del constructor.
+Es importante que conozcas los Enlaces que tienen lugar dentro de las clases JavaScript ES6 al momento de utilizar componentes de clase React ES6. En el capítulo anterior enlazaste el método de clase `onDismiss()` al constructor de la clase `App`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -399,10 +400,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-El componente se renderiza sin problema, pero cuando presiones el botón, recibirás el mensaje `undefined` en la consola de desarrollador. Esto es uno de los principales generadores de bugs en React, pues, si quieres acceder a `this.state` desde tu método de clase, esto no será posible porque `this` es `undefined`. Por lo tanto, para poder acceder a `this` desde tus métodos de clase tienes que enlazar los métodos de clase a `this`.
+El componente se renderiza sin problema, pero cuando presiones el botón, recibirás el mensaje `undefined` en la consola de desarrollador. Esta es una de las principales fuentes de bugs en React, pues, si quieres acceder a `this.state` desde un método de clase, esto no será posible porque `this` es `undefined` por defecto. Para poder acceder a `this` desde tus métodos de clase tienes que enlazar `this`  a los métodos de clase.
 
-En el siguiente componente el método de clase está enlazado adecuadamente en el constructor de clase.
-
+En el siguiente componente, dentro del constructor de clase se puede ver que el método de clase `onClickMe` se encuentra correctamente asociado al objeto `this`.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -432,9 +432,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Al probar nuevamente el botón, el objeto `this`, más específicamente la instancia de clase, debería estar definido y podrás acceder a `this.state`.
+Al cliquear nuevamente el botón, el objeto `this`, más específicamente la instancia de clase, debería estar definido y podrás acceder a `this.state`.
 
-El enlace a métodos de clase puede pasar en cualquier otra parte también. Como por ejemplo, en el método de clase `render()`.
+Enlazar métodos de clase puede hacerse desde cualquier otra parte también. Como por ejemplo, dentro del método de clase `render()`.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -458,9 +458,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Pero deberías evitarlo, debido a que el método de clase sería enlazado cada vez que se ejecute el método `render()`. Básicamente él se ejecuta cada vez que tu componente se actualiza, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor, debes enlazarlo solo una vez al principio, cuando el componente es instanciado. Es una mejor manera de hacerlo.
+Pero deberías evitarlo porque el método de clase sería enlazado cada vez que se ejecute `render()`. Básicamente, el enlace se ejecutará cada vez que el componente se actualize, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor debes enlazarlo al principio, solo una vez cuando el componente es instanciado. Es una mejor manera de hacerlo.
 
-Otra cosa que algunas personas hacen de vez en cuando es: Definir la lógica de negocios de sus métodos de clase dentro del constructor.
+Otra cosa que algunos hacen de vez en cuando es: Definir la lógica de negocios de sus métodos de clase dentro del constructor.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -488,7 +488,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Debes evitarlo también, pues, con el tiempo desordenará tu constructor. El constructor solo está allí para instanciar tu clase y todas sus propiedades. Es por esta razón que la lógica de negocios de los métodos de clase debe ser definida fuera del constructor
+Debes evitarlo también. Con el tiempo esto desordenará el constructor. El constructor solo está allí para que sea posible instanciar la clase y todas sus propiedades. Es por eso que la lógica de negocio de los métodos de clase debe ser definida fuera del constructor.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -512,7 +512,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Por último pero no menos importante, vale la pena mencionar que los métodos de clase pueden ser auto-enlazados utilizando funciones flecha de JavaScript ES6.
+Por último pero no menos importante, vale la pena mencionar que los métodos de clase pueden auto-enlazarse utilizando funciones flecha de ES6.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -534,11 +534,11 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Si el enlazamiento repetitivo dentro del constructor te resulta molesto, puedes hacer esto en vez. La documentación oficial de React sugiere que se enlacen los métodos de clase dentro del constructor, por eso, el libro adoptará este enfoque también.
+Si realizar enlazes dentro de los constructores repetidas veces  te resulta molesto, puedes hacerlo de la manera antes mencionada. La documentación oficial de React sugiere que se enlacen los métodos de clase dentro del constructor, por eso el libro adoptará este enfoque también.
 
 ### Ejercicios:
 
-* Prueba los diferentes tipos de enlace mencionados anteriormente y logea en la consola (console.log) el objeto `this`
+* Prueba los diferentes tipos de enlace mencionados anteriormente y logea en la consola de desarrollador (console.log) el objeto `this`
 
 ## Manejador de Eventos (Event Handler)
 
@@ -688,7 +688,7 @@ Este correrá al abrir la aplicación en el navegador, pero no cuando presiones 
 ...
 ~~~~~~~~
 
-De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha de JavaScript ES6. Similar a lo que hicimos con el método de clase `ondismiss()`.
+De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha JavaScript ES6. Similar a lo que hicimos con el método de clase `ondismiss()`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -706,7 +706,7 @@ De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha d
 ...
 ~~~~~~~~
 
-A menudo, principiantes encuentran complicado el tema de usar funciones dentro de manejadores de eventos. Por eso, intento explicarlo en mayor detalle aquí. Al final, deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
+Es común que sea complicado para algunos principiantes utilizar funciones dentro de un manejador de eventos. Por eso, intento explicarlo en mayor detalle aquí. Al final deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -737,7 +737,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Otro tema relevante en cuánto a rendimiento, es la implicación de utilizar funciones flecha en los manejadores de eventos. Por ejemplo, el manejador `onClick` para el método `onDismiss()` está envolviendo el método dentro de otra función flecha para así poder captar el identificador del elemento. Así, cada vez que el método `render()` se ejecuta, el manejador instancia una función flecha de orden superior. Esto `puede` impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o columna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las implicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora, vale la pena que te enfoques meramente en aprender React.
+Otro tema relevante en cuánto a rendimiento es la implicación de utilizar funciones flecha dentro de manejadores de eventos es, por ejemplo, el manejador `onClick` envuelve al método `onDismiss()` dentro de una función flecha para así poder captar el identificador del elemento. Así cada vez que el método `render()` se ejecuta, el manejador instancia una función flecha de orden superior. Esto puede impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o columna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las implicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora basta con que te enfoques meramente en aprender React.
 
 ### Ejercicios:
 
@@ -745,7 +745,7 @@ Otro tema relevante en cuánto a rendimiento, es la implicación de utilizar fun
 
 ## Interacciones con Formularios y Eventos
 
-Añadamos otra interacción para conocer acerca de formularios y eventos en React. La interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
+Ahora verás otra interacción relacionada con formularios y eventos en React. Dicha interacción es una funcionalidad de búsqueda. La entrada del campo de búsqueda se debe utilizar para filtrar la lista basada en la propiedad de título de un elemento.
 
 Primero, define el campo de entrada en tu JSX.
 
@@ -772,7 +772,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-En el escenario siguiente, escribirás dentro del campo establecido y se filtrará la lista temporalmente por el término de búsqueda especificado. Para poder filtrar la lista, necesitas el valor del campo de entrada para actualizar el estado. Pero, ¿cómo acceder al valor? En React, puedes utilizar **eventos sintéticos**  para acceder al valor que necesitas de este evento.
+En el escenario siguiente, escribirás dentro del campo establecido y se filtrará la lista temporalmente de acuerdo al término de búsqueda especificado. Para poder filtrar la lista necesitas el valor del campo de entrada para actualizar el estado. Pero, ¿cómo acceder a tal valor? En React puedes utilizar los **eventos sintéticos (synthetic events)**  para porder acceder al valor que necesitas de este evento.
 
 Vamos a definir un manejador `onChange()` para el campo de entrada.
 
@@ -800,7 +800,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La función está vinculada al componente y, por tanto, un método de clase nuevamente. Es necesario que vincules y definas dicho método.
+La función está vinculada al componente y, por tanto se le considera un método de clase. Todavía tienes que vincularlo y definirlo.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -829,7 +829,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Al usar un manejador en un elemento obtienes acceso al evento sintetico de React dentro de la función callback.
+Al usar un manejador dentro de tu elemento, obtienes acceso al evento sintetico de React dentro de la función callback.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -865,7 +865,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Adicionalmente, hay que definir el estado inicial para la propiedad `searchTerm` en el constructor. El campo de entrada debería estar vacío al principio y por lo tanto el valor debería ser una cadena de texto vacía (empty string).
+Adicionalmente, hay que definir el estado inicial para la propiedad `searchTerm` dentro del constructor de la clase. El campo de entrada estará vacío al principio y por lo tanto el valor de `searchTerm` debe ser una cadena de texto vacía (empty string).
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -889,11 +889,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora, el valor de entrada es almacenado en su estado de componente interno cada vez que el valor en el campo de entrada cambia.
+El valor de entrada es almacenado dentro del estado de componente interno cada vez que el valor en el campo de entrada cambia.
 
-Una pequeña observación acerca de actualizar el estado local en un componente React. Sería justo asumir que al actualizar `searchTerm` con `this.setState()` la lista debe ser pasada también, con el fin de preservarla. Pero no es ese el caso. `this.setState()`, este preserva las propiedades de su hermano dentro del estado del objeto al momento de actualizar una propiedad específica en él.
+Una nota observación a la hora de actualizar el estado local de un componente React. Es justo asumir que al actualizar `searchTerm` con `this.setState()` la lista debe ser pasada también, con el fin de preservarla, pero no es el caso. `this.setState()` preserva las propiedades de su hermano dentro del estado del objeto al momento de actualizar una propiedad específica en él.
 
-Volvamos a la aplicación. Esta lista no está filtrada todavía basándose en la información del campo de entrada que es almacenado en el estado local. Básicamente, se busca filtrar la lista de manera temporal, en base al elemento `searchTerm`. Ya tienes todo lo necesario para filtrarla. Entonces ¿cómo filtrarla de manera temporalmente? Dentro de tu método `render()` puedes aplicar un filtro. Dicho filtro solo evaluaría si `searchTerm` coincide con el título de la propiedad del elemento. Ya utilizaste la función incorporada de JavaScript `filter` anteriormente, así que hagámoslo nuevamente. Es posible agregar primero la función `filter` antes de la función `map`, porque `filter` retorna un nuevo array, por lo que la función `map` resulta ser muy conveniente en esta ocasión.
+De vuelta a la aplicación, la lista aún no está filtrada en base a la información del campo de entrada que se almacena en el estado local del componente. Básicamente, se busca filtrar la lista de manera temporal en base al elemento `searchTerm`. Ya tienes todo lo necesario para hacerlo, entonces ¿cómo filtrar la lista de manera temporal? Es posible aplicar un filtro dentro del método `render()`. Este filtro solo sería si `searchTerm` coincide con el título de propiedad del elemento. Ya utilizaste anteriormente el método `filter` de JavaScript, aquí lo utilizarás nuevamente. Es posible agregar en primer lugar la función `filter` antes que `map`, porque `filter` retorna un nuevo array, por lo que la función `map` resulta ser muy conveniente en esta ocasión.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -921,11 +921,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora analicemos la función `filter` de otra manera. Queremos definir el argumento de `filter` (la función que es pasada cómo parámetro a `filter`) fuera de nuestro componente de clase ES6. Desde allí no se tiene acceso al estado del componente y por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar `searchTerm` a la función de filtro y esta tiene que devolver una nueva función para evaluar la condición. Eso se llama una función de orden superior.
+Ahora analizemos la función `filter` desde otro punto de vista. Queremos definir el argumento de `filter` (la función que es pasada cómo parámetro a `filter`) fuera de nuestro componente de clase ES6. Desde allí no se tiene acceso al estado del componente y por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar `searchTerm` a la función de filtro y esta tiene que devolver una nueva función para evaluar la condición. A esta nueva función se le conoce cómo función de orden superior (higher-order function).
 
-Normalmente no mencionaría las funciones de orden superior, pero en un libro acerca de React esto es necesario. Es necesario saber sobre las funciones de orden superior, porque React trata con un concepto llamado componentes de orden superior. Conocerás el concepto más adelante en el libro. Por ahora, volvamos a enfocarnos en la función `filter` y su funcionalidad.
+Normalmente no mencionaría las funciones de orden superior, pero en un libro que habla acerca de React, esto es importante. Es necesario conocer sobre las funciones de orden superior porque React trata con un concepto llamado componentes de orden superior. Este concepto se explora más adelante en el libro. Por ahora, volvamos a enfocarnos en la función `filter` y su funcionalidad.
 
-Primero, tienes que definir la función de orden superior fuera de tu componente `App`.
+Primero, tienes que definir la función de orden superior fuera del componente `App`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -944,10 +944,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La función `isSearched()` toma a `searchTerm` como parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta será utilizada para filtrar la lista en base a la condición definida dentro de la función.
-
-Let's define the condition.
-
+La función `isSearched()` toma a `searchTerm` como parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta se utilizará para filtrar la lista en base a la condición definida dentro de la función. Vamos a definir la condición.
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 function isSearched(searchTerm) {
@@ -964,10 +961,9 @@ class App extends Component {
 
 }
 ~~~~~~~~
+La condición establece que el patrón entrante de `searchTerm` coincide con el título de la propiedad perteneciente al elemento de la lista. Esto se puede lograr con la funcionalidad `includes` de JavaScript. Solo cuáundo el patrón coincide, se retorna verdadero y el ítem permanece dentro de la lista. Cuando el patrón no coincide el ítem es removido de la lista. Pero ten cuidado cuándo los patrones coinciden: No debes olvidar convertir a minúsculas ambas cadenas de texto. De otro modo habrán inconsistencias entre un término de busqueda 'redux' y un ítem con el título 'Redux'. Ya que estamos trabajando con una lista inmutable que retorna una nueva lista al usar la función `filter()`, la lista original almacenada en el estado local no es modificada en lo absoluto.
 
-La condición dice varias cosas. Filtrar la lista sólo cuando esta establecido `searchTerm`. Cuando se establece un `searchTerm`, Usted coincide con el patrón `searchTerm` entrante con el título del elemento. Puedes hacerlo con la funcionalidad incorporada  en JavaScript `includes`. Sólo cuando el patrón coincide, devuelve true y el elemento permanece en la lista. Pero tenga cuidado con la coincidencia de patrones: No debes olvidar las minúsculas de ambas cadenas. De lo contrario, habrá desajustes entre un término de búsqueda 'redux' y un título de artículo 'Redux'.
-
-Una cosa queda por mencionar: Hemos engañado un poco utilizando la funcionalidad incluida en JavaScript. Ya es una característica ES6. ¿Cómo se vería eso en JavaScript ES5? Usted usaría la funcion `indexOf()` para obtener el índice del elemento en la lista. Cuando el elemento está en la lista, `indexOf()` devolverá un índice positivo.
+Resta algo por mencionar: Hicimos un poco de trampa utilizando la funcionalidad `includes `de JavaScript. Es una característica propia de ES6. ¿Cómo se podría sustituir en JavaScript ES5? Podrías utilizar la funcion `indexOf()` para obtener el índice del elemento en la lista, cuando el elemento se encuentre en la lista `indexOf()` retornará su índice en el array.
 
 ~~~~~~~~
 // ES5
@@ -977,7 +973,7 @@ string.indexOf(pattern) !== -1
 string.includes(pattern)
 ~~~~~~~~
 
-Otra impecable refactorización se puede hacer de nuevo con una ES6 arrow function. Hace que la función sea más concisa:
+Otra refactorización inteligente puede ser lograda utilizando de nuevo una función flecha ES6. Hace que la función sea más concisa:
 
 ~~~~~~~~
 // ES5
@@ -992,9 +988,9 @@ const isSearched = (searchTerm) => (item) =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
-Uno podría discutir qué función es más legible. Personalmente prefiero la segundo. El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que usted utilizará una función que devuelve una función (funciones de orden superior). En ES6 puedes expresarlas de forma más concisa con arrow functions.
+Puede ponerse en duda cuál de las funciónes es más legible. Personalmente prefiero la segunda. El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que puedes utilizar una función que devuelve otra función (funciones de orden superior). En ES6 estas se pueden expresar de forma más concisa utilizando funciones flecha de ES6.
 
-Por último, pero no menos importante, tienes que usar la funcion definida `isSearched()` para filtrar tu lista.
+Por último pero no menos importante, tienes que utilizar la funcion definida `isSearched()` para filtrar tu lista. `isSearched` recibe cómo parámetro la propiedad `searchTerm` directamente del estado local, retorna la entrada de la función `filter()` y filtra la lista de acuerdo a la condición del filtro. Después mapea la lista filtrada para mostrar en pantalla un elemento correpondiente a cada ítem.
 
 ~~~~~~~~
 class App extends Component {
@@ -1019,12 +1015,12 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora la funcionalidad de búsqueda debería funcionar ahora. Pruebala.
+Ahora la funcionalidad de búsqueda debería trabajar correctamente. Pruébala.
 
 ### Ejercicios:
 
-* leer más sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
-* leer más sobre [funciones de orden](https://en.wikipedia.org/wiki/Higher-order_function)
+* lee más sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
+* lee más sobre [Funciones de Orden Superior](https://en.wikipedia.org/wiki/Higher-order_function)
 
 ## Desestructuración ES6
 
