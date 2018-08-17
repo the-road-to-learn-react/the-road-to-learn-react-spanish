@@ -945,6 +945,7 @@ class App extends Component {
 ~~~~~~~~
 
 La función `isSearched()` toma a `searchTerm` como parámetro y devuelve otra función. La función devuelta tiene acceso al elemento del objeto porque es la función que es pasada cómo parámetro a la función `filter`. Adicionalmente, la función devuelta se utilizará para filtrar la lista en base a la condición definida dentro de la función. Vamos a definir la condición.
+
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
 function isSearched(searchTerm) {
@@ -961,10 +962,12 @@ class App extends Component {
 
 }
 ~~~~~~~~
+
 La condición establece que el patrón entrante de `searchTerm` coincide con el título de la propiedad perteneciente al elemento de la lista. Esto se puede lograr con la funcionalidad `includes` de JavaScript. Solo cuáundo el patrón coincide, se retorna verdadero y el ítem permanece dentro de la lista. Cuando el patrón no coincide el ítem es removido de la lista. Pero ten cuidado cuándo los patrones coinciden: No debes olvidar convertir a minúsculas ambas cadenas de texto. De otro modo habrán inconsistencias entre un término de busqueda 'redux' y un ítem con el título 'Redux'. Ya que estamos trabajando con una lista inmutable que retorna una nueva lista al usar la función `filter()`, la lista original almacenada en el estado local no es modificada en lo absoluto.
 
 Resta algo por mencionar: Hicimos un poco de trampa utilizando la funcionalidad `includes `de JavaScript. Es una característica propia de ES6. ¿Cómo se podría sustituir en JavaScript ES5? Podrías utilizar la funcion `indexOf()` para obtener el índice del elemento en la lista, cuando el elemento se encuentre en la lista `indexOf()` retornará su índice en el array.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 string.indexOf(pattern) !== -1
@@ -975,23 +978,25 @@ string.includes(pattern)
 
 Otra refactorización inteligente puede ser lograda utilizando de nuevo una función flecha ES6. Hace que la función sea más concisa:
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 function isSearched(searchTerm) {
-  return function(item) {
-    return !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  return function (item) {
+    return item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   }
 }
 
 // ES6
-const isSearched = (searchTerm) => (item) =>
-  !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+const isSearched = searchTerm => item =>
+  item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
 Puede ponerse en duda cuál de las funciónes es más legible. Personalmente prefiero la segunda. El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que puedes utilizar una función que devuelve otra función (funciones de orden superior). En ES6 estas se pueden expresar de forma más concisa utilizando funciones flecha de ES6.
 
 Por último pero no menos importante, tienes que utilizar la funcion definida `isSearched()` para filtrar tu lista. `isSearched` recibe cómo parámetro la propiedad `searchTerm` directamente del estado local, retorna la entrada de la función `filter()` y filtra la lista de acuerdo a la condición del filtro. Después mapea la lista filtrada para mostrar en pantalla un elemento correpondiente a cada ítem.
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -1006,7 +1011,9 @@ class App extends Component {
             onChange={this.onSearchChange}
           />
         </form>
-        { this.state.list.filter(isSearched(this.state.searchTerm)).map(item =>
+# leanpub-start-insert
+        {this.state.list.filter(isSearched(this.state.searchTerm)).map(item =>
+# leanpub-end-insert
           ...
         )}
       </div>
@@ -1022,10 +1029,11 @@ Ahora la funcionalidad de búsqueda debería trabajar correctamente. Pruébala.
 * lee más sobre [eventos React](https://facebook.github.io/react/docs/handling-events.html)
 * lee más sobre [Funciones de Orden Superior](https://en.wikipedia.org/wiki/Higher-order_function)
 
-## Desestructuración ES6
+## Desestructuración ES6 (Destructuring)
 
-Hay una manera en ES6 para acceder a las propiedades en objetos y arrays fácilmente. Se llama desestructuración. Comparar el fragmento siguiente en JavaScript ES5 y ES6.
+En ES6 es posible acceder a las propiedades de objetos y arrays fácilmente. Se le conoce como desestructuración. Compara los siguientes fragmentos de JavaScript ES5 y ES6.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const user = {
   firstname: 'Robin',
@@ -1036,6 +1044,9 @@ const user = {
 var firstname = user.firstname;
 var lastname = user.lastname;
 
+console.log(firstname + ' ' + lastname);
+// output: Robin Wieruch
+
 // ES6
 const { firstname, lastname } = user;
 
@@ -1043,8 +1054,9 @@ console.log(firstname + ' ' + lastname);
 // output: Robin Wieruch
 ~~~~~~~~
 
-Mientras tiene que agregar una línea extra cada vez que desee acceder a una propiedad de objeto en ES5, puedes hacerlo en una línea en ES6. Además, no es necesario tener nombres de propiedad duplicados. Una mejor práctica para la legibilidad es utilizar multilíneas cuando desestructuras un objeto en múltiples propiedades.
+Mientras que en ES5 tienes que agregar una línea extra cada vez que desees acceder a la propiedad de objeto en ES6 puedes hacerlo en una sola línea. Además, no es necesario tener nombres de propiedad duplicados. Una buena práctica al destructurar un objeto es utilizar multiples líneas para mejorar la legibilidad en un objeto con múltiples propiedades.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const {
   firstname,
@@ -1052,8 +1064,9 @@ const {
 } = user;
 ~~~~~~~~
 
-Lo mismo ocurre con los arrays. También puede desestructurarlos, pero manténgalos más legibles con multilines..
+Lo mismo aplica para los arrays. También puedes desestructurarlos y mantenerlos legibles utilizando multiples líneas para representar multiples propiedades.
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 const users = ['Robin', 'Andrew', 'Dan'];
 const [
@@ -1066,22 +1079,29 @@ console.log(userOne, userTwo, userThree);
 // output: Robin Andrew Dan
 ~~~~~~~~
 
-Quizás notaste que el estado en el componente App puede destructurarse de la misma manera.Puede acortar el filtro y la línea map del código
+Quizá notaste que el estado en el componente `App` puede destructurarse de la misma manera. Se puede acortar el filtro y la línea map del código.
+
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
   render() {
+# leanpub-start-insert
     const { searchTerm, list } = this.state;
+# leanpub-end-insert
     return (
       <div className="App">
         ...
-        { list.filter(isSearched(searchTerm)).map(item =>
+# leanpub-start-insert
+        {list.filter(isSearched(searchTerm)).map(item =>
+# leanpub-end-insert
           ...
         )}
       </div>
     );
 ~~~~~~~~
 
-Puede hacerlo de la manera ES5 o ES6:
+Puedes hacerlo a la manera ES5 o ES6:
 
+{title="Code Playground",lang="javascript"}
 ~~~~~~~~
 // ES5
 var searchTerm = this.state.searchTerm;
@@ -1091,22 +1111,23 @@ var list = this.state.list;
 const { searchTerm, list } = this.state;
 ~~~~~~~~
 
-Pero como el libro utiliza JavaScript ES6 la mayor parte del tiempo, debes atenerse a ES6.
+En el libro se utiliza JavaScript ES6 la mayor parte del tiempo, debes apegarte a ES6.
 
 ### Ejercicios:
 
-* leer más sobre [ES6 destructuring](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* lee más sobre [destrucuración ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ## Componentes Controlados
 
-Ya has aprendido sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado que a su vez filtra la lista. El estado fue cambiado, el método `render()` e ejecuta de nuevo y utiliza el estado reciente `searchTerm` para aplicar la condición de filtro.
+Anteriormente aprendiste sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado local con el `searchTerm` para filtrar la lsta. Al momento en que el estado cambia, el método `render()` se ejecuta nuevamente y utiliza nuevamente `searchTerm` almacenado en el estado local para aplicar la condición de filtrado.
 
-¿Pero no nos olvidamos de algo en el elemento de entrada? Una etiqueta de entrada HTML viene con un atributo `value`. El atributo valor normalmente tiene el valor que se muestra en el campo de entrada - en nuestro caso la propiedad `searchTerm`. Sin embargo, parece que no lo necesitamos en React.
+¿Pero no nos olvidamos de algo en el campo de entrada? Una etiqueta de entrada (input) HTML incluye un atributo `value`. El atributo `value` normalmente almacena el valor suministrado en el campo de entrada. En este caso sería la propiedad `searchTerm`. Sin embargo, parece que esto no es necesario en React.
 
-Eso está mal. Elemnetos de formulario como `<input>`, `<textarea>` y `<select>` mantiene su propio estado. Modifican el valor internamente una vez que alguien lo cambia desde el exterior. En React se les llama **componente no controlado**, porque maneja su propio estado. En React, debe asegurarse de que estos elementos son **componentes controlados**.
+Eso está mal. Elemnetos de formulario como `<input>`, `<textarea>` y `<select>` mantienen su propio estado. Modifican el valor internamente una vez que alguien lo cambia desde el exterior. En React se les llama **componentes no controlados**, porque manejan su propio estado. En React, debe asegurarse de que estos elementos sean **componentes controlados**.
 
-¿Cómo debes hacer eso? Sólo tiene que establecer el atributo de valor del campo de entrada. El valor ya está guardado en la propiedad de estado `searchTerm`.
+¿Cómo se hace eso? Sólo tienes que establecer el atributo `value` del campo de entrada. El valor ya está guardado en la propiedad de estado `searchTerm`. Entonces ¿por qué no acceder desde allí?
 
+{title="src/App.js",lang=javascript}
 ~~~~~~~~
 class App extends Component {
 
@@ -1119,7 +1140,9 @@ class App extends Component {
         <form>
           <input
             type="text"
+# leanpub-start-insert
             value={searchTerm}
+# leanpub-end-insert
             onChange={this.onSearchChange}
           />
         </form>
@@ -1130,13 +1153,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Eso es todo. El ciclo de flujo de datos unidireccional para el campo de entrada es autónomo ahora. El estado componente interno es la única fuente de verdad para el campo de entrada.
+Eso es todo. El ciclo de flujo de datos unidireccional para el campo de entrada es autónomo ahora. El estado interno del componente es la única fuente de información para el campo de entrada.
 
-Toda la gestión interna del estado y el flujo de datos unidireccional podría ser nuevo para usted. Pero una vez que esté acostumbrado a él, será su flujo natural para implementar las cosas en React. En general, React trajo un nuevo patrón con el flujo de datos unidireccional al mundo de las aplicaciones de una sola página. Es adoptado por varios frameworks y librerias.
+Toda la gestión interna del estado y el flujo de datos unidireccional podría ser nuevo para ti. Pero una vez que te acostumbres a él, será la forma natural de implementar elementos en React. En general, React ofrece un nuevo patrón con el flujo de datos unidireccional al mundo de las aplicaciones de una sola página. Este patrón es adoptado por varios frameworks y librerias.
 
 ### Ejercicios:
 
-* leer más sobre [React forms](https://facebook.github.io/react/docs/forms.html)
+* lee más sobre [React forms](https://facebook.github.io/react/docs/forms.html)
 
 ## Dividir Componentes
 
