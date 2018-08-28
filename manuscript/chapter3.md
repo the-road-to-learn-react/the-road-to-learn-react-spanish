@@ -1,16 +1,16 @@
 # Trabajar con una API real
 
-Ahora es el momento de trabajar en serio con una API. Puede llegar a ser muy aburrido trabajar solamente con datos estaticos.
+Ahora es el momento de trabajar en serio con una API. Puede llegar a ser muy aburrido trabajar solamente con datos estáticos.
 
 Si no estas familiarizado con el concepto de API, te recomiendo leer [ mi viaje donde llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
 
 
-¿Conoces la plataforma [Hacker News](https://news.ycombinator.com/)? Es un agregador de noticias sobre tecnologia. En este libro utilizaremos la API de Hacker News para obtener las ultimas noticias. Es una API [basica](https://github.com/HackerNews/API) de [busqueda](https://hn.algolia.com/api) donde podremos conseguir noticias, esto ultimo nos concierne para alimentar nuestra aplicacion. 
-Puedes visitar la informacion de la API en cualquier momento y de esa forma, obtener un mejor conocimiento de la estructura de los datos.
+¿Conoces la plataforma [Hacker News](https://news.ycombinator.com/)? Es un acumulador de noticias sobre tecnología. En este libro utilizaremos la API de Hacker News para obtener las ultimas noticias. Es una API [básica](https://github.com/HackerNews/API) de [búsqueda](https://hn.algolia.com/api) donde podremos conseguir noticias, esto ultimo nos concierne para alimentar nuestra aplicación. 
+Puedes visitar la información de la API en cualquier momento y de esa forma, obtener un mejor conocimiento de la estructura de los datos.
 
 
 ## Métodos del ciclo de vida
-Vas a necesitar el conocimiento de los metodos del ciclo de vida de una aplicacion React antes de poder empezar a buscar datos en una API. Estos metodos son realmente importantes. 
+Vas a necesitar el conocimiento de los métodos del ciclo de vida de una aplicación React antes de poder empezar a buscar datos en una API. Estos métodos son realmente importantes. 
 Pueden utilizarse en componentes de clase ES6, pero no en componentes funcionales sin estado (Stateless Functional Components)
 
 ¿Recuerdas cuando un capítulo anterior te enseñe sobre las clases de JavaScript ES6 y cómo se utilizan en React? Aparte del método `render()`, mencioné varios métodos que se pueden sobrescribir en un componente de clase React ES6. Todos estos son los métodos del ciclo de vida. Vamos a sumergirnos en ellos:
@@ -50,11 +50,11 @@ No es necesario conocer todos estos métodos de ciclo de vida desde el principio
 
 * **render()** - Este método del ciclo de vida es **obligatorio** y devuelve los elementos como una salida del componente. El método debe ser puro y por lo tanto no debe modificar el estado del componente. Recibe como entrada propiedades (props) y estados (state) y regresa un elemento.
 
-* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el metodo perfecto para realizar una solicitud asincrónica para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el método `render()`.
+* **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el método perfecto para realizar una solicitud asíncrona para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el método `render()`.
 
 * **componentWillReceiveProps(nextProps)** - Se llama durante la actualización de un ciclo de vida. Como entrada recibirá las siguientes props . Puedes comparar las props siguientes con las anteriores (`this.props`) para aplicar un comportamiento diferente basado en la diferencia. Además, puede establecer el estado en función de las siguientes props.
 
-* **shouldComponentUpdate(nextProps, nextState)** - Siempre se llama cuando el componente se actualiza debido a cambios de estado o props. Lo usarás en aplicaciones de React maduras para optimizaciones de rendimiento. Dependiendo de un booleano que regrese de este método de ciclo de vida, el componente y todos sus hijos se renderizaran o no en la actualización de un ciclo de vida. Puedes evitar que se ejecute el método de ciclo de vida render de un componente.
+* **shouldComponentUpdate(nextProps, nextState)** - Siempre se llama cuando el componente se actualiza debido a cambios de estado o props. Lo usarás en aplicaciones de React maduras para optimizaciones de rendimiento. Dependiendo de un booleano que regrese de este método de ciclo de vida, el componente y todos sus hijos se renderizarán o no en la actualización de un ciclo de vida. Puedes evitar que se ejecute el método de ciclo de vida render de un componente.
 
 * **componentWillUpdate(nextProps, nextState)** - El método del ciclo de vida se invoca antes del método `render()`. Ya se disponen las siguientes props y el próximo estado. Se puede utilizar el método como última oportunidad para realizar las preparaciones antes de ejecutar el método render. Hay que tener en cuenta que ya no se puede activar  `setState()`. Si deseas calcular el estado basado en las siguientes props, tienes que usar `componentWillReceiveProps()`.
 
@@ -62,7 +62,7 @@ No es necesario conocer todos estos métodos de ciclo de vida desde el principio
 
 * **componentWillUnmount()** - Se llama antes de destruir tu componente. Puedes utilizar el método del ciclo de vida para realizar tareas de limpieza.
 
-Ya has utilizado los metodos `constructor()` y `render()`. Estos son los comunmente utilizados por componentes de clase ES6. Hay que recordar que el metodo `render()` es necesario, de lo contrario no devolveria una instancia del componente.
+Ya has utilizado los métodos `constructor()` y `render()`. Estos son los comúnmente utilizados por componentes de clase ES6. Hay que recordar que el método `render()` es necesario, de lo contrario no devolvería una instancia del componente.
 
 
 ### Ejercicios:
@@ -145,11 +145,11 @@ class App extends Component {
   ...
 }
 ~~~~~~~~
-Muchas cosas suceden en el codigo anterior. Pensé en mostrarlo en varias partes pero seria mas dificil comprender las relaciones entre cada pieza. Permitanme poder explicarles cada uno en detalle.
+Muchas cosas suceden en el código anterior. Pensé en mostrarlo en varias partes pero seria mas difícil comprender las relaciones entre cada pieza. Permíteme poder explicarte cada uno en detalle.
 
 En primer lugar, puedes eliminar la lista artificial de elementos, porque obtenemos un resultado de la API de Hacker News. El estado inicial de su componente tiene un resultado vacío y un término de búsqueda predeterminado. El mismo término de búsqueda predeterminado se utiliza en el campo de búsqueda y en su primera solicitud.
 
-En segundo lugar, utilizas el método `componentDidMount()` para obtener los datos después de que el componente se ha montado. En la primera busqueda, se procedera a utilizar el termino de busqueda predeterminado en el estado del componente. Por eso mismo, obtendra historias relacionadas a "redux".
+En segundo lugar, utilizas el método `componentDidMount()` para obtener los datos después de que el componente se ha montado. En la primera búsqueda, se procederá a utilizar el termino de búsqueda predeterminado en el estado del componente. Por eso mismo, obtendrá historias relacionadas a "redux".
 
 En tercer lugar, la búsqueda nativa se utiliza. Las cadenas de plantilla de JavaScript ES6 le permiten componer la url con el `searchTerm`. TLa url es el argumento de la función API de búsqueda nativa. La respuesta necesita ser transformada en json, es un paso obligatorio en una búsqueda nativa, y finalmente se puede establecer en el estado del componente interno.
 
@@ -157,7 +157,7 @@ Por último, pero no menos importante, no olvide vincular sus nuevos métodos de
 
 Ahora puede utilizar los datos obtenidos en lugar de la lista artificial de elementos.Sin embargo, tienes que tener cuidado otra vez. El resultado no es sólo una lista de datos. [Es un objeto complejo con meta información y una lista de éxitos (historias).](https://hn.algolia.com/api) Puede emitir el estado interno con `console.log(this.state);` ent tu método `render()` para visualizarlo.
 
-Utilizemos el resultado para mostrarlo. Pero lo preveeremos de renderizar cualquier cosa - return null - cuando no hay resultado. Una vez que la solicitud a la API tuvo éxito, el resultado se guarda en el estado y el componente App se volverá a renderizar con el estado actualizado.
+Utilicemos el resultado para mostrarlo. Pero lo preveremos de renderizar cualquier cosa - return null - cuando no hay resultado. Una vez que la solicitud a la API tuvo éxito, el resultado se guarda en el estado y el componente App se volverá a renderizar con el estado actualizado.
 
 ~~~~~~~~
 class App extends Component {
@@ -183,11 +183,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el método `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asincrónica. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
+Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el método `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asíncrona. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
 
-Utilizó la API de recuperación nativa que es compatible con la mayoría de los navegadores para realizar una solicitud asincrónica a una API. La configuración de *create-react-app* garantiza su compatibilidad con todos los navegadores. Hay paquetes de terceros de node que puedes usar para sustituir la API de búsqueda nativa: [superagent](https://github.com/visionmedia/superagent) y [axios](https://github.com/mzabriskie/axios).
+Utilizó la API de recuperación nativa que es compatible con la mayoría de los navegadores para realizar una solicitud asíncrona a una API. La configuración de *create-react-app* garantiza su compatibilidad con todos los navegadores. Hay paquetes de terceros de node que puedes usar para sustituir la API de búsqueda nativa: [superagent](https://github.com/visionmedia/superagent) y [axios](https://github.com/mzabriskie/axios).
 
-Regresa a tu aplicación: La lista de hits debe ser visible ahor. Pero el boton "Dismiss" no funciona. Lo arreglaremos en el siguiente capitulo.
+Regresa a tu aplicación: La lista de hits debe ser visible ahora. Pero el botón "Dismiss" no funciona. Lo arreglaremos en el siguiente capitulo.
 
 ### Ejercicios:
 
@@ -416,7 +416,7 @@ class App extends Component {
 
 El componente de búsqueda obtiene un botón adicional. El botón tiene que activar explícitamente la búsqueda. De lo contrario, obtendrás datos de la API de Hacker News cada vez que tu campo de entrada cambie.
 
-Como alternativa, podría rebatir (retrasar) la funcion `onChange()` y ahorrarte el botón, pero añadiría más complejidad en este momento. Vamos a mantenerlo simple sin un rebote.
+Como alternativa, podría rebatir (retrasar) la función `onChange()` y ahorrarte el botón, pero añadiría más complejidad en este momento. Vamos a mantenerlo simple sin un rebote.
 
 Primero, pasa el método `onSearchSubmit()` a tu componente de búsqueda.
 
