@@ -226,7 +226,7 @@ El método de clase `onDismiss()` aún no está definido, lo definiremos en un m
 
 Como puedes ver, el método `onDismiss()` de la función `onClick` está encerrado dentro de otra función. De esta manera, puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería definiendo la función fuera de `onClick`, e incluir solamente la función definida dentro del selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas y el indentado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e identado, manteniendo así todo legible. Esto no es obligatorio, pero si muy recomendable.
+¿Notaste las multilíneas y el sangrado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e sangrado, manteniendo así todo legible. Esto no es obligatorio, pero si muy recomendable.
 
 Ahora, tienes que implementar la función `onDismiss()`. Se necesita un `id` para identificar el elemento que se quiere eliminar. `onDismiss()` está vinculada a la clase `App` y por lo tanto se convierte en un método de clase, por esta razón se debe acceder a él con `this.onDismiss()` y no simplemente `onDismiss()`. El objeto `this` representa la relación de la clase. Ahora, para definir `onDismiss()` como método de clase necesitas enlazarlo con el constructor.
 
@@ -281,7 +281,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora define lo que sucede dentro del método de clase. Básicamente, quieres eliminar de la lista un artículo identificado por medio de un `id` y actualizar la lista en el estado local del componente. Al final, la lista actualizada será usada dentro del método `render()` y se mostrará en pantalla sin el elemento que recien eliminaste.
+Ahora define lo que sucede dentro del método de clase. Básicamente, quieres eliminar de la lista un artículo identificado por medio de un `id` y actualizar la lista en el estado local del componente. Al final, la lista actualizada será usada dentro del método `render()` y se mostrará en pantalla sin el elemento que recién eliminaste.
 
  Puedes remover un elemento de una lista utilizando el método incorporado de JavaScript `filter()`. Este método crea una lista que contiene todos los elementos de la lista original que pasan la prueba establecida.
  
@@ -534,15 +534,15 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Si realizar enlazes dentro de los constructores repetidas veces  te resulta molesto, puedes hacerlo de la manera antes mencionada. La documentación oficial de React sugiere que se enlacen los métodos de clase dentro del constructor, por eso el libro adoptará este enfoque también.
+Si realizar enlaces dentro de los constructores repetidas veces  te resulta molesto, puedes hacerlo de la manera antes mencionada. La documentación oficial de React sugiere que se enlacen los métodos de clase dentro del constructor, por eso el libro adoptará este enfoque también.
 
 ### Ejercicios:
 
-* Prueba los diferentes tipos de enlace mencionados anteriormente y logea en la consola de desarrollador (console.log) el objeto `this`
+* Prueba los diferentes tipos de enlace mencionados anteriormente y registra en la consola de desarrollador (console.log) el objeto `this`
 
-## Manejador de Eventos (Event Handler)
+## Controlador de Eventos (Event Handler)
 
-En esta sección adquirirás un mayor entendimiento acerca de los manejadores de eventos. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
+En esta sección adquirirás un mayor entendimiento acerca de los controladores de eventos. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -558,7 +558,7 @@ En esta sección adquirirás un mayor entendimiento acerca de los manejadores de
 ...
 ~~~~~~~~
 
-Esto ya representa un caso de uso complejo porque tienes que pasar un valor al método de clase y por lo tanto, debes colocarlo dentro de otra función flecha. Básicamente, lo que debe ser pasado al manejador de evento es una función. El siguiente código no funcionaría, el método de clase sería ejecutado inmediatamente al abrir la aplicación dentro del navegador.
+Esto ya representa un caso de uso complejo porque tienes que pasar un valor al método de clase y por lo tanto, debes colocarlo dentro de otra función flecha. Básicamente, lo que debe ser pasado al controlador de evento es una función. El siguiente código no funcionaría, el método de clase sería ejecutado inmediatamente al abrir la aplicación dentro del navegador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -574,7 +574,7 @@ Esto ya representa un caso de uso complejo porque tienes que pasar un valor al m
 ...
 ~~~~~~~~
 
-Al usar `onClick={doSomething()}`, la función `doSomething()` se ejecutaría de inmediato al momento de abrir la aplicación en el navegador. La expresión pasada al manejador es evaluada. Y como el valor retornado por la función no es una función, nada pasaría al presionar el botón. Pero, al utilizar `onClick={doSomething}` donde `doSomething` es una función, ésta sería ejecutada al momento de presionar el botón. Y la misma regla aplica para el método de clase `onDismiss()` que es usado en tu aplicación.
+Al usar `onClick={doSomething()}`, la función `doSomething()` se ejecutaría de inmediato al momento de abrir la aplicación en el navegador. La expresión pasada al controlador es evaluada. Y como el valor retornado por la función no es una función, nada pasaría al presionar el botón. Pero, al utilizar `onClick={doSomething}` donde `doSomething` es una función, ésta sería ejecutada al momento de presionar el botón. Y la misma regla aplica para el método de clase `onDismiss()` que es usado en tu aplicación.
 
 Sin embargo, utilizar `onclick={this.onDismiss}` no sería suficiente, porque de alguna manera la propiedad `item.objectID` debe ser pasada al método de clase para identificar el elemento que va a ser eliminado. Por eso puede ser colocado como parámetro dentro de otra función y acceder a la propiedad. A este concepto se le conoce cómo función de orden superior en JavaScript y será explicado más adelante.
 
@@ -592,7 +592,7 @@ Sin embargo, utilizar `onclick={this.onDismiss}` no sería suficiente, porque de
 ...
 ~~~~~~~~
 
-Una alternativa sería definir la función envolvente fuera en otro lugar y sólo pasar la función ya definida al manejador, o mejor dicho, sólo invocar la función desde dicho manejador.
+Una alternativa sería definir la función envolvente fuera en otro lugar y sólo pasar la función ya definida al controlador, o mejor dicho, sólo invocar la función desde dicho controlador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -637,7 +637,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Después de todo, debe ser una función lo que es pasado al manejador del elemento. Como ejemplo, prueba este código:
+Después de todo, debe ser una función lo que es pasado al controlador del elemento. Como ejemplo, prueba este código:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -668,7 +668,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Este correrá al abrir la aplicación en el navegador, pero no cuando presiones el botón. Mientras que la siguiente pieza de código solo correrá cuando presiones el botón. Es decir, la función será ejecutada cuando acciones el manejador.
+Este correrá al abrir la aplicación en el navegador, pero no cuando presiones el botón. Mientras que la siguiente pieza de código solo correrá cuando presiones el botón. Es decir, la función será ejecutada cuando acciones el controlador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -706,7 +706,7 @@ De nuevo, para mantenerlo conciso, puedes transformarlo en una función flecha J
 ...
 ~~~~~~~~
 
-Es común que sea complicado para algunos principiantes utilizar funciones dentro de un manejador de eventos. Por eso intento explicarlo en mayor detalle aquí. Al final deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
+Es común que sea complicado para algunos principiantes utilizar funciones dentro de un controlador de eventos. Por eso intento explicarlo en mayor detalle aquí. Al final deberías tener el siguiente código dentro del elemento `button` para tener una concisa función flecha de una sola línea, que además puede acceder a la propiedad `objectID` del objeto `item`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -737,11 +737,11 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Otro tema relevante en cuanto a rendimiento es la implicación de utilizar funciones flecha dentro de manejadores de eventos es, por ejemplo, el manejador `onClick` envuelve al método `onDismiss()` dentro de una función flecha para así poder captar el identificador del elemento. Así cada vez que el método `render()` se ejecuta, el manejador insta una función flecha de orden superior. Esto puede impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o columna posee dicha función flecha dentro de su manejador de evento, en este caso vale la pena pensar en las implicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora basta con que te enfoques meramente en aprender React.
+Otro tema relevante en cuanto a rendimiento es la implicación de utilizar funciones flecha dentro de controladores de eventos es, por ejemplo, el controlador `onClick` envuelve al método `onDismiss()` dentro de una función flecha para así poder captar el identificador del elemento. Así cada vez que el método `render()` se ejecuta, el controlador insta una función flecha de orden superior. Esto puede impactar de cierta manera el rendimiento de tu aplicación, pero en la mayoría de los casos no se notará. Imagina que tienes una gran tabla de datos con 1000 elementos y cada fila o columna posee dicha función flecha dentro de su controlador de evento, en este caso vale la pena pensar en las implicaciones de rendimiento y por lo tanto podrías implementar un componente Botón dedicado a enlazar el método dentro del constructor. Pero antes de que eso suceda es una optimización prematura. Por ahora basta con que te enfoques meramente en aprender React.
 
 ### Ejercicios:
 
-* Experimenta con diferentes formas de utilizar funciones dentro del manejador `onClick` de tu botón
+* Experimenta con diferentes formas de utilizar funciones dentro del controlador `onClick` de tu botón
 
 ## Interacciones con Formularios y Eventos
 
@@ -829,7 +829,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Al usar un manejador dentro de tu elemento, obtienes acceso al evento sintetico de React dentro de la función callback.
+Al usar un controlador dentro de tu elemento, obtienes acceso al evento sintético de React dentro de la función callback.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
