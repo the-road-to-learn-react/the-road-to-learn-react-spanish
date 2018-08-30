@@ -2,10 +2,10 @@
 
 Ahora es el momento de trabajar en serio con una API. Puede llegar a ser muy aburrido trabajar solamente con datos estáticos.
 
-Si no estas familiarizado con el concepto de API, te recomiendo leer [ mi viaje donde llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
+Si no estás familiarizado con el concepto de API, te recomiendo leer [mi viaje donde llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
 
 
-¿Conoces la plataforma [Hacker News](https://news.ycombinator.com/)? Es un acumulador de noticias sobre tecnología. En este libro utilizaremos la API de Hacker News para obtener las ultimas noticias. Es una API [básica](https://github.com/HackerNews/API) de [búsqueda](https://hn.algolia.com/api) donde podremos conseguir noticias, esto ultimo nos concierne para alimentar nuestra aplicación. 
+¿Conoces la plataforma [Hacker News](https://news.ycombinator.com/)? Es un acumulador de noticias sobre tecnología. En este libro utilizaremos la API de Hacker News para obtener las últimas noticias. Es una API [básica](https://github.com/HackerNews/API) de [búsqueda](https://hn.algolia.com/api) donde podremos conseguir noticias, esto ultimo nos concierne para alimentar nuestra aplicación. 
 Puedes visitar la información de la API en cualquier momento y de esa forma, obtener un mejor conocimiento de la estructura de los datos.
 
 
@@ -17,7 +17,7 @@ Pueden utilizarse en componentes de clase ES6, pero no en componentes funcionale
 
 Ya conoces dos métodos de ciclo de vida en un componente de clase ES6: `constructor()` y `render()`.
 
-El constructor sólo se llama cuando se crea una instancia del componente y se inserta en el DOM. El componente se instancia. Ese proceso se llama montaje del componente.
+El constructor sólo es llamado cuando se crea una instancia del componente y se inserta en el DOM. El componente es instanciado. Ese proceso se llama montaje del componente.
 
 El método `render()` también se llama durante el proceso de montaje, pero también cuando el componente actualiza. Cada vez que el estado o las props de un componente cambian, se llama al método `render()`.
 
@@ -32,7 +32,7 @@ En general, el proceso de montaje tiene 4 métodos de ciclo de vida. Se invocan 
 * render()
 * componentDidMount()
 
-Pero ¿que pasa con la actualización del ciclo de vida de un componente que sucede cuando el estado o las propiedades cambian? En general, tiene 5 métodos de ciclo de vida en el siguiente orden:
+Pero, ¿qué pasa con la actualización del ciclo de vida de un componente que ocurre cuando el estado o las propiedades cambian? En general, tiene 5 métodos de ciclo de vida en el siguiente orden:
 
 * componentWillReceiveProps()
 * shouldComponentUpdate()
@@ -46,7 +46,7 @@ No es necesario conocer todos estos métodos de ciclo de vida desde el principio
 
 * **constructor(props)** - Se llama cuando el componente se inicializa. Puedes establecer un estado inicial del componente y vincular métodos de clase útiles durante ese método de ciclo de vida.
 
-* **componentWillMount()** - Se llama antes del método del `render()`. Es por eso que podría ser utilizado para establecer el estado del componente interno, Porque no activará una segunda renderización del componente. Generalmente se recomienda utilizar el `constructor()` para establecer el estado inicial.
+* **componentWillMount()** - Se llama antes del método del `render()`. Es por eso que podría ser utilizado para establecer el estado del componente interno, porque no activará una segunda renderización del componente. Generalmente se recomienda utilizar el `constructor()` para establecer el estado inicial.
 
 * **render()** - Este método del ciclo de vida es **obligatorio** y devuelve los elementos como una salida del componente. El método debe ser puro y por lo tanto no debe modificar el estado del componente. Recibe como entrada propiedades (props) y estados (state) y regresa un elemento.
 
@@ -275,7 +275,7 @@ console.log(user);
 // output: { firstname: 'Robin', lastname: 'Wieruch', age: 28 }
 ~~~~~~~~
 
-Multiples objetos pueden dispersarse como en el ejemplo de dispersion de arreglos.
+Múltiples objetos pueden dispersarse como en el ejemplo de dispersión de arreglos.
 
 ~~~~~~~~
 const userNames = { firstname: 'Robin', lastname: 'Wieruch' };
@@ -298,13 +298,13 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-El boton "Dismiss" debería funcionar de nuevo.
+El botón "Dismiss" debería funcionar de nuevo.
 
 ### Ejercicios:
 
 * leer más sobre [Object.assign()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-* leer más sobre the [ES6 array spread operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
-  * the object spread operator is briefly mentioned
+* leer más sobre el [Operador de propagación de arreglos ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+  * el operador de propagación de objetos es mencionado brevemente
 
 ## Renderizado Condicional
 
@@ -451,7 +451,7 @@ class App extends Component {
 }
 ```
 
-En segundo lugar, introduzce un botón en tu componente de búsqueda. El botón tiene el `type="submit"` y el formulario utiliza su atributo `onSubmit()` para pasar el método `onSubmit()`. Puedes reutilizar la propiedad de los hijos, pero esta vez se utilizará como el contenido del botón.
+En segundo lugar, introduce un botón en tu componente de búsqueda. El botón tiene el `type="submit"` y el formulario utiliza su atributo `onSubmit()` para pasar el método `onSubmit()`. Puedes reutilizar la propiedad de los hijos, pero esta vez se utilizará como el contenido del botón.
 
 ```js
 const Search = ({
@@ -608,7 +608,7 @@ class App extends Component {
 
 Debe asegurarte de predeterminar a la página 0 cuando no hay ningún resultado.
 
-Falta un paso. Traes la siguiente página de datos, pero sobreescribirás la página de datos anterior. Deseas concatenar los datos antiguos y nuevos. Vamos a ajustar la funcionalidad para agregar los nuevos datos en lugar de sobrescribirlos.
+Falta un paso. Traes la siguiente página de datos, pero sobrescribirás la página de datos anterior. Deseas concatenar los datos antiguos y nuevos. Vamos a ajustar la funcionalidad para agregar los nuevos datos en lugar de sobrescribirlos.
 
 ```
 setSearchTopstories(result) {
@@ -631,7 +631,7 @@ setSearchTopstories(result) {
 
 Primero, obtienes los hits y la página del resultado.
 
-En segundo lugar, usted tiene que comprobar si ya hay antiguos hits.  Cuando la página es 0, es una nueva solicitud de búsqueda de `componentDidMount()` o `onSearchSubmit()`. . Los éxitos están vacíos. Pero cuando hace clic en el botón  "More" para buscar datos paginados, la página no es 0. It is the next page. Es la página siguiente. Los hits antiguos ya están almacenados en tu estado y por lo tanto se pueden utilizar.
+En segundo lugar, usted tiene que comprobar si ya hay antiguos hits.  Cuando la página es 0, es una nueva solicitud de búsqueda de `componentDidMount()` o `onSearchSubmit()`. . Los éxitos están vacíos. Pero cuando hace clic en el botón  "More" para buscar datos paginados, la página no es 0, está en la siguiente página. Es la página siguiente. Los hits antiguos ya están almacenados en tu estado y por lo tanto se pueden utilizar.
 
 En tercer lugar, no deseas sobrescribir los antiguos resultados. Puedes combinar hits antiguos y nuevos de la solicitud de API reciente. La combinación de ambas listas se puede realizar con el operador de distribución de ES6 de JavaScript.
 
@@ -778,7 +778,7 @@ Primero, tienes que recuperar el `searchKey` desde el estado del componente. Rec
 
 En segundo lugar, los hits antiguos tienen que fusionarse con los nuevos hits como antes. Pero esta vez los antiguos hits son recuperados del mapa de `results` con el  `searchKey` como clave.
 
-En tercer lugar, un nuevo resultado puede setearse en el mapa `results` en el estado. Examinemos el objeto `results` en `setState()`.
+En tercer lugar, un nuevo resultado puede establecerse en el mapa `results` en el estado. Examinemos el objeto `results` en `setState()`.
 
 ~~~~~~~~
 results: {
@@ -837,7 +837,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`, Ahora puedes ahorrate el renderizado condicional para el componente Tabla. Además, tendrá que pasar el `searchKey` en lugar del `searchTerm` al botón "More". De lo contrario, su búsqueda paginada depende del valor `searchTerm` que es fluctuante. Además, asegúrese de mantener la propiedad fluctuante `searchTerm` para el campo de entrada en el componente "Search".
+Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`, Ahora puedes ahorrarte el renderizado condicional para el componente Tabla. Además, tendrá que pasar el `searchKey` en lugar del `searchTerm` al botón "More". De lo contrario, su búsqueda paginada depende del valor `searchTerm` que es fluctuante. Además, asegúrese de mantener la propiedad fluctuante `searchTerm` para el campo de entrada en el componente "Search".
 
 La funcionalidad de búsqueda debería funcionar de nuevo. Almacena todos los resultados de la API de Hacker News.
 
