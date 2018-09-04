@@ -1,30 +1,24 @@
 # Introducción a React
 
-Este capítulo sirve como una introducción a React. Quizá te preguntas: ¿Por qué debería aprender React, en primer lugar? Aquí encontrarás la respuesta a esta interrogante. Y después, te sumergirás en el ecosistema al crear tu primera aplicación utilizando la librería React. En el camino además conocerás JSX y ReactDOM. Así que prepárate para darle vida a tu primer componente React.
+Este capítulo es una introducción a React, una librería de JavaScript para renderizar interfaces en una página única y aplicaciones móviles, donde explico por qué los desarrolladores deberían considerar agregar la librería React a sus herramientas. Nos sumergiremos en el ecosistema de React para crear una aplicación desde cero sin configuración. En el camino introduciremos **JSX**, la sintaxis para React y **ReactDOM**, para que tengas entendimiento de los usos prácticos de React en aplicaciones web modernas.
 
 ## Hola, mi nombre es React.
 
-**¿Por qué deberías aprender React?** En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone ayudaron a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Existe una amplia gama de frameworks SPA. De los que acabamos de mencionar, la mayoría pertenece a la primera generación de SPAs: Angular 2010, Backbone 2010, Ember 2011.
+En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primer generación de frameworks SPA llegaron en un nivel empresarial, por lo tanto eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
 
-La versión inicial de React fue lanzada en 2013 por Facebook. React no es un framework SPA, pero sí una librería para la capa de vistas. Es la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería sólo permite renderizar componentes como elementos visibles en un navegador. Sin embargo, gracias a todo el ecosistema React, es posible crear aplicaciones de una sola página.
+La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista, específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
 
-¿Pero, por qué deberías considerar usar React en vez de algún framework SPA de primera generación? Mientras que la primera generación de frameworks trató de resolver muchas cosas a la vez, React se enfoca en construir la capa de vista, React es una biblioteca y no un framework. Y se basa en que la capa Vista es una jerarquía de componentes ensamblables.
+En React, el enfoque permanece en la capa de Vistas hasta que se agreguen más aspectos la aplicación. Estos son bloques de construcción para una SPA, que son esenciales para construir una aplicación madura y tienen dos ventajas:
 
-En React puedes centrarte en la capa de Vistas antes de agregar más aspectos a tu aplicación. Cada otro aspecto representará otro componente de la SPA. Pensar en bloques de construcción es esencial para construir una aplicación madura y tiene dos ventajas.
+ *Puedes aprender a usar los bloques de construcción uno a la vez, sin preocuparte por entenderlos totalmente desde el principio. Esto es muy diferente a un Framework que incluye todo el set de bloques de construcción desde que inicias el proyecto. Este libro presenta a React como el primer bloque de construcción. Más bloques de construcción vendrán luego.
 
-Primero, puedes aprender a usar los bloques de construcción paso a paso, sin preocuparte por entenderlos totalmente desde el principio. Esto es muy diferente a un Framework que incluye todo el set de bloques de construcción desde que inicias el proyecto.
+ *Todos los bloques de construcción son intercambiables. Lo que hace del ecosistema React algo innovador donde múltiples soluciones compiten entre sí para solucionar un problema, así que puedes elegir la solución más atractiva para ti y tu caso de uso.
 
-Este libro presenta a React como el primer bloque de construcción. Más bloques de construcción vendrán luego.
-
-En segundo lugar, todos los bloques de construcción son intercambiables. Lo que hace del ecosistema React algo innovador donde múltiples soluciones compiten entre sí para solucionar un problema, así que puedes elegir la solución más atractiva para ti y tu caso de uso.
-
-La primera generación de Frameworks SPA suelen ser muy rígidos. React por su parte, permanece innovador y es adoptado por empresas líderes en tecnología cómo [Airbnb, Netflix y por supuesto Facebook](https://github.com/facebook/react/wiki/Sites-Using-React). Todas estas invierten en el crecimiento de React y su ecosistema.
-
-Hoy en día, React es probablemente una de las mejores opciones para la construcción de aplicaciones de una sola página.
-
-React sólo se encarga de la capa de vista, [pero gracias a su amplio ecosistema, representa un framework completo, flexible e intercambiable](https://www.robinwieruch.de/essential-react-libraries-framework/). Además, cuenta con una API ligera, un ecosistema impresionante y una gran comunidad. Puedes leer sobre [razones por las que me mudé de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/). Recomiendo que tengas claro por qué elegirías React sobre otro framework o biblioteca. Después de todo, el mundo está ansioso por ver que rumbo toma React en los años próximos.
+Hoy en día, React es probablemente una de las mejores opciones para la construcción de sitios web modernos. De nuevo, React sólo se encarga de la capa de vista, [pero gracias a su amplio ecosistema, representa un framework completo, flexible e intercambiable](https://www.robinwieruch.de/essential-react-libraries-framework/). Además, cuenta con una API ligera, un ecosistema impresionante y una gran comunidad. 
 
 ### Ejercicios
+
+Si quieres saber más sobre por qué elegí React o información más profunda sobre los temas mencionados arriba, éstos artículos pueden darte una mayor perspectiva:
 
 * lee acerca de [por qué me cambié de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
 * lee acerca de [el flexible ecosistema de React](https://www.robinwieruch.de/essential-react-libraries-framework/)
@@ -38,13 +32,11 @@ Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wi
 
 ### Editor y Terminal
 
-¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos.
-
-Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
+¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
 ### Node y npm
 
-Por último pero no menos importante, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
+Por último necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
 
 Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de la terminal. Si no obtienes ninguna salida en la terminal, así que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
@@ -73,13 +65,6 @@ La  etiqueta `-g` indica a npm que debe instalar el paquete a nivel global. Los 
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
-npm install <paquete>
-~~~~~~~~
-
-En el caso de React, sería:
-
-{title="Command Line",lang="text"}
-~~~~~~~~
 npm install react
 ~~~~~~~~
 
@@ -105,15 +90,9 @@ Hay otro comando npm que quiero mencionar, para prevenir confusiones:
 npm install --save-dev <paquete>
 ~~~~~~~~
 
-La etiqueta `--save-dev` indica que el paquete Node es sólo usado en el entorno de desarrollo. No será usado en producción cuando cuelgues tu aplicación en un servidor. 
+La etiqueta `--save-dev` indica que el paquete Node es sólo usado en el entorno de desarrollo, esto quiere decir que no será usado en producción cuando cuelgues tu aplicación en un servidor. Esto es útil para realizar pruebas a una aplicación usando un paquete Node, quieres excluirlo de tu entorno de producción.
 
-¿Qué tipo de paquete sería ese? Imagina que quieres probar tu aplicación con la ayuda de un paquete Node. Necesitas instalar este paquete a través npm, pero quieres excluirlo de tu entorno de producción.
-
-Las pruebas sólo se realizan durante el proceso de desarrollo, mas no cuando tu aplicación está ya funcionando en producción. En ese nivel debería estar ya probada y funcionando para todos los usuarios.
-
-Esto representa un caso de uso donde querrías usar la etiqueta `--save-dev`. 
-
-Por ahora estos son todos los comandos que necesitas, pero en el camino encontrarás más de ellos.
+Algunos de ustedes querrían usar otros gestores para trabajar con los paquetes Node. **Yarn** es un gestor de dependencias que trabaja de forma similar a **npm**. Tiene su propia lista de instrucciones, aún así tienes acceso al mismo registro de npm. Yarn fue creado para resolver problemas que npm no pudo, pero ambas herramientas han evolucionado hasta el punto de que cualquiera de las dos sería suficiente.
 
 ### Ejercicios:
 
@@ -128,13 +107,9 @@ Por ahora estos son todos los comandos que necesitas, pero en el camino encontra
 
 ## Instalación
 
-Existen varias maneras de comenzar una aplicación React.
+Existen varias maneras de comenzar una aplicación React. La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), o Red de Entrega de Contenidos (CDN por sus siglas en Inglés). Esto puede sonar complicado, pero no lo es. Muchas compañías usan CDNs que almacenan públicamente archivos para sus usuarios. Algunos de estos archivos que pueden ser una librería como React, ya que la librería empaquetada de React es únicamente un archivo JavaScript *react.js*.
 
-La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), o Red de Entrega de Contenidos (CDN por sus siglas en Inglés).
-
-Esto puede sonar complicado, pero no lo es. Muchas compañías tienen CDNs que almacenan públicamente archivos para sus usuarios. Archivos que pueden ser una librería como React, (una librería puede ser sólo un archivo JavaScript) se alojan en algún lugar y puedes luego requerirlos en tu aplicación.
-
-¿Cómo usar una CDN en React? Puedes hacerlo insertando la etiqueta `<script>` en tu código HTML, con la URL de la CDN que desees utilizar. Para React necesitas dos archivos (librerías): *react* y *react-dom*.
+Para utilizar React usando una CDN, puedes hacerlo insertando la etiqueta `<script>` en tu código HTML, con la URL de la CDN que desees utilizar. Para React necesitas dos archivos (librerías): *react* y *react-dom*.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -142,9 +117,7 @@ Esto puede sonar complicado, pero no lo es. Muchas compañías tienen CDNs que a
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ~~~~~~~~
 
-¿Pero, por qué usar una CDN cuando tienes npm para instalar paquetes Node como React?
-
-Cuando tu aplicación tiene un archivo *package.json* es posible instalar *react* y *react-dom* desde la terminal. El único requisito es que la carpeta esté inicializada como  un proyecto npm, lo puedes hacer utilizando `npm init -y` tal como se mostró anteriormente. Es posible instalar múltiples paquetes en una misma línea a la vez con npm.
+También puedes incluir React en tu aplicación inicializándola como un proyecto Node. Cuando tu aplicación tiene un archivo *package.json* es posible instalar *react* y *react-dom* desde la terminal. El único requisito es que la carpeta esté inicializada como  un proyecto npm, lo puedes hacer utilizando `npm init -y` tal como se mostró anteriormente. Es posible instalar múltiples paquetes en una misma línea a la vez con npm.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -155,7 +128,7 @@ El enfoque anterior se utiliza a menudo para añadir React a una aplicación exi
 
 Desafortunadamente, aquí no termina el asunto. También hay que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX (la sintáxis de React) y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis.
 
-Este enfoque es poco practico, se deben incluir muchas herramientas y configuraciones de forma manual. Puede resultar abrumador realizar manualmente toda la configuración de React.
+Este enfoque es poco práctico, se deben incluir muchas herramientas y configuraciones de forma manual. Puede resultar abrumador realizar manualmente toda la configuración de React.
 
 Para facilitar esta tarea, Facebook desarrolló *create-react-app*, como una solución que ahorra tiempo y esfuerzo al usuario, encargándose esta de la mayor parte del proceso de configuración.
 
@@ -223,7 +196,7 @@ A continuación, una pequeña descripción de cada una de las carpetas y archivo
 
 * **package.json:** Muestra una lista de las dependencias de paquetes Node y un conjunto de otras configuraciones referentes al proyecto.
 
-* **.gitignore:** Especifíca los archivos y carpetas que no serán añadidos a tu repositorio de git. Archivos que sólo vivirán en el proyecto local.
+* **.gitignore:** Especifica los archivos y carpetas que no serán añadidos a tu repositorio de git. Archivos que sólo vivirán en el proyecto local.
 
 * **public/:** Almacena todos los archivos raíz de desarrollo, como por ejemplo *public/index.html*, este índice es el que se muestra en la dirección localhost:3000 cuando estás desarrollando tu aplicación. *create-react-app* viene ya configurado para relacionar este archivo índice con todos los scripts en la carpeta *src/*.
 
@@ -366,11 +339,7 @@ Además, probablemente notaste el atributo `className`. Este es similar al atrib
 
 ## ES6 const y let
 
-Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos formas de declarar variables: `const` y `let`. En JavaScript ES6 rara vez utilizarás `var`.
-
-Ahora, una explicación sobre `const` y `let`:
-
-Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
+Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos formas de declarar variables: `const` y `let`. En JavaScript ES6 rara vez utilizarás `var`. Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -388,9 +357,9 @@ let helloWorld = 'Bienvenido al Camino para aprender React';
 helloWorld = 'Hasta luego, React';
 ~~~~~~~~
 
-Se puede utilizar `let` cuando el valor de una variable debe ser reasignado.
+**TIP** Declara variables usando `let` cuando cuando pienses reasignarlas.
 
-Sin embargo, hay que tener cuidado con `const`. Una variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados. Es decir, los valores dentro del objeto o arreglo no son inmutables.
+Nota que la variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados. Es decir, los valores dentro del objeto o arreglo no son inmutables.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -401,11 +370,7 @@ const helloWorld = {
 helloWorld.text = 'Hasta luego, React';
 ~~~~~~~~
 
-Pero ¿cuándo usar una u otra opción? Hay diferentes opiniones respecto a esto. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable aunque los valores en objetos y arreglos se puedan modificar.
-
-Si se quiere que el valor de la variable sea modificable, se puede utilizar `let`.
-
-La inmutabilidad es ampliamente adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable. Sin embargo, en objetos complejos, los valores internos pueden ser modificados. Ten cuidado con este comportamiento.
+Hay diferentes opiniones sobre cuándo usar *const* y *let*. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable aunque los valores en objetos y arreglos se puedan modificar. La inmutabilidad es ampliamente adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable, aunque no se trata de inmutabilidad realmente, sino de asignar las variables una sola vez. Esto muestra la intención de no cambiar(reasignar) la variable incluso cuando el su contenido puede ser modificado.
 
 En tu aplicación utiliza `const` en vez de `var`.
 
@@ -432,8 +397,8 @@ export default App;
 
 ### Ejercicios:
 
-* lee más sobre [ES6 const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
-* lee más sobre [ES6 let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+* lee más sobre [ES6 const](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/const)
+* lee más sobre [ES6 let](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/let)
 * investiga más acerca de las estructuras de datos inmutables
   * ¿Por qué se utilizan en la programación en general?
   * ¿Por qué se utilizan en React?
@@ -455,13 +420,13 @@ ReactDOM.render(
 );
 ~~~~~~~~
 
-Básicamente `ReactDOM.render()` selecciona un nodo DOM perteneciente al HTML de tu aplicación para reemplazarlo con JSX. Así es como puedes integrar fácilmente React a cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
+Básicamente `ReactDOM.render()` usa un nodo DOM perteneciente al HTML de tu aplicación para reemplazarlo con JSX. Así es como puedes integrar fácilmente React a cualquier aplicación externa. No está prohibido utilizar `ReactDOM.render()` varias veces en una aplicación. Puedes utilizarlo en varios lugares para iniciar la sintaxis JSX simple, un componente React, múltiples componentes React o una aplicación completa.
 
 `ReactDOM.render()` por defecto requiere dos argumentos:
 
 El primero es JSX que será renderizado.
 
-Y el segundo especifíca el lugar en el que la aplicación React será insertada dentro del código HTML de tu aplicación. En este ejemplo, se selecciona un elemento con `id='root'`. Puedes abrir el archivo *public/index.html* y encontrar allí dicho elemento.
+Y el segundo especifica el lugar en el que la aplicación React será insertada dentro del código HTML de tu aplicación. En este ejemplo, se selecciona un elemento con `id='root'`. Puedes abrir el archivo *public/index.html* y encontrar allí dicho elemento.
 
 En el ejercicio, `ReactDOM.render()` ya incluye el componente `App` como primer parámetro. Sin embargo, en el siguiente ejemplo utilizaremos código JSX simple y no la instancia de un componente. Todo esto para demostrar que al utilizar JSX simple no tienes es necesario instanciar un componente.
 
@@ -480,7 +445,7 @@ ReactDOM.render(
 
 ## Reemplazo de Módulos en Caliente
 
-Hot Module Replacement o Reemplazo de Módulos en Caliente (HMR por sus siglas en Inglés) es una iteresante característica que puedes implementar en el archivo *src/index.js* para mejorar tu experiencia como desarrollador. Pero es opcional y puede que resulte abrumador al principio.
+Hot Module Replacement o Reemplazo de Módulos en Caliente (HMR por sus siglas en Inglés) es una interesante característica que puedes implementar en el archivo *src/index.js* para mejorar tu experiencia como desarrollador. Pero es opcional y puede que resulte abrumador al principio.
 
 En *create-react-app* ya es una ventaja que el navegador recargue automáticamente la página tan pronto el código fuente cambia. Inténtalo, cambia la variable `helloWorld` en tu archivo *src/App.js*. El navegador debe recargar la página automáticamente. Sin embargo, esto puede hacerse de una mejor manera.
 
@@ -561,9 +526,7 @@ class App extends Component {
 
 Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento dentro de la lista (`const list`) tiene un título, una URL y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
 
-Ahora, puedes utilizar el método `map` de JavaScript incorporándolo dentro del código JSX.
-
-El método `map` permite iterar sobre la lista de elementos para poder mostrarlos. Recuerda que dentro del código JSX debes encerrar entre corchetes la expresión JavaScript. 
+Ahora, puedes utilizar el [método `map` de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map) incorporándolo dentro del código JSX. El método `map` permite iterar sobre la lista de elementos para poder mostrarlos. Recuerda que dentro del código JSX debes encerrar entre corchetes la expresión JavaScript:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -584,7 +547,18 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Esto resulta muy al momento de trabajar con JSX. Es posible que antes hayas utilizado el método `map` para convertir una lista de elementos a otra lista de elementos, pero esta vez lo utilizas para convertir una lista de elementos a elementos HTML.
+Usar JavaScript junto con HTML en JSX es muy poderoso. Es posible que antes hayas utilizado el método `map` para convertir una lista de elementos a otra, pero esta vez lo utilizas para convertir una lista de elementos a elementos HTML.
+
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
+const array = [1, 4, 9, 16];
+
+// pasa una función a map
+const newArray = array.map(function (x) { return x * 2; });
+
+console.log(newArray);
+// resultado esperado: Array [2, 8, 18, 32]
+~~~~~~~~
 
 Por ahora sólo se muestra el valor de la propiedad `title` correspondiente a cada elemento de la lista. A continuación, vamos a mostrar otras propiedades del artículo.
 
@@ -659,27 +633,19 @@ Ahora puedes iniciar tu aplicación desde la terminal, abrir tu navegador y ver 
 ### Ejercicios:
 
 * lee más sobre [llaves y listas de elementos en React](https://facebook.github.io/react/docs/lists-and-keys.html)
-* repasar [funcionalidades estándar para Arreglos en JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* repasar [funcionalidades estándar para Arreglos en JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map)
 * utiliza más expresiones JavaScript por tu cuenta en JSX
 
 ## Funciones Flecha en ES6 (Arrow Functions)
 
-JavaScript ES6 incluye funciones flecha. Las expresiones de función flecha resultan más cortas que expresiones de función tradicionales.
-
-```js
-
-function () { ... }
-
-
-() => { ... }
-```
+JavaScript ES6 introdujo las funciones flecha, que resultan más cortas que expresiones de función tradicionales.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
-// expresión de función
+// declaración de una función
 function () { ... }
 
-// expresión de función flecha
+// declaración de una función flecha
 () => { ... }
 ~~~~~~~~
 
@@ -746,11 +712,11 @@ Ahora tu código JSX es más conciso y legible. Al declarar `map` de esta manera
 
 ### Ejercicios:
 
-* lee más sobre [funciones flecha ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+* lee más sobre [funciones flecha ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/Arrow_functions)
 
 ## Clases ES6 (ES6 Classes)
 
-JavaScript ES6 incluye clases. Comunmente una clase se utiliza en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
+JavaScript ES6 introdujo el uso clases, que comunmente son utilizadas en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
 
  React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las mejores cualidades de ambos paradigmas de programación.
 
@@ -772,9 +738,7 @@ class Developer {
 
 Una clase tiene un constructor que permite instanciarla. Este constructor puede tomar argumentos y asignarlos a la instancia de la clase. Además, una clase puede definir funciones, y dado que la función está asociada a una clase, se le llama método de clase.
 
-En el ejemplo aterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo.
-
-Veámos cómo puedes instanciar una clase y utilizar sus métodos.
+En el ejemplo aterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -799,9 +763,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La clase `App` se extiende desde `Component`. Básicamente, se declara el componente `App`, pero este se extiende desde otro componente.
-
-¿Qué significa extender? En la programación orientada a objetos se emplea el principio de herencia, que hace posible pasar funcionalidades de una clase a otra clase.
+La clase `App` se extiende desde otro `Component`. En la programación orientada a objetos se emplea el principio de herencia, que hace posible pasar funcionalidades de una clase a otra clase.
 
 La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más específicos, `App` hereda funcionalidades de la clase Component. Este componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Y una de estas funcionalidades es un método que ya conoces, el método `render()` del que conocerás más funcionalidades más adelante.
 
