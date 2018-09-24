@@ -48,8 +48,6 @@ npm --version
 *v5.6.0
 ~~~~~~~~
 
-## Node y npm
-
 A continuación un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas puedes omitir este capítulo.
 
 El gestor **npm** permite instalar **paquetes externos** desde la terminal. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o frameworks enteros. Estos representan dependencias de tu aplicación, y puedes instalarlos en tu carpeta global de paquetes Node o bien en la carpeta local de tu proyecto.
@@ -77,9 +75,7 @@ Ahora, ¿cómo inicializar la carpeta *node_modules/* y el archivo *package.json
 npm init -y
 ~~~~~~~~
 
-La etiqueta `-y` es un acceso directo para inicializar todos los valores predeterminados en el archivo *package.json* correspondiente. De no utilizarla, tienes que decidir cómo configurar el archivo.
-
-Inmediatamente, con npm inicializado en tu carpeta de proyecto, estás listo para instalar nuevos paquetes vía `npm install <paquete>`.
+La etiqueta `-y` es un acceso directo para inicializar todos los valores predeterminados en el archivo *package.json* correspondiente. Inmediatamente, con npm inicializado en tu carpeta de proyecto, estás listo para instalar nuevos paquetes vía `npm install <paquete>`.
 
 Un dato extra sobre el archivo *package.json*. Este archivo permite que compartas tu proyecto con otros desarrolladores sin compartir todos los paquetes Node. Contiene todas las referencias de los paquetes Node utilizados en tu proyecto. Y estos paquetes son llamados dependencias. Cualquiera puede copiar tu proyecto sin las dependencias, pues, estas son referenciadas en el archivo *package.json*. Así, cuando alguien copia tu proyecto, puede instalar todos las dependencias usando `npm install` en la terminal.
 
@@ -126,13 +122,7 @@ npm install react react-dom
 
 El enfoque anterior se utiliza a menudo para añadir React a una aplicación existente administrada con npm.
 
-Desafortunadamente, aquí no termina el asunto. También hay que lidiar con [Babel](http://babeljs.io/) para hacer tu aplicación compatible con JSX (la sintáxis de React) y JavaScript ES6. Babel transpila tu código para que los navegadores puedan interpretar ES6 y JSX. No todos los navegadores son capaces de interpretar la sintaxis.
-
-Este enfoque es poco práctico, se deben incluir muchas herramientas y configuraciones de forma manual. Puede resultar abrumador realizar manualmente toda la configuración de React.
-
-Para facilitar esta tarea, Facebook desarrolló *create-react-app*, como una solución que ahorra tiempo y esfuerzo al usuario, encargándose esta de la mayor parte del proceso de configuración.
-
-El siguiente capítulo muestra cómo iniciar con el desarrollo de tu aplicación con esta herramienta.
+Puede que tengas que lidiar con [Babel](http://babeljs.io/) también para hacer tu aplicación compatible con JSX (la sintáxis de React) y JavaScript ES6. Babel transpila tu código--es decir, lo convierte a vanilla JavaScript-- para que los navegadores puedan interpretar ES6 y JSX. Debido a la dificultad de esta tarea, Facebook desarrolló *create-react-app*, como una solución *cero-configuraciones* de React. La siguiente sección muestra cómo iniciar con el desarrollo de tu aplicación con esta herramienta.
 
 ### Ejercicios:
 
@@ -524,7 +514,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento dentro de la lista (`const list`) tiene un título, una URL y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
+Los datos artificiales representan los datos que más adelante serán extraídos de la API. Cada elemento dentro de la lista tiene un título, una URL y un autor. Además incluye un identificador, puntos (que indican la popularidad de un artículo) y un recuento de comentarios.
 
 Ahora, puedes utilizar el [método `map` de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map) incorporándolo dentro del código JSX. El método `map` permite iterar sobre la lista de elementos para poder mostrarlos. Recuerda que dentro del código JSX debes encerrar entre corchetes la expresión JavaScript:
 
@@ -592,9 +582,7 @@ export default App;
 
 Puedes ver como el método `map` está indentado dentro del código JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad URL del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
 
-React hará todo el trabajo por ti y mostrará cada elemento. Aunque es necesario agregar un helper o ayudante para que React alcance su máximo potencial y tenga un mejor rendimiento.
-
-Debes asignar un atributo clave a cada elemento de lista. Así, React será capaz de identificar los elementos añadidos, cambiados y eliminados cuando la lista cambie. Los elementos artificiales dentro de la lista creada anteriormente ya incluyen un identificador por defecto (`objectID`).
+React hará todo el trabajo por ti y mostrará cada elemento. Aunque puedes hacer algo para ayudar a que React alcance su máximo potencial y tenga un mejor rendimiento. Al asignar un atributo clave a cada elemento de lista, React será capaz de identificar cada elemento de la lista, React puede identificar elementos cambiados y eliminados cuando la lista cambie. Esta lista de ejemplo tiene un identificador:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -649,9 +637,7 @@ function () { ... }
 () => { ... }
 ~~~~~~~~
 
-Claro, tienes que ser consciente de sus funcionalidades. Una de ellas es su comportamiento especial con el objeto `this`. Una expresión de función siempre define su propio objeto `this`. Las expresiones de función flecha aún tienen el objeto `this` en el contexto cerrado. No te confundas al usar `this` en una función flecha.
-
-Con respecto a los paréntesis en las funciones flecha ES6, puedes quitarlos cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
+Puedes quitarlos cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -775,6 +761,7 @@ Ahora que ya conoces los conceptos básicos de las clases JavaScript ES6 y cómo
 
 ### Ejercicios:
 
+* lee sobre [Fundamentos de JavaScript antes de aprender React](https://www.robinwieruch.de/javascript-fundamentals-react-requirements/)
 * lee más sobre [Clases en ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
 
@@ -783,10 +770,10 @@ Ahora que ya conoces los conceptos básicos de las clases JavaScript ES6 y cómo
 * React
   * *create-react-app* arranca una aplicación React
   * JSX mezcla HTML y JavaScript para definir los componentes React
-  * componentes, instancias y elementos son cosas diferentes
+  * Componentes, instancias y elementos son cosas diferentes
   * `ReactDOM.render()` es un punto de entrada para renderizar componentes React en el DOM
   * funciones JavaScript incorporadas pueden ser utilizadas en JSX
-    * El método `map` puede utilizarse para renderizar una lista de elementos como elementos HTML
+  * El método `map` puede utilizarse para renderizar una lista de elementos como elementos HTML
 * ES6
   * Declaraciones de variables con `const` y `let` pueden ser utilizadas en casos de uso particulares
   * las funciones flecha pueden utilizarse para acortar las declaraciones de funciones
