@@ -1,24 +1,55 @@
 # Componentes React Avanzados
 
-El capítulo se enfocará en la implementación de componentes React avanzados. Aprenderá sobre componentes de orden superior y cómo implementarlos. Además, se sumergirá en temas más avanzados en React e implementará interacciones complejas.
+Este capítulo se enfoca en la implementación de componentes React avanzados. Aprenderás sobre componentes de orden superior y cómo implementarlos, navegando aún más profundo en el ecosistema React.
 
 ## Ref a DOM Element
 
-A veces necesitas interactuar con tus nodos DOM en React. El atributo `ref` te da acceso a un nodo en tus elementos. Por lo general, ese es un antipatrón Reat, porque debes usar su forma declarativa de hacer las cosas y su flujo de datos unidireccional. Pero hay ciertos casos donde necesitas acceso al nodo DOM. La documentación oficial menciona tres casos de uso:
+A veces necesitas interactuar con tus nodos DOM en React. El atributo `ref` te da acceso a un nodo dentro de tus elementos. Por lo general, ese se conoce como un antipatrón Reat, porque debes usar su forma declarativa de hacer las cosas y su flujo de datos unidireccional. Aprendiste sobre esto cuando se introdujo el primer campo de busqueda, pero hay ciertos casos donde necesitas acceso al nodo DOM. La documentación oficial menciona tres de estos casos de uso:
 
 * usar la API DOM (focus, media playback etc.)
 * invocar animaciones de nodo DOM imperativas
 * para integrar con una biblioteca de terceros que necesita el nodo DOM (e.g. [D3.js](https://d3js.org/))
 
-Hagámoslo por ejemplo con el componente de búsqueda. Cuando la aplicación se renderiza por primera vez, el campo de entrada debe enfocarse. Ese es un caso de uso en el que necesitaría acceder a la API de DOM. Este capítulo le mostrará cómo funciona, pero dado que no es muy útil para la aplicación en sí, omitiremos los cambios después del capítulo. Puede guardarlo para su propia aplicación si lo desea.
+Hagámoslo por ejemplo con el componente de búsqueda. Cuando la aplicación se renderiza por primera vez, el campo de entrada debe enfocarse. Ese es un caso de uso en el que sería necesario acceder a la API del DOM. En general, se puede utilizar el atributo `ref` tanto en componentes funcionales sin estado como en componentes de clase ES6. En este ejemplo, será necesario un método de ciclo de vida. Así que el procedimiento es propuesto utilizando el atributo `ref` con un componente de clase ES6.
 
-En general, puede usar el atributo `ref` tanto en componentes funcionales sin estado como en componentes de clase ES6. En el ejemplo del caso de uso de enfoque, necesitará un método de ciclo de vida. Es por eso que primero te mostraré el enfoque de usar el atributo `ref` con un componente de clase ES6.
+El paso inicial es refactorizar el componente funcional sin estado (functional stateless component) a un componente de clase ES6.
 
-El paso inicial es refactorizar el componente funcional sin estado a un componente de clase ES6.
-
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 class Search extends Component {
+  render() {
+    const {
+      value,
+      onChange,
+      onSubmit,
+      children
+    } = this.props;
 
+    return (
+# leanpub-end-insert
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+        <button type="submit">
+          {children}
+        </button>
+      </form>
+# leanpub-start-insert
+    );
+  }
+}
+# leanpub-end-insert
+~~~~~~~~
+
+El objeto `this` de un componente de clase ES6 sirve para hacer referencia al nodo DOM con el atributo `ref`.
+
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+class Search extends Component {
   render() {
     const {
       value,
@@ -33,6 +64,9 @@ class Search extends Component {
           type="text"
           value={value}
           onChange={onChange}
+# leanpub-start-insert
+          ref={el => this.input = el}
+# leanpub-end-insert
         />
         <button type="submit">
           {children}
@@ -41,46 +75,21 @@ class Search extends Component {
     );
   }
 }
-```
+~~~~~~~~
 
-El objeto `this` de un componente de clase ES6 nos ayuda a hacer referencia al nodo DOM con el atributo `ref`.
+Ahora puedes enfocar el campo de entrada cuando el componente se monte usando el objeto `this`, el método del ciclo de vida apropiado y la API del DOM.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class Search extends Component {
-
-  render() {
-    const {
-      value,
-      onChange,
-      onSubmit,
-      children
-    } = this.props;
-
-    return (
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={value}
-          onChange={onChange}
-          ref={(node) => { this.input = node; }}
-        />
-        <button type="submit">
-          {children}
-        </button>
-      </form>
-    );
-  }
-}
-```
-
-Ahora puedes enfocar el campo de entrada cuando el componente se monte usando el objeto `this` y el método del ciclo de vida apropiado.
-
-```js
-class Search extends Component {
-
+# leanpub-start-insert
   componentDidMount() {
-    this.input.focus();
+    if (this.input) {
+      this.input.focus();
+    }
   }
+# leanpub-end-insert
+
   render() {
     const {
       value,
@@ -95,7 +104,7 @@ class Search extends Component {
           type="text"
           value={value}
           onChange={onChange}
-          ref={(node) => { this.input = node; }}
+          ref={el => this.input = el}
         />
         <button type="submit">
           {children}
@@ -104,27 +113,30 @@ class Search extends Component {
     );
   }
 }
-```
+~~~~~~~~
 
-El campo de entrada debe enfocarse cuando se renderiza la aplicación. Eso es básicamente
+El campo de entrada debe enfocarse al momento en que la aplicación es renderizada. Pero, ¿cómo obtendría acceso a `ref` en un componente funcional sin estado, sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
 
-Pero, ¿cómo obtendría acceso a `ref` en un componente funcional sin estado sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
-
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Search = ({
   value,
   onChange,
   onSubmit,
   children
 }) => {
+# leanpub-start-insert
   let input;
+# leanpub-end-insert
   return (
     <form onSubmit={onSubmit}>
       <input
         type="text"
         value={value}
         onChange={onChange}
-        ref={(node) => input = node}
+# leanpub-start-insert
+        ref={el => this.input = el}
+# leanpub-end-insert
       />
       <button type="submit">
         {children}
@@ -132,13 +144,14 @@ const Search = ({
     </form>
   );
 }
+~~~~~~~~
 
-En el ejemplo del caso de uso de foco, no lo ayudaría, porque no tiene un método de ciclo de vida para desencadenar el enfoque mediante el uso de la API de DOM. Pero en el futuro es posible que encuentre otros casos de uso donde pueda tener sentido utilizar un componente funcional sin estado con el atributo `ref`.
+Ahora se puede utilizar el elemento de entrada (`input`) del DOM. En el ejemplo del caso de uso de foco, esto no ayudaría mucho, porque no existe un método de ciclo de vida para desencadenar el enfoque. Así que por ahora no se utilizara la variable de entrada (`input`). Pero en el futuro es posible que encuentres otros casos de uso donde si tiene sentido utilizar un componente funcional sin estado con el atributo `ref`.
 
 ### Ejercicios
 
-* leer más sobre [the ref attribute in general in React](https://facebook.github.io/react/docs/refs-and-the-dom.html)
-* leer más sobre [the usage of the ref attribute in React](https://www.robinwieruch.de/react-ref-attribute-dom-node/)
+* lee más sobre [uso general del atributo ref en React](https://facebook.github.io/react/docs/refs-and-the-dom.html)
+* lee más sobre [usos del atributo ref en React](https://www.robinwieruch.de/react-ref-attribute-dom-node/)
 
 ## Cargando ...
 
