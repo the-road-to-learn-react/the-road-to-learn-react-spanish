@@ -115,7 +115,7 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-El campo de entrada debe enfocarse al momento en que la aplicación es renderizada. Pero, ¿cómo obtendría acceso a `ref` en un componente funcional sin estado, sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
+El campo de entrada debe enfocarse al momento en que la aplicación es renderizada. Pero, ¿cómo obtendrías acceso a `ref` en un componente funcional sin estado, sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
