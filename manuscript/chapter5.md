@@ -8,7 +8,7 @@ A veces necesitas interactuar con tus nodos DOM en React. El atributo `ref` te d
 
 * usar la API DOM (focus, media playback etc.)
 * invocar animaciones de nodo DOM imperativas
-* para integrar con una biblioteca de terceros que necesita el nodo DOM (e.g. [D3.js](https://d3js.org/))
+* para integrar con una biblioteca de terceros que necesita el nodo DOM (por ejemplo [D3.js](https://d3js.org/))
 
 Hagámoslo por ejemplo con el componente de búsqueda. Cuando la aplicación se renderiza por primera vez, el campo de entrada debe enfocarse. Ese es un caso de uso en el que sería necesario acceder a la API del DOM. En general, se puede utilizar el atributo `ref` tanto en componentes funcionales sin estado como en componentes de clase ES6. En este ejemplo, será necesario un método de ciclo de vida. Así que el procedimiento es propuesto utilizando el atributo `ref` con un componente de clase ES6.
 
@@ -115,7 +115,7 @@ class Search extends Component {
 }
 ~~~~~~~~
 
-El campo de entrada debe enfocarse al momento en que la aplicación es renderizada. Pero, ¿cómo obtendría acceso a `ref` en un componente funcional sin estado, sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
+El campo de entrada debe enfocarse al momento en que la aplicación es renderizada. Pero, ¿cómo obtendrías acceso a `ref` en un componente funcional sin estado, sin el objeto `this`? El siguiente componente funcional sin estado lo demuestra.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -155,17 +155,20 @@ Ahora se puede utilizar el elemento de entrada (`input`) del DOM. En el ejemplo 
 
 ## Cargando ...
 
-Ahora regresemos a la aplicación. Es posible que desee mostrar un indicador de carga cuando envíe una solicitud de búsqueda a Hacker News API. La solicitud es asincrónica y debe mostrarle a su usuario algun indicador de que algo va a suceder. Definamos un componente de carga reutilizable en su archivo *src/App.js*.
+Ahora regresemos a la aplicación, donde posiblemente quieras mostrar un indicador de carga al enviar una solicitud de búsqueda a la API de Hacker News. La solicitud es asincrónica así que es necesario mostrarle al usuario algun indicador de que algo está sucediendo. Definamos un componente de carga reutilizable dentro del archivo *src/App.js*.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Loading = () =>
   <div>Loading ...</div>
-```
+~~~~~~~~
 
-Ahora necesitará una propiedad para almacenar el estado de carga. En función del estado de carga, puede decidir mostrar el componente Cargando más adelante.
+Ahora, será necesario agregar una propiedad para almacenar el estado de carga. En función del estado de carga, puede decidir mostrar el componente `Loading` más adelante.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
+  _isMounted = false;
 
   constructor(props) {
     super(props);
@@ -174,7 +177,10 @@ class App extends Component {
       results: null,
       searchKey: '',
       searchTerm: DEFAULT_QUERY,
+      error: null,
+# leanpub-start-insert
       isLoading: false,
+# leanpub-end-insert
     };
 
     ...
@@ -183,56 +189,51 @@ class App extends Component {
   ...
 
 }
-```
+~~~~~~~~
 
-El valor inicial de esa propiedad es falso. No carga nada antes de montar el componente de la aplicación.
+El valor inicial de la propiedad `isLoading` es falso. No se carga nada antes de montar el componente de la aplicación.
 
-Cuando realiza la solicitud, establece un estado de carga en verdadero. Finalmente, la solicitud tendrá éxito y puede establecer el estado de carga en falso.
+Una vez la solicitud es realizada, establece un estado de la propiedad cambia a verdadero. Finalmente, la solicitud tendrá éxito y puede establecer el estado de carga en falso.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
 
   ...
 
-  setSearchTopstories(result) {
-    const { hits, page } = result;
-    const { searchKey, results } = this.state;
-
-    const oldHits = results && results[searchKey]
-      ? results[searchKey].hits
-      : [];
-
-    const updatedHits = [
-      ...oldHits,
-      ...hits
-    ];
+  setSearchTopStories(result) {
+    ...
 
     this.setState({
       results: {
         ...results,
         [searchKey]: { hits: updatedHits, page }
       },
+# leanpub-start-insert
       isLoading: false
+# leanpub-end-insert
     });
   }
 
-  fetchSearchTopstories(searchTerm, page) {
+  fetchSearchTopStories(searchTerm, page = 0) {
+# leanpub-start-insert
     this.setState({ isLoading: true });
+# leanpub-end-insert
 
-    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-      .then(response => response.json())
-      .then(result => this.setSearchTopstories(result))
-      .catch(e => e);
+    axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+      .then(result => this._isMounted && this.setSearchTopStories(result.data))
+      .catch(error => this._isMounted && this.setState({ error }));
   }
 
   ...
 
 }
-```
+~~~~~~~~
 
-En el último paso, usarás el componente de carga en tu aplicación. Una representación condicional basada en el estado de carga decidirá si muestra un componente de carga o un componente de botón. El último es su botón para obtener más datos.
+En el último paso, usarás el componente `Loading`dentro del componente `App`. Una representación condicional basada en el estado de carga decidirá si muestra el componente `Loading` o el componente `Button`. El último es el botón para obtener más datos.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
 
   ...
@@ -242,7 +243,10 @@ class App extends Component {
       searchTerm,
       results,
       searchKey,
+      error,
+# leanpub-start-insert
       isLoading
+# leanpub-end-insert
     } = this.state;
 
     ...
@@ -251,82 +255,103 @@ class App extends Component {
       <div className="page">
         ...
         <div className="interactions">
+# leanpub-start-insert
           { isLoading
             ? <Loading />
             : <Button
-              onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
+                onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+              >
               More
             </Button>
           }
+# leanpub-end-insert
         </div>
       </div>
     );
   }
 }
-```
+~~~~~~~~
 
-Inicialmente, el componente de carga aparecerá cuando inicie su aplicación, ya que realiza una solicitud en `componentDidMount()`. No hay un componente Table porque la lista está vacía. Cuando btiene la respuesta de la API Hacker News, se muestra el resultado, el estado de carga se establece en falso y el componente Loading desaparece.  Aparece el botón "More" para buscar más datos. Una vez que obtenga más datos, el botón desaparecerá. De lo contrario, se mostrará el componente Loading.
+Inicialmente, el componente `Loading` aparecerá al iniciar la aplicación, ya que realiza una solicitud en `componentDidMount()`. No hay un componente `Table` porque la lista está vacía. Cuando se obtiene la respuesta de la API Hacker News, se muestra el resultado, el estado de carga se establece en falso y el componente `Loading` desaparece.  Entonces, aparece el botón "More" para buscar más datos. Una vez que se obtengan más datos, el botón desaparecerá. De lo contrario, se mostrará el componente `Loading`.
 
 ### Ejercicios:
 
-* usar una librería como [Font Awesome](http://fontawesome.io/) para mostrar un icono de carga en lugar del texto "Loading ..."
+* usa una librería como [Font Awesome](http://fontawesome.io/) para mostrar un icono de carga en lugar del texto "Loading ..."
 
-## Componentes de orden superior
+## Componentes de orden superior (Higher-Order Components)
 
-Componentes de orden superior (HOC) son un concepto avanzado en React. HOCs son equivalentes a las funciones de orden superior. Toman cualquier entrada, la mayoría de las veces un componente, pero también argumentos opcionales, y devuelven un componente como resultado. El componente devuelto es una versión mejorada del componente de entrada y se puede usar en su JSX.
+Componentes de orden superior (HOC) son un concepto avanzado en React. HOCs son equivalentes a las funciones de orden superior. Toman cualquier entrada, la mayoría de las veces un componente, pero también argumentos opcionales, y devuelven un componente como resultado. El componente devuelto es una versión mejorada del componente de entrada y se puede usar con JSX.
 
-Los HOC se usan para diferentes casos de uso. Pueden preparar propiedades, gestionar el estado o alterar la representación de un componente. Un caso de uso podría ser utilizar un HOC como ayudante para una representación condicional. Imagine que tiene un componente List que muestra una lista de elementos o nada, porque la lista está vacía o nula. El HOC podría ocultar que la lista no representaría nada cuando no hay una lista. Por otro lado, el componente Lista simple no necesita preocuparse por una lista inexistente.Solo le importa hacer la lista.
+Los HOCs se utilizan en diferentes casos de uso. Pueden preparar propiedades, gestionar el estado o alterar la representación de un componente. Un caso de uso podría ser utilizar un HOC como ayudante para una representación condicional. Imagina que tienes un componente `List` que muestra una lista de elementos o nada, porque la lista está vacía o nula. El HOC podría ocultar que la lista no representaría nada cuando no hay una lista. Por otro lado, el componente `List` simple no necesita preocuparse por una lista inexistente. Solo le importa renderizar la lista.
 
-Hagamos un HOC simple que tome un componente como entrada y devuelva un componente. Puedes colocarlo en tu archivo *src/App.js*.
+Hagamos una HOC simple que tome un componente como entrada y devuelva otro componente. Puedes colocarlo en tu archivo *src/App.js*.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 function withFoo(Component) {
   return function(props) {
     return <Component { ...props } />;
   }
 }
-```
+~~~~~~~~
 
-Una bonita convención es prefijar el nombre de un HOC con `with` . Dado que está utilizando JavaScript ES6, puede expresar el HOC de manera más concisa con una función de flecha ES6.
+Una útil convención es prefijar el nombre de un HOC con `with` . Dado que está utilizando JavaScript ES6, puedes expresar el HOC de manera más concisa con una función de flecha ES6.
 
-```js
-const withFoo = (Component) => (props) =>
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+const withEnhancement = (Component) => (props) =>
   <Component { ...props } />
-```
+~~~~~~~~
 
-En el ejemplo, el componente de entrada se mantendría igual que el componente de salida. No pasa nada. Realiza la misma instancia de componente y pasa todas las propiedades al componente de salida. Pero eso es inútil. Vamos a mejorar el componente de salida. El componente de salida debe mostrar el componente de carga, cuando el estado de carga es verdadero, de lo contrario, debería mostrar el componente de entrada. Una representación condicional es un gran caso de uso para un HOC.
+En el ejemplo anterior, el componente de entrada se mantendría igual que el componente de salida. No pasa nada. El componente de salida debería mostrar el componente `Loading` tan pronto el estado cambie a verdadero, de otra manera debería mostrar el componente `Input`
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 const withLoading = (Component) => (props) =>
-  props.isLoading ? <Loading /> : <Component { ...props } />
-```
+  props.isLoading
+    ? <Loading />
+    : <Component { ...props } />
+# leanpub-end-insert
+~~~~~~~~
 
-Según la propiedad de carga, puede aplicar una representación condicional. La función devolverá el componente Loading o el componente Input.
+Según la propiedad de carga, puede aplicar una renderización condicional. La función devolverá el componente `Loading` o el componente `Input`.
 
-En general, puede ser muy eficaz distribuir un objeto, como el objeto props, como entrada para un componente. Vea la diferencia en el siguiente fragmento de código.
+En general, puede ser bastante eficiente distribuir un objeto, como el objeto `props`, como entrada para un componente. En el siguiente fragmento de código se puede ver la diferencia:
 
-```js
+{title="Code Playground",lang="javascript"}
+~~~~~~~~
 // before you would have to destructure the props before passing them
-const { foo, bar } = props;
-<SomeComponent foo={foo} bar={bar} />
+const { firstname, lastname } = props;
+<UserProfile firstname={firstname} lastname={lastname} />
 
 // but you can use the object spread operator to pass all object properties
-<SomeComponent { ...props } />
-```
+<UserProfile { ...props } />
+~~~~~~~~
 
-Hay una pequeña cosa que debes evitar. Usted pasa todas las props incluyendo la propiedad `isLoading`, al pasar el objeto, al componente Input. Sin embargo, el componente Input no se preocupa por la propiedad `isLoading`. Puede usar la re-desestructuración de ES6 para evitarlo.
+Hay una pequeña cosa que debes evitar. Se pasaron todas las `props`, incluyendo la propiedad `isLoading` al pasar el objeto al componente `Input`. Sin embargo, el componente `Input` no no la existencia de la propiedad `isLoading`. Puedes usar la re-desestructuración de ES6 para evitar esto.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 const withLoading = (Component) => ({ isLoading, ...rest }) =>
-  isLoading ? <Loading /> : <Component { ...rest } />
-```
+  isLoading
+    ? <Loading />
+    : <Component { ...rest } />
+# leanpub-end-insert
+~~~~~~~~
 
-Toma una propiedad del objeto, pero conserva el objeto restante. También funciona con múltiples propiedades. Es posible que ya lo hayas leído en el [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
+Se toma una propiedad del objeto, pero se conserva el resto del objeto. También funciona con múltiples propiedades. Puedes leer mas acerca de esto en el articulo de la página de Mozilla: [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 
-Ahora puedes usar el HOC en tu JSX. Un caso de uso en la aplicación podría ser mostrar el botón "More" o el componente Loading. El componente de carga ya está encapsulado en el HOC, pero falta un componente Input. En el caso de uso de mostrar un componente Button o un componente Loading, el Button es el componente de entrada del HOC. El componente de salida mejorado es un componente ButtonWithLoading.
+Ahora puedes usar HOCs dentro de JSX. Un caso de uso en la aplicación podría ser mostrar el botón "More" o el componente `Loading`. El componente `Loading` ya está encapsulado dentro del HOC, pero falta un componente `Input`. Para mostrar un componente `Button` o bin un componente `Loading`, el Button es el componente de entrada del HOC. El componente de salida mejorado es un componente `ButtonWithLoading`.
 
-```js
-const Button = ({ onClick, className = '', children }) =>
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+const Button = ({
+  onClick,
+  className = '',
+  children,
+}) =>
   <button
     onClick={onClick}
     className={className}
@@ -339,14 +364,20 @@ const Loading = () =>
   <div>Loading ...</div>
 
 const withLoading = (Component) => ({ isLoading, ...rest }) =>
-  isLoading ? <Loading /> : <Component { ...rest } />
+  isLoading
+    ? <Loading />
+    : <Component { ...rest } />
 
+# leanpub-start-insert
 const ButtonWithLoading = withLoading(Button);
-```
+# leanpub-end-insert
+~~~~~~~~
 
-Todo se define ahora. Como último paso, debe usar el componente ButtonWithLoading, que recibe el estado de carga como una propiedad adicional. Mientras el HOC consume la propiedad de carga, todas las demás propiedad pasan al componente Button.
+Todo se encuentra definido ya. Como último paso, debes usar el componente `ButtonWithLoading`, que recibe el estado de carga como una propiedad adicional. Mientras el HOC consume la propiedad de carga, todas las demás propiedad pasan al componente `Button`.
 
-```js
+
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
 
   ...
@@ -357,67 +388,78 @@ class App extends Component {
       <div className="page">
         ...
         <div className="interactions">
+# leanpub-start-insert
           <ButtonWithLoading
             isLoading={isLoading}
-            onClick={() => this.fetchSearchTopstories(searchKey, page + 1)}>
+            onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+          >
             More
           </ButtonWithLoading>
+# leanpub-end-insert
         </div>
       </div>
     );
   }
 }
-```
+~~~~~~~~
 
-Cuando ejecute nuevamente las pruebas, observará que su prueba para el componente App falla. Debería mostrar la siguiente diferencia en la línea de comando.
+Cuando ejecute nuevamente las pruebas, notarás que la prueba para el componente `App` falla. La línea de comando debería mostrar algo como esto:
 
-```js
--     <button
--       className=""
--       onClick={[Function]}
--       type="button">
--       More
--     </button>
-+     <div>
-+       Loading ...
-+     </div>
-```
+{title="Command Line",lang="text"}
+~~~~~~~~
+-    <button
+-      className=""
+-      onClick={[Function]}
+-      type="button"
+-    >
+-      More
+-    </button>
++    <div>
++      Loading ...
++    </div>
+~~~~~~~~
 
-You can either fix the component now, when you think there is something wrong about it, or can accept the new snapshot. Because you introduced the Loading component in this chapter, you can accept the failing snapshot test with `u` on the command line in the interactive test.
+Ahora, puedes intentar arreglar el componente al momento en que pienses que algo está mal con el, o puedes aceptar este pequeño error. Y como en este capítulo acabas de introducir al componente `Loading`, puedes aceptar el pequeño error mostrado en la línea de comandos al realizar la prueba interactiva.
 
-Higher order components are an advanced technique in React. They have multiple purposes like improved reusability of components, greater abstraction, composability of components and manipulations of props, state and view. Don't worry if you don't understand them immediately. It takes time to get used to them.
+Componentes de orden superior son un partón avanzado en React. Tienen multiples propositos: Mejorada reusabilidad de componentes, mayor abstracción, composibilidad de componentes y la manipulación de props, estados y vistas. Puedes leer [gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). Te ofrece otro enfoque para aprender sobre este tema, te ofrece una manera elegante de de usarlos dentro del paradigma de programación funcional y resuelve el problema de renderizado condicional con componentes de orden superior.
 
-I encourage you to read the [gentle introduction to higher order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). It gives you another approach to learn them, shows you an elegant way to use them the functional programming way and solves specifically the problem of conditional rendering with higher order components.
+### Exercises:
 
-### Ejercicios:
+* Lee [a gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/)
+* Experimenta con el HOC que acabas de crear
+* Piensa sobre un caso de uso donde otro HOC tendría sentido
+* Implementa el HOC, si hay un caso de uso para ello
 
-* experiment with the HOC you have created
-* think about a use case where another HOC would make sense
-  * implement the HOC, if there is a use case
+## Sorting Avanzado
 
-## Advanced Sorting
+Ya implementaste un campo de busqueda que interactua con el lado del servidor y el lado de la aplicación. Y como tienes un componente `Table`, tiene sentido intentar mejorarlo con interacciones un poco mas complejas. Acto seguido, agregarás una función para organizar cada columna utilizando el encabezado de la Tabla.
 
-You have already implemented a client- and server-side search interaction. Since you have a Table component, it would make sense to enhance the Table with advanced interactions. What about enabling sorting by the Table columns?
+Es posible que escribas tu propia función de clasificación de elementos en la tabla, pero prefiero usar una utilidad incluida en librerias como [Lodash](https://lodash.com/). Hay otras opciones, pero en el libro usaremos Lodash.
 
-It would be possible to write your own sort function, but personally I prefer to use a utility library for such cases. [Lodash](https://lodash.com/) is one of these utility libraries. Let's install and use it for the sort functionality.
+{title="Command Line",lang="text"}
+~~~~~~~~
+npm install lodash
+~~~~~~~~
 
-```
-npm install --save lodash
-```
+Ahora, es posible importar la función de clasificación incluida en Lodash dentro del archivo *src/App.js*:
 
-Now you can import the sort functionality of lodash in your *src/App.js* file.
-
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 import React, { Component } from 'react';
+import axios from 'axios';
+# leanpub-start-insert
 import { sortBy } from 'lodash';
+# leanpub-end-insert
 import './App.css';
-```
+~~~~~~~~
 
-You have several columns in your Table. There are title, author, comments and points columns. You can define sort functions where each function takes a list and returns a list of items sorted by property. Additionally you will need one default sort function which doesn't sort but only returns the unsorted list.
+Ya tienes varias columnas en la tabla: title, author, comments y poits. Puedes definir funciones de clasificación (sort functions) donde cada una toma una lista y returna una lista de elementos clasificados de acuerdo a una propiedad específica. Adicionalmente, necesitarás una función de clasificación por defecto que no clasifique, pero que retorne una lista no clasificada. Esta lista será el estado inicial.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 ...
 
+# leanpub-start-insert
 const SORTS = {
   NONE: list => list,
   TITLE: list => sortBy(list, 'title'),
@@ -425,60 +467,75 @@ const SORTS = {
   COMMENTS: list => sortBy(list, 'num_comments').reverse(),
   POINTS: list => sortBy(list, 'points').reverse(),
 };
+# leanpub-end-insert
 
 class App extends Component {
   ...
 }
 ...
-```
+~~~~~~~~
 
-You can see that two of the sort functions return a reversed list. That's because you want to see the items with the highest comments and points rather than to see the items with the lowest.
+Dos de las funciones de clasificación returnan una lista invertida. Es para ver los ítems con la mayor cantidad de números y puntos, en vez de los ítems con el menor conteo al momento en que la lista es clasificada por primera vez.
 
-The `SORTS` object allows you to reference any sort function now.
+Los objetos `SORTS` permiten referenciar a cualquier función de clasificación a partir de ahora.
 
-Again your App component is responsible for storing the state of the sort. The initial state will be the initial default sort function, which doesn't sort at all and returns the input list as output.
+El componente `App` es responsable de almacenar el estado de la clasificación. El estado inicial será la opción de clasificación por defecto, que no clasifica nada en absoluto, solo retorna la lista.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 this.state = {
   results: null,
   searchKey: '',
   searchTerm: DEFAULT_QUERY,
+  error: null,
   isLoading: false,
+# leanpub-start-insert
   sortKey: 'NONE',
+# leanpub-end-insert
 };
-```
+~~~~~~~~
 
-Once you choose a different `sortKey`, let's say the `AUTHOR` key, you will sort the list with the appropriate sort function.
+Una vez que has una `sortKey` diferente, por ejemplo `AUTHOR`, es posible clasificar la lista con la función de clasificación adecuada.
 
-Now you can define a new sort method in your App component that simply sets a `sortKey` to your internal component state.
+Ahora, podemos definir un nuevo método dentro del componente `App` que inicializa un `sortKey` para el estado local del componente, la `sortKey` puede ser utilizada para para ayudar a aplicar la función de clasificación correcta a la lista:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
+  _isMounted = false;
 
   constructor(props) {
 
     ...
 
-    this.needsToSearchTopstories = this.needsToSearchTopstories.bind(this);
-    this.setSearchTopstories = this.setSearchTopstories.bind(this);
-    this.fetchSearchTopstories = this.fetchSearchTopstories.bind(this);
+    this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
+    this.setSearchTopStories = this.setSearchTopStories.bind(this);
+    this.fetchSearchTopStories = this.fetchSearchTopStories.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
+# leanpub-start-insert
     this.onSort = this.onSort.bind(this);
+# leanpub-end-insert
   }
 
+  ...
+
+# leanpub-start-insert
   onSort(sortKey) {
     this.setState({ sortKey });
   }
+# leanpub-end-insert
+
   ...
 
 }
-```
+~~~~~~~~
 
-The next step is to pass the method and `sortKey` to your Table component.
+El siguiente paso consiste en pasar el método y el `sortKey` al componente `Tabla`.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
 
   ...
@@ -488,53 +545,60 @@ class App extends Component {
       searchTerm,
       results,
       searchKey,
+      error,
       isLoading,
+# leanpub-start-insert
       sortKey
+# leanpub-end-insert
     } = this.state;
 
     ...
 
     return (
       <div className="page">
-        <div className="interactions">
-          ...
-        </div>
+        ...
         <Table
           list={list}
+# leanpub-start-insert
           sortKey={sortKey}
           onSort={this.onSort}
+# leanpub-end-insert
           onDismiss={this.onDismiss}
         />
-        <div className="interactions">
-          ...
-        </div>
+        ...
       </div>
     );
   }
 }
-```
+~~~~~~~~
 
-The Table component is responsible for sorting the list. It takes one of the `SORT` functions by `sortKey` and passes the list as input. Afterward it keeps mapping over the sorted list.
+El componente `Table` es responsable de clasificar la lista. Este componente toma una de las funciones `SORT` y le pasa la lista como entrada, y luego sigue mapeando la lista previamente clasificada.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 const Table = ({
   list,
   sortKey,
   onSort,
   onDismiss
 }) =>
+# leanpub-end-insert
   <div className="table">
-    { SORTS[sortKey](list).map(item =>
+# leanpub-start-insert
+    {SORTS[sortKey](list).map(item =>
+# leanpub-end-insert
       <div key={item.objectID} className="table-row">
         ...
       </div>
     )}
   </div>
-```
+~~~~~~~~
 
-In theory the list would get sorted by one of the functions. But the default sort is set to `NONE`. So far no one executes the `onSort()` method to change the `sortKey`. Let's extend the Table with a row of headers that use Sort components in columns to sort each column.
+En teoría, la lista debería se clasificada por una de las funciones. Sin embargo la clasificación por defecto está configurada con el valor `NONE`, así que nada es clasificado aún, porque nada ejecuta al método `onSort()` para cambiar el valor de `sortKey`. Se extiende la Tabla con una fila de encabezados de columna que utilizan componentes `Sort` dentro de las columnas para realizar la clasificación de cada una de las columnas:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Table = ({
   list,
   sortKey,
@@ -542,6 +606,7 @@ const Table = ({
   onDismiss
 }) =>
   <div className="table">
+# leanpub-start-insert
     <div className="table-header">
       <span style={{ width: '40%' }}>
         <Sort
@@ -579,60 +644,73 @@ const Table = ({
         Archive
       </span>
     </div>
-    { SORTS[sortKey](list).map(item =>
+# leanpub-end-insert
+    {SORTS[sortKey](list).map(item =>
       ...
     )}
   </div>
-```
+~~~~~~~~
 
-Each Sort component gets a specific `sortKey` and the general `onSort()` function. Internally it calls the method with the `sortKey` to set the specific key.
+Cada componente `Sort` recibe una `sortKey` especifica y la función general `onSort()`. Internamente llama al método con la `sortKey` correspondiente, para determinar la `sortKey` específica.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Sort = ({ sortKey, onSort, children }) =>
   <Button onClick={() => onSort(sortKey)}>
     {children}
   </Button>
-```
+~~~~~~~~
 
-As you can see, the Sort component reuses your common Button component. On a button click each individual passed `sortKey` will get set by the `onSort()` method. Now you should be able to sort the list when you click on the column headers.
+Como puedes ver, el componente `Sort` reutiliza el componente `Button`. Durante el click del botón, cada `sortKey` será asignada de manera individual por el método `onSort()`. Ahora será posible clasificar la lista cuándo el encabezado de la columna este seleccionado.
 
-But a button in a column header looks a bit silly. Let's give the Sort a proper `className`.
+Ahora, mejorarás el estilo del botón en el encabezado de cada columna. Dale un `className` adecuado:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Sort = ({ sortKey, onSort, children }) =>
+# leanpub-start-insert
   <Button
     onClick={() => onSort(sortKey)}
     className="button-inline"
   >
+# leanpub-end-insert
     {children}
   </Button>
-```
+~~~~~~~~
 
-It should look nice now. The next goal would be to implement reverse sort as well. The list should get reverse sorted once you click a Sort component twice. First you need to define the reverse state.
+Esto se hace con el fin de mejorar la UI (Interfáz de Usuario por sus siglas en Inglés). El siguiente objetivo es implementar una clasificación invertida (reverse sort). La lista debería realizar una clasificación invertida al momento en que un componente `Sort` es clickeado dos veces. En primer lugar, es necesario que definas el estado reverso con un booleano. La clasificación puede ser invertida o no invertida (reversed ó non-reversed).
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 this.state = {
   results: null,
   searchKey: '',
   searchTerm: DEFAULT_QUERY,
+  error: null,
   isLoading: false,
   sortKey: 'NONE',
+# leanpub-start-insert
   isSortReverse: false,
+# leanpub-end-insert
 };
-```
+~~~~~~~~
 
-Now in your sort method you can evaluate if the list is reverse sorted. It is when `sortKey` in the state is the same as the incoming `sortKey` and the reverse state is not already set to true.
+Ahora dentro del método `Sort`, es posible evaluar si la lista está sorteada en reverso. Se determina que está en reverso si el estado es el mismo que el de la `sortKey` nueva y el estado aún no posee un valor igual a verdadero (true).
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 onSort(sortKey) {
+# leanpub-start-insert
   const isSortReverse = this.state.sortKey === sortKey && !this.state.isSortReverse;
   this.setState({ sortKey, isSortReverse });
+# leanpub-end-insert
 }
-```
+~~~~~~~~
 
-Again you can pass the reverse prop to your Table component.
+De nuevo, es posible pasar la propiedad revertida al componente `Tabla`:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 class App extends Component {
 
   ...
@@ -642,9 +720,12 @@ class App extends Component {
       searchTerm,
       results,
       searchKey,
+      error,
       isLoading,
       sortKey,
+# leanpub-start-insert
       isSortReverse
+# leanpub-end-insert
     } = this.state;
 
     ...
@@ -655,7 +736,9 @@ class App extends Component {
         <Table
           list={list}
           sortKey={sortKey}
+# leanpub-start-insert
           isSortReverse={isSortReverse}
+# leanpub-end-insert
           onSort={this.onSort}
           onDismiss={this.onDismiss}
         />
@@ -664,11 +747,13 @@ class App extends Component {
     );
   }
 }
-```
+~~~~~~~~
 
-The Table has to have an arrow function block body to compute the data now.
+La Tabla debe tener una bloque correspondiente a la función flecha con la capacidad de computar datos:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
+# leanpub-start-insert
 const Table = ({
   list,
   sortKey,
@@ -682,25 +767,27 @@ const Table = ({
     : sortedList;
 
   return(
+# leanpub-end-insert
     <div className="table">
       <div className="table-header">
         ...
       </div>
-      { reverseSortedList.map(item =>
+# leanpub-start-insert
+      {reverseSortedList.map(item =>
+# leanpub-end-insert
         ...
       )}
     </div>
+# leanpub-start-insert
   );
 }
-```
+# leanpub-end-insert
+~~~~~~~~
 
-The reverse sort should work now.
+Finalmente, queremos brindar información visual al usuario para que pueda distinguir cuáles columnas están clasificadas de manera activa. Cada componente `Sort` ya tiene su `sortKey` específico, el cuál puede ser utilizado para identificar cuando la clasificación esta activa o no. Se pasa el `sortKey` desde el estado del componente interno como una clasificación activa al componente `Sort`:
 
-Last but not least you have to deal with one open question for the sake of an improved user experience. Can a user distinguish which column is actively sorted? So far, it is not possible. Let's give the user a visual feedback.
-
-Each Sort component gets its specific `sortKey` already. It could be used to identify the activated sort. You can pass the `sortKey` from the internal component state as active sort key to your Sort component.
-
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Table = ({
   list,
   sortKey,
@@ -720,7 +807,9 @@ const Table = ({
           <Sort
             sortKey={'TITLE'}
             onSort={onSort}
+# leanpub-start-insert
             activeSortKey={sortKey}
+# leanpub-end-insert
           >
             Title
           </Sort>
@@ -729,7 +818,9 @@ const Table = ({
           <Sort
             sortKey={'AUTHOR'}
             onSort={onSort}
+# leanpub-start-insert
             activeSortKey={sortKey}
+# leanpub-end-insert
           >
             Author
           </Sort>
@@ -738,7 +829,9 @@ const Table = ({
           <Sort
             sortKey={'COMMENTS'}
             onSort={onSort}
+# leanpub-start-insert
             activeSortKey={sortKey}
+# leanpub-end-insert
           >
             Comments
           </Sort>
@@ -747,7 +840,9 @@ const Table = ({
           <Sort
             sortKey={'POINTS'}
             onSort={onSort}
+# leanpub-start-insert
             activeSortKey={sortKey}
+# leanpub-end-insert
           >
             Points
           </Sort>
@@ -756,17 +851,18 @@ const Table = ({
           Archive
         </span>
       </div>
-      { reverseSortedList.map(item =>
+      {reverseSortedList.map(item =>
           ...
       )}
     </div>
   );
 }
-```
+~~~~~~~~
 
-Now in your Sort component you know based on the `sortKey` and `activeSortKey` if the sort is active. Give your Sort component an extra `class` attribute, when it is sorted, to give the user a visual feedback.
+Dentro del componente `Sort`, se puede saber si la función de clasificación esta activa en base a `sortKey` y `activeSortKey`. Al componente `Sort` dale un atributo extra llamado `className`, para brindarle información acerca de su estado al usuario:
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 # leanpub-start-insert
 const Sort = ({
   sortKey,
@@ -789,53 +885,63 @@ const Sort = ({
     </Button>
   );
 }
-```
+# leanpub-end-insert
+~~~~~~~~
 
-The way to define the `class` is a bit clumsy, isn't it? There is a neat little library to get rid of this. First you have to install it.
+Es posible definir `sortClass` de manera más eficiente utilizando la librería llamada `classnames`, que se intala utilizando npm:
 
-```
-npm install --save classnames
-```
+{title="Command Line",lang="text"}
+~~~~~~~~
+npm install classnames
+~~~~~~~~
 
-And second you have to import it on top of your *src/App.js* file.
+Después de la instalación, lo importamos en el tope del archivo *src/App.js*.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 import React, { Component } from 'react';
+import axios from 'axios';
 import { sortBy } from 'lodash';
 # leanpub-start-insert
 import classNames from 'classnames';
 # leanpub-end-insert
 import './App.css';
-```
+~~~~~~~~
 
-Now you can use it to define your component `className` with conditional classes.
+Ahora, ya puedes usarlo para definir el componente `className` con clases condicionales.
 
-```js
+{title="src/App.js",lang="javascript"}
+~~~~~~~~
 const Sort = ({
   sortKey,
   activeSortKey,
   onSort,
   children
 }) => {
+# leanpub-start-insert
   const sortClass = classNames(
     'button-inline',
     { 'button-active': sortKey === activeSortKey }
   );
+# leanpub-end-insert
 
   return (
+# leanpub-start-insert
     <Button
       onClick={() => onSort(sortKey)}
       className={sortClass}
     >
+# leanpub-end-insert
       {children}
     </Button>
   );
 }
-```
+~~~~~~~~
 
-Again, when you run your tests, you should see failing snapshot tests but also failing unit tests for the Table component. Since you changed again your component representations, you can accept the snapshot tests. But you have to fix the unit test. In your *src/App.test.js* file you need to provide a `sortKey` and the `isSortReverse` boolean for the Table component.
+Habrán unidades de prueba fallidas en el componente `Table`. Dado que cambiamos intencionalmente la representación de nuestro componente, aceptamos los resultados de las pruebas, pero todavía es necesario repara la unidad de prueba. En *src/app.test.js*, ingresa una función `sortKey` y el booleano `isSortReverse` para el componente `Tabla`.
 
-```js
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~~
 ...
 
 describe('Table', () => {
@@ -845,35 +951,34 @@ describe('Table', () => {
       { title: '1', author: '1', num_comments: 1, points: 2, objectID: 'y' },
       { title: '2', author: '2', num_comments: 1, points: 2, objectID: 'z' },
     ],
+# leanpub-start-insert
     sortKey: 'TITLE',
     isSortReverse: false,
+# leanpub-end-insert
   };
 
   ...
 
 });
-```
+~~~~~~~~
 
-Once again you might need to accept the failing snapshot tests for your Table component, because you provided props for the Table and the full component renders now.
+De nuevo, es necesario aceptar las fallas en las pruebas para el componente `Table`, porque utilizamos props extendidas en el. La interacción de clasificación avanzada finalmente ha sido completada.
 
-Your advanced sort interaction is complete now.
+### Ejercicios:
 
-### Exercises:
-
-* use a library like [Font Awesome](http://fontawesome.io/) to indicate the (reverse) sort
-  * it could be an arrow up or down icon next to each Sort header
-* read more about the [classnames library](https://github.com/JedWatson/classnames)
+* Usa una librería como [Font Awesome](http://fontawesome.com/) para indicar la clasificación (reverse). Podrías utilizar una flecha haia arriba o una flehca hacia abajo al lado de cada Encabezado
+* Lee más acerca de [classnames library](https://github.com/JedWatson/classnames)
 
 {pagebreak}
 
-You have learned advanced component techniques in React! Let's recap the last chapters:
+Aprendiste sobre técnicas de componentes avanzados en React. Recapitulemos lo visto en el capítulo:
 
-* React
-  * the ref attribute to reference DOM nodes
-  * higher order components are a common way to build advanced components
-  * implementation of advanced interactions in React
-  * conditional classNames with a neat helper library
-* ES6
-  * rest destructuring to split up objects and arrays
+* **React**
+  * El atributo `ref` hace referencia a elementos que forman parte del DOM
+  * Componentes de orden superior son comúnmente utilizados para construir componentes avanzados
+  * Implementación de interacciones avanzadas en React
+  * `classNames` condicionales utilizando una librería
+* **ES6**
+  * Desestructuración para dividir objetos y arrays
 
-You can find the source code in the [official repository](https://github.com/rwieruch/hackernews-client/tree/9456117fb67bbe98d7e3f41bbc85b4a035020e7e).
+Puedes encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/9456117fb67bbe98d7e3f41bbc85b4a035020e7e).
