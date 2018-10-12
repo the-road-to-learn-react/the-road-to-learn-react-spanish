@@ -1,16 +1,16 @@
 # Organización de Código y Pruebas
 
-El capítulo se centrará en temas importantes para mantener tu código mantenible en una aplicación escalable. Aprenderás sobre la organización del código para adoptar las mejores prácticas al estructurar tus carpetas y archivos. Otro aspecto que aprenderás son las pruebas, lo cual es importante para mantener su código robusto.
+El capítulo se centrará en temas importantes para lograr que  el código sea mantenible en una aplicación escalable. Aprenderás sobre la organización del código para adoptar las mejores prácticas al estructurar las carpetas y archivos. Otro aspecto que aprenderás son las pruebas, lo cual es importante para mantener un código robusto.
 
 ## Módulos ES6: Importación y Exportación
 
 En JavaScript ES6 puedes importar y exportar funcionalidades desde módulos. Estas funcionalidades pueden ser funciones, clases, componentes, constantes, etc. Básicamente todo lo que puede asignar a una variable. Los módulos pueden ser archivos individuales o carpetas enteras con un archivo de índice como punto de entrada.
 
-Al principio del libro, después de haber iniciado la aplicación con *create-react-app* , ya tenías varios `import` y `export` a través de sus archivos iniciales. Ahora es el momento apropiado para explicar esto.
+Al principio del libro, después de haber iniciado la aplicación con *create-react-app* , existían varios `import` y `export` a través de los archivos iniciales. Ahora es el momento apropiado para explicar esto.
 
-Las sentencias `import` y `export` te ayudan a compartir código en varios archivos. Antes ya había varias soluciones para esto en el entorno JavaScript. Fue un desastre, porque querrías seguir una manera estandarizada en lugar de tener varios enfoques para la misma cosa. Ahora es un comportamiento nativo en JavaScript ES6.
+Las sentencias `import` y `export` ayudan a compartir código en varios archivos. Antes había varias soluciones para esto en el entorno JavaScript. Fue un desastre, porque no había una manera estándar para hacerlo, en la actualidad, es un comportamiento nativo de Javascript ES6.
 
-Además, estas declaraciones adoptan la división de código. Distribuyes el código a través de varios archivos para mantenerlo reutilizable y mantenible. Lo primero es cierto porque puede importar el fragmento de código en varios archivos. Esto último es cierto porque usted tiene una sola fuente donde usted mantiene el pedazo de código.
+Además, estas declaraciones adoptan la división de código. Se distribuye el código a través de varios archivos para mantenerlo reutilizable y mantenible. Lo primero es cierto porque puede importar el fragmento de código en varios archivos. Esto último es cierto porque usted tiene una sola fuente donde usted mantiene el pedazo de código.
 
 Por último, pero no menos importante, le ayuda a pensar en encapsulación de código. No es necesario que todas las funcionalidades se exporten desde un archivo. Algunas de estas funcionalidades sólo deben utilizarse en el archivo donde se han definido. Las exportaciones de un archivo son básicamente la API pública del archivo. Sólo las funcionalidades exportadas están disponibles para ser reutilizadas en otro lugar. Sigue la mejor práctica de encapsulación.
 
