@@ -1,5 +1,8 @@
 # El Camino para aprender React
 
+![El camino para aprender react]
+(https://avatars0.githubusercontent.com/u/32949016?s=200&v=4)
+
 El repositorio oficial para [El Camino para aprender React](https://www.robinwieruch.de/the-road-to-learn-react/). Además, aquí puedes encontrar el [Código Fuente ](https://github.com/rwieruch/hackernews-client) y [El Curso Completo](https://roadtoreact.com/). Si quieres dejar un reseña sobre el libro, puedes hacerlo en [Amazon](https://www.amazon.com/dp/B077HJFCQX?tag=21moves-20) ó [Goodreads](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react).
 
 ## Actualizaciones, Ayuda y Soporte
