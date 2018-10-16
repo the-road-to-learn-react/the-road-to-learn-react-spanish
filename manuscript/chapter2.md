@@ -2,11 +2,11 @@
 
 Este capítulo te guiará a través de los aspectos básicos de React. Conocerás lo que es el estado y las interacciones dentro de componentes. Además, verás distintas maneras de declarar un componente y cómo hacerlos reutilizables. Prepárate para darle vida propia a tus componentes React.
 
-## Estado interno de Un Componente
+## Estado local de un Componente
 
-El estado interno de un componente, también conocido como estado local, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado interno del componente. El constructor se llama una sola vez al inicializar el componente.
+El estado local de un componente, también conocido como estado interno, te permite almacenar, modificar y eliminar propiedades almacenadas dentro de un componente. El componente de clase ES6 puede utilizar un constructor para inicializar el estado local del componente. El constructor se llama una sola vez al inicializar el componente.
 
-A continuación, veamos el constructor de clase donde se puede establecer el estado interno inicial del componente.
+Veamos el constructor de clase.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -23,11 +23,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. En instantes conocerás más acerca de componentes de clase ES6, por ahora volvamos a `App`.
+El componente `App` es una subclase de `Component`, a esto se debe el `extends Component` en la declaración del componente `App`. 
 
-Es obligatorio llamar a `super(props);`, pues habilita `this.props` dentro de tu constructor, para que puedas acceder a él. De lo contrario, al intentar acceder a `this.props`dentro de tu constructor retornará `undefined`.
-
-En tu caso, el estado inicial dentro del componente `App` debería ser la lista de elementos.
+Es obligatorio llamar a `super(props);`, pues habilita `this.props` dentro de tu constructor en caso de que quieras acceder a éstas. De lo contrario, al intentar acceder a `this.props`dentro de tu constructor retornará `undefined`. En este caso, el estado inicial dentro del componente `App` debería ser la lista de elementos.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -60,7 +58,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El estado está ligado a la clase por medio del objeto `this`, por tanto se puede acceder a este dentro de todo el componente. Por ejemplo, puedes usar el estado dentro del método `render()`. Anteriormente mapeaste una lista estática de elementos dentro del método `render()` que fue definida fuera del componente `App`. Ahora, accederás a la lista almacenada en el estado local dentro del componente.
+El estado está ligado a la clase por medio del objeto `this`, por tanto se puede acceder al estado local de todo el componente. Por ejemplo, puedes usar el estado dentro del método `render()`. Anteriormente mapeaste una lista estática de elementos dentro del método `render()` que fue definida fuera del componente `App`. Ahora, accederás a la lista almacenada en el estado local dentro del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -89,16 +87,16 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esta lista es ahora parte del componente, es decir se encuentra almacenada en el estado interno del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de la lista. Cada vez que el estado del componente cambie, el método `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado de un componente interno y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
+Esta lista es ahora parte del componente, es decir se encuentra almacenada en el estado local del componente.  Podrías fácilmente agregar artículos, cambiarlos o quitarlos de la lista. Cada vez que el estado del componente cambie, el método `render()` de tu componente se ejecutará de nuevo. Así es como puedes fácilmente cambiar el estado local de un componente y asegurarte de que el componente se vuelva a renderizar y muestre la información correcta proveniente del estado local.
 
-Pero ten cuidado, no cambies el estado directamente. Para modificarlo tienes que usar un método llamado `setState()`, que conocerás en un próximo capítulo.
+Ten cuidado de no mutar el estado directamente. En lugar de eso, debes utilizar un método llamado `setState()`, que conocerás a detalle en el próximo capítulo.
 
 ### Ejercicios:
 
 * experimenta con el estado interno
   * define más estados iniciales dentro del constructor
   * usa y accede al estado dentro de tu método `render()`
-* lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)
+* lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes)
 
 ## Inicializador de Objetos ES6 (ES6 Object Initializer)
 
@@ -158,7 +156,7 @@ const userService = {
 };
 ~~~~~~~~
 
-Y por último, pero no menos importante, en JavaScript ES6 es posible utilizar nombres de propiedad calculados (computed property names).
+Y por último, puedes utilizar nombres de las propiedades calculados en JavaScript ES6:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -174,7 +172,7 @@ const user = {
 };
 ~~~~~~~~
 
-Probablemente los nombres de propiedad calculados suenen como algo extraño para ti en este momento. ¿Por qué los necesitarías? Más adelante responderemos esta interrogante, cuando los utilices para insertar valores dentro de un objeto de manera dinámica.
+Más adelante podrás usar los nombres de las propiedades computados para insertar valores dentro de un objeto de manera dinámica, una forma sencilla de generar tablas de búsqueda en JavaScript.
 
 ### Ejercicios:
 
@@ -183,9 +181,9 @@ Probablemente los nombres de propiedad calculados suenen como algo extraño para
 
 ## Flujo de Datos Unidireccional
 
-Ahora ya hay un estado interno inicializado dentro del componente `App`. Sin embargo aún no manipulas dicho estado interno. Este estado es aún estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
+Ahora ya hay un estado local inicializado dentro del componente `App`. Sin embargo aún no manipulas dicho estado local. Este estado es aún estático y por lo tanto también lo es el componente. Una buena manera de experimentar con la manipulación de estado es generando interacciones entre componentes.
 
-Agreguemos un botón a cada elemento de la lista presentada a continuación. El botón tendrá el nombre "Dismiss" y permitirá remover al elemento de la lista que lo contiene. Este botón eventualmente será útil, por ejemplo, cuando sólo quieras mantener una lista de elementos no leídos y eliminar los que no te interesen.
+Agreguemos un botón a cada elemento de la lista presentada a continuación para practicar este concepto. El botón tendrá el nombre "Dismiss" y permitirá remover al elemento de la lista que lo contiene. En un cliente de correo electrónico, por ejemplo, sería útil marcar de alguna forma varios elementos de la lista como 'leídos' mientras mantienes los no leídos separados.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -222,13 +220,13 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El método de clase `onDismiss()` aún no está definido, lo definiremos en un momento. Por ahora enfócate en el selector `onClick` del elemento `button`.
+El método de clase `onDismiss()` aún no está definido, lo definiremos en un momento. Por ahora centrémonos en el selector `onClick` del elemento `button`.
 
-Como puedes ver, el método `onDismiss()` de la función `onClick` está encerrado dentro de otra función. De esta manera, puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería definiendo la función fuera de `onClick`, e incluir solamente la función definida dentro del selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
+Como puedes ver, el método `onDismiss()` de la función `onClick` está encerrado dentro de otra función flecha. De esta manera, puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería definiendo la función fuera de `onClick`, e incluir solamente la función definida dentro del selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas y el sangrado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e sangrado, manteniendo así todo legible. Esto no es obligatorio, pero si muy recomendable.
+¿Notaste las multilíneas y el sangrado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e sangrado, manteniendo así todo legible. Mientras que esta no es una práctica específica del desarrollo con React, es un estilo de programación recomendado para claridad y tu propia tranquilidad mental.
 
-Ahora, tienes que implementar la función `onDismiss()`. Se necesita un `id` para identificar el elemento que se quiere eliminar. `onDismiss()` está vinculada a la clase `App` y por lo tanto se convierte en un método de clase, por esta razón se debe acceder a él con `this.onDismiss()` y no simplemente `onDismiss()`. El objeto `this` representa la relación de la clase. Ahora, para definir `onDismiss()` como método de clase necesitas enlazarlo con el constructor.
+Ahora, tienes que implementar la función `onDismiss()`. Se necesita un `id` para identificar el elemento que se quiere eliminar. La función está vinculada a la clase `App` y por lo tanto se convierte en un método de clase, por esta razón se debe acceder a él con `this.onDismiss()` y no simplemente `onDismiss()`. El objeto `this` representa la relación de la clase. Ahora, para definir `onDismiss()` como método de clase necesitas enlazarlo con el constructor.
 
 
 {title="src/App.js",lang=javascript}
@@ -253,7 +251,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Para el siguiente paso tienes que definir la funcionalidad lógica de `onDismiss()` dentro de la clase. Los métodos de clase pueden ser definidos como se muestra a continuación.
+Para el siguiente paso definimos su funcionalidad, la lógica, dentro de la clase:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -283,10 +281,19 @@ class App extends Component {
 
 Ahora define lo que sucede dentro del método de clase. Básicamente, quieres eliminar de la lista un artículo identificado por medio de un `id` y actualizar la lista en el estado local del componente. Al final, la lista actualizada será usada dentro del método `render()` y se mostrará en pantalla sin el elemento que recién eliminaste.
 
- Puedes remover un elemento de una lista utilizando el método incorporado de JavaScript `filter()`. Este método crea una lista que contiene todos los elementos de la lista original que pasan la prueba establecida.
- 
-El método `filter()` recibe como parámetro otra función e itera sobre los elementos dentro de una lista dada. Si la evaluación de un ítem resulta en verdadero, el elemento se queda en la lista, de lo contrario dicho elemento se elimina. Al finalizar devuelve una nueva lista con los resultados, sin alterar la lista original. `filter()` es compatible con la convención establecida para React que promueve las estructuras de datos inmutables.
+ Puedes remover un elemento de una lista utilizando el [método incorporado de JavaScript filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter) que crea una lista que contiene todos los elementos de la lista original que pasan la prueba establecida.
 
+{title="Code Playground",lang="javascript"}
+ ~~~~~~~~
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const filteredWords = words.filter(function (word) { return word.length > 6; });
+
+console.log(filteredWords);
+// expected output: Array ["exuberant", "destruction", "present"]
+~~~~~~~~
+ 
+La función devuelve una nueva lista con los resultados, en lugar de alterar la lista original y es compatible con la convención establecida para React que promueve las estructuras de datos inmutables.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -314,7 +321,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Es posible definir la función `isNotId()` de manera más concisa utilizando una función flecha ES6.
+__Recuerda:__ puedes filtrar más eficientemente utilizando una función flecha ES6.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -326,7 +333,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Podrías incluso hacerlo todo en una sola línea, como hiciste con el selector `onClick()` del botón, aunque puede resultar difícil de leer.
+Podrías incluso hacerlo todo en una sola línea, como hiciste con el selector `onClick()` del botón, aunque puede resultar difícil de leer:
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -337,7 +344,7 @@ onDismiss(id) {
 }
 ~~~~~~~~
 
-Ahora es posible eliminar de la lista al elemento clicando. Sin embargo, el estado aún no se actualiza. Para actualizar el estado interno del componente puedes utilizar el método de clase `setState()`.
+La lista ahora remueve el elemento al que se le dio clic, pero el estado aún no se actualiza. Usa el método `setState()` de la clase para actualizar la lista en el estado local del componente.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -357,7 +364,6 @@ Ahora ejecuta nuevamente la aplicación y prueba el botón "Dismiss". Debe funci
 * lee más sobre [el estado y los ciclos de vida en componentes React](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Enlaces (Bindings)
-Dentro del siguiente componente se muestra un método de clase enlazado correctamente en el constructor de clase.
 
 Es importante que conozcas los Enlaces que tienen lugar dentro de las clases JavaScript ES6 al momento de utilizar componentes de clase React ES6. En el capítulo anterior enlazaste el método de clase `onDismiss()` al constructor de la clase `App`.
 
@@ -378,7 +384,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-¿Por qué es necesario hacer esto? Enlazar es necesario, porque los métodos de clase no enlazan `this` de manera automática a la instancia de la clase. Veamos esta idea en acción con la ayuda del siguiente componente de clase ES6.
+Enlazar es necesario, porque los métodos de clase no enlazan `this` de manera automática a la instancia de la clase. Veamos esta idea en acción con la ayuda del siguiente componente de clase ES6.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -402,7 +408,7 @@ class ExplainBindingsComponent extends Component {
 
 El componente se renderiza sin problema, pero cuando presiones el botón, recibirás el mensaje `undefined` en la consola de desarrollador. Esta es una de las principales fuentes de bugs en React, pues, si quieres acceder a `this.state` desde un método de clase, esto no será posible porque `this` es `undefined` por defecto. Para poder acceder a `this` desde tus métodos de clase tienes que enlazar `this`  a los métodos de clase.
 
-En el siguiente componente, dentro del constructor de clase se puede ver que el método de clase `onClickMe` se encuentra correctamente asociado al objeto `this`.
+En el siguiente componente de la clase, el método de la clase asociado apropiadamente en el constructor de la clase:
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -432,9 +438,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Al clicar nuevamente el botón, el objeto `this`, más específicamente la instancia de clase, debería estar definido y podrás acceder a `this.state`.
-
-Enlazar métodos de clase puede hacerse desde cualquier otra parte también. Como por ejemplo, dentro del método de clase `render()`.
+Enlazar métodos de clase puede hacerse desde cualquier otra parte también. Como por ejemplo, dentro del método de clase `render()`:
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -458,9 +462,9 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Pero deberías evitarlo porque el método de clase sería enlazado cada vez que se ejecute `render()`. Básicamente, el enlace se ejecutará cada vez que el componente se actualice, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor debes enlazarlo al principio, solo una vez cuando el componente es instado. Es una mejor manera de hacerlo.
+Evita esta práctica, porque enlaza el método de la clase cada vez que se ejecuta `render()`, esto significa que actualiza el componente, lo que compromete el rendimiento. Al momento de enlazar un método de clase al constructor debes enlazarlo al principio, sólo una vez cuando el componente es instado.
 
-Otra cosa que algunos hacen de vez en cuando es: Definir la lógica de negocios de sus métodos de clase dentro del constructor.
+Algunos desarrolladores definen la lógica de negocios de sus métodos de clase dentro del constructor:
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -488,7 +492,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Debes evitarlo también. Con el tiempo esto desordenará el constructor. El constructor solo está allí para que sea posible instar la clase y todas sus propiedades. Es por eso que la lógica de negocio de los métodos de clase debe ser definida fuera del constructor.
+Debes evitarlo también. Con el tiempo esto desordenará el constructor. El constructor sólo está allí para que sea posible instar la clase y todas sus propiedades. Es por eso que la lógica de negocio de los métodos de clase debe ser definida fuera del constructor.
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -512,7 +516,7 @@ class ExplainBindingsComponent extends Component {
 }
 ~~~~~~~~
 
-Por último, pero no menos importante, vale la pena mencionar que los métodos de clase pueden auto-enlazarse utilizando funciones flecha de ES6.
+Los métodos de clase pueden auto-enlazarse utilizando funciones flecha de ES6:
 
 {title="Code Playground",lang=javascript}
 ~~~~~~~~
@@ -539,6 +543,7 @@ Si realizar enlaces dentro de los constructores repetidas veces  te resulta mole
 ### Ejercicios:
 
 * Prueba los diferentes tipos de enlace mencionados anteriormente y registra en la consola de desarrollador (console.log) el objeto `this`
+* Aprende más sobre [una sintaxis alternativa del componente de React](https://github.com/the-road-to-learn-react/react-alternative-class-component-syntax)
 
 ## Controlador de Eventos (Event Handler)
 
