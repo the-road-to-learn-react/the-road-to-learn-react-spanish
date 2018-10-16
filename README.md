@@ -11,7 +11,7 @@ El repositorio oficial para [El Camino para aprender React](https://www.robinwie
 * Obtener ayuda, mientras aprendes React con el libro o enseñar a otros, en el canal oficial [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
 * Averigua de que manera puedes [Apoyar El Libro](https://www.robinwieruch.de/about/)
 
-## Contribuir
+## Como contribuir
 
 Puedes ayudar a mejorar el libro abriendo Issues y Pull Requests (PR).
 
@@ -21,7 +21,9 @@ Además, puedes abrir Issues cuando tengas problemas. Con el fin de hacer la sol
 
 ---
 
-Gracias por tu ayuda, Robin.
+Desde ya, agradecemos toda la ayuda que puedas brindar. Espero que puedas disfrutar de este libro tanto como yo he disfrutado haciendolo.
+
+[Robin Wieruch](https://twitter.com/rwieruch)
 
 ## Conviertete en *Patron*
 
