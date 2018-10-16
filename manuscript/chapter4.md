@@ -261,7 +261,10 @@ src/
     CancelButton.js
 ```
 
-La carpeta *Buttons/* tiene varios componentes botón definidos en archivos distintos. Cada archivo puede `export default`  el componente específico que lo hace disponible para *Buttons/index.js*. El archivo *Buttons/index.js* importa todas las representaciones de botones diferentes y las exporta como API de módulo público.
+La carpeta *Buttons/* tiene varios botones en forma de componentes definidos en archivos distintos. Cada archivo tiene su propio `export default` para brindar funcionalidad de exportacion al componente y de esta manera, lo hace diponible para *Buttons/index.js*.
+El archivo general *Buttons/index.js* importa todos estos botones y las exporta publicamente.
+
+
 
 ```js
 import SubmitButton from './SubmitButton';
@@ -284,15 +287,14 @@ import {
   CancelButton
 } from '../Buttons';
 ```
-
-Al ir con esta restricción, sería una mala práctica para llegar a otros archivos mas que el *index.js* en el modulo. Rompería las reglas de la encapsulación.
+Seria una muy mala practica llegar a un determinado boton directamente sin pasar por *index.js*. Romperia las reglas de encapsulación.
 
 ```
-// bad practice, don't do it
+// Mala practica, por favor no lo hagas.
 import SubmitButton from '../Buttons/SubmitButton';
 ```
 
-Ahora ya sabes cómo podrías refactorizar tu código fuente en módulos con las restricciones de la encapsulación. Como he dicho, por el bien de mantener el tutorial simple no voy a aplicar estos cambios. Pero tu debes hacer la refactorización al final del libro.
+Ahora ya sabes cómo podrías refactorizar tu código fuente en módulos con las restricciones de la encapsulación. Como he dicho, por el bien de mantener el tutorial simple no voy a aplicar estos cambios. Pero debes hacer la refactorización al final del libro.
 
 ### Ejercicios:
 
@@ -304,9 +306,9 @@ Deberias conocer [TypeScript](https://www.typescriptlang.org/) o [Flow](https://
 
 React viene con un comprobador de tipo incorporado para evitar errores. Puede utilizar PropTypes para describir la interfaz de componentes. Todas las props que se pasan de un componente principal a un componente secundario se validan basándose en la interfaz PropTypes asignada al componente secundario.
 
-El capítulo te mostrará cómo puedes hacer que todos tus componentes sean seguros con PropTypes. Omitiré los cambios para los siguientes capítulos, porque agregan refactorings innecesarios de código. Pero debe mantenerlos y actualizarlos a lo largo del camino para mantener su tipo de interfaz de componentes seguro.
+El capítulo mostrará cómo puedes hacer que todos los componentes sean seguros con PropTypes. Omitiré los cambios para los siguientes capítulos, porque agregan refactorings innecesarios de código. Pero debe mantenerlos y actualizarlos a lo largo del camino para mantener su tipo de interfaz de componentes seguro.
 
-Inicialmente puede importar PropTypes. Tienes que ser cuidadoso de tu versión de React, porque en React versión 15.5 la importación cambió. Revisa tu *package.json* para encontrar tu versión de React.
+Inicialmente puede importar PropTypes. Tienes que ser cuidadoso de tu versión de React, porque en React versión 15.5 la importación cambió. Revisa el *package.json* para encontrar la versión de React.
 
 Si es 15.5 o más, tiene que instalar un paquete independiente.
 
