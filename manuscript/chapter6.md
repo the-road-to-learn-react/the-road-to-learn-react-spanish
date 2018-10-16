@@ -456,7 +456,7 @@ Capítulos anteriores te enseñaron que la gestión de estado puede llegar a ser
 
 En comparación con otras soluciones, React ya ha tomado un paso a la delantera. Un flujo de datos unidireccional y una API simple que sirvan para gestionar estados en los componentes es indispensable. Estos conceptos hacen mas sencillo el lidiar con los estados y los cambios de estado. También facilita lidiar con ellos a nivel de componente y a nivel de aplicación hasta cierto grado.
 
-Es posible que utilizar estados desactualizados pueda generar bugs al momento de utilizar objetos en vez de funciones en `setState()`. Realizamos traspasos de estado para compartirlos u ocultarlos de acuerdo a lo que sea necesario en distintos componentes. Algunas veces, un componente necesita realizar un traspaso de estado porque sus componentes hijos dependen de dicho estado. Quizá el componente está muy alejado del árbol de componentes, así que el estado debe ser accesible a lo largo de todo el árbol de componentes. Componentes están altamente involucrados en la gestión de estado, debido a que la principal responsabilidad de estos consiste en representar a la interfáz de usuario (UI).
+Es posible que utilizar estados desactualizados pueda generar bugs al momento de utilizar objetos en vez de funciones en `setState()`. Realizamos traspasos de estado para compartirlos u ocultarlos de acuerdo a lo que sea necesario en distintos componentes. Algunas veces, un componente necesita realizar un traspaso de estado porque sus componentes hijos dependen de dicho estado. Quizá el componente está muy alejado del árbol de componentes, así que el estado debe ser accesible a lo largo de todo el árbol de componentes. Componentes están altamente involucrados en la gestión de estado, debido a que la principal responsabilidad de estos consiste en representar a la interfaz de usuario (UI).
 
 Es por esto que hay soluciones que se encargan de la gestión de estado. Librerías como [Redux](https://redux.js.org/introduction) ó [MobX](https://mobx.js.org/) son ambas soluciones efectivas para implementar en aplicaciones React. Incluyen extensiones, [react-redux](https://github.com/reactjs/react-redux) y [mobx-react](https://github.com/mobxjs/mobx-react), para integrarlas en la capa de vistas de React. Redux y MobX están fuera del alcance de este libro, pero te animo a que estudies las diferentes maneras que existe para lidiar con la creciente necesidad por una óptima gestión de estado a medida que tus aplicaciones React se vuelven más y más complejas.
 
@@ -471,7 +471,6 @@ Es por esto que hay soluciones que se encargan de la gestión de estado. Librer�
 
 * **React**
   * El traspaso de estado en React puede realizarse de dos maneras en componentes que así lo permitan
-  * Lift state management up and down to suitable components
   * `setState()` puede utilizar una función para prevenir fallas o bugs generados por estados desactualizados
   * Existen distintas soluciones externas que pueden ayudarte a domar el estado en React
 
