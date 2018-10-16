@@ -16,7 +16,7 @@ Por último, pero no menos importante, le ayuda a pensar en encapsulación de c�
 
 Pero seamos prácticos. Como funcionan las declaraciones `import` y `export`? Los ejemplos siguientes muestran las declaraciones compartiendo una o varias variables entre dos archivos. Al final, el enfoque puede escalar a varios archivos y podría compartir más que simples variables.
 
-Puede exportar una o varias variables. Se llama una exportación con nombre.
+Se puede exportar una o mas variables. Se llama una exportación con nombre.
 
 ```js
 const firstname = 'robin';
@@ -25,7 +25,7 @@ const lastname = 'wieruch';
 export { firstname, lastname };
 ```
 
-Y los importa en otro archivo con una ruta de acceso relativa al primer archivo.
+Y se importan en otro archivo con la ruta asociada a ese archivo:
 
 ```js
 import { firstname, lastname } from './file1.js';
@@ -34,7 +34,7 @@ console.log(firstname);
 // output: robin
 ```
 
-También puede importar todas las variables exportadas de otro archivo como un objeto.
+Tambien se pueden importar todas las variables asociadas con otro archivo:
 
 ```js
 import * as person from './file1.js';
@@ -43,7 +43,8 @@ console.log(person.firstname);
 // output: robin
 ```
 
-Las importaciones pueden tener un alias. Puede ocurrir que importe funcionalidades de varios archivos que tengan el mismo nombre de exportación. Es por eso que puedes usar un alias.
+Todo lo que se importa puede tener un alias asociado. Esto es util cuando en distintos archivos se exporta con el mismo nombre. Para solucionar el inconveniente de importacion, se usa una alias:
+
 
 ```js
 import { firstname as foo } from './file1.js';
@@ -52,7 +53,7 @@ console.log(foo);
 // output: robin
 ```
 
-Por último pero no menos importante existe la declaración `default`. Se puede utilizar para algunos casos de uso:
+Por último pero no menos importante, existe la declaración `default`. Se puede utilizar para algunos casos de uso:
 
 * exportar e importar una sola funcionalidad
 * para resaltar la funcionalidad principal de la API exportada de un módulo
@@ -103,7 +104,7 @@ console.log(firstname, lastname);
 // output: robin wieruch
 ```
 
-En las exportaciones nombradas puede ahorrar líneas adicionales y exportar las variables directamente.
+Se puede exportar directamente las variables: 
 
 ```js
 export const firstname = 'robin';
@@ -114,14 +115,14 @@ Estas son las principales funcionalidades de los módulos ES6. Te ayudan a organ
 
 ### Ejercicios:
 
-* leer mas sobre [ES6 import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-* leer mas sobre [ES6 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+* leer mas sobre [ES6 import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import) - En español
+* leer mas sobre [ES6 export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export) - En español
 
 ## Organización de código con módulos ES6
 
-Podrias preguntarte: ¿Por qué no seguimos las mejores prácticas de división de código para el archivo *src/App.js*? En el fichero ya tenemos múltiples componentes que podrían definirse en sus propios ficheros/carpetas(módulos). Por el bien de aprender React, es práctico guardar estas cosas en un lugar. Pero una vez que su aplicación React crece, debes considerar dividir estos componentes en varios módulos. Sólo así escalara tu aplicación.
+Podrias preguntarte: ¿Por qué no seguimos las mejores prácticas de división de código para el archivo *src/App.js*? En el fichero ya tenemos múltiples componentes que podrían definirse en sus propios ficheros/carpetas(módulos). Por el bien de aprender React, es práctico guardar estas cosas en un lugar. Pero una vez que una aplicación React crece, debes considerar dividir estos componentes en varios módulos. Sólo así la aplicacion será escalable.
 
-A continuación te propongo varias estructuras de módulos que  *podrías* aplicar. Yo recomendaría aplicarlos como un ejercicio al final del libro. Para mantener el libro en sí simple, no realizaré la división del código y seguiré los siguientes capítulos con el archivo *src/App.js*
+A continuación propongo varias estructuras de módulos que  *podrías* aplicar. Yo recomendaría aplicarlos como un ejercicio al final del libro. Para mantener el libro en sí simple, no realizaré la división del código y seguiré los siguientes capítulos con el archivo *src/App.js*
 
 Una posible estructura de módulo podría ser:
 
