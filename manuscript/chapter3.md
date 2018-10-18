@@ -3,7 +3,7 @@
 Ahora es el momento de trabajar en serio con una API. Si no estás familiarizado, te recomiendo leer [mi artículo sobre cómo llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
 
 
-Para nuestra primera aproximación al concepto usaremos [Hacker News](https://news.ycombinator.com/)?, un acumulador de noticias sobre tecnología. En este ejercicio utilizaremos la API de Hacker News para obtener las últimas noticias. Hay APIs [básicas](https://github.com/HackerNews/API) y de [búsqueda](https://hn.algolia.com/api) para conseguir datos de la plataforma. En concreto usaremos la de búsqueda para encontrar las noticias.
+Para nuestra primera aproximación al concepto usaremos [Hacker News](https://news.ycombinator.com/), un acumulador de noticias sobre tecnología. En este ejercicio utilizaremos la API de Hacker News para obtener las últimas noticias. Hay APIs [básicas](https://github.com/HackerNews/API) y de [búsqueda](https://hn.algolia.com/api) para conseguir datos de la plataforma. En concreto usaremos la de búsqueda para encontrar las noticias.
 
 Puedes visitar la información de la API en cualquier momento para obtener un mejor conocimiento de la estructura de los datos.
 
