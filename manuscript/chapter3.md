@@ -1,34 +1,30 @@
 # Trabajar con una API real
 
-Ahora es el momento de trabajar en serio con una API. Puede llegar a ser muy aburrido trabajar solamente con datos estáticos.
-
-Si no estás familiarizado con el concepto de API, te recomiendo leer [mi viaje donde llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
+Ahora es el momento de trabajar en serio con una API. Si no estás familiarizado, te recomiendo leer [mi artículo sobre cómo llegué a conocer el mundo de las APIs](https://www.robinwieruch.de/what-is-an-api-javascript/).
 
 
-¿Conoces la plataforma [Hacker News](https://news.ycombinator.com/)? Es un acumulador de noticias sobre tecnología. En este libro utilizaremos la API de Hacker News para obtener las últimas noticias. Es una API [básica](https://github.com/HackerNews/API) de [búsqueda](https://hn.algolia.com/api) donde podremos conseguir noticias, esto ultimo nos concierne para alimentar nuestra aplicación. 
-Puedes visitar la información de la API en cualquier momento y de esa forma, obtener un mejor conocimiento de la estructura de los datos.
+Para nuestra primera aproximación al concepto usaremos [Hacker News](https://news.ycombinator.com/), un acumulador de noticias sobre tecnología. En este ejercicio utilizaremos la API de Hacker News para obtener las últimas noticias. Hay APIs [básicas](https://github.com/HackerNews/API) y de [búsqueda](https://hn.algolia.com/api) para conseguir datos de la plataforma. En concreto usaremos la de búsqueda para encontrar las noticias.
+
+Puedes visitar la información de la API en cualquier momento para obtener un mejor conocimiento de la estructura de los datos.
 
 
 ## Métodos del ciclo de vida
-Vas a necesitar el conocimiento de los métodos del ciclo de vida de una aplicación React antes de poder empezar a buscar datos en una API. Estos métodos son realmente importantes. 
-Pueden utilizarse en componentes de clase ES6, pero no en componentes funcionales sin estado (Stateless Functional Components)
+Quizás recuerdes una breve mención de los métodos del ciclo de vida en el capítulo anterior, relacionado con el ciclo de vida de un componente de React. Pueden utilizarse en componentes de clase ES6, pero no en componentes funcionales sin estado (Stateless Functional Components)
 
-¿Recuerdas cuando un capítulo anterior te enseñe sobre las clases de JavaScript ES6 y cómo se utilizan en React? Aparte del método `render()`, mencioné varios métodos que se pueden sobrescribir en un componente de clase React ES6. Todos estos son los métodos del ciclo de vida. Vamos a sumergirnos en ellos:
+Además del método `render()`, hay muchos otros métodos que pueden ser sobreescritos en un componente de clase React ES6. Todos estos son  métodos del ciclo de vida.
 
-Ya conoces dos métodos de ciclo de vida en un componente de clase ES6: `constructor()` y `render()`.
-
-El constructor sólo es llamado cuando se crea una instancia del componente y se inserta en el DOM. El componente es instanciado. Ese proceso se llama montaje del componente.
-
-El método `render()` también se llama durante el proceso de montaje, pero también cuando el componente actualiza. Cada vez que el estado o las props de un componente cambian, se llama al método `render()`.
+Ya hemos cubierto dos métodos de ciclo de vida que se pueden usar en un componente de clase ES6:
+* El constructor sólo es llamado cuando se crea una instancia del componente y se inserta en el DOM. El componente es instanciado en un proceso llamado montaje.
+* El método `render()` también es llamado durante el proceso de montaje, además de cuando el componente actualiza. Cada vez que el estado o las props de un componente cambian, se llama al método `render()`.
 
 Ahora ya sabes más acerca de estos dos métodos del ciclo de vida y cuándo se llaman. Ya los has utilizado. Pero hay más de ellos.
 
-El montaje de un componente tiene dos métodos de ciclo de vida más: `componentWillMount()` y `componentDidMount()`. El constructor se llama primero, `componentWillMount()` se llama antes del método `render()` y `componentDidMount()` se llama después del método `render()`.
+Hay dos métodos de ciclo de vida más cuando se monta un componente: `getDerivedStateFromProps()` y `componentDidMount()`. El constructor se llama primero, `getDerivedStateFromProps()` se llama antes del método `render()` y `componentDidMount()` se llama después del método `render()`.
 
 En general, el proceso de montaje tiene 4 métodos de ciclo de vida. Se invocan en el siguiente orden:
 
 * constructor()
-* componentWillMount()
+* getDerivedStateFromProps()
 * render()
 * componentDidMount()
 
