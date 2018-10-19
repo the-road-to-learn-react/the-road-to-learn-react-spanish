@@ -4,11 +4,11 @@ Este capítulo es una introducción a React, una librería de JavaScript para re
 
 ## Hola, mi nombre es React.
 
-En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primer generación de frameworks SPA llegaron en un nivel empresarial, por lo tanto eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
+En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podría lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs, apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primera generación de frameworks SPA llegó en un nivel empresarial, por lo que eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
 
-La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista, específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
+La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que con todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras que los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista. Específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
 
-En React, el enfoque permanece en la capa de Vistas hasta que se agreguen más aspectos la aplicación. Estos son bloques de construcción para una SPA, que son esenciales para construir una aplicación madura y tienen dos ventajas:
+En React, el enfoque permanece en la capa de Vistas hasta que se agreguen más aspectos a la aplicación. Estos son bloques de construcción para una SPA, que son esenciales para construir una aplicación madura, y tienen dos ventajas:
 
  *Puedes aprender a usar los bloques de construcción uno a la vez, sin preocuparte por entenderlos totalmente desde el principio. Esto es muy diferente a un Framework que incluye todo el set de bloques de construcción desde que inicias el proyecto. Este libro presenta a React como el primer bloque de construcción. Más bloques de construcción vendrán luego.
 
@@ -32,11 +32,11 @@ Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wi
 
 ### Editor y Terminal
 
-¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
+¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas. Esta guía está pensada para usuarios de Mac. Sin embargo, todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso; podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
 ### Node y npm
 
-Por último necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
+Por último, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
 
 Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de la terminal. Si no obtienes ninguna salida en la terminal, así que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
@@ -48,7 +48,7 @@ npm --version
 *v5.6.0
 ~~~~~~~~
 
-A continuación un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas puedes omitir este capítulo.
+A continuación, un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas puedes omitir este capítulo.
 
 El gestor **npm** permite instalar **paquetes externos** desde la terminal. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o frameworks enteros. Estos representan dependencias de tu aplicación, y puedes instalarlos en tu carpeta global de paquetes Node o bien en la carpeta local de tu proyecto.
 
@@ -88,7 +88,7 @@ npm install --save-dev <paquete>
 
 La etiqueta `--save-dev` indica que el paquete Node es sólo usado en el entorno de desarrollo, esto quiere decir que no será usado en producción cuando cuelgues tu aplicación en un servidor. Esto es útil para realizar pruebas a una aplicación usando un paquete Node, quieres excluirlo de tu entorno de producción.
 
-Algunos de ustedes querrían usar otros gestores para trabajar con los paquetes Node. **Yarn** es un gestor de dependencias que trabaja de forma similar a **npm**. Tiene su propia lista de instrucciones, aún así tienes acceso al mismo registro de npm. Yarn fue creado para resolver problemas que npm no pudo, pero ambas herramientas han evolucionado hasta el punto de que cualquiera de las dos sería suficiente.
+Podrías querer usar otros gestores para trabajar con los paquetes Node. **Yarn** es un gestor de dependencias que trabaja de forma similar a **npm**. Tiene su propia lista de instrucciones, aún así tienes acceso al mismo registro de npm. Yarn fue creado para resolver problemas que npm no pudo, pero ambas herramientas han evolucionado hasta el punto de que cualquiera de las dos sería suficiente.
 
 ### Ejercicios:
 
