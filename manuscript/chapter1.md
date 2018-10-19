@@ -6,7 +6,7 @@ Este capítulo es una introducción a React, una librería de JavaScript para re
 
 En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podía lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primer generación de frameworks SPA llegaron en un nivel empresarial, por lo tanto eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
 
-La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista, específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
+La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras los primeros frameworks trataron de resolver muchos problemas a la vez, React sólo es usado para construir tu capa de vista, específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
 
 En React, el enfoque permanece en la capa de Vistas hasta que se agreguen más aspectos la aplicación. Estos son bloques de construcción para una SPA, que son esenciales para construir una aplicación madura y tienen dos ventajas:
 
@@ -32,7 +32,7 @@ Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wi
 
 ### Editor y Terminal
 
-¿Y acerca del entorno de desarrollo? Necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
+Para las lecciones necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
 ### Node y npm
 
@@ -43,9 +43,9 @@ Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de l
 {title="Command Line",lang="text"}
 ~~~~~~~~
 node --version
-*v8.9.4
+*v10.11.0
 npm --version
-*v5.6.0
+*v6.4.1
 ~~~~~~~~
 
 A continuación un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas puedes omitir este capítulo.
@@ -98,7 +98,7 @@ Algunos de ustedes querrían usar otros gestores para trabajar con los paquetes 
   * ejecuta `npm init -y`
   * instala un paquete local, como React, con `npm install --save react`
   * échale un vistazo al archivo *package.json* y a la carpeta *node_modules/*
-  * descubre como desinstalar el paquete Node *react*
+  * descubre cómo desinstalar el paquete Node *react*
 * lee más sobre [npm](https://docs.npmjs.com/)
 
 ## Instalación
@@ -144,7 +144,7 @@ En la terminal puedes comprobar la versión de *create-react-app* para verificar
 {title="Command Line",lang="text"}
 ~~~~~~~~
 create-react-app --version
-*v1.5.1
+*v2.0.2
 ~~~~~~~~
 
 Ahora, puedes comenzar con el desarrollo de tu primera aplicación React. La llamaremos *hackernews*, puedes escoger un nombre distinto. Iniciar tu aplicación tomará unos pocos segundos. Después de esto, simplemente navega hasta el nuevo directorio con tu terminal:
@@ -180,7 +180,7 @@ hackernews/
 
 A continuación, una pequeña descripción de cada una de las carpetas y archivos que encontrarás dentro del directorio recién creado. Está bien si no entiendes todo al principio.
 
-* **README.md:** La extensión .md indica que el archivo está en formato "markdown". Markdown es un lenguaje de marcado ligero con sintaxis de texto plano. Muchos códigos fuente de proyectos incluyen un archivo *README.md* con instrucciones acerca del proyecto. Cuando estés subiendo tu proyecto a una plataforma cómo GitHub, eventualmente el archivo *README.md* mostrará promisoriamente su contenido cuando alguien acceda al repositorio. Como utilizaste *create-react-app*, tu archivo *README.md* debería ser igual al que se puede observar en el [repositorio GitHub de create-react-app](https://github.com/facebookincubator/create-react-app) oficial.
+* **README.md:** La extensión .md indica que el archivo está en formato "markdown". Markdown es un lenguaje de marcado ligero con sintaxis de texto plano. Muchos códigos fuente de proyectos incluyen un archivo *README.md* con instrucciones acerca del proyecto. Cuando estés subiendo tu proyecto a una plataforma como GitHub, eventualmente el archivo *README.md* mostrará promisoriamente su contenido cuando alguien acceda al repositorio. Como utilizaste *create-react-app*, tu archivo *README.md* debería ser igual al que se puede observar en el [repositorio GitHub de create-react-app](https://github.com/facebookincubator/create-react-app) oficial.
 
 * **node_modules/:** Contiene todos los paquetes Node que han sido instalados vía npm. Como utilizaste *create-react-app* para inicializar tu aplicación, debes de poder ver un par de módulos Node ya instalados. Usualmente nunca tocarás esta carpeta, pues, con npm puedes instalar y desinstalar paquetes Node desde la terminal.
 
@@ -214,7 +214,7 @@ npm test
 npm run build
 ~~~~~~~~
 
-Estos scripts se encuentran definidos en el archivo *package.json*. Tu aplicación React se encuentra ya inicializadoa, y lo mejor está por venir, cuándo ejecutes tu aplicación en el navegador.
+Estos scripts se encuentran definidos en el archivo *package.json*. Tu aplicación React se encuentra ya inicializada, y lo mejor está por venir, cuándo ejecutes tu aplicación en el navegador.
 
 ### Ejercicios:
 
@@ -347,7 +347,7 @@ let helloWorld = 'Bienvenido al Camino para aprender React';
 helloWorld = 'Hasta luego, React';
 ~~~~~~~~
 
-**TIP** Declara variables usando `let` cuando cuando pienses reasignarlas.
+**TIP** Declara variables usando `let` cuando pienses reasignarlas.
 
 Nota que la variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados. Es decir, los valores dentro del objeto o arreglo no son inmutables.
 
@@ -580,7 +580,7 @@ class App extends Component {
 export default App;
 ~~~~~~~~
 
-Puedes ver como el método `map` está indentado dentro del código JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad URL del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
+Puedes ver como el método `map` está sangrado dentro del código JSX. Cada propiedad de elemento se muestra en una etiqueta `<span>`. Además, la propiedad URL del elemento se utiliza en el atributo `href` de la etiqueta de anclaje.
 
 React hará todo el trabajo por ti y mostrará cada elemento. Aunque puedes hacer algo para ayudar a que React alcance su máximo potencial y tenga un mejor rendimiento. Al asignar un atributo clave a cada elemento de lista, React será capaz de identificar cada elemento de la lista, React puede identificar elementos cambiados y eliminados cuando la lista cambie. Esta lista de ejemplo tiene un identificador:
 
@@ -702,7 +702,7 @@ Ahora tu código JSX es más conciso y legible. Al declarar `map` de esta manera
 
 ## Clases ES6 (ES6 Classes)
 
-JavaScript ES6 introdujo el uso clases, que comunmente son utilizadas en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
+JavaScript ES6 introdujo el uso clases, que comúnmente son utilizadas en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
 
  React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las mejores cualidades de ambos paradigmas de programación.
 
@@ -724,7 +724,7 @@ class Developer {
 
 Una clase tiene un constructor que permite instanciarla. Este constructor puede tomar argumentos y asignarlos a la instancia de la clase. Además, una clase puede definir funciones, y dado que la función está asociada a una clase, se le llama método de clase.
 
-En el ejemplo aterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo:
+En el ejemplo anterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -751,11 +751,11 @@ class App extends Component {
 
 La clase `App` se extiende desde otro `Component`. En la programación orientada a objetos se emplea el principio de herencia, que hace posible pasar funcionalidades de una clase a otra clase.
 
-La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más específicos, `App` hereda funcionalidades de la clase Component. Este componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita tener. Y una de estas funcionalidades es un método que ya conoces, el método `render()` del que conocerás más funcionalidades más adelante.
+La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más específicos, `App` hereda funcionalidades de la clase Component. Este componente se utiliza para extender una clase ES6 básica a una clase de componente ES6. Tiene todas las funcionalidades que un componente necesita. Y una de estas funcionalidades es un método que ya conoces, el método `render()` del que conocerás más funcionalidades más adelante.
 
 La clase `Component` encapsula todas las funcionalidades de React que un desarrollador no necesita ver. Permite a los desarrolladores utilizar las clases como componentes en React.
 
-Los métodos encapsulados dentro de la clase `Component` representan la interfaz pública. Uno de estos métodos debe ser sobreescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo próximo. El método `render()` tiene que ser sobreescrito, porque define la salida de React `Component`.
+Los métodos encapsulados dentro de la clase `Component` representan la interfaz pública. Uno de estos métodos debe ser sobrescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo próximo. El método `render()` tiene que ser sobrescrito, porque define la salida de React `Component`.
 
 Ahora que ya conoces los conceptos básicos de las clases JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes, aprenderás más sobre los métodos de Componente cuando el libro describa los Métodos de Ciclo de Vida de React.
 
