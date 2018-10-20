@@ -93,7 +93,7 @@ Ten cuidado de no mutar el estado directamente. En lugar de eso, debes utilizar 
 
 ### Ejercicios:
 
-* experimenta con el estado interno
+* experimenta con el estado local
   * define más estados iniciales dentro del constructor
   * usa y accede al estado dentro de tu método `render()`
 * lee más sobre [el constructor de clase ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Classes)
@@ -224,7 +224,7 @@ El método de clase `onDismiss()` aún no está definido, lo definiremos en un m
 
 Como puedes ver, el método `onDismiss()` de la función `onClick` está encerrado dentro de otra función flecha. De esta manera, puedes ubicarte en la propiedad `objectID` perteneciente al objeto `item`, y así identificar el elemento que será eliminado al presionar el botón correspondiente. Una manera alternativa sería definiendo la función fuera de `onClick`, e incluir solamente la función definida dentro del selector. Más adelante explicaré el tema de los selectores de elementos con más detalle.
 
-¿Notaste las multilíneas y el sangrado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas e sangrado, manteniendo así todo legible. Mientras que esta no es una práctica específica del desarrollo con React, es un estilo de programación recomendado para claridad y tu propia tranquilidad mental.
+¿Notaste las multilíneas y el sangrado en el elemento `button`? Elementos con múltiples atributos en una sola línea pueden ser difíciles de leer. Es por eso que para definir el elemento `button` y sus propiedades utilizo multilíneas y sangrado, manteniendo así todo legible. Mientras que esta no es una práctica específica del desarrollo con React, es un estilo de programación recomendado para claridad y tu propia tranquilidad mental.
 
 Ahora, tienes que implementar la función `onDismiss()`. Se necesita un `id` para identificar el elemento que se quiere eliminar. La función está vinculada a la clase `App` y por lo tanto se convierte en un método de clase, por esta razón se debe acceder a él con `this.onDismiss()` y no simplemente `onDismiss()`. El objeto `this` representa la relación de la clase. Ahora, para definir `onDismiss()` como método de clase necesitas enlazarlo con el constructor.
 
@@ -579,7 +579,7 @@ Esto ya representa un caso de uso complejo porque tienes que pasar un valor al m
 ...
 ~~~~~~~~
 
-Al usar `onClick={doSomething()}`, la función `doSomething()` se ejecutaría de inmediato al momento de abrir la aplicación en el navegador. La expresión pasada al controlador es evaluada. Y como el valor retornado por la función no es una función, nada pasaría al presionar el botón. Pero, al utilizar `onClick={doSomething}` donde `doSomething` es una función, ésta sería ejecutada al momento de presionar el botón. Y la misma regla aplica para el método de clase `onDismiss()` que es usado en tu aplicación.
+Al usar `onClick={doSomething()}`, la función `doSomething()` se ejecutaría de inmediato al momento de abrir la aplicación en el navegador. La expresión pasada al controlador es evaluada. Y como el valor retornado por la función no es una función, nada pasaría al presionar el botón. Pero al utilizar `onClick={doSomething}`, donde `doSomething` es una función, ésta sería ejecutada al momento de presionar el botón. Y la misma regla aplica para el método de clase `onDismiss()` que es usado en tu aplicación.
 
 Sin embargo, utilizar `onclick={this.onDismiss}` no sería suficiente, porque de alguna manera la propiedad `item.objectID` debe ser pasada al método de clase para identificar el elemento que va a ser eliminado. Por eso puede ser colocado como parámetro dentro de otra función y acceder a la propiedad. A este concepto se le conoce cómo función de orden superior en JavaScript y será explicado más adelante.
 
@@ -597,7 +597,7 @@ Sin embargo, utilizar `onclick={this.onDismiss}` no sería suficiente, porque de
 ...
 ~~~~~~~~
 
-Una alternativa sería definir la función envolvente fuera en otro lugar y sólo pasar la función ya definida al controlador. Como necesita acceso al elemento indivitual, tiene que habitar dentro del bloque de la función map.
+Una alternativa sería definir la función envolvente fuera en otro lugar y sólo pasar la función ya definida al controlador. Como necesita acceso al elemento individual, tiene que habitar dentro del bloque de la función map.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -673,7 +673,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Este método arrancará al abrir la aplicación en el navegador, pero no cuando presiones el botón. Mientras que la siguiente pieza de código solo correrá cuando presiones el botón. Es decir, la función será ejecutada cuando acciones el controlador.
+Este método arrancará al abrir la aplicación en el navegador, pero no cuando presiones el botón. Mientras que la siguiente pieza de código sólo correrá cuando presiones el botón. Es decir, la función será ejecutada cuando acciones el controlador.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -693,7 +693,7 @@ Este método arrancará al abrir la aplicación en el navegador, pero no cuando 
 ...
 ~~~~~~~~
 
-__Recuerda:__ Puedes funciones a una función flecha JavaScript ES6. Similar a lo que hicimos con el método de clase `ondismiss()`.
+__Recuerda:__ Puedes transformar funciones a una función flecha JavaScript ES6. Similar a lo que hicimos con el método de clase `ondismiss()`.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -898,7 +898,7 @@ El valor de entrada es almacenado dentro del estado de componente interno cada v
 
 Podemos asumir que al actualizar `searchTerm` con `this.setState()`, la lista debe ser pasada también con el fin de preservarla. Sin embargo, `this.setState()` de React es una unión superficial, por lo que preserva las propiedades de su hermano dentro del estado del objeto al momento de actualizar una propiedad específica en él. El estado de la lista, aunque ya ha descartado un elemento de la misma, se mantiene igual al actualizar la propiedad `searchTerm`.
 
-De vuelta a la aplicación, la lista aún no está filtrada con base en la información del campo de entrada que se almacena en el estado local del componente. Básicamente, se busca filtrar la lista de manera temporal en base al elemento `searchTerm` y tenemos lo necesario para lograrlo. Dentro del método `render()`, antes de *mapear* la lista, le aplicaremos un filtro. Este filtro sólo evaluaría si `searchTerm` coincide con el título de propiedad del elemento. Ya utilizaste anteriormente el método `filter` de JavaScript, aquí lo utilizarás nuevamente. Es posible agregar en primer lugar la función `filter` antes que `map`, porque `filter` retorna un nuevo array, por lo que la función `map` resulta ser muy conveniente en esta ocasión.
+De vuelta a la aplicación, la lista aún no está filtrada con base en la información del campo de entrada que se almacena en el estado local del componente. Básicamente, se busca filtrar la lista de manera temporal en base al elemento `searchTerm` y tenemos lo necesario para lograrlo. Dentro del método `render()`, antes de mapear la lista, le aplicaremos un filtro. Este filtro sólo evaluaría si `searchTerm` coincide con el título de propiedad del elemento. Ya utilizaste anteriormente el método `filter` de JavaScript, aquí lo utilizarás nuevamente. Es posible agregar en primer lugar la función `filter` antes que `map`, porque `filter` retorna un nuevo array, por lo que la función `map` resulta ser muy conveniente en esta ocasión.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -926,7 +926,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Ahora analizemos la función `filter` desde otro punto de vista. Queremos definir el argumento de `filter` (la función que es pasada como parámetro a `filter`) fuera de nuestro componente de clase ES6. Desde allí no se tiene acceso al estado del componente y por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar `searchTerm` a la función de filtro y esta tiene que devolver una nueva función para evaluar la condición. A esta nueva función se le conoce como función de orden superior (higher-order function).
+Ahora analicemos la función `filter` desde otro punto de vista. Queremos definir el argumento de `filter` (la función que es pasada como parámetro a `filter`) fuera de nuestro componente de clase ES6. Desde allí no se tiene acceso al estado del componente y por lo tanto no tenemos acceso a la propiedad `searchTerm` para evaluar la condición del filtro. Tenemos que pasar `searchTerm` a la función de filtro y esta tiene que devolver una nueva función para evaluar la condición. A esta nueva función se le conoce como función de orden superior (higher-order function).
 
 Normalmente no mencionaría las funciones de orden superior, pero en un libro que habla acerca de React, esto es importante. Es necesario conocer sobre las funciones de orden superior porque React trata con un concepto llamado componentes de orden superior. Este concepto se explora más adelante en el libro. Por ahora, volvamos a enfocarnos en la función `filter` y su funcionalidad.
 
@@ -970,9 +970,9 @@ class App extends Component {
 }
 ~~~~~~~~
 
-La condición establece que el patrón entrante de `searchTerm` coincide con el título de la propiedad perteneciente al elemento de la lista. Esto se puede lograr con la funcionalidad `includes` de JavaScript. Sólo cuando el patrón coincide, se retorna verdadero y el ítem permanece dentro de la lista. Cuando el patrón no coincide el ítem es removido de la lista. Pero ten cuidado cuando los patrones coinciden. No debes olvidar convertir a minúsculas ambas cadenas de texto. De otro modo habrán inconsistencias entre un término de busqueda 'redux' y un ítem con el título 'Redux'. Ya que estamos trabajando con una lista inmutable que retorna una nueva lista al usar la función `filter()`, la lista original almacenada en el estado local no es modificada en lo absoluto.
+La condición establece que el patrón entrante de `searchTerm` coincide con el título de la propiedad perteneciente al elemento de la lista. Esto se puede lograr con la funcionalidad `includes` de JavaScript. Sólo cuando el patrón coincide, se retorna verdadero y el ítem permanece dentro de la lista. Cuando el patrón no coincide el ítem es removido de la lista. Pero ten cuidado cuando los patrones coinciden. No debes olvidar convertir a minúsculas ambas cadenas de texto. De otro modo habrán inconsistencias entre un término de búsqueda 'redux' y un ítem con el título 'Redux'. Ya que estamos trabajando con una lista inmutable que retorna una nueva lista al usar la función `filter()`, la lista original almacenada en el estado local no es modificada en lo absoluto.
 
-Resta algo por mencionar: Hicimos un poco de trampa utilizando la funcionalidad `includes `de JavaScript. Es una característica propia de ES6. Para JavaScript ES5 podrías utilizar la funcion `indexOf()` para obtener el índice del elemento en la lista, cuando el elemento se encuentre en la lista `indexOf()` retornará su índice en el arreglo.
+Resta algo por mencionar: Hicimos un poco de trampa utilizando características de JavaScript ES6 que no está en ES5. Para JavaScript ES5 podrías utilizar la función `indexOf()` para obtener el índice del elemento en la lista, cuando el elemento se encuentre en la lista `indexOf()` retornará su índice en el arreglo.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -1001,7 +1001,7 @@ const isSearched = searchTerm => item =>
 
 El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que puedes utilizar una función que devuelve otra función (funciones de orden superior) para pasar información. En ES6 estas se pueden expresar de forma más concisa utilizando funciones flecha de ES6.
 
-Por último, pero no menos importante, tienes que utilizar la funcion definida `isSearched()` para filtrar tu lista. `isSearched` recibe como parámetro la propiedad `searchTerm` directamente del estado local, retorna la entrada de la función `filter()` y filtra la lista de acuerdo a la condición del filtro. Después *mapea* la lista filtrada para mostrar en pantalla un elemento correpondiente a cada ítem.
+Por último, pero no menos importante, tienes que utilizar la función definida `isSearched()` para filtrar tu lista. `isSearched` recibe como parámetro la propiedad `searchTerm` directamente del estado local, retorna la entrada de la función `filter()` y filtra la lista de acuerdo a la condición del filtro. Después mapea la lista filtrada para mostrar en pantalla un elemento correspondiente a cada ítem.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1086,7 +1086,7 @@ console.log(userOne, userTwo, userThree);
 // output: Robin Andrew Dan
 ~~~~~~~~
 
-Quizá notaste que el estado en el componente `App` puede destructurarse de la misma manera. Se puede acortar el filtro y la línea map del código.
+Quizá notaste que el estado en el componente `App` puede desestructurarse de la misma manera. Se puede acortar el filtro y la línea map del código.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -1122,11 +1122,11 @@ En el libro se utiliza JavaScript ES6 la mayor parte del tiempo, debes apegarte 
 
 ### Ejercicios:
 
-* lee más sobre [destrucuración ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Destructuring_assignment)
+* lee más sobre [desestructuración ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Destructuring_assignment)
 
 ## Componentes Controlados
 
-Anteriormente aprendiste sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado local con el `searchTerm` para filtrar la lsta. Al momento en que el estado cambia, el método `render()` se ejecuta nuevamente y utiliza nuevamente `searchTerm` almacenado en el estado local para aplicar la condición de filtrado.
+Anteriormente aprendiste sobre el flujo de datos unidireccional en React. La misma ley se aplica al campo de entrada, que actualiza el estado local con el `searchTerm` para filtrar la lista. Al momento en que el estado cambia, el método `render()` se ejecuta nuevamente y utiliza nuevamente `searchTerm` almacenado en el estado local para aplicar la condición de filtrado.
 
 ¿Pero no nos olvidamos de algo en el campo de entrada? Una etiqueta de entrada (input) HTML incluye un atributo `value`. El atributo `value` normalmente almacena el valor suministrado en el campo de entrada. En este caso sería la propiedad `searchTerm`. Elementos de formulario como `<input>`, `<textarea>` y `<select>` mantienen su propio estado en HTML simple. Modifican el valor internamente una vez que alguien lo cambia desde el exterior. En React se les llama **componentes no controlados**, porque manejan su propio estado. En React, debe asegurarse de que estos elementos sean **componentes controlados**.
 
@@ -1160,7 +1160,7 @@ class App extends Component {
 
 El ciclo de flujo de datos unidireccional para el campo de entrada es autónomo ahora. El estado interno del componente es la única fuente de información para el campo de entrada.
 
-Toda la gestión del estado local y el flujo de datos unidireccional podría ser nuevo para ti. Pero una vez que te acostumbres a él, será la forma natural de implementar elementos en React. En general, React ofrece un nuevo patrón con el flujo de datos unidireccional al mundo de las aplicaciones de una sola página. Este patrón es adoptado por varios frameworks y librerias.
+Toda la gestión del estado local y el flujo de datos unidireccional podría ser nuevo para ti. Pero una vez que te acostumbres a él, será la forma natural de implementar elementos en React. En general, React ofrece un nuevo patrón con el flujo de datos unidireccional al mundo de las aplicaciones de una sola página. Este patrón es adoptado por varios frameworks y librerías.
 
 ### Ejercicios:
 
@@ -1169,7 +1169,7 @@ Toda la gestión del estado local y el flujo de datos unidireccional podría ser
 
 ## Dividir Componentes
 
-Ahora tienes un componente de App grande que Sigue creciendo y eventualmente será demasiado complejo para administrar efectivamente. Necesitamos dividirlo en partes más pequeñas, más manejables mediante la creación de componentes separados para la entrada de búsqueda y la lista de elementos.
+Ahora tienes un componente de App grande que sigue creciendo y eventualmente será demasiado complejo para administrar efectivamente. Necesitamos dividirlo en partes más pequeñas, más manejables mediante la creación de componentes separados para la entrada de búsqueda y la lista de elementos.
 
 ~~~~~~~~
 class App extends Component {
@@ -1273,15 +1273,15 @@ class Table extends Component {
 }
 ~~~~~~~~
 
-Ahora tienes tres componentes de clase ES6. Nota que el objeto `props` es accesible a través de la instancia de la clase usando `this`. Las props - abrevitura para las propiedades - tienen todos los valores que han pasado a los componentes cuando los utiliza en su componente App. Podrías reutilizar estos componentes en otro lugar, pero pasarles diferentes valores. Son reutilizables.
+Ahora tienes tres componentes de clase ES6. Nota que el objeto `props` es accesible a través de la instancia de la clase usando `this`. Las props - abreviatura para las propiedades - tienen todos los valores que han pasado a los componentes cuando los utiliza en su componente App. Podrías reutilizar estos componentes en otro lugar, pero pasarles diferentes valores. Son reutilizables.
 
 ### Ejercicios:
 
-* averiguar qué componentes podrías dividir como los elementos Search y Table, pero espera a que cubramos más de estos conceptos antes de implementarlos.
+* averigua qué componentes podrías dividir como los elementos Search y Table, pero espera a que cubramos más de estos conceptos antes de implementarlos.
 
 ## Componentes Ensamblables
 
-La propiedad `hijo`es usada para pasar elementos a sus componentes desde arriba, que son desconocidos para el componente mismo, pero hacen posible ensamblar componentes entre sí. Veamos cómo se ve esto cuando solo pasa un texto (string) como hijo al componente Search.
+La propiedad `hijo`es usada para pasar elementos a sus componentes desde arriba, que son desconocidos para el componente mismo, pero hacen posible ensamblar componentes entre sí. Veamos cómo se ve esto cuando sólo pasa un texto (string) como hijo al componente Search.
 
 ~~~~~~~~
 class App extends Component {
@@ -1332,11 +1332,11 @@ Ahora el texto "Search" debe estar visible al lado de su campo de entrada. Cuand
 
 ### Ejercicios:
 
-* leer más sobre [the composition model of React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
+* leer más sobre [el modelo de composición de React](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
 
 ## Componentes Reutilizables
 
-Los componentes reutilizables y compuestos(composable) te dan poder para crear jerarquías de componentes capaces. Son la base de su capa de vista. Los últimos capítulos mencionan a menudo el término reutilización. Puedes volver a utilizar los componentes Table y Search. Incluso el componente `App` es reutilizable, pues puede ser instado desde cualquier otra parte también.
+Los componentes compuestos(composable) te dan poder para crear jerarquías de componentes capaces. Son la base de su capa de vista. Los últimos capítulos mencionan a menudo el término reutilización. Puedes volver a utilizar los componentes Table y Search. Incluso el componente `App` es reutilizable, pues puede ser instado desde cualquier otra parte también.
 
 Vamos a definir un componente más reutilizable - un componente Button - que eventualmente se reutiliza más a menudo.
 
@@ -1409,25 +1409,25 @@ class Button extends Component {
 }
 ~~~~~~~~
 
-Ahora, cuando no haya ninguna propiedad `className` cuando se use el componente Button, el valor será una cadena vacíaen lugar de `undefined`.
+Ahora, cuando no haya ninguna propiedad `className` cuando se use el componente Button, el valor será una cadena vacía en lugar de `undefined`.
 
 ### Ejercicios:
 
-* leer más sobre [ES6 default parameters](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/Parametros_por_defecto)
+* leer más sobre [parámetros por defecto de ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Funciones/Parametros_por_defecto)
 
 ## Declaraciones de componentes
 
 Por ahora tienes cuatro componentes de clase ES6. Pero puedes hacerlo mejor. Permíteme introducir componentes funcionales sin estado como alternativa para componentes de clase ES6. Antes de refactorizar sus componentes, vamos a introducir los diferentes tipos de componentes.
 
-* **Componentes funcionales sin esatdo** Estos componentes son funciones que reciben una entrada y devuelven una salida. La entrada es el objeto props. La salida es una instancia de componente, por lo tanto JSX simple. Hasta ahora es bastante similar a un componente de clase ES6. Sin embargo, los componentes funcionales sin estados son funciones (funcional) y no tinene un estado interno (stateless). No puedes acceder o actualizar el estado con `this.state` o `this.setState()` porque no hay un objeto `this`. Además, no tienen métodos de ciclo de vida excepto por el método `render` que será aplicado implícitamente en los componentes sin estados funcionales. Todavía no has aprendido los métodos del ciclo de vida, pero ya usaste dos: `constructor()` y `render()`. El constructor se ejecuta sólo una vez en la vida de un componente, mientras el método `render()` de la clase se ejecuta una vez al principio y siempre que el componente se actualiza. Mantén este hecho en mente sobre los componentes funcionales sin estado, cuando llegues al capítulo de métodos de ciclo de vida más adelante.
+* **Componentes funcionales sin estado** Estos componentes son funciones que reciben una entrada y devuelven una salida. La entrada es el objeto props. La salida es una instancia de componente, por lo tanto JSX simple. Hasta ahora es bastante similar a un componente de clase ES6. Sin embargo, los componentes funcionales sin estados son funciones (funcional) y no tiene un estado interno (stateless). No puedes acceder o actualizar el estado con `this.state` o `this.setState()` porque no hay un objeto `this`. Además, no tienen métodos de ciclo de vida excepto por el método `render` que será aplicado implícitamente en los componentes sin estados funcionales. Todavía no has aprendido los métodos del ciclo de vida, pero ya usaste dos: `constructor()` y `render()`. El constructor se ejecuta sólo una vez en la vida de un componente, mientras el método `render()` de la clase se ejecuta una vez al principio y siempre que el componente se actualiza. Mantén este hecho en mente sobre los componentes funcionales sin estado, cuando llegues al capítulo de métodos de ciclo de vida más adelante.
 
 * **Componentes de clase ES6** extiende del componente React. El `extend` engancha todos los métodos del ciclo de vida, disponibles en la API del componente React, al componente. Así es como pudimos utilizar el método de la clase `render()`. También puedes almacenar y manipular el estado en componentes clases de ES6 usando `this.state` y `this.setState()`.
 
 * **React.createClass** Esta declaración de componente se utilizó en versiones anteriores de React y aún se utiliza en aplicaciones de JavaScript ES5 React. Pero [Facebook  lo declaró obsoleto](https://facebook.github.io/react/blog/2015/03/10/react-v0.13.html) en favor de ES6. Incluso añadieron un [Advertencia de depreciación en la versión 15.5](https://facebook.github.io/react/blog/2017/04/07/react-v15.5.0.html). No lo usarás en el libro.
 
-Al momento de decidir cuándo utilizar componentes funcionales sin estados en lugar de componentes clase de, ES6 una regla general es usar componentes funcionales sin estado cuando no se necesitan métodos de ciclo de vida de componentes o estados locales. Por lo general, comienzas a implementar tus componentes como componentes funcionales sin estado. Una vez que necesite acceder a los métodos de estado o de ciclo de vida, debe refactorizarlo a un componente de clase ES6. Anteriormente iniciamos al en sentido opuesto en tu aplicación con el propósito de aprender.
+Al momento de decidir cuándo utilizar componentes funcionales sin estados en lugar de componentes clase de ES6, una regla general es usar componentes funcionales sin estado cuando no se necesitan métodos de ciclo de vida de componentes o estados locales. Por lo general, comienzas a implementar tus componentes como componentes funcionales sin estado. Una vez que necesite acceder a los métodos de estado o de ciclo de vida, debe refactorizarlo a un componente de clase ES6. Anteriormente iniciamos al en sentido opuesto en tu aplicación con el propósito de aprender.
 
-Volvamos a tu aplicación. El componente App utiliza el estado local. Es por eso que tiene que permanecer como un componente de clase ES6. Pero los otros tres componentes de su clase ES6 son sin estado, pues no necesitan acceder a `this.state` o `this.setState()` y no tienen métodos de ciclo de vida. Vamos a refactorizar juntos el componente de búsqueda a un componente funcional sin estado. La refactorización del componente Tabla y botón seran tu ejercicio.
+Volvamos a tu aplicación. El componente App utiliza el estado local. Es por eso que tiene que permanecer como un componente de clase ES6. Pero los otros tres componentes de su clase ES6 son sin estado, pues no necesitan acceder a `this.state` o `this.setState()` y no tienen métodos de ciclo de vida. Vamos a refactorizar juntos el componente de búsqueda a un componente funcional sin estado. La refactorización del componente Tabla y botón serán tu ejercicio.
 
 ~~~~~~~~
 function Search(props) {
@@ -1460,7 +1460,7 @@ function Search({ value, onChange, children }) {
 }
 ~~~~~~~~
 
-Recuerda que las funciones de flecha ES6 te permiten mantener tus funciones concisas. Puedes quitar el cuerpo del bloque de la función. En un cuerpo conciso un retorno implícito se adjunta así que usted puede quitar la declaración `return`. Dado que su componente funcional sin estado es una función, puedes mantenerla concisa también.
+Recuerda que las funciones de flecha ES6 te permiten mantener tus funciones concisas. Puedes quitar el cuerpo del bloque de la función. En un cuerpo conciso un retorno implícito se adjunta así que puedes quitar la declaración `return`. Dado que su componente funcional sin estado es una función, puedes mantenerla concisa también.
 
 ~~~~~~~~
 const Search = ({ value, onChange, children }) =>
@@ -1473,7 +1473,7 @@ const Search = ({ value, onChange, children }) =>
   </form>
 ~~~~~~~~
 
-El último paso es especialmente útil para hacer cumplir sólo tener props como entrada y un elemento como salida. Nada en el medio. Sin embargo, podrías *hacer algo* usando un cuerpo del bloque en su función de la flecha ES6.
+El último paso es especialmente útil para forzar props como entrada y un elemento JSX como salida. Sin embargo, podrías *hacer algo* usando un cuerpo del bloque en su función de la flecha ES6:
 
 ~~~~~~~~
 const Search = ({ value, onChange, children }) => {
@@ -1492,9 +1492,7 @@ const Search = ({ value, onChange, children }) => {
 }
 ~~~~~~~~
 
-Pero no lo necesitas por ahora. Es por eso que puede mantener la versión anterior sin el cuerpo del bloque.
-
-Ahora tienes un componente funcional ligero sin estado. Una vez que necesites tener acceso a su estado de componente interno o métodos de ciclo de vida, lo refactorizarías a un componente de clase ES6. Además, viste cómo se puede usar JavaScript ES6 en los componentes React para hacerlos más elegantes.
+Ahora tienes un componente funcional ligero sin estado. Una vez que necesites tener acceso a su estado de componente interno o métodos de ciclo de vida, lo refactorizarías a un componente de clase ES6. Al usar cuerpos de bloque, los programadores tienden a hacer sus funciones más complejas, pero dejar el cuerpo del bloque te permite enfocarte en la entrada y la salida. JavaScript ES6 en los componentes React los hace más elegantes y fáciles de leer.
 
 ### Ejercicios:
 
@@ -1677,7 +1675,7 @@ const Table = ({ list, pattern, onDismiss }) =>
   </div>
 ~~~~~~~~
 
-Ahora has estilizado tu aplicación y componentes con CSS básico. Debes lucir decente. Como sabes, JSX mezcla HTML y JavaScript. Nadie podría discutir para agregar CSS en la mezcla también. Eso se llama estilo en línea. Puede definir objetos JavaScript y pasarlos al atributo de estilo de un elemento.
+Ahora has estilizado tu aplicación y componentes con CSS básico. Como sabes, JSX mezcla HTML y JavaScript. Nadie podría discutir para agregar CSS en la mezcla también. Eso se llama estilo en línea. Puede definir objetos JavaScript y pasarlos al atributo de estilo de un elemento.
 
 Mantengamos flexibles la anchura de columna de la tabla mediante el uso del estilo en línea.
 
@@ -1739,7 +1737,7 @@ No quiero ser dogmático aquí, pero quiero dejarte más opciones. Puedes leer s
 
 Pero si eres nuevo en React, te recomiendo que te adhieras a CSS puro y el estilo en línea por ahora.
 
-¡Has aprendido los fundamentos de React que te permitirán escribir tus propias aplicaciónes! Repasemos los últimos capítulos:
+¡Has aprendido los fundamentos de React que te permitirán escribir tus propias aplicaciones! Repasemos los últimos capítulos:
 
 * React
   * Usar `this.state` y `setState()` para administrar el estado del componente interno
