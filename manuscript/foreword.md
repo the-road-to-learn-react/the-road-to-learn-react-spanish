@@ -1,32 +1,48 @@
 # Prefacio
 
-Me encanta enseñar, aunque no soy un experto. Aprendo todos los días y tengo la fortuna de tener grandes mentores. Después de todo, no todos tienen la oportunidad de aprender de mentores y compañeros. Este libro es mi intento de devolver algo. Podría ayudar a las personas a comenzar y avanzar en React.
+The Road to learn React te enseñará los fundamentos de React. Construirás una aplicación con funcionalidades reales utilizando solo React, sin ninguna otra complicada herramienta. Todo, desde la configuración de tu proyecto hasta como subirlo a un servidor está explicado. El libro incluye material adicional y ejercicos en cada capítulo. Despuezs de leer el libro, estarás en capacidad de construir tus propias aplicaciones en React. El material es constantemente actualizado por mi y la comunidad.
 
-**¿Pero por qué yo?** En el pasado, he escrito un gran tutorial para implementar un cliente de [SoundCloud en React + Redux](https://www.robinwieruch.de/the-soundcloud-client-in-react-redux). Nunca esperé una reacción tan abrumadora. Aprendí mucho durante el proceso de escritura. Pero aún más al obtener sus comentarios. Fue mi primer intento de enseñar programación a la gente.
+En the Road to learn React, primero obtienes los fundamentos básicos antes de sumergirte dentro del extenso ecosistema React. Los conceptos serán explicando pocas herramientas, poca gestión de estados y mucha información sobre React. Se explican conceptos generales, patrones y ejercicios practicos dentro del contexto de una aplicación real.
 
-También me enseñó a hacerlo mejor. Me di cuenta de que el tutorial de SoundCloud es adecuado para desarrolladores avanzados. Utiliza varias herramientas para arrancar tu aplicación e involucra Redux rápidamente. Todavía ayudó a mucha gente a comenzar. En mi opinión, es un excelente tutorial para obtener un concepto más grande de React + Redux. Uso cada minuto libre para mejorar el material, pero consume mucho tiempo.
+Esencialmente, aprenderás a construir tu aplicación React desde los cimientos, con características como paginación, almacenamiento en el lado del cliente (client-side caching), e interacciones de busqueda y clasificación. Harás la transición de JavaScript ES5 a JavaScript ES6. Espero que este libro capture mi entusiasmo por React y JavaScript y te ayude a iniciarte en estas tecnologías.
 
-En el camino para aprender React, quiero ofrecer una base sólida antes de que comiences a sumergirte en un ecosistema de React más amplio. Tiene menos herramientas y menos administración externa de estado, pero mucha información sobre React. Explica conceptos generales, patrones y mejores prácticas.
+# Acerca del Autor
 
-Aprenderás a construir tu propia aplicación de Hacker News. Cubre características del mundo real como paginación, almacenamiento en caché del lado del cliente e interacciones como búsqueda y ordenamiento. Además, harás la transición de JavaScript ES5 a JavaScript ES6 en el camino. En conclusión, el libro debería proporcionarte una base sólida en React antes de sumergirse en temas más avanzados como Redux. Espero que este libro capture mi entusiasmo por React y JavaScript y te ayude a comenzar.
+Soy un ingeniero de software Alemán dedicado al aprendizaje y la enseñanza de programación en JavaScript. Después de obtener mi Master en ciencias de la computación, seguí mi aprendizaje por cuenta propia. Obtuve experiencia del mundo de las startups, donde utilize JavaScript intensivamente durante mi vida profesional y mi tiempo recreacional, eventualmente esto se transformo en pasión por transmitir a otros mis conocimientos sobre estos temas.
+
+Por algunos años, trabajé de cerca con un excepcional equipo de ingenieros en una compañía llamada Small Improvements, desarrollando aplicaciones a larga escala. La compañía ofrecía un producto SaaS que permite a los usuarios proveer opiniones directamente a los negocios. Esta aplicación se desarrolló utilizando JavaScript en el frontend y Java como backend. La primera iteración del frontend de Small Improments se escribio en Java con el framework Wicket y jQuery. Cuándo la primera generación de SPAs se hizo popular, la compañía migró el frontend de la aplicación a Angular 1.x. Luego de utilizar Angular por aproximadamente dos años, se hizo claro que este framework no era la mejor solución para trabajara con aplicaciones que hacen uso intenso de los estados, así que fue necesario migrar de Angualar a React y Redux. Esto permitío que la aplicación operara de manera exitosa a larga escala.
+
+Durante mi tiempo en la compañía, escribí articulos de manera regular sobre desarrollo web para mi sitio. Recibí gran feedback de personas que estaban aprendiendo directamente de mis artículos, lo que me permitió mejorar mi escritura y mi estilo de enseñanza. Con cada artículo nuevo, mi confianza para enseñar a otros fue creciendo. Sentía que mis primeros artículos contenían demasiada información, abrumador para muchos estudiantes, pero lo mejoré al enfocarme en solo un tema a la vez.
+
+Actualmente, soy un ingeniero de software independiente y educador. Me parece gratificante ver como los estudiantes crecen cuando se les da objetivos claros y retroalimentación concisa. Puedes leer más acerca de mi y apoyar mi trabajo en mi [sitio web](https://www.robinwieruch.de/about).
 
 # Testimonios
 
-* **[Muhammad Kashif](https://twitter.com/appsdevpk):** *"The Road to Learn React es un libro único que recomiendo a cualquier estudiante o profesional interesado en aprender desde conceptos básicos de React hasta un nivel avanzado. Está lleno de consejos y técnicas interesantes que son difíciles de encontrar en otros lugares, y notablemente completo en su uso de ejemplos y referencias a problemas de muestra, tengo 17 años de experiencia en el desarrollo de aplicaciones web y de escritorio, y antes de leer este libro tuve problemas para aprender React, pero este libro funciona como magia."*
+Hay muchos [testimonios](https://roadtoreact.com/), [calificaciones](https://www.goodreads.com/book/show/37503118-the-road-to-learn-react) y [opiniones](https://www.amazon.com/dp/B077HJFCQX) sobre el libro que puedes leeren línea. Estoy orgulloso de el y nunca esperé tan arroyador feedback. Me encantaría leer tu clasificación/opinión. Me ayuda a decirle al mundo acerca del libro y estar listo para futuros projectos. A continuación algunas opiniones:
 
-* **[Nicholas Hunt-Walker, Instructor de Python en una Escuela de Programación de Seattle:](https://github.com/nhuntwalker):** *"Este es uno de los libros de programación mejor informados y bien escritos que utilizado. Una introducción sólida a React y ES6."*
+**[Muhammad Kashif](https://twitter.com/appsdevpk):** "The Road to Learn React es un libro único que recomiendo a cualquier estudiante o profesional interesado en aprender desde conceptos básicos de React hasta un nivel avanzado. Está lleno de consejos y técnicas interesantes que son difíciles de encontrar en otros lugares, y notablemente completo en su uso de ejemplos y referencias a problemas de muestra, tengo 17 años de experiencia en el desarrollo de aplicaciones web y de escritorio, y antes de leer este libro tuve problemas para aprender React, pero este libro funciona como magia."
 
-* **Un desarrollador novato:** *"Acabo de terminar el libro como desarrollador novato, gracias por trabajar en esto. Fue fácil de seguir y me siento confiado al iniciar una nueva aplicación desde cero en los próximos días. El libro fue mucho mejor que el tutorial oficial de React.js que probé antes (y no pude completar debido a la falta de detalles). Los ejercicios al final de cada sección fueron muy gratificantes "*
+**[Andre Vargas](https://twitter.com/andrevar66/status/853789166987038720):** "The Road to Learn React por Robin Wieruch es un gran libro. Todo lo que se acerca de React lo aprendí de el."
 
-* **Estudiante:** *"El mejor libro para comenzar a aprender ReactJS. El proyecto se construye junto con los conceptos que se aprenden, lo que ayuda a comprender el tema. He encontrado 'Codificar y aprender' como la mejor manera de dominar la programación y este libro hace exactamente eso."*
+**[Nicholas Hunt-Walker, Instructor de Python en una Escuela de Programación de Seattle:](https://github.com/nhuntwalker):** "Este es uno de los libros de programación mejor informados y bien escritos que utilizado. Una introducción sólida a React y ES6."
 
-* **[Thomas Lockney](https://www.goodreads.com/review/show/1880673388):** *"Una introducción bastante sólida a React que no trata de ser exhaustiva. Sólo quería entender los fundamentos y este libro me dio exactamente eso. No seguí todas las pequeñas notas al pie para aprender sobre el nuevas características de ES6 que me he perdido ("No diría que me lo he estado perdiendo, Bob"). Pero estoy seguro de que aquellos de ustedes que se han retrasado y son diligentes en seguirlas, probablemente puedan aprender mucho más que lo que enseña el libro."*
+
+**[Austin Green](https://twitter.com/AustinGreen/status/845321540627521536):** 
+"Gracias, realmente disfruté el libro. Perfecta mezcla para aprender React, ES6 y conceptos de programación de alto nivel."
+
+**[Nicole Ferguson](https://twitter.com/nicoleffe/status/833488391148822528):** "I'm doing Robin's Road to Learn React course this weekend & I almost feel guilty for having so much fun."
+
+**[Karan](https://twitter.com/kvss1992/status/889197346344493056):** "Just finished your Road to React. Best book for a beginner in the world of React and JS. Elegant exposure to ES. Kudos! :)"
+
+**[Eric Priou](https://twitter.com/erixtekila/status/840875459730657283):** "The Road to learn React by Robin Wieruch is a must read. Clean and concise for React and JavaScript."
+
+{pagebreak}
 
 # Educación para niños
 
-Este libro es de código abierto y debería permitir a todos aprender React. Sin embargo, no todo el mundo tiene el privilegio de usar recursos de código abierto, principalmente porque no todos son educados en el idioma inglés. A pesar de que el libro es 'paga lo que usted quiera', quiero usarlo para apoyar proyectos en paises en desarrollo que enseñen inglés a niños.
+Este libro es de código abierto y debería permitir a todos aprender React. Sin embargo, no todo el mundo tiene el privilegio de acceder a los recursos requeridos, principalmente porque no todos saben Inglés. Quiero utilizar este proyecto como soporte para otros proyectos que ayuden a enseñar Inglés a niños que viven en Países en desarrollo.
 
-* 11 de Abril a 18 de Abril, 2017, [Devolviendo, Aprendiendo React](https://www.robinwieruch.de/giving-back-by-learning-react/)
+Del 11 de Abril al 18 de Abril, 2017, [Devolviendo, Aprendiendo React](https://www.robinwieruch.de/giving-back-by-learning-react/)
 
 # Preguntas frecuentes
 
@@ -54,7 +70,9 @@ Este libro es de código abierto y debería permitir a todos aprender React. Sin
 
 **¿Hay un llamado a la acción?** Sí. Quiero que te tomes un momento para pensar en una persona que le gustaría aprender React. La persona podría haber mostrado interés ya, podría estar en medio de aprender React o puede que todavía no esté consciente de querer aprender a React. Ponte en contacto con esa persona y compartele el libro. Significaría mucho para mí. El libro está destinado a ser compartido con otros.
 
-# Registro de cambios
+{pagebreak}
+
+# Registro de Cambios
 
 **10. Enero 2017:**
 
@@ -84,37 +102,65 @@ Este libro es de código abierto y debería permitir a todos aprender React. Sin
 * Actualización a npm 5.0.4
 * Actualización a create-react-app 1.3.3
 
-# ¿Cómo leerlo?
+**17. October 2017:**
 
-El libro es mi intento de enseñar React mientras escribes una aplicación. Es una guía práctica para aprender React y no un trabajo de referencia sobre React. Escribirás una aplicación parecida a Hacker News que interactúa con una API del mundo real. Entre varios temas interesantes, cubre la administración de estado en React, almacenamiento en caché e interacciones (clasificación y búsqueda). En el camino aprenderá mejores prácticas y patrones en React.
+* Actualización a node 8.3.0
+* Actualización a npm 5.5.1
+* Actualización a create-react-app 1.4.1
+* Actualización a React 16
+* [v4 Pull Request](https://github.com/rwieruch/the-road-to-learn-react/pull/72)
+* 15% más de contenido
+* 15% de contenido mejorado
+* 3 capítulos nuevos (Bindings, Event Handlers, Error Handling)
+* 190+ páginas de material de aprendizaje
+* [+9 códigos fuente de projectos](https://roadtoreact.com)
 
-Además, el libro ofrece una transición de JavaScript ES5 a JavaScript ES6. React abarca muchas funciones de JavaScript ES6 y quiero mostrarte cómo puedes usarlas.
+**17. February 2018:**
 
-En general, cada capítulo del libro continuará con el trabajo realizado en el capítulo anterior. Cada capítulo te enseñará algo nuevo. No te apresures a terminar el libro. Debes interiorizar cada paso. Puedes aplicar tus propias implementaciones y leer más sobre el tema. Después de cada capítulo te doy un poco de material de lectura y ejercicios. Si realmente quieres aprender React, te recomiendo leer el material adicional y hacer algunos ejercicios prácticos. Después de leer un capítulo, trata de sentirte cómodo con lo aprendido antes de continuar.
+* Actualización a node 8.9.4
+* Actualización a npm 5.6.0
+* Actualización a create-react-app 1.5.1
+* [v5 Pull Request](https://github.com/the-road-to-learn-react/the-road-to-learn-react/pull/105)
+* Más caminos de aprendizaje
+* Material de aprendizaje extra
+* 1 capítulo nuevo (Axios instead of Fetch)
 
-Al final tendrás una aplicación completa en produccion realizada con React. Estoy muy interesado en ver sus resultados, así que envíeme un mensaje cuando hayas terminado el libro. El último capítulo del libro te dará algunas opciones para continuar tu viaje con React. En general, encontrarás muchos temas relacionados con React en [mi sitio web personal](https://www.robinwieruch.de/).
+**31. August 2018:**
 
-Ya que estás leyendo el libro, supongo que eres nuevo en React. Eso es perfecto. Al final, espero recibir sus comentarios para mejorar el material para que todos puedan aprender React. Puedes contribuir en [GitHub](https://github.com/rwieruch/the-road-to-learn-react) o enviarme un mensaje de texto en [Twitter](https://twitter.com/rwieruch).
+* Revisión y edición profesional a la versión en Inglés, por Emmanuel Stalling
+* [16 códigos fuente de proyectos](https://roadtoreact.com)
+* [v6 Pull Request](https://github.com/the-road-to-learn-react/the-road-to-learn-react/pull/172)
 
-# Lo que puedes esperar (hasta ahora ...)
+**3. October 2018:**
 
-* [Aplicación estilo Hacker News en React](https://intense-refuge-78753.herokuapp.com/)
-* Sin configuraciones complicadas
-* create-react-app para arrancar tu aplicación
-* Código ligero y eficiente
-* Usamos solo la función de React: setState para administrar el estado (hasta ahora ...)
-* Transición de JavaScript ES5 a ES6 mientras aprendes
-* API de React con setState y los métodos del ciclo de vida
-* Interacción con una API del mundo real (Hacker News)
-* Interacciones avanzadas de usuario
-    * Clasificación del lado del cliente
-    * Filtrado del lado del cliente
-    * Búsqueda del lado del servidor
-* Implementación de caché del lado del cliente
-* Funciones de orden superior y componentes de orden superior
-* Componentes de prueba de instantáneas con Jest
-* Componentes de prueba unitaria con Enzyme
-* Uso de librerias útiles.
-* Ejercicios y más lecturas
-* Internalizar y reforzar los aprendizajes
-* Desplegar aplicación en producción
+* Actualización a node 10.11.0
+* Actualización a npm 6.4.1
+* Actualización a create-react-app 2.0.2
+
+{pagebreak}
+
+# Reto
+
+Escribo bastante sobre las cosas que aprendo. Así es como llegué a donde estoy ahora. La mejor manera de enseñar un tema es justo después de que lo has aprendido. Enseñar me ha ayudado mucho en mi carrera y quiero que tu experimentes los mismos efectos. Pero primero tienes que enseñarte a ti mismo. Mi reto para ti es el siguiente: Enseñale a otras personas sobre lo que aprendas mientras lees el libro. Algunas ideas acerca de cómo puedes lograr esto:
+
+* Escribe un artículo acerca de un tema específico encontrado en el libro. No se trata de copiar y pegar el material, en vez, intenta enseñar el tema con tus propias palabras. Toma un problema específico y resuelvelo, profundiza más en el tema tratando de entender cada detalle. Entonces, enseñalo a otros por medio de tu artículo. Verás como llenas tus brechas de conocimiento, porque al crear tu propia opinión te esfuerzas en profundizar en el tema y así, se abren las puertas de tu carrera a largo plazo.
+
+* Si eres activo en redes sociales, toma un par de puntos que hayas aprendido mientras leías el libro y compártela con tus amigos. Por ejemplo, puedes tomar una captura de pantalla del libro y twitearlo, o mejor aún: Escribe acerca del tema con tus propias palabras, de esta manera puedes enseñar sin necesidad de invertir demasiado tiempo en ello.
+
+* Si te sientes confiado grabando tu aventura de aprendizaje, comparte tus aprendizajes a través de Facebook Live, Youtube Live o Twitch. Te ayuda a mantenerte concentrado y completar los objetivos a lo largo del libro. Aunque no hayan muchas personas siguiendo tu transmisión, siempre puedes usar el video para cargarlo a YouTube. Además, es una gran forma de verbalizar tus problemas y la manera en que los solventas.
+
+Me encantaría ver a las personas realizando especialmente el último putno: Grabarse a si mismos al momento de leer el libro, implementando las aplicaciones y resolviendo los ejercicios para luego poner la versión final en YouTube. Si algo está tomando más de la cuenta, puedes editar el video o utilizar un efecto para avanzar en cámara rápida. Si encuentras una dificultad que no puedas superar, no lo dejes fuera del video, esto es muy valioso para tu audiencia, que probablemente encontrará dificultades similares a las tuyas. Un par de tips para el video:
+
+* Hazlo en tu idioma nativo o en Inglés si te sientes cómodo con ello.
+
+* Verbaliza tus ideas, lo que estas haciendo o los problemas que intentas resolver. Tener un video visual es solo una parte del reto, la otra parte es narrar lo que haces mientras implementas el código. No tiene que ser perfecto. Por el contrario, debe sentirse natural, no como en otros videocursos donde nadie puede ver los problemas que se presentan de improvisto.
+
+Si consigues algunos bugs o problemas, no te sientas mal por ello. Intenta arreglarlo por tu cuenta y busca ayuda en línea, no te rindas y habla acerca del problema y ofrece explicaciones de las posibles soluciones mientras las implementas. Esto ayuda a otros a seguirte durante el proceso. Como dije antes, no tiene sentido seguir videos perfectos donde el instructor nunca resuelve problemas que surgen de improvisto.
+
+Algunas observaciones sobre el aspecto técnico de la grabación: Revisa la configuración de audio antes de grabar un video de larga duración. Debe tener el volúmen correcto y la calidad debe ser aceptable. Con respecto al editor/IDE/terminal, asegurate de incrementar el tamaño de la fuente. Quizá sea posible posicionar el navegador web y el código lado a lado, de no ser posible, coloca ambas aplicaciones en pantalla completa y cambia entre una y otra (CMD + Tab en MacOS).
+
+* Edita el video antes de subirlo a YouTube. No tiene que ser de alta calidad, pero trata de mantenerlo conciso para tu audiencia (por ejemplo: Omite las lecturas y sumariza los pasos con tus propias palabras).
+
+Cuándo estes listo, puedes contactarme para ayudarte a promocionar cualquier material que publiques. Por ejemplo, si el video resulta bien, me encantaría incluirlo en este libro como material suplementario oficial. Solo debes contactarme una vez te sientas listo. Espero que aceptes este reto para optimizar tu experiencia de aprendizaje y ayudar a otros. Mis mejores deseos.
+
+{pagebreak}
