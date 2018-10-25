@@ -279,7 +279,7 @@ Acabas de realizar una refactorización crucial al mover la funcionalidad y el e
 
 El traspaso de estado puede realizarse de otra manera también: De componente hijo a componente padre. Esto se conoce como traspaso inverso de estado (`lifting state up`). Imagina que estas trabajando con el estado local dentro de un componente hijo y quieres que el estado sea visible dentro del componente padre también. Sería necesario que traspases el estado al componente padre. Es decir, realizar un traspaso de estado invertido de estado. En este caso, el componente padre lidia con el estado local y permite que este sea accesible para todos sus componentes hijo.
 
-### Exercises:
+### Ejercicios:
 
 * Lee acerca de [traspaso de estado en React](https://reactjs.org/docs/lifting-state-up.html)
 * Lee acerca de el traspaso de estado en el artículo [learn React before using Redux](https://www.robinwieruch.de/learn-react-before-using-redux/)
