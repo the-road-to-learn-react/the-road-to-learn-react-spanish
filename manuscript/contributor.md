@@ -9,11 +9,12 @@ Instagram: [@canovaEmanuel](https://www.instagram.com/canovaemanuel/?hl=es-la "@
 
 Web: [www.emanuelcanova.com](http://emanuelcanova.com/ "www.emanuelcanova.com")
 
-
-Estudiante de Ingenieria en Sistemas de la Informacion.
-Desarrollador de UI/UX con React y BackEnd con .NET en C#
-Tambien fotografo por pasion y con aspiraciones de crecer cada dia un poco mas. 
+Estudiante de Ingeniería en Sistemas de la Información. 
+Argentino
+Desarrollador de UI/UX con React y BackEnd con .NET en C# 
+También fotografo por pasión y con aspiraciones de crecer cada día un poco mas. 
 Nunca pares de aprender
+
 
 
 
