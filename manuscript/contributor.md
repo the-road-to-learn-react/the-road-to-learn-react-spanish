@@ -9,15 +9,10 @@ Instagram: [@canovaEmanuel](https://www.instagram.com/canovaemanuel/?hl=es-la "@
 
 Web: [www.emanuelcanova.com](http://emanuelcanova.com/ "www.emanuelcanova.com")
 
-Estudiante de Ingeniería en Sistemas de la Información. 
+Tengo 27 años, soy Argentino. Me dedico a desarrollar interfaces UI/UX con React y el Backend con .NET en C#. 
 
-Argentino
-
-Desarrollador de UI/UX con React y BackEnd con .NET en C# 
-
-También fotografo por pasión y con aspiraciones de crecer cada día un poco mas. 
-
-Nunca pares de aprender
+Soy Fotografo por pasión e intento mejorar como desarrollador, como fotografo y como persona cada día un poco más. 
+Mi consejo es que Nunca Pares de Aprender.
 
 
 
