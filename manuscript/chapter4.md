@@ -43,7 +43,7 @@ console.log(person.firstname);
 // output: robin
 ```
 
-Todo lo que se importa puede tener un alias asociado. Esto es util cuando en distintos archivos se exporta con el mismo nombre. Para solucionar el inconveniente de importacion, se usa una alias:
+Todo lo que se importa puede tener un alias asociado. Esto es útil cuando en distintos archivos se exporta con el mismo nombre. Para solucionar el inconveniente de importación, se usa una alias:
 
 
 ```js
@@ -120,7 +120,7 @@ Estas son las principales funcionalidades de los módulos ES6. Te ayudan a organ
 
 ## Organización de código con módulos ES6
 
-Podrias preguntarte: ¿Por qué no seguimos las mejores prácticas de división de código para el archivo *src/App.js*? En el fichero ya tenemos múltiples componentes que podrían definirse en sus propios ficheros/carpetas(módulos). Por el bien de aprender React, es práctico guardar estas cosas en un lugar. Pero una vez que una aplicación React crece, debes considerar dividir estos componentes en varios módulos. Sólo así la aplicacion será escalable.
+Podrías preguntarte: ¿Por qué no seguimos las mejores prácticas de división de código para el archivo *src/App.js*? En el fichero ya tenemos múltiples componentes que podrían definirse en sus propios ficheros/carpetas(módulos). Por el bien de aprender React, es práctico guardar estas cosas en un lugar. Pero una vez que una aplicación React crece, debes considerar dividir estos componentes en varios módulos. Sólo así la aplicación será escalable.
 
 A continuación propongo varias estructuras de módulos que  *podrías* aplicar. Yo recomendaría aplicarlos como un ejercicio al final del libro. Para mantener el libro en sí simple, no realizaré la división del código y seguiré los siguientes capítulos con el archivo *src/App.js*
 
@@ -227,7 +227,7 @@ import {
 ...
 ```
 
-Cuando utilices la convencion de nombrado de *index.js*,  puedes omitir el nombre de archivo de la ruta relativa.
+Cuando utilices la convención de nombrado de *index.js*,  puedes omitir el nombre de archivo de la ruta relativa.
 
 ```
 import {
@@ -261,7 +261,7 @@ src/
     CancelButton.js
 ```
 
-La carpeta *Buttons/* tiene varios botones en forma de componentes definidos en archivos distintos. Cada archivo tiene su propio `export default` para brindar funcionalidad de exportacion al componente y de esta manera, lo hace diponible para *Buttons/index.js*.
+La carpeta *Buttons/* tiene varios botones en forma de componentes definidos en archivos distintos. Cada archivo tiene su propio `export default` para brindar funcionalidad de exportación al componente y de esta manera, lo hace disponible para *Buttons/index.js*.
 El archivo general *Buttons/index.js* importa todos estos botones y las exporta publicamente.
 
 
@@ -287,7 +287,7 @@ import {
   CancelButton
 } from '../Buttons';
 ```
-Seria una muy mala practica llegar a un determinado boton directamente sin pasar por *index.js*. Romperia las reglas de encapsulación.
+Seria una muy mala practica llegar a un determinado botón directamente sin pasar por *index.js*. Rompería las reglas de encapsulación.
 
 ```
 // Mala practica, por favor no lo hagas.
@@ -302,7 +302,7 @@ Ahora ya sabes cómo podrías refactorizar tu código fuente en módulos con las
 
 ## Interfaz de componentes con PropTypes
 
-Deberias conocer [TypeScript](https://www.typescriptlang.org/) o [Flow](https://flowtype.org/) para introducir una interfaz de tipo a JavaScript. Un lenguaje tipado es menos propenso a errores. Los editores y otras utilidades pueden detectar estos errores antes de que se ejecute el programa. Esto hace que su programa sea más robusto.
+Deberías conocer [TypeScript](https://www.typescriptlang.org/) o [Flow](https://flowtype.org/) para introducir una interfaz de tipo a JavaScript. Un lenguaje tipado es menos propenso a errores. Los editores y otras utilidades pueden detectar estos errores antes de que se ejecute el programa. Esto hace que su programa sea más robusto.
 
 React viene con un comprobador de tipo incorporado para evitar errores. Puede utilizar PropTypes para describir la interfaz de componentes. Todas las props que se pasan de un componente principal a un componente secundario se validan basándose en la interfaz PropTypes asignada al componente secundario.
 
@@ -409,7 +409,7 @@ Table.propTypes = {
 
 Solo el `objectID` es requerido, porque tu sabes que parte de su código depende de ello. Las otras propiedades sólo se muestran, por lo que no son necesarias. Además, no puedes estar seguro de que la API de Hacker News siempre tenga una propiedad definida para cada objeto del array.
 
-Eso es para PropTypes. Pero hay un aspecto más. Puede definir props predeterminadas en tu componente. Vamos a tomar de nuevo el componente Button. Las propiedas `className` tienen un parámetro predeterminado de ES6 en la firma de componente.
+Eso es para PropTypes. Pero hay un aspecto más. Puede definir props predeterminadas en tu componente. Vamos a tomar de nuevo el componente Button. Las propiedades `className` tienen un parámetro predeterminado de ES6 en la firma de componente.
 
 ```
 const Button = ({ onClick, className = '', children }) =>
@@ -437,11 +437,11 @@ Igual que el parámetro predeterminado de ES6, el valor predeterminado garantiza
 
 ### Ejercicios:
 
-* respondete las siguientes preguntas
+* respóndete las siguientes preguntas
 * ¿el componente App tiene una interfaz PropType?
 * definir la interfaz PropType para el componente Search
 * agregue y actualice las interfaces PropType cuando agregue y actualice componentes en los próximos capítulos
-* eer más sobre [React PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
+* leer más sobre [React PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
 
 ## Pruebas instantáneas con Jest
 
@@ -611,7 +611,7 @@ Las pruebas instantáneas generalmente se mantienen bastante básicas. Sólo des
 
 * vea cómo fallan las pruebas de instantánea una vez que cambia la implementación de su componente
   * aceptar o denegar el cambio de instantánea
-* manten tus pruebas de instantáneas actualizadas cuando la implementación cambie en los próximos capítulos
+* mantén tus pruebas de instantáneas actualizadas cuando la implementación cambie en los próximos capítulos
 * leer mas sobre [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
 
 ## Pruebas unitarias con Enzyme
@@ -658,7 +658,7 @@ describe('Table', () => {
 
 Shallow renderiza el componentes sin componentes secundarios. Puedes hacer la prueba muy dedicada a un componente.
 
-Enzyme tiene tres mecanismos de renderización en su API. Ya conoes `shallow()`, pero también existen `mount()` y `render()`. Ambos instancian instancias del componente principal y todos los componentes secundarios. Adicionalmente `mount()` te da más acceso a los métodos de ciclo de vida de los componentes. Pero, ¿cuándo utilizar qué mecanismo de renderización? Aquí algunas reglas básicas:
+Enzyme tiene tres mecanismos de renderización en su API. Ya conoces `shallow()`, pero también existen `mount()` y `render()`. Ambos instancian instancias del componente principal y todos los componentes secundarios. Adicionalmente `mount()` te da más acceso a los métodos de ciclo de vida de los componentes. Pero, ¿cuándo utilizar qué mecanismo de renderización? Aquí algunas reglas básicas:
 
 * Comience siempre con una prueba superficial `shallow()`
 * Si `componentDidMount()` o `componentDidUpdate()` deben ser testeados, usa `mount()`

@@ -6,11 +6,11 @@ En el camino a hacer deploy de tu aplicación aprenderás más acerca de *create
 
 ## Eject
 
-El siguiente paso y conocimiento **no es necesario** para hacer deploy de tu aplicación aa producción. Sin embargo, te lo quiero explicar. *create-react-app* viene con una característica para prevenir la dependencia a un proveedor. Dependencia a un proveedor generalmente ocurre cuando has invertido en una tecnologí pero no hay forma de escapar de ella. En una dependencia a proveedor es difícil cambiar la tecnología. En *create-react-app* tienes el escape con "eject".
+El siguiente paso y conocimiento **no es necesario** para hacer deploy de tu aplicación aa producción. Sin embargo, te lo quiero explicar. *create-react-app* viene con una característica para prevenir la dependencia a un proveedor. Dependencia a un proveedor generalmente ocurre cuando has invertido en una tecnología pero no hay forma de escapar de ella. En una dependencia a proveedor es difícil cambiar la tecnología. En *create-react-app* tienes el escape con "eject".
 
 En tu *package.json* encontrarás los scripts para *start*, *test* y *build* tu aplicación.
 El último script es *eject*.
-Lo puedes utilozar, pero no hay forma de volver.
+Lo puedes utilizar, pero no hay forma de volver.
 **Es una operación en una sola dirección. Una vez que haces eject, ¡no hay vuelta atrás!**
 Si acabas de comenzar a aprender React, no tiene sentido dejar el entorno conveniente de *create-react-app*.
 

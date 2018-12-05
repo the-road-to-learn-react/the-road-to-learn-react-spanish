@@ -9,9 +9,9 @@ Instagram: [@canovaEmanuel](https://www.instagram.com/canovaemanuel/?hl=es-la "@
 
 Web: [www.emanuelcanova.com](http://emanuelcanova.com/ "www.emanuelcanova.com")
 
-Argentino con pasion por desarrollar y poder contribuir a proyectos, este proyecto ha sido un hermoso camino junto a mis compañeros. Soy desarrollador BackEnd con .Net C# y de UI y UX con React + Redux. Colaborar en un proyecto es la mejor manera de contribuir al mundo de manera positiva.
+Argentino con pasión por desarrollar y poder contribuir a proyectos, este proyecto ha sido un hermoso camino junto a mis compañeros. Soy desarrollador BackEnd con .Net C# y de UI y UX con React + Redux. Colaborar en un proyecto es la mejor manera de contribuir al mundo de manera positiva.
 
-Tambien soy fotografo por pasión e intento mejorar mis habilidades tanto como desarrollador y como fotografo, pero lo mas importante es mejorar como persona cada día un poco más.
+Tambien soy fotógrafo por pasión e intento mejorar mis habilidades tanto como desarrollador y como fotógrafo, pero lo mas importante es mejorar como persona cada día un poco más.
 
 Mi consejo es: "Nunca Pares de Aprender".
 
@@ -24,6 +24,14 @@ Web: [juanluischaurant.github.io](https://juanluischaurant.github.io/)
 Apasionado por el desarrollo de software y el trabajo en equipo, participar en este proyecto me permitió conocer excelentes personas sin las cuáles el resultado final no sería el mismo. Soy estudiante de Ingeniería Informática, enfocado en el desarrollo de sistemas información.
 
 También soy guitarrista y esto ha influenciado directamente mi forma de entender el mundo. Estar hoy aquí, en buena parte se debe a todos los años invertidos practicando para ser mejor músico y mejor persona.
+
+### Guillermo Salazar
+
+Twitter: [@fenomemoide](https://twitter.com/fenomemoide)
+
+Apasionado por la tecnología. Curioso por el desarrollo web, seguridad informática y productividad. 
+
+Espero esta pequeña contribución sea de ayuda para muchos. Agradezco a Robin, Juan, Emanuel y demás involucrados por hacer posible esta publicación.
 
 {pagebreak}
 
