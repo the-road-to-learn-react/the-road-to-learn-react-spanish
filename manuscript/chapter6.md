@@ -302,7 +302,7 @@ this.setState((prevState, props) => {
 });
 ~~~~~~~~
 
-Hay un caso crucial donde tiene sentido utilizar una función en vez de un objeto: Cuando actualizas el estado dependiendo del estado previo o de las propiedades. Si no utilizas una función, la gestión local de estado puede generar fallas o bugs. El método `setState()` de React es asincrono. React recopila todas las llamadas `setState()` y las ejecuta eventualmente. Algunas veces, el estado anterior cambia antes de la llamada al método `setStare()`.
+Hay un caso crucial donde tiene sentido utilizar una función en vez de un objeto: Cuando actualizas el estado dependiendo del estado previo o de las propiedades. Si no utilizas una función, la gestión local de estado puede generar fallas o bugs. El método `setState()` de React es asíncrono. React recopila todas las llamadas `setState()` y las ejecuta eventualmente. Algunas veces, el estado anterior cambia antes de la llamada al método `setStare()`.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -311,9 +311,9 @@ const { anotherCount } = this.props;
 this.setState({ count: oneCount + anotherCount });
 ~~~~~~~~
 
-Imagina que `oneCount` y `anotherCount` cambian de manera asincrona en alguna otra parte del código al momento en que llamas a `setState()`. En una aplicación en constante crecimiento, habrán varias llamadas a `setState()` a lo largo de dicha aplicación. Gracias a que `setState()` se ejectuta de forma asincrona, para este caso podrías utilizar valores antiguos.
+Imagina que `oneCount` y `anotherCount` cambian de manera asíncrona en alguna otra parte del código al momento en que llamas a `setState()`. En una aplicación en constante crecimiento, habrán varias llamadas a `setState()` a lo largo de dicha aplicación. Gracias a que `setState()` se ejecuta de forma asíncrona, para este caso podrías utilizar valores antiguos.
 
-Con el enfoque en funciones, la función en  `setState()` es un callback que opera en el estado y propiedades al tiempo en que se ejecuta la función callback. Incluso cuándo `setState()` es asincrono, con una función se toman el estado y las propiedades al mismo tiempo en que `setState()` se ejecuta.
+Con el enfoque en funciones, la función en  `setState()` es un callback que opera en el estado y propiedades al tiempo en que se ejecuta la función callback. Incluso cuándo `setState()` es asíncrono, con una función se toman el estado y las propiedades al mismo tiempo en que `setState()` se ejecuta.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
@@ -351,7 +351,7 @@ setSearchTopStories(result) {
 }
 ~~~~~~~~
 
-Aquí se extraen los valores del estado, pero el estado se actualizó de forma asincrona en base al estado anterior. Ahora, usaremos el enfoque funcional para prevenir bugs originados por estados antigos:
+Aquí se extraen los valores del estado, pero el estado se actualizó de forma asíncrona en base al estado anterior. Ahora, usaremos el enfoque funcional para prevenir bugs originados por estados antiguos:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -366,7 +366,7 @@ setSearchTopStories(result) {
 }
 ~~~~~~~~
 
-Hace un momento implementamos un bloque que ahora puedes mover dentro de la función redireccionandolo para que opere en `prevState` en vez de `this.state`.
+Hace un momento implementamos un bloque que ahora puedes mover dentro de la función redireccionándolo para que opere en `prevState` en vez de `this.state`.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -440,14 +440,14 @@ class App extends Component {
 }
 ~~~~~~~~
 
-El enfoque en funciones y no en objetos previene posibles fallas o bugs dentro de `setState()`, a la vez que la legibilidad y la mantenibilidad del código también se ven mejoradas. Además, se pueden realizar pruebas fuera del componente `App`. Recomiento el exportar y realizar pruebas como una buena practica.
+El enfoque en funciones y no en objetos previene posibles fallas o bugs dentro de `setState()`, a la vez que la legibilidad y la mantenibilidad del código también se ven mejoradas. Además, se pueden realizar pruebas fuera del componente `App`. Recomiendo el exportar y realizar pruebas como una buena practica.
 
 ### Ejercicios:
 
 * Lee sobre [como utilizar de manera correcta el estado en React](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly)
-* Exporta updateSearchTopStoriesState deste el archivo
+* Exporta updateSearchTopStoriesState desde el archivo
   * Escribe una prueba que pase `hits`, `page` y un estado previo para que finalmente se espere un estado nuevo. 
-* Refactoriza tus métodos `setState()` para que utilizen una función, si consideras que es necesario porque utiliza propiedades o estados
+* Refactoriza tus métodos `setState()` para que utilicen una función, si consideras que es necesario porque utiliza propiedades o estados
 * Ejecuta de nuevo tus pruebas y verifica que todo esté actualizado
 
 ## Domando el Estado

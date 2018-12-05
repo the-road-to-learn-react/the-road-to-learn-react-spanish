@@ -10,6 +10,7 @@ El conocimiento que se presenta a continuación, **no es necesario** para llevar
 En tu *package.json* encontrarás los scripts para *start*, *test* y *build* tu aplicación.
 El último script es *eject*.
 Lo puedes utilizar, *pero no hay forma de volver. **Es una operación en una sola dirección. Una vez que haces eject, ¡no hay vuelta atrás!**
+
 Si acabas de comenzar a aprender React, no tiene sentido dejar el entorno conveniente de *create-react-app*.
 
 Si te sientes lo suficientemente seguro como para ejecutar `npm run eject`, el comando copiará toda la configuración y dependencias a tu *package.json* y en un nuevo directorio *config/*. Aplicarás a todo el proyecto una configuración personalizada con herramientas que incluyen Babel, Webpack, y ESLint. Después de todo, tendrás control sobre todas estas herramientas.

@@ -11,7 +11,7 @@ Puedes visitar la información de la API en cualquier momento para obtener un me
 ## Métodos del ciclo de vida
 Quizás recuerdes una breve mención de los métodos del ciclo de vida en el capítulo anterior, relacionado con el ciclo de vida de un componente de React. Pueden utilizarse en componentes de clase ES6, pero no en componentes funcionales sin estado (Stateless Functional Components)
 
-Además del método `render()`, hay muchos otros métodos que pueden ser sobreescritos en un componente de clase React ES6. Todos estos son  métodos del ciclo de vida.
+Además del método `render()`, hay muchos otros métodos que pueden ser sobrescritos en un componente de clase React ES6. Todos estos son  métodos del ciclo de vida.
 
 Ya hemos cubierto dos métodos de ciclo de vida que se pueden usar en un componente de clase ES6:
 * El constructor sólo es llamado cuando se crea una instancia del componente y se inserta en el DOM. El componente es instanciado en un proceso llamado montaje.
@@ -912,7 +912,7 @@ Ahora su cliente hace una solicitud a la API sólo una vez, aunque usted busca u
   * nombres de propiedad calculados
 * General
   * Interacción con la API de Hacker News
-  * busqueda nativa con la API del navegador
+  * búsqueda nativa con la API del navegador
   * búsqueda de cliente y servidor
   * paginación de datos
   * almacenamiento en caché del lado del cliente

@@ -4,7 +4,7 @@ Este capítulo se enfoca en la implementación de componentes React avanzados. A
 
 ## Ref a DOM Element
 
-A veces necesitas interactuar con tus nodos DOM en React. El atributo `ref` te da acceso a un nodo dentro de tus elementos. Por lo general, ese se conoce como un antipatrón Reat, porque debes usar su forma declarativa de hacer las cosas y su flujo de datos unidireccional. Aprendiste sobre esto cuando se introdujo el primer campo de busqueda, pero hay ciertos casos donde necesitas acceso al nodo DOM. La documentación oficial menciona tres de estos casos de uso:
+A veces necesitas interactuar con tus nodos DOM en React. El atributo `ref` te da acceso a un nodo dentro de tus elementos. Por lo general, ese se conoce como un antipatrón Reat, porque debes usar su forma declarativa de hacer las cosas y su flujo de datos unidireccional. Aprendiste sobre esto cuando se introdujo el primer campo de búsqueda, pero hay ciertos casos donde necesitas acceso al nodo DOM. La documentación oficial menciona tres de estos casos de uso:
 
 * usar la API DOM (focus, media playback etc.)
 * invocar animaciones de nodo DOM imperativas
@@ -155,7 +155,7 @@ Ahora se puede utilizar el elemento de entrada (`input`) del DOM. En el ejemplo 
 
 ## Cargando ...
 
-Ahora regresemos a la aplicación, donde posiblemente quieras mostrar un indicador de carga al enviar una solicitud de búsqueda a la API de Hacker News. La solicitud es asincrónica así que es necesario mostrarle al usuario algun indicador de que algo está sucediendo. Definamos un componente de carga reutilizable dentro del archivo *src/App.js*.
+Ahora regresemos a la aplicación, donde posiblemente quieras mostrar un indicador de carga al enviar una solicitud de búsqueda a la API de Hacker News. La solicitud es asincrónica así que es necesario mostrarle al usuario algún indicador de que algo está sucediendo. Definamos un componente de carga reutilizable dentro del archivo *src/App.js*.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -421,7 +421,7 @@ Cuando ejecute nuevamente las pruebas, notarás que la prueba para el componente
 
 Ahora, puedes intentar arreglar el componente al momento en que pienses que algo está mal con el, o puedes aceptar este pequeño error. Y como en este capítulo acabas de introducir al componente `Loading`, puedes aceptar el pequeño error mostrado en la línea de comandos al realizar la prueba interactiva.
 
-Componentes de orden superior son un partón avanzado en React. Tienen multiples propositos: Mejorada reusabilidad de componentes, mayor abstracción, composibilidad de componentes y la manipulación de props, estados y vistas. Puedes leer [gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). Te ofrece otro enfoque para aprender sobre este tema, te ofrece una manera elegante de de usarlos dentro del paradigma de programación funcional y resuelve el problema de renderizado condicional con componentes de orden superior.
+Componentes de orden superior son un partón avanzado en React. Tienen multiples propósitos: Mejorada reusabilidad de componentes, mayor abstracción, composibilidad de componentes y la manipulación de props, estados y vistas. Puedes leer [gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). Te ofrece otro enfoque para aprender sobre este tema, te ofrece una manera elegante de de usarlos dentro del paradigma de programación funcional y resuelve el problema de renderizado condicional con componentes de orden superior.
 
 ### Exercises:
 
@@ -432,9 +432,9 @@ Componentes de orden superior son un partón avanzado en React. Tienen multiples
 
 ## Sorting Avanzado
 
-Ya implementaste un campo de busqueda que interactua con el lado del servidor y el lado de la aplicación. Y como tienes un componente `Table`, tiene sentido intentar mejorarlo con interacciones un poco mas complejas. Acto seguido, agregarás una función para organizar cada columna utilizando el encabezado de la Tabla.
+Ya implementaste un campo de búsqueda que interactúa con el lado del servidor y el lado de la aplicación. Y como tienes un componente `Table`, tiene sentido intentar mejorarlo con interacciones un poco mas complejas. Acto seguido, agregarás una función para organizar cada columna utilizando el encabezado de la Tabla.
 
-Es posible que escribas tu propia función de clasificación de elementos en la tabla, pero prefiero usar una utilidad incluida en librerias como [Lodash](https://lodash.com/). Hay otras opciones, pero en el libro usaremos Lodash.
+Es posible que escribas tu propia función de clasificación de elementos en la tabla, pero prefiero usar una utilidad incluida en librerías como [Lodash](https://lodash.com/). Hay otras opciones, pero en el libro usaremos Lodash.
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -453,7 +453,7 @@ import { sortBy } from 'lodash';
 import './App.css';
 ~~~~~~~~
 
-Ya tienes varias columnas en la tabla: title, author, comments y poits. Puedes definir funciones de clasificación (sort functions) donde cada una toma una lista y returna una lista de elementos clasificados de acuerdo a una propiedad específica. Adicionalmente, necesitarás una función de clasificación por defecto que no clasifique, pero que retorne una lista no clasificada. Esta lista será el estado inicial.
+Ya tienes varias columnas en la tabla: title, author, comments y points. Puedes definir funciones de clasificación (sort functions) donde cada una toma una lista y returna una lista de elementos clasificados de acuerdo a una propiedad específica. Adicionalmente, necesitarás una función de clasificación por defecto que no clasifique, pero que retorne una lista no clasificada. Esta lista será el estado inicial.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -475,7 +475,7 @@ class App extends Component {
 ...
 ~~~~~~~~
 
-Dos de las funciones de clasificación returnan una lista invertida. Es para ver los ítems con la mayor cantidad de números y puntos, en vez de los ítems con el menor conteo al momento en que la lista es clasificada por primera vez.
+Dos de las funciones de clasificación retornan una lista invertida. Es para ver los ítems con la mayor cantidad de números y puntos, en vez de los ítems con el menor conteo al momento en que la lista es clasificada por primera vez.
 
 Los objetos `SORTS` permiten referenciar a cualquier función de clasificación a partir de ahora.
 
@@ -678,7 +678,7 @@ const Sort = ({ sortKey, onSort, children }) =>
   </Button>
 ~~~~~~~~
 
-Esto se hace con el fin de mejorar la UI (Interfáz de Usuario por sus siglas en Inglés). El siguiente objetivo es implementar una clasificación invertida (reverse sort). La lista debería realizar una clasificación invertida al momento en que un componente `Sort` es clickeado dos veces. En primer lugar, es necesario que definas el estado reverso con un booleano. La clasificación puede ser invertida o no invertida (reversed ó non-reversed).
+Esto se hace con el fin de mejorar la UI (Interfaz de Usuario por sus siglas en Inglés). El siguiente objetivo es implementar una clasificación invertida (reverse sort). La lista debería realizar una clasificación invertida al momento en que un componente `Sort` es clickeado dos veces. En primer lugar, es necesario que definas el estado reverso con un booleano. La clasificación puede ser invertida o no invertida (reversed ó non-reversed).
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -888,7 +888,7 @@ const Sort = ({
 # leanpub-end-insert
 ~~~~~~~~
 
-Es posible definir `sortClass` de manera más eficiente utilizando la librería llamada `classnames`, que se intala utilizando npm:
+Es posible definir `sortClass` de manera más eficiente utilizando la librería llamada `classnames`, que se instala utilizando npm:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -966,7 +966,7 @@ De nuevo, es necesario aceptar las fallas en las pruebas para el componente `Tab
 
 ### Ejercicios:
 
-* Usa una librería como [Font Awesome](http://fontawesome.com/) para indicar la clasificación (reverse). Podrías utilizar una flecha haia arriba o una flehca hacia abajo al lado de cada Encabezado
+* Usa una librería como [Font Awesome](http://fontawesome.com/) para indicar la clasificación (reverse). Podrías utilizar una flecha hacia arriba o una flecha hacia abajo al lado de cada Encabezado
 * Lee más acerca de [classnames library](https://github.com/JedWatson/classnames)
 
 {pagebreak}
