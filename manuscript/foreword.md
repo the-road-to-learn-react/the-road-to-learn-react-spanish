@@ -1,10 +1,10 @@
 # Prefacio
 
-The Road to learn React te enseñará los fundamentos de React. Construirás una aplicación con funcionalidades reales utilizando solo React, sin ninguna otra complicada herramienta. Todo, desde la configuración de tu proyecto hasta como subirlo a un servidor está explicado. El libro incluye material adicional y ejercicos en cada capítulo. Despuezs de leer el libro, estarás en capacidad de construir tus propias aplicaciones en React. El material es constantemente actualizado por mi y la comunidad.
+The Road to learn React te enseñará los fundamentos de React. Construirás una aplicación con funcionalidades reales utilizando solo React, sin ninguna otra complicada herramienta. Todo, desde la configuración de tu proyecto hasta como subirlo a un servidor está explicado. El libro incluye material adicional y ejercicios en cada capítulo. Después de leer el libro, estarás en capacidad de construir tus propias aplicaciones en React. El material es constantemente actualizado por mi y la comunidad.
 
-En the Road to learn React, primero obtienes los fundamentos básicos antes de sumergirte dentro del extenso ecosistema React. Los conceptos serán explicando pocas herramientas, poca gestión de estados y mucha información sobre React. Se explican conceptos generales, patrones y ejercicios practicos dentro del contexto de una aplicación real.
+The Road to learn React te expone a los fundamentos básicos antes de sumergirte dentro del extenso ecosistema React. Los conceptos serán explicando pocas herramientas, poca gestión de estados y mucha información sobre React. Se explican conceptos generales, patrones y ejercicios prácticos dentro del contexto de una aplicación real.
 
-Esencialmente, aprenderás a construir tu aplicación React desde los cimientos, con características como paginación, almacenamiento en el lado del cliente (client-side caching), e interacciones de busqueda y clasificación. Harás la transición de JavaScript ES5 a JavaScript ES6. Espero que este libro capture mi entusiasmo por React y JavaScript y te ayude a iniciarte en estas tecnologías.
+Esencialmente, aprenderás a construir tu aplicación React desde los cimientos, con características como paginación, almacenamiento en el lado del cliente (client-side caching), e interacciones de búsqueda y clasificación. Harás la transición de JavaScript ES5 a JavaScript ES6. Espero que este libro capture mi entusiasmo por React y JavaScript y te ayude a iniciarte en estas tecnologías.
 
 # Acerca del Autor
 
