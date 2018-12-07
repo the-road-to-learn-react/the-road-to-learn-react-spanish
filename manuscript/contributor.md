@@ -1,8 +1,9 @@
-# Contributor(s)
+# Involucrados
 
-Muchas personas han hecho posible presentar *The Road to Learn React*, que es uno de los libros sobre React.js en circulación mas descargados actualmente. El autor original es el ingeniero de software Alemán [Robin Wieruch](https://www.robinwieruch.de/), aunque las traducciones del libro no serían posibles sin la ayuda de muchas otras personas. Esta versión del libro fue traducida por:
+Muchas personas han hecho posible presentar *The Road to Learn React*, que es uno de los libros sobre React.js en circulación mas descargados actualmente. El autor original es el ingeniero de software Alemán [Robin Wieruch](https://www.robinwieruch.de/), aunque las traducciones del libro no serían posibles sin la ayuda de muchas otras personas. Los co-autores de esta versión en Español son:
 
 #### Emanuel Mathias Canova
+
 LinkedIn: [Emanuel Canova](https://www.linkedin.com/in/emanuel-canova)
 
 Twitter: [@EmanuelCanova](https://twitter.com/EmanuelCanova "@EmanuelCanova")
@@ -18,6 +19,8 @@ Tambien soy fotógrafo por pasión e intento mejorar mis habilidades tanto como 
 Mi consejo es: "Nunca Pares de Aprender".
 
 ### Juan Luis Chaurant
+
+LinkedIn: [Juan Luis Chaurant](https://www.linkedin.com/in/juan-luis-chaurant-b93931139/)
 
 Twitter: [@juanluis_nt](https://twitter.com/juanluis_nt)
 
