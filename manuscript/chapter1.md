@@ -41,7 +41,6 @@ Por último, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos s
 
 Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de la terminal. Si no obtienes ninguna salida en la terminal, así que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
-{title="Command Line",lang="text"}
 ~~~~~~~~
 node --version
 *v10.11.0
@@ -55,14 +54,14 @@ El gestor **npm** permite instalar **paquetes externos** desde la terminal. Esto
 
 Los paquetes globales Node son accesibles desde cualquier lugar de la terminal y sólo hay que instalarlos una vez en el directorio global. Puedes instalar un paquete a nivel global escribiendo en la terminal:
 
-{title="Command Line",lang="text"}
+
 ~~~~~~~~
 npm install -g <paquete>
 ~~~~~~~~
 
 La  etiqueta `-g` indica a npm que debe instalar el paquete a nivel global. Los paquetes locales son utilizados en tu aplicación. Por ejemplo, React como una librería será un paquete local, y puede ser requerido en tu aplicación para su uso. Puedes instalarlo a través de la terminal escribiendo:
 
-{title="Command Line",lang="text"}
+
 ~~~~~~~~
 npm install react
 ~~~~~~~~
@@ -71,7 +70,7 @@ El paquete instalado aparecerá automáticamente en una carpeta llamada *node_mo
 
 Ahora, ¿cómo inicializar la carpeta *node_modules/* y el archivo *package.json* en tu proyecto? Para ello existe un comando que inicia un proyecto npm que incluye automáticamente un archivo *package.json*. Sólo cuando tu proyecto posee este archivo, puedes instalar nuevos paquetes locales vía npm.
 
-{title="Command Line",lang="text"}
+
 ~~~~~~~~
 npm init -y
 ~~~~~~~~
@@ -82,7 +81,7 @@ Un dato extra sobre el archivo *package.json*. Este archivo permite que comparta
 
 Hay otro comando npm que quiero mencionar, para prevenir confusiones:
 
-{title="Command Line",lang="text"}
+
 ~~~~~~~~
 npm install --save-dev <paquete>
 ~~~~~~~~
@@ -108,7 +107,7 @@ Existen varias maneras de comenzar una aplicación React. La primera es utilizar
 
 Para utilizar React usando una CDN, puedes hacerlo insertando la etiqueta `<script>` en tu código HTML, con la URL de la CDN que desees utilizar. Para React necesitas dos archivos (librerías): *react* y *react-dom*.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -232,7 +231,7 @@ Ahora conocerás JSX, la sintaxis empleada por React. Como fue mencionado antes,
 
 El único archivo que manipularás por ahora es: *src/App.js*.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 import logo from './logo.svg';
@@ -273,7 +272,7 @@ El contenido dentro del bloque de código perteneciente al método `render()` pa
 
 Primero, vamos a eliminar todo el contenido por defecto que es retornado por `render` y agregar nuestro propio HTML.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
@@ -293,21 +292,21 @@ export default App;
 
 Ahora, el método `render()` sólo devuelve HTML sin JavaScript. Vamos a definir "Bienvenido al Camino para aprender React" como el valor de una variable, que puede ser utilizad en JSX usando corchetes.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
   render() {
-# leanpub-start-insert
+
     var helloWorld = 'Bienvenido al Camino para aprender React';
-# leanpub-end-insert
+
     return (
       <div className="App">
-# leanpub-start-insert
+
         <h2>{helloWorld}</h2>
-# leanpub-end-insert
+
       </div>
     );
   }
@@ -332,7 +331,7 @@ Además, probablemente notaste el atributo `className`. Este es similar al atrib
 
 Probablemente notaste que declaramos la variable `helloWorld` con `var`. JavaScript ES6 incluye otras dos formas de declarar variables: `const` y `let`. En JavaScript ES6 rara vez utilizarás `var`. Una variable declarada con `const` no se puede volver a asignar o volver a declarar. No puede ser mutada (cambiada o modificada), es decir, la estructura de datos se vuelve inmutable. Una vez que se define la estructura de datos, no se puede cambiar.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 // no permitido
 const helloWorld = 'Bienvenido al Camino para aprender React';
@@ -341,7 +340,7 @@ helloWorld = 'Bye Bye React';
 
 Por otra parte, una variable declarada con `let` puede mutar.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 // permitido
 let helloWorld = 'Bienvenido al Camino para aprender React';
@@ -352,7 +351,7 @@ helloWorld = 'Hasta luego, React';
 
 Nota que la variable declarada con `const` no se puede modificar. Pero cuando el valor de la variable es un arreglo o un objeto, sus valores pueden ser alterados. Es decir, los valores dentro del objeto o arreglo no son inmutables.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 // permitido
 const helloWorld = {
@@ -365,16 +364,16 @@ Hay diferentes opiniones sobre cuándo usar *const* y *let*. Sugiero usar `const
 
 En tu aplicación utiliza `const` en vez de `var`.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
   render() {
-# leanpub-start-insert
+
     const helloWorld = 'Bienvenido al Camino para aprender React';
-# leanpub-end-insert
+
     return (
       <div className="App">
         <h2>{helloWorld}</h2>
@@ -454,11 +453,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-# leanpub-start-insert
+
 if (module.hot) {
   module.hot.accept();
 }
-# leanpub-end-insert
+
 ~~~~~~~~
 
 Eso es todo. Ahora, intenta cambiar de nuevo la variable `hellowWorld` en tu archivo *src/App.js*. El navegador no recargará la página, sin embargo, notarás que la aplicación vuelve a cargar y muestra la salida correcta.
@@ -484,12 +483,12 @@ Volvamos a trabajar en el componente `App`. Hasta ahora logramos renderizar algu
 
 Primero, define la lista de elementos.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 import './App.css';
 
-# leanpub-start-insert
+
 const list = [
   {
     title: 'React',
@@ -508,7 +507,7 @@ const list = [
     objectID: 1,
   },
 ];
-# leanpub-end-insert
+
 
 class App extends Component {
   ...
@@ -519,17 +518,17 @@ Los datos artificiales representan los datos que más adelante serán extraídos
 
 Ahora, puedes utilizar el [método `map` de JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map) incorporándolo dentro del código JSX. El método `map` permite iterar sobre la lista de elementos para poder mostrarlos. Recuerda que dentro del código JSX debes encerrar entre corchetes la expresión JavaScript:
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 class App extends Component {
   render() {
     return (
       <div className="App">
-# leanpub-start-insert
+
         {list.map(function(item) {
           return <div>{item.title}</div>;
         })}
-# leanpub-end-insert
+
       </div>
     );
   }
@@ -540,7 +539,7 @@ export default App;
 
 Usar JavaScript junto con HTML en JSX es muy poderoso. Es posible que antes hayas utilizado el método `map` para convertir una lista de elementos a otra, pero esta vez lo utilizas para convertir una lista de elementos a elementos HTML.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 const array = [1, 4, 9, 16];
 
@@ -553,13 +552,13 @@ console.log(newArray);
 
 Por ahora sólo se muestra el valor de la propiedad `title` correspondiente a cada elemento de la lista. A continuación, vamos a mostrar otras propiedades del artículo.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 class App extends Component {
   render() {
     return (
       <div className="App">
-# leanpub-start-insert
+
         {list.map(function(item) {
           return (
             <div>
@@ -572,7 +571,7 @@ class App extends Component {
             </div>
           );
         })}
-# leanpub-end-insert
+
       </div>
     );
   }
@@ -585,13 +584,13 @@ Puedes ver como el método `map` está sangrado dentro del código JSX. Cada pro
 
 React hará todo el trabajo por ti y mostrará cada elemento. Aunque puedes hacer algo para ayudar a que React alcance su máximo potencial y tenga un mejor rendimiento. Al asignar un atributo clave a cada elemento de lista, React será capaz de identificar cada elemento de la lista, React puede identificar elementos cambiados y eliminados cuando la lista cambie. Esta lista de ejemplo tiene un identificador:
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 {list.map(function(item) {
   return (
-# leanpub-start-insert
+
     <div key={item.objectID}>
-# leanpub-end-insert
+
       <span>
         <a href={item.url}>{item.title}</a>
       </span>
@@ -605,7 +604,7 @@ React hará todo el trabajo por ti y mostrará cada elemento. Aunque puedes hace
 
 Asegúrate de que el atributo clave tiene un valor estable. No cometas el error de usar el índice asignado para el elemento dentro del arreglo. El índice del arreglo no es del todo estable. Por ejemplo, cuando el orden de la lista cambie, React tendrá dificultades para identificar los elementos correctamente, pues cada elemento dentro de la lista tendrá ahora un orden y un índice distinto.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 // No hagas esto
 {list.map(function(item, key) {
@@ -629,7 +628,7 @@ Ahora puedes iniciar tu aplicación desde la terminal, abrir tu navegador y ver 
 
 JavaScript ES6 introdujo las funciones flecha, que resultan más cortas que expresiones de función tradicionales.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 // declaración de una función
 function () { ... }
@@ -640,7 +639,7 @@ function () { ... }
 
 Puedes quitarlos cuando la función sólo recibe un argumento, pero tienes que conservarlos cuando hay múltiples argumentos.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 // permitido
 item => { ... }
@@ -657,11 +656,11 @@ item, key => { ... }
 
 Ahora, revisemos nuevamente el método `map`. Puedes declararlo de manera más concisa con una función flecha ES6.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
-# leanpub-start-insert
+
 {list.map(item => {
-# leanpub-end-insert
+
   return (
     <div key={item.objectID}>
       <span>
@@ -677,11 +676,10 @@ Ahora, revisemos nuevamente el método `map`. Puedes declararlo de manera más c
 
 Además, es válido eliminar el *cuerpo del bloque* de la función flecha ES6. En un *cuerpo conciso* un `return` implícito se adjunta, de modo que se puede quitar la declaración `return`. Esto sucederá a menudo en el libro, así que asegúrate de entender la diferencia entre un cuerpo de bloque y un cuerpo conciso dentro de las funciones flecha ES6.
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
-# leanpub-start-insert
+
 {list.map(item =>
-# leanpub-end-insert
   <div key={item.objectID}>
     <span>
       <a href={item.url}>{item.title}</a>
@@ -690,9 +688,9 @@ Además, es válido eliminar el *cuerpo del bloque* de la función flecha ES6. E
     <span>{item.num_comments}</span>
     <span>{item.points}</span>
   </div>
-# leanpub-start-insert
+
 )}
-# leanpub-end-insert
+
 ~~~~~~~~
 
 Ahora tu código JSX es más conciso y legible. Al declarar `map` de esta manera, se omite la sentencia "function", los corchetes y la declaración `return`.
@@ -709,7 +707,7 @@ JavaScript ES6 introdujo el uso clases, que comúnmente son utilizadas en lengua
 
 Considera la siguiente clase llamada `Developer` para examinar una clase de JavaScript ES6 sin pensar en componentes React.
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 class Developer {
   constructor(firstname, lastname) {
@@ -727,7 +725,7 @@ Una clase tiene un constructor que permite instanciarla. Este constructor puede 
 
 En el ejemplo anterior, `class Developer` es sólo la declaración de la clase. Es posible crear varias instancias de una clase por medio de la invocación. Lo que resulta similar al componente de clase ES6, que tiene una declaración pero debe ser usado en otro lugar para instanciarlo:
 
-{title="Code Playground",lang="javascript"}
+
 ~~~~~~~~
 const robin = new Developer('Robin', 'Wieruch');
 console.log(robin.getName());
@@ -737,7 +735,7 @@ console.log(robin.getName());
 React utiliza clases JavaScript ES6 en los componentes de clase ES6. Ya utilizaste un componente de clase ES6 anteriormente.
 
 
-{title="src/App.js",lang=javascript}
+
 ~~~~~~~~
 import React, { Component } from 'react';
 
