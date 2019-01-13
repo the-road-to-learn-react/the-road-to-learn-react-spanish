@@ -123,7 +123,7 @@ npm install react react-dom
 
 El enfoque anterior se utiliza a menudo para añadir React a una aplicación existente administrada con npm.
 
-Puede que tengas que lidiar con [Babel](http://babeljs.io/) también para hacer tu aplicación compatible con JSX (la sintáxis de React) y JavaScript ES6. Babel transpila tu código--es decir, lo convierte a vanilla JavaScript-- para que los navegadores puedan interpretar ES6 y JSX. Debido a la dificultad de esta tarea, Facebook desarrolló *create-react-app*, como una solución *cero-configuraciones* de React. La siguiente sección muestra cómo iniciar con el desarrollo de tu aplicación con esta herramienta.
+Puede que tengas que lidiar con [Babel](http://babeljs.io/) también para hacer tu aplicación compatible con JSX (la sintaxis de React) y JavaScript ES6. Babel transpila tu código--es decir, lo convierte a vanilla JavaScript-- para que los navegadores puedan interpretar ES6 y JSX. Debido a la dificultad de esta tarea, Facebook desarrolló *create-react-app*, como una solución *cero-configuraciones* de React. La siguiente sección muestra cómo iniciar con el desarrollo de tu aplicación con esta herramienta.
 
 ### Ejercicios:
 
