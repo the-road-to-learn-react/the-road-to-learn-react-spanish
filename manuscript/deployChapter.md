@@ -9,7 +9,7 @@ El conocimiento que se presenta a continuación, **no es necesario** para llevar
 
 En tu *package.json* encontrarás los scripts para *start*, *test* y *build* tu aplicación.
 El último script es *eject*.
-Lo puedes utilizar, *pero no hay forma de volver. **Es una operación en una sola dirección. Una vez que haces eject, ¡no hay vuelta atrás!**
+Lo puedes utilizar, *pero no hay forma de volver*. **Es una operación en una sola dirección. Una vez que haces eject, ¡no hay vuelta atrás!**
 
 Si acabas de comenzar a aprender React, no tiene sentido dejar el entorno conveniente de *create-react-app*.
 
