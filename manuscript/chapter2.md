@@ -547,7 +547,7 @@ Si realizar enlaces dentro de los constructores repetidas veces  te resulta mole
 
 ## Controlador de Eventos (Event Handler)
 
-En esta sección adquirirás un mayor entendimiento acerca de los controladores de eventos. Dentro de tu aplicación, estas utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
+En esta sección adquirirás un mayor entendimiento acerca de los controladores de eventos. Dentro de tu aplicación, estás utilizando el siguiente elemento `button` para eliminar un elemento de la lista.
 
 {title="src/App.js",lang=javascript}
 ~~~~~~~~
@@ -999,7 +999,7 @@ const isSearched = searchTerm => item =>
   item.title.toLowerCase().includes(searchTerm.toLowerCase());
 ~~~~~~~~
 
-El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que puedes utilizar una función que devuelve otra función (funciones de orden superior) para pasar información. En ES6 estas se pueden expresar de forma más concisa utilizando funciones flecha de ES6.
+El ecosistema de React utiliza una gran cantidad de conceptos de programación funcional. Sucede a menudo que puedes utilizar una función que devuelve otra función (funciones de orden superior) para pasar información. En ES6 éstas se pueden expresar de forma más concisa utilizando funciones flecha de ES6.
 
 Por último, pero no menos importante, tienes que utilizar la función definida `isSearched()` para filtrar tu lista. `isSearched` recibe como parámetro la propiedad `searchTerm` directamente del estado local, retorna la entrada de la función `filter()` y filtra la lista de acuerdo a la condición del filtro. Después mapea la lista filtrada para mostrar en pantalla un elemento correspondiente a cada ítem.
 
