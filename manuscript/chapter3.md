@@ -48,11 +48,11 @@ No es necesario conocer todos estos métodos de ciclo de vida desde el principio
 
 * **componentDidMount()** - Se llama una sola vez cuando el componente fue montado. Ese es el método perfecto para realizar una solicitud asíncrona para obtener datos de una API. Los datos obtenidos se almacenan en el estado interno del componente para mostrarlos en el método `render()`.
 
-* **componentWillReceiveProps(nextProps)** - Se llama durante la actualización de un ciclo de vida. Como entrada recibirá las siguientes props . Puedes comparar las props siguientes con las anteriores (`this.props`) para aplicar un comportamiento diferente basado en la diferencia. Además, puede establecer el estado en función de las siguientes props.
+* **componentWillReceiveProps(nextProps)** - Se llama durante la actualización de un ciclo de vida. Como entrada recibirá las siguientes props. Puedes comparar las siguientes props con las anteriores (`this.props`) para aplicar un comportamiento diferente basado en la diferencia. Además, puede establecer el estado en función de las siguientes props.
 
 * **shouldComponentUpdate(nextProps, nextState)** - Siempre se llama cuando el componente se actualiza debido a cambios de estado o props. Lo usarás en aplicaciones de React maduras para optimizaciones de rendimiento. Dependiendo de un booleano que regrese de este método de ciclo de vida, el componente y todos sus hijos se renderizarán o no en la actualización de un ciclo de vida. Puedes evitar que se ejecute el método de ciclo de vida render de un componente.
 
-* **componentWillUpdate(nextProps, nextState)** - El método del ciclo de vida se invoca antes del método `render()`. Ya se disponen las siguientes props y el próximo estado. Se puede utilizar el método como última oportunidad para realizar las preparaciones antes de ejecutar el método render. Hay que tener en cuenta que ya no se puede activar  `setState()`. Si deseas calcular el estado basado en las siguientes props, tienes que usar `componentWillReceiveProps()`.
+* **componentWillUpdate(nextProps, nextState)** - El método del ciclo de vida se invoca antes del método `render()`. Ya se disponen las siguientes props y el próximo estado. Se puede utilizar el método como última oportunidad para realizar las preparaciones antes de ejecutar el método render. Hay que tener en cuenta que ya no se puede activar `setState()`. Si deseas calcular el estado basado en las siguientes props, tienes que usar `componentWillReceiveProps()`.
 
 * **componentDidUpdate(prevProps, prevState)** - El método del ciclo de vida se invoca inmediatamente después del método `render()`. Puedes usarlo como oportunidad para realizar operaciones DOM o para realizar más solicitudes asíncronas.
 
@@ -64,7 +64,7 @@ Ya has utilizado los métodos `constructor()` y `render()`. Estos son los común
 ### Ejercicios:
 
 * Leer mas sobre [Ciclos de vida en React (En ingles)](https://facebook.github.io/react/docs/react-component.html)
-* Leer mas sobre [Estado y Ciclo de vida en React (En ingles)](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+* Leer mas sobre [Estado y Ciclo de vida en React (En inglés)](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ## Obteniendo Datos
 
@@ -85,7 +85,7 @@ const PARAM_SEARCH = 'query=';
 ...
 ~~~~~~~~
 
-En JavaScript ES6 puedes usar [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) para concatenar cadenas. Usaremos estas plantillas de cadenas de texto para armar la URL con la que vamos a conectarnos en la API (Endpoint)
+En JavaScript ES6 puedes usar [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) para concatenar cadenas. Usaremos estas plantillas de cadenas de texto para armar la URL con la que vamos a conectarnos con la API (Endpoint)
 
 
 ~~~~~~~~
@@ -99,9 +99,9 @@ console.log(url);
 // output: https://hn.algolia.com/api/v1/search?query=redux
 ~~~~~~~~
 
-Esto ayudara a que la URL sea flexible en el tiempo.
+Esto ayudará a que la URL sea flexible en el tiempo.
 
-Pero vayamos a la solicitud de API donde usarás la url. El proceso completo de búsqueda de datos se presentará de una vez, Pero cada paso se explicará después.
+Pero vayamos a la solicitud de API donde usarás la url. El proceso completo de búsqueda de datos se presentará de una vez. Pero cada paso se explicará posteriormente.
 
 ~~~~~~~~
 ...
@@ -141,19 +141,19 @@ class App extends Component {
   ...
 }
 ~~~~~~~~
-Muchas cosas suceden en el código anterior. Pensé en mostrarlo en varias partes pero seria mas difícil comprender las relaciones entre cada pieza. Permíteme poder explicarte cada uno en detalle.
+Muchas cosas suceden en el código anterior. Pensé en mostrarlo en varias partes pero sería más difícil comprender las relaciones entre cada pieza. Permíteme poder explicarte cada uno en detalle.
 
 En primer lugar, puedes eliminar la lista artificial de elementos, porque obtenemos un resultado de la API de Hacker News. El estado inicial de su componente tiene un resultado vacío y un término de búsqueda predeterminado. El mismo término de búsqueda predeterminado se utiliza en el campo de búsqueda y en su primera solicitud.
 
-En segundo lugar, utilizas el método `componentDidMount()` para obtener los datos después de que el componente se ha montado. En la primera búsqueda, se procederá a utilizar el termino de búsqueda predeterminado en el estado del componente. Por eso mismo, obtendrá historias relacionadas a "redux".
+En segundo lugar, utilizas el método `componentDidMount()` para obtener los datos después de que el componente se ha montado. En la primera búsqueda, se procederá a utilizar el término de búsqueda predeterminado en el estado del componente. Por eso mismo, obtendrá historias relacionadas a "redux".
 
-En tercer lugar, la búsqueda nativa se utiliza. Las cadenas de plantilla de JavaScript ES6 le permiten componer la url con el `searchTerm`. TLa url es el argumento de la función API de búsqueda nativa. La respuesta necesita ser transformada en json, es un paso obligatorio en una búsqueda nativa, y finalmente se puede establecer en el estado del componente interno.
+En tercer lugar, la búsqueda nativa se utiliza. Las cadenas de plantilla de JavaScript ES6 le permiten componer la url con el `searchTerm`. La url es el argumento de la función API de búsqueda nativa. La respuesta necesita ser transformada en json, es un paso obligatorio en una búsqueda nativa, y finalmente se puede establecer en el estado del componente interno.
 
 Por último, pero no menos importante, no olvide vincular sus nuevos métodos de componentes.
 
-Ahora puede utilizar los datos obtenidos en lugar de la lista artificial de elementos.Sin embargo, tienes que tener cuidado otra vez. El resultado no es sólo una lista de datos. [Es un objeto complejo con meta información y una lista de éxitos (historias).](https://hn.algolia.com/api) Puede emitir el estado interno con `console.log(this.state);` ent tu método `render()` para visualizarlo.
+Ahora puede utilizar los datos obtenidos en lugar de la lista artificial de elementos. Sin embargo, tienes que tener cuidado otra vez. El resultado no es sólo una lista de datos. [Es un objeto complejo con meta información y una lista de éxitos (historias).](https://hn.algolia.com/api) Puede emitir el estado interno con `console.log(this.state);` en tu método `render()` para visualizarlo.
 
-Utilicemos el resultado para mostrarlo. Pero lo preveremos de renderizar cualquier cosa - return null - cuando no hay resultado. Una vez que la solicitud a la API tuvo éxito, el resultado se guarda en el estado y el componente App se volverá a renderizar con el estado actualizado.
+Utilicemos el resultado para mostrarlo. Pero lo preveremos de renderizar cualquier cosa - `return null` - cuando no hay resultado. Una vez que la solicitud a la API tuvo éxito, el resultado se guarda en el estado y el componente App se volverá a renderizar con el estado actualizado.
 
 ~~~~~~~~
 class App extends Component {
@@ -179,16 +179,16 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Repasemos lo que sucede durante el ciclo de vida del componente. El componente es inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el método `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asíncrona. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método  `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
+Repasemos lo que sucede durante el ciclo de vida del componente. El componente se inicializa por el constructor. Después de que se renderiza por primera vez. Pero evitas que muestre, porque el resultado está vacío. Entonces se ejecuta el método `componentDidMount()`. En ese método, obtienes los datos de la API de Hacker News de forma asíncrona. Una vez que los datos llegan, cambia el estado interno del componente. Después de eso, el ciclo de vida de la actualización entra en juego. El componente ejecuta de nuevo el método `render()`, pero esta vez con datos poblados en su estado interno del componente. El componente y, por tanto, el componente Tabla con su contenido se vuelve a renderizar.
 
 Utilizó la API de recuperación nativa que es compatible con la mayoría de los navegadores para realizar una solicitud asíncrona a una API. La configuración de *create-react-app* garantiza su compatibilidad con todos los navegadores. Hay paquetes de terceros de node que puedes usar para sustituir la API de búsqueda nativa: [superagent](https://github.com/visionmedia/superagent) y [axios](https://github.com/mzabriskie/axios).
 
-Regresa a tu aplicación: La lista de hits debe ser visible ahora. Pero el botón "Dismiss" no funciona. Lo arreglaremos en el siguiente capitulo.
+Regresa a tu aplicación: La lista de hits debe ser visible ahora. Pero el botón "Dismiss" no funciona. Lo arreglaremos en el siguiente capítulo.
 
 ### Ejercicios:
 
-* leer mas sobre [ES6 plantilas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings)
-* leer mas sobre [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
+* leer más sobre [ES6 plantilas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings)
+* leer más sobre [the native fetch API](https://developer.mozilla.org/en/docs/Web/API/Fetch_API)
 * experimenta con [Hacker News API](https://hn.algolia.com/api)
 
 ## ES6 Operadores de propagación
@@ -300,14 +300,14 @@ El botón "Dismiss" debería funcionar de nuevo.
 
 * leer más sobre [Object.assign()](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 * leer más sobre el [Operador de propagación de arreglos ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Spread_operator)
-  * el operador de propagación de objetos es mencionado brevemente
+* el operador de propagación de objetos es mencionado brevemente
 
 ## Renderizado Condicional
 
 El renderizado condicional se introduce muy temprano en las aplicaciones React. Sucede cuando se quiere tomar la decisión de renderizar uno u otro elemento. A veces significa renderizar un elemento o nada. Después de todo, una representación condicional de uso más simple puede ser expresada por una sentencia if-else en JSX.
 
 
-El objeto `resultante` en el estado de interno del componente es nulo al principio. Hasta el momento, el componente App no ​​devuelve elementos cuando el resultado no ha llegado de la API. Eso ya es un renderizado condicional, porque vuelves antes del método `render()` por cierta condición. El componente App no renderiza nada o sus elementos.
+El objeto `resultante` en el estado interno del componente es nulo al principio. Hasta el momento, el componente App no devuelve elementos cuando el resultado no ha llegado de la API. Eso ya es un renderizado condicional, porque vuelve antes del método `render()` por cierta condición. El componente App no renderiza nada o sus elementos.
 
 Pero vamos un paso más allá. Tiene más sentido envolver el componente Table, que es el único componente que depende del resultado, en un renderizado condicional independiente. Todo lo demás se debe mostrar, aunque no hay ningún `resultado` aún. Simplemente puede utilizar una expresión ternaria en su JSX.
 
@@ -342,7 +342,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Esa es tu segunda opción para expresar un renderizado condicional. Una tercera opción es el operador `&&` lógico . En JavaScript, un `true && 'Hello World'` siempre se evalúa como 'Hello World'. Un `false && 'Hello World'` siempre se evalúa como falso.
+Esa es tu segunda opción para expresar un renderizado condicional. Una tercera opción es el operador `&&` lógico. En JavaScript, un `true && 'Hello World'` siempre se evalúa como 'Hello World'. Un `false && 'Hello World'` siempre se evalúa como falso.
 
 ```js
 const result = true && 'Hello World';
@@ -377,9 +377,9 @@ Después de todo, debería poder ver los datos obtenidos en tu aplicación. Todo
 
 ## Búsqueda por cliente o por servidor
 
-Ahora cuando utilices el campo de búsqueda, filtrarás la lista. Sin embargo eso está sucediendo en el lado del cliente. Ahora vas a utilizar la API de Hacker News para buscar en el servidor. De lo contrario, sólo te ocuparías de la primera respuesta de la API que recibiste de `componentDidMount()` con el parámetro del término de búsqueda predeterminado.
+Ahora cuando utilices el campo de búsqueda, filtrarás la lista. Sin embargo eso está sucediendo del lado del cliente. Ahora vas a utilizar la API de Hacker News para buscar en el servidor. De lo contrario, sólo te ocuparías de la primera respuesta de la API que recibiste de `componentDidMount()` con el parámetro del término de búsqueda predeterminado.
 
-Puede definir un método `onSubmit()` en su componente de clase ES6, que obtenga resultados de la API de Hacker News. Será la misma búsqueda que en tu método `componentDidMount()`. Pero lo buscara con el término modificado de la entrada del campo de búsqueda.
+Puede definir un método `onSubmit()` en su componente de clase ES6, que obtenga resultados de la API de Hacker News. Será la misma búsqueda que en tu método `componentDidMount()`. Pero lo buscará con el término modificado de la entrada del campo de búsqueda.
 
 ~~~~~~~~
 class App extends Component {
@@ -515,7 +515,7 @@ Ahora deberías poder buscar diferentes historias de Hacker News. Interactúas c
 
 ### Ejercicios:
 
-* leer mas sobre [synthetic events in React](https://facebook.github.io/react/docs/events.html)
+* leer más sobre [synthetic events in React](https://facebook.github.io/react/docs/events.html)
 
 ## Búsqueda paginada
 
@@ -602,7 +602,7 @@ class App extends Component {
 }
 ```
 
-Debe asegurarte de predeterminar a la página 0 cuando no hay ningún resultado.
+Debes asegurarte de predeterminar a la página 0 cuando no hay ningún resultado.
 
 Falta un paso. Traes la siguiente página de datos, pero sobrescribirás la página de datos anterior. Deseas concatenar los datos antiguos y nuevos. Vamos a ajustar la funcionalidad para agregar los nuevos datos en lugar de sobrescribirlos.
 
@@ -627,7 +627,7 @@ setSearchTopstories(result) {
 
 Primero, obtienes los hits y la página del resultado.
 
-En segundo lugar, usted tiene que comprobar si ya hay antiguos hits.  Cuando la página es 0, es una nueva solicitud de búsqueda de `componentDidMount()` o `onSearchSubmit()`. . Los éxitos están vacíos. Pero cuando hace clic en el botón  "More" para buscar datos paginados, la página no es 0, está en la siguiente página. Es la página siguiente. Los hits antiguos ya están almacenados en tu estado y por lo tanto se pueden utilizar.
+En segundo lugar, usted tiene que comprobar si ya hay antiguos hits.  Cuando la página es 0, es una nueva solicitud de búsqueda de `componentDidMount()` o `onSearchSubmit()`. Los éxitos están vacíos. Pero cuando hace clic en el botón "More" para buscar datos paginados, la página no es 0, está en la siguiente página. Es la página siguiente. Los hits antiguos ya están almacenados en tu estado y por lo tanto se pueden utilizar.
 
 En tercer lugar, no deseas sobrescribir los antiguos resultados. Puedes combinar hits antiguos y nuevos de la solicitud de API reciente. La combinación de ambas listas se puede realizar con el operador de distribución de ES6 de JavaScript.
 
@@ -666,7 +666,7 @@ Posteriormente, la solicitud a la Hacker News API busca más elementos de la lis
 
 ## Caché del Cliente
 
-Cada búsqueda envía una solicitud a la API de Hacker News. Puedes buscar "redux", seguido de "react" y eventualmente "redux" de nuevo. En total hace 3 peticiones. Pero buscaste "redux" dos veces y las dos veces tomó todo un viaje de ida y vuelta asíncrono para buscar los datos. En una memoria caché del lado del cliente se almacenara cada resultado. Cuando se realiza una solicitud a la API, comprueba si ya hay un resultado. Si está allí, se utiliza la caché. De lo contrario, se realizará una solicitud de API para recuperar los datos.
+Cada búsqueda envía una solicitud a la API de Hacker News. Puedes buscar "redux", seguido de "react" y eventualmente "redux" de nuevo. En total hace 3 peticiones. Pero buscaste "redux" dos veces y las dos veces tomó todo en un viaje de ida y vuelta asíncrono para buscar los datos. En una memoria caché del lado del cliente se almacenará cada resultado. Cuando se realiza una solicitud a la API, comprueba si ya hay un resultado. Si está allí, se utiliza la caché. De lo contrario, se realizará una solicitud de API para recuperar los datos.
 
 Para tener un caché de cliente para cada resultado, tiene que almacenar múltiples `results` en lugar de un `result` en tu estado de componente interno. El objeto de resultados será un mapa con el término de búsqueda como clave y el resultado como valor. Cada resultado de la API se guardará mediante el término de búsqueda (clave).
 
@@ -695,7 +695,7 @@ results: {
 }
 ~~~~~~~~
 
-Vamos a implementar una caché en el cliente con React `setState()`. En primer lugar, cambie el nombre del objeto `result` a `results` en el estado inicial del componente.  En segundo lugar, defina una `searchKey` temporal que se utiliza para almacenar cada `result`.
+Vamos a implementar una caché en el cliente con React `setState()`. En primer lugar, cambie el nombre del objeto `result` a `results` en el estado inicial del componente. En segundo lugar, defina una `searchKey` temporal que se utiliza para almacenar cada `result`.
 
 ~~~~~~~~
 class App extends Component {
@@ -770,9 +770,9 @@ class App extends Component {
 
 El `searchKey` se utilizará como clave para guardar los resultados y la página actualizados en un mapa de `results`.
 
-Primero, tienes que recuperar el `searchKey` desde el estado del componente. Recuerde que e `searchKey` se pone en `componentDidMount()` y `onSearchSubmit()`.
+Primero, tienes que recuperar el `searchKey` desde el estado del componente. Recuerde que a `searchKey` se pone en `componentDidMount()` y `onSearchSubmit()`.
 
-En segundo lugar, los hits antiguos tienen que fusionarse con los nuevos hits como antes. Pero esta vez los antiguos hits son recuperados del mapa de `results` con el  `searchKey` como clave.
+En segundo lugar, los hits antiguos tienen que fusionarse con los nuevos hits como antes. Pero esta vez los antiguos hits son recuperados del mapa de `results` con el `searchKey` como clave.
 
 En tercer lugar, un nuevo resultado puede establecerse en el mapa `results` en el estado. Examinemos el objeto `results` en `setState()`.
 
@@ -785,7 +785,7 @@ results: {
 
 La parte inferior se cerciora de almacenar el resultado actualizado por `searchKey` en el mapa de resultados. El valor es un objeto con una propiedad de visitas y página. El `searchKey` el término de búsqueda. Ya aprendiste la sintaxis `[searchKey]`. Es un nombre de propiedad computado ES6. Le ayuda a asignar valores dinámicamente en un objeto.
 
-TLa parte superior tiene que objetar la propagación de todos los demás resultados por `searchKey` en el estado. De lo contrario, perdería todos los resultados almacenados anteriormente.
+La parte superior tiene que objetar la propagación de todos los demás resultados por `searchKey` en el estado. De lo contrario, perdería todos los resultados almacenados anteriormente.
 
 Ahora almacena todos los resultados por término de búsqueda. Ese es el primer paso para habilitar su caché. En el siguiente paso, puede recuperar el resultado dependiendo del término de búsqueda de su mapa de resultados.
 
@@ -833,7 +833,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`, Ahora puedes ahorrarte el renderizado condicional para el componente Tabla. Además, tendrá que pasar el `searchKey` en lugar del `searchTerm` al botón "More". De lo contrario, su búsqueda paginada depende del valor `searchTerm` que es fluctuante. Además, asegúrese de mantener la propiedad fluctuante `searchTerm` para el campo de entrada en el componente "Search".
+Puesto que definiste a una lista vacía cuando no hay resultado por `searchKey`, ahora puedes ahorrarte el renderizado condicional para el componente Tabla. Además, tendrá que pasar el `searchKey` en lugar del `searchTerm` al botón "More". De lo contrario, su búsqueda paginada depende del valor `searchTerm` que es fluctuante. Además, asegúrese de mantener la propiedad fluctuante `searchTerm` para el campo de entrada en el componente "Search".
 
 La funcionalidad de búsqueda debería funcionar de nuevo. Almacena todos los resultados de la API de Hacker News.
 
