@@ -1,12 +1,12 @@
 # Organización de Código y Pruebas
 
-El capítulo se centrará en temas importantes para lograr que  el código sea mantenible en una aplicación escalable. Aprenderás sobre la organización del código para adoptar las mejores prácticas al estructurar las carpetas y archivos. Otro aspecto que aprenderás son las pruebas, lo cual es importante para mantener un código robusto.
+El capítulo se centrará en temas importantes para lograr que el código sea mantenible en una aplicación escalable. Aprenderás sobre la organización del código para adoptar las mejores prácticas al estructurar las carpetas y archivos. Otro aspecto que aprenderás son las pruebas, lo cual es importante para mantener un código robusto.
 
 ## Módulos ES6: Importación y Exportación
 
 En JavaScript ES6 puedes importar y exportar funcionalidades desde módulos. Estas funcionalidades pueden ser funciones, clases, componentes, constantes, etc. Básicamente todo lo que puede asignar a una variable. Los módulos pueden ser archivos individuales o carpetas enteras con un archivo de índice como punto de entrada.
 
-Al principio del libro, después de haber iniciado la aplicación con *create-react-app* , existían varios `import` y `export` a través de los archivos iniciales. Ahora es el momento apropiado para explicar esto.
+Al principio del libro, después de haber iniciado la aplicación con *create-react-app*, existían varios `import` y `export` a través de los archivos iniciales. Ahora es el momento apropiado para explicar esto.
 
 Las sentencias `import` y `export` ayudan a compartir código en varios archivos. Antes había varias soluciones para esto en el entorno JavaScript. Fue un desastre, porque no había una manera estándar para hacerlo, en la actualidad, es un comportamiento nativo de Javascript ES6.
 
@@ -14,9 +14,9 @@ Además, estas declaraciones adoptan la división de código. Se distribuye el c
 
 Por último, pero no menos importante, le ayuda a pensar en encapsulación de código. No es necesario que todas las funcionalidades se exporten desde un archivo. Algunas de estas funcionalidades sólo deben utilizarse en el archivo donde se han definido. Las exportaciones de un archivo son básicamente la API pública del archivo. Sólo las funcionalidades exportadas están disponibles para ser reutilizadas en otro lugar. Sigue la mejor práctica de encapsulación.
 
-Pero seamos prácticos. Como funcionan las declaraciones `import` y `export`? Los ejemplos siguientes muestran las declaraciones compartiendo una o varias variables entre dos archivos. Al final, el enfoque puede escalar a varios archivos y podría compartir más que simples variables.
+Pero seamos prácticos. ¿Cómo funcionan las declaraciones `import` y `export`? Los siguientes ejemplos muestran las declaraciones compartiendo una o varias variables entre dos archivos. Al final, el enfoque puede escalar a varios archivos y podría compartir más que simples variables.
 
-Se puede exportar una o mas variables. Se llama una exportación con nombre.
+Se puede exportar una o más variables. Se llama una exportación con nombre.
 
 ```js
 const firstname = 'robin';
@@ -34,7 +34,7 @@ console.log(firstname);
 // output: robin
 ```
 
-Tambien se pueden importar todas las variables asociadas con otro archivo:
+También se pueden importar todas las variables asociadas con otro archivo:
 
 ```js
 import * as person from './file1.js';
@@ -43,7 +43,7 @@ console.log(person.firstname);
 // output: robin
 ```
 
-Todo lo que se importa puede tener un alias asociado. Esto es útil cuando en distintos archivos se exporta con el mismo nombre. Para solucionar el inconveniente de importación, se usa una alias:
+Todo lo que se importa puede tener un alias asociado. Esto es útil cuando en distintos archivos se exporta con el mismo nombre. Para solucionar el inconveniente de importación, se usa un alias:
 
 
 ```js
@@ -115,8 +115,8 @@ Estas son las principales funcionalidades de los módulos ES6. Te ayudan a organ
 
 ### Ejercicios:
 
-* leer mas sobre [ES6 import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import) - En español
-* leer mas sobre [ES6 export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export) - En español
+* leer más sobre [ES6 import](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/import) - En español
+* leer más sobre [ES6 export](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export) - En español
 
 ## Organización de código con módulos ES6
 
@@ -227,7 +227,7 @@ import {
 ...
 ```
 
-Cuando utilices la convención de nombrado de *index.js*,  puedes omitir el nombre de archivo de la ruta relativa.
+Cuando utilices la convención de nombrado de *index.js*, puedes omitir el nombre de archivo de la ruta relativa.
 
 ```
 import {
@@ -262,7 +262,7 @@ src/
 ```
 
 La carpeta *Buttons/* tiene varios botones en forma de componentes definidos en archivos distintos. Cada archivo tiene su propio `export default` para brindar funcionalidad de exportación al componente y de esta manera, lo hace disponible para *Buttons/index.js*.
-El archivo general *Buttons/index.js* importa todos estos botones y las exporta publicamente.
+El archivo general *Buttons/index.js* importa todos estos botones y las exporta públicamente.
 
 
 
@@ -287,14 +287,14 @@ import {
   CancelButton
 } from '../Buttons';
 ```
-Seria una muy mala practica llegar a un determinado botón directamente sin pasar por *index.js*. Rompería las reglas de encapsulación.
+Sería una muy mala práctica llegar a un determinado botón directamente sin pasar por *index.js*. Rompería las reglas de encapsulación.
 
 ```
 // Mala practica, por favor no lo hagas.
 import SubmitButton from '../Buttons/SubmitButton';
 ```
 
-Ahora ya sabes cómo podrías refactorizar tu código fuente en módulos con las restricciones de la encapsulación. Como he dicho, por el bien de mantener el tutorial simple no voy a aplicar estos cambios. Pero debes hacer la refactorización al final del libro.
+Ahora ya sabes cómo podrías refactorizar tu código fuente en módulos con las restricciones de la encapsulación. Como he dicho, por el bien de mantener el tutorial simple, no voy a aplicar estos cambios. Pero debes hacer la refactorización al final del libro.
 
 ### Ejercicios:
 
@@ -306,9 +306,9 @@ Deberías conocer [TypeScript](https://www.typescriptlang.org/) o [Flow](https:/
 
 React viene con un comprobador de tipo incorporado para evitar errores. Puede utilizar PropTypes para describir la interfaz de componentes. Todas las props que se pasan de un componente principal a un componente secundario se validan basándose en la interfaz PropTypes asignada al componente secundario.
 
-El capítulo mostrará cómo puedes hacer que todos los componentes sean seguros con PropTypes. Omitiré los cambios para los siguientes capítulos, porque agregan refactorings innecesarios de código. Pero debe mantenerlos y actualizarlos a lo largo del camino para mantener su tipo de interfaz de componentes seguro.
+El capítulo mostrará cómo puede hacer que todos los componentes sean seguros con PropTypes. Omitiré los cambios para los siguientes capítulos, porque agregan refactorings innecesarios de código. Pero debe mantenerlos y actualizarlos a lo largo del camino para mantener su tipo de interfaz de componentes seguro.
 
-Inicialmente puede importar PropTypes. Tienes que ser cuidadoso de tu versión de React, porque en React versión 15.5 la importación cambió. Revisa el *package.json* para encontrar la versión de React.
+Inicialmente puede importar PropTypes. Tiene que ser cuidadoso de tu versión de React, porque en React versión 15.5 la importación cambió. Revisa el *package.json* para encontrar la versión de React.
 
 Si es 15.5 o más, tiene que instalar un paquete independiente.
 
@@ -367,10 +367,9 @@ Además, tiene dos propTypes más para definir un fragmento renderizable (nodo),
 * PropTypes.element
 ```
 
-Ya usaste el PropType  `node`  para el componente Button. En general hay más definiciones de PropType que puede leer en la documentación oficial de React.
+Ya usaste el PropType `node` para el componente Button. En general hay más definiciones de PropType que puede leer en la documentación oficial de React.
 
-At the moment all of the defined PropTypes for the Button are optional. The parameters can be null or undefined. But for several props you want to enforce that they are defined. You can make it a requirement that these props are passed to the component.
-Por el momento todos los propTypes definidos para el botón son opcionales. Los parámetros pueden ser nulos o no definidos. Pero para varios props deseas que se definan. Puedes hacer que sea un requisito que estas props se pasen al componente.
+Por el momento todos los propTypes definidos para el botón son opcionales. Los parámetros pueden ser nulos o no definidos. Pero para varios props desea que se definan. Puede hacer que sea un requisito que estos props se pasen al componente.
 
 ```
 Button.propTypes = {
@@ -380,8 +379,7 @@ Button.propTypes = {
 };
 ```
 
-The `className` is not required, because it can default to an empty string. Next you will define a PropType interface for the Table component:
-El `className` no es necesario, ya que puede predeterminarse a una cadena vacía. A continuación, definirás una interfaz PropType para el componente Table:
+El `className` no es necesario, ya que puede predeterminarse a una cadena vacía. A continuación, definirá una interfaz PropType para el componente Table:
 
 ```
 Table.propTypes = {
@@ -390,7 +388,7 @@ Table.propTypes = {
 };
 ```
 
-Puedes definir el contenido de una matriz PropType más explícitamente:
+Puede definir el contenido de una matriz PropType más explícitamente:
 
 ```
 Table.propTypes = {
@@ -407,9 +405,9 @@ Table.propTypes = {
 };
 ```
 
-Solo el `objectID` es requerido, porque tu sabes que parte de su código depende de ello. Las otras propiedades sólo se muestran, por lo que no son necesarias. Además, no puedes estar seguro de que la API de Hacker News siempre tenga una propiedad definida para cada objeto del array.
+Solo el `objectID` es requerido, porque tú sabes que parte de su código depende de ello. Las otras propiedades sólo se muestran, por lo que no son necesarias. Además, no puede estar seguro de que la API de Hacker News siempre tenga una propiedad definida para cada objeto del array.
 
-Eso es para PropTypes. Pero hay un aspecto más. Puede definir props predeterminadas en tu componente. Vamos a tomar de nuevo el componente Button. Las propiedades `className` tienen un parámetro predeterminado de ES6 en la firma de componente.
+Eso es para PropTypes. Pero hay un aspecto más. Puede definir props predeterminadas en su componente. Vamos a tomar de nuevo el componente Button. Las propiedades `className` tienen un parámetro predeterminado de ES6 en la firma de componente.
 
 ```
 const Button = ({ onClick, className = '', children }) =>
@@ -437,7 +435,7 @@ Igual que el parámetro predeterminado de ES6, el valor predeterminado garantiza
 
 ### Ejercicios:
 
-* respóndete las siguientes preguntas
+* Respóndete las siguientes preguntas
 * ¿el componente App tiene una interfaz PropType?
 * definir la interfaz PropType para el componente Search
 * agregue y actualice las interfaces PropType cuando agregue y actualice componentes en los próximos capítulos
@@ -445,7 +443,7 @@ Igual que el parámetro predeterminado de ES6, el valor predeterminado garantiza
 
 ## Pruebas instantáneas con Jest
 
-[Jest](https://facebook.github.io/jest/) es un framework JavaScript de pruebas. En Facebook se utiliza para validar el código JavaScript. En la comunidad React se utiliza para la cobertura de pruebas de componentes React . Por suerte *create-react-app*  ya viene con Jest.
+[Jest](https://facebook.github.io/jest/) es un framework JavaScript de pruebas. En Facebook se utiliza para validar el código JavaScript. En la comunidad React se utiliza para la cobertura de pruebas de componentes React. Por suerte *create-react-app*  ya viene con Jest.
 
 Comencemos a probar sus primeros componentes. Antes de que pueda hacer eso, tiene que exportar los componentes de su archivo *src/App.js* para testearlos en un archivo diferente.
 
@@ -467,7 +465,7 @@ export {
 };
 ```
 
-En tu archivo *App.test.js* encontrarás una primera prueba. Comprueba que el componente App se renderiza sin errores.
+En tu archivo *App.test.js* encontrará una primera prueba. Comprueba que el componente App se renderiza sin errores.
 
 ```
 import React from 'react';
@@ -479,12 +477,12 @@ it('renders without crashing', () => {
   ReactDOM.render(<App />, div);
 });
 ```
-Puedes ejecutarlo mediante el comando interactivo *create-react-app* en la línea de comandos.
+Puede ejecutarlo mediante el comando interactivo *create-react-app* en la línea de comandos.
 ```
 npm run test
 ```
 
-Ahora Jest te permite escribir pruebas de instantáneas. Estas pruebas realizan una instantánea del componente representado y ejecutan esta instantánea contra futuras instantáneas. Cuando cambia una instantánea futura, se le notificará durante la prueba. Puedes aceptar el cambio de instantánea, ya que cambió la implementación del componente a propósito, o denegar el cambio e investigar por un error.
+Ahora Jest te permite escribir pruebas de instantáneas. Estas pruebas realizan una instantánea del componente representado y ejecutan esta instantánea contra futuras instantáneas. Cuando cambia una instantánea futura, se le notificará durante la prueba. Puede aceptar el cambio de instantánea, ya que cambió la implementación del componente a propósito, o denegar el cambio e investigar por un error.
 
 Jest almacena las instantáneas en una carpeta. Sólo de esa manera puede mostrar las diferencias a futuras instantáneas. Además, las instantáneas pueden compartirse entre equipos.
 
@@ -610,21 +608,21 @@ Las pruebas instantáneas generalmente se mantienen bastante básicas. Sólo des
 ### Ejercicios:
 
 * vea cómo fallan las pruebas de instantánea una vez que cambia la implementación de su componente
-  * aceptar o denegar el cambio de instantánea
-* mantén tus pruebas de instantáneas actualizadas cuando la implementación cambie en los próximos capítulos
-* leer mas sobre [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
+* aceptar o denegar el cambio de instantánea
+* mantenga sus pruebas de instantáneas actualizadas cuando la implementación cambie en los próximos capítulos
+* leer más sobre [Jest in React](https://facebook.github.io/jest/docs/tutorial-react.html)
 
 ## Pruebas unitarias con Enzyme
 
 [Enzyme](https://github.com/airbnb/enzyme) es una utilidad de prueba de Airbnb para afirmar, manipular y recorrer sus componentes React. Puede utilizarlo para realizar pruebas de unidad para complementar sus pruebas de instantánea.
 
-Vamos a ver cómo se puede utilizar enzyme. Primero tienes que instalarlo ya que no viene con *create-react-app*.
+Vamos a ver cómo se puede utilizar enzyme. Primero tiene que instalarlo ya que no viene con *create-react-app*.
 
 ```
 npm install --save-dev enzyme react-addons-test-utils
 ```
 
-Ahora puede escribir su primera prueba de unidad en el bloque de descripción de la tabla. Usaras `shallow()` para renderizar tu componente y asegurarte que la tabla tiene dos elementos.
+Ahora puede escribir su primera prueba de unidad en el bloque de descripción de la tabla. Usará `shallow()` para renderizar tu componente y asegurarte que la tabla tiene dos elementos.
 
 
 ```
@@ -656,16 +654,16 @@ describe('Table', () => {
 });
 ```
 
-Shallow renderiza el componentes sin componentes secundarios. Puedes hacer la prueba muy dedicada a un componente.
+Shallow renderiza el componente sin componentes secundarios. Puede hacer la prueba muy dedicada a un componente.
 
 Enzyme tiene tres mecanismos de renderización en su API. Ya conoces `shallow()`, pero también existen `mount()` y `render()`. Ambos instancian instancias del componente principal y todos los componentes secundarios. Adicionalmente `mount()` te da más acceso a los métodos de ciclo de vida de los componentes. Pero, ¿cuándo utilizar qué mecanismo de renderización? Aquí algunas reglas básicas:
 
 * Comience siempre con una prueba superficial `shallow()`
 * Si `componentDidMount()` o `componentDidUpdate()` deben ser testeados, usa `mount()`
-* Si deseas testear el ciclo de vida de los componentes y el comportamiento de los hijos, utiliza  `mount()`
-* Si deseas testear el renderizado de componentes hijos con menos gastos que `mount()` y  no estás interesado en los métodos del ciclo de vida, use `render()`.
+* Si desea testear el ciclo de vida de los componentes y el comportamiento de los hijos, utiliza  `mount()`
+* Si desea testear el renderizado de componentes hijos con menos gastos que `mount()` y no está interesado en los métodos del ciclo de vida, use `render()`.
 
-Usted podría continuar a la unidad de prueba de sus componentes. Pero asegúrese de mantener las pruebas simples y mantenibles. De lo contrario tendrá que refactorizarlos una vez que cambie sus componentes. Es por eso que Facebook introdujo las pruebas de Snapshot con Jest en primer lugar.
+Usted podría continuar con la unidad de prueba de sus componentes. Pero asegúrese de mantener las pruebas simples y mantenibles. De lo contrario, tendrá que refactorizarlos una vez que cambie sus componentes. Es por eso que Facebook introdujo las pruebas de Snapshot con Jest en primer lugar.
 
 ### Ejercicios:
 
@@ -673,7 +671,7 @@ Usted podría continuar a la unidad de prueba de sus componentes. Pero asegúres
 * leer más sobre  [enzyme and its rendering API](https://github.com/airbnb/enzyme)
 
 
-¡Has aprendido cómo organizar tu código y cómo probarlo! Repasemos los últimos capítulos:
+¡Ha aprendido cómo organizar su código y cómo probarlo! Repasemos los últimos capítulos:
 
 * React
   * PropTypes te permite definir controles de tipado de componentes
@@ -684,4 +682,4 @@ Usted podría continuar a la unidad de prueba de sus componentes. Pero asegúres
 * General
   * La organización de código te permite escalar tu aplicación con las mejores prácticas
 
-Puede encontrar el código fuente en e [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/393ce5a350aa34b1c7ae056333f7bb7b0807caef).
+Puede encontrar el código fuente en el [repositorio oficial](https://github.com/rwieruch/hackernews-client/tree/393ce5a350aa34b1c7ae056333f7bb7b0807caef).
