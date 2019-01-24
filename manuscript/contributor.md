@@ -38,5 +38,12 @@ Apasionado por la tecnología. Curioso por el desarrollo web, seguridad informá
 
 Espero esta pequeña contribución sea de ayuda para muchos. Agradezco a Robin, Juan, Emanuel y demás involucrados por hacer posible esta publicación.
 
+# Colaboradores en Github
+Agradecemos a todas aquellas personas que por medio de Github nos han ayudado luego de publicar la primera versión de esta traducción:
+
+#### Kant 
+Darío Hereñú segun informacion de perfil en Github
+[Kant](https://github.com/kant)
+
 {pagebreak}
 
