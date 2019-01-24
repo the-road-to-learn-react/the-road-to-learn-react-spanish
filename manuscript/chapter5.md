@@ -146,7 +146,7 @@ const Search = ({
 }
 ~~~~~~~~
 
-Ahora se puede utilizar el elemento de entrada (`input`) del DOM. En el ejemplo del caso de uso de foco, esto no ayudaría mucho, porque no existe un método de ciclo de vida para desencadenar el enfoque. Así que por ahora no se utilizara la variable de entrada (`input`). Pero en el futuro es posible que encuentres otros casos de uso donde si tiene sentido utilizar un componente funcional sin estado con el atributo `ref`.
+Ahora se puede utilizar el elemento de entrada (`input`) del DOM. En el ejemplo del caso de uso de foco, esto no ayudaría mucho, porque no existe un método de ciclo de vida para desencadenar el enfoque. Así que por ahora no se utilizará la variable de entrada (`input`). Pero en el futuro es posible que encuentres otros casos de uso donde sí tiene sentido utilizar un componente funcional sin estado con el atributo `ref`.
 
 ### Ejercicios
 
@@ -230,7 +230,7 @@ class App extends Component {
 }
 ~~~~~~~~
 
-En el último paso, usarás el componente `Loading`dentro del componente `App`. Una representación condicional basada en el estado de carga decidirá si muestra el componente `Loading` o el componente `Button`. El último es el botón para obtener más datos.
+En el último paso, usarás el componente `Loading` dentro del componente `App`. Una representación condicional basada en el estado de carga decidirá si muestra el componente `Loading` o el componente `Button`. El último es el botón para obtener más datos.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -295,7 +295,7 @@ function withFoo(Component) {
 }
 ~~~~~~~~
 
-Una útil convención es prefijar el nombre de un HOC con `with` . Dado que está utilizando JavaScript ES6, puedes expresar el HOC de manera más concisa con una función de flecha ES6.
+Una convención útil es prefijar el nombre de un HOC con `with`. Dado que está utilizando JavaScript ES6, puedes expresar el HOC de manera más concisa con una función de flecha ES6.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -329,7 +329,7 @@ const { firstname, lastname } = props;
 <UserProfile { ...props } />
 ~~~~~~~~
 
-Hay una pequeña cosa que debes evitar. Se pasaron todas las `props`, incluyendo la propiedad `isLoading` al pasar el objeto al componente `Input`. Sin embargo, el componente `Input` no no la existencia de la propiedad `isLoading`. Puedes usar la re-desestructuración de ES6 para evitar esto.
+Hay una pequeña cosa que debes evitar. Se pasaron todas las `props`, incluyendo la propiedad `isLoading` al pasar el objeto al componente `Input`. Sin embargo, el componente `Input` no la existencia de la propiedad `isLoading`. Puedes usar la re-desestructuración de ES6 para evitar esto.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -343,7 +343,7 @@ const withLoading = (Component) => ({ isLoading, ...rest }) =>
 
 Se toma una propiedad del objeto, pero se conserva el resto del objeto. También funciona con múltiples propiedades. Puedes leer mas acerca de esto en el articulo de la página de Mozilla: [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 
-Ahora puedes usar HOCs dentro de JSX. Un caso de uso en la aplicación podría ser mostrar el botón "More" o el componente `Loading`. El componente `Loading` ya está encapsulado dentro del HOC, pero falta un componente `Input`. Para mostrar un componente `Button` o bin un componente `Loading`, el Button es el componente de entrada del HOC. El componente de salida mejorado es un componente `ButtonWithLoading`.
+Ahora puedes usar HOCs dentro de JSX. Un caso de uso en la aplicación podría ser mostrar el botón "More" o el componente `Loading`. El componente `Loading` ya está encapsulado dentro del HOC, pero falta un componente `Input`. Para mostrar un componente `Button` o un componente `Loading`, el `Button` es el componente de entrada del HOC. El componente de salida mejorado es un componente `ButtonWithLoading`.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -373,7 +373,7 @@ const ButtonWithLoading = withLoading(Button);
 # leanpub-end-insert
 ~~~~~~~~
 
-Todo se encuentra definido ya. Como último paso, debes usar el componente `ButtonWithLoading`, que recibe el estado de carga como una propiedad adicional. Mientras el HOC consume la propiedad de carga, todas las demás propiedad pasan al componente `Button`.
+Todo se encuentra definido ya. Como último paso, debes usar el componente `ButtonWithLoading`, que recibe el estado de carga como una propiedad adicional. Mientras el HOC consume la propiedad de carga, todas las demás propiedades pasan al componente `Button`.
 
 
 {title="src/App.js",lang="javascript"}
@@ -419,9 +419,9 @@ Cuando ejecute nuevamente las pruebas, notarás que la prueba para el componente
 +    </div>
 ~~~~~~~~
 
-Ahora, puedes intentar arreglar el componente al momento en que pienses que algo está mal con el, o puedes aceptar este pequeño error. Y como en este capítulo acabas de introducir al componente `Loading`, puedes aceptar el pequeño error mostrado en la línea de comandos al realizar la prueba interactiva.
+Ahora, puedes intentar arreglar el componente al momento en que pienses que algo está mal con él, o puedes aceptar este pequeño error. Y como en este capítulo acabas de introducir al componente `Loading`, puedes aceptar el pequeño error mostrado en la línea de comandos al realizar la prueba interactiva.
 
-Componentes de orden superior son un partón avanzado en React. Tienen multiples propósitos: Mejorada reusabilidad de componentes, mayor abstracción, composibilidad de componentes y la manipulación de props, estados y vistas. Puedes leer [gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). Te ofrece otro enfoque para aprender sobre este tema, te ofrece una manera elegante de de usarlos dentro del paradigma de programación funcional y resuelve el problema de renderizado condicional con componentes de orden superior.
+Componentes de orden superior son un partón avanzado en React. Tienen multiples propósitos: Mejorada reusabilidad de componentes, mayor abstracción, composibilidad de componentes y la manipulación de props, estados y vistas. Puedes leer [gentle introduction to higher-order components](https://www.robinwieruch.de/gentle-introduction-higher-order-components/). Te ofrece otro enfoque para aprender sobre este tema, te ofrece una manera elegante de usarlos dentro del paradigma de programación funcional y resuelve el problema de renderizado condicional con componentes de orden superior.
 
 ### Exercises:
 
@@ -432,7 +432,7 @@ Componentes de orden superior son un partón avanzado en React. Tienen multiples
 
 ## Sorting Avanzado
 
-Ya implementaste un campo de búsqueda que interactúa con el lado del servidor y el lado de la aplicación. Y como tienes un componente `Table`, tiene sentido intentar mejorarlo con interacciones un poco mas complejas. Acto seguido, agregarás una función para organizar cada columna utilizando el encabezado de la Tabla.
+Ya implementaste un campo de búsqueda que interactúa con el lado del servidor y el lado de la aplicación. Y como tienes un componente `Table`, tiene sentido intentar mejorarlo con interacciones un poco más complejas. Acto seguido, agregarás una función para organizar cada columna utilizando el encabezado de la Tabla.
 
 Es posible que escribas tu propia función de clasificación de elementos en la tabla, pero prefiero usar una utilidad incluida en librerías como [Lodash](https://lodash.com/). Hay otras opciones, pero en el libro usaremos Lodash.
 
@@ -453,7 +453,7 @@ import { sortBy } from 'lodash';
 import './App.css';
 ~~~~~~~~
 
-Ya tienes varias columnas en la tabla: title, author, comments y points. Puedes definir funciones de clasificación (sort functions) donde cada una toma una lista y returna una lista de elementos clasificados de acuerdo a una propiedad específica. Adicionalmente, necesitarás una función de clasificación por defecto que no clasifique, pero que retorne una lista no clasificada. Esta lista será el estado inicial.
+Ya tienes varias columnas en la tabla: title, author, comments y points. Puedes definir funciones de clasificación (sort functions) donde cada una toma una lista y retorna una lista de elementos clasificados de acuerdo a una propiedad específica. Adicionalmente, necesitarás una función de clasificación por defecto que no clasifique, pero que retorne una lista no clasificada. Esta lista será el estado inicial.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~~
@@ -495,7 +495,7 @@ this.state = {
 };
 ~~~~~~~~
 
-Una vez que has una `sortKey` diferente, por ejemplo `AUTHOR`, es posible clasificar la lista con la función de clasificación adecuada.
+Una vez que haces una `sortKey` diferente, por ejemplo `AUTHOR`, es posible clasificar la lista con la función de clasificación adecuada.
 
 Ahora, podemos definir un nuevo método dentro del componente `App` que inicializa un `sortKey` para el estado local del componente, la `sortKey` puede ser utilizada para para ayudar a aplicar la función de clasificación correcta a la lista:
 
