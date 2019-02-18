@@ -302,7 +302,7 @@ this.setState((prevState, props) => {
 });
 ~~~~~~~~
 
-Hay un caso crucial donde tiene sentido utilizar una función en vez de un objeto: Cuando actualizas el estado dependiendo del estado previo o de las propiedades. Si no utilizas una función, la gestión local de estado puede generar fallas o bugs. El método `setState()` de React es asíncrono. React recopila todas las llamadas `setState()` y las ejecuta eventualmente. Algunas veces, el estado anterior cambia antes de la llamada al método `setStare()`.
+Hay un caso crucial donde tiene sentido utilizar una función en vez de un objeto: Cuando actualizas el estado dependiendo del estado previo o de las propiedades. Si no utilizas una función, la gestión local de estado puede generar fallas o bugs. El método `setState()` de React es asíncrono. React recopila todas las llamadas `setState()` y las ejecuta eventualmente. Algunas veces, el estado anterior cambia antes de la llamada al método `setState()`.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~~
