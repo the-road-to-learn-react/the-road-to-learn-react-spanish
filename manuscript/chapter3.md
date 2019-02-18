@@ -316,7 +316,7 @@ class App extends Component {
 
   ...
 
-  render() {t
+  render() {
     const { searchTerm, result } = this.state;
     return (
       <div className="page">
