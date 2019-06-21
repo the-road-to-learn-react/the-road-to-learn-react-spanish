@@ -42,7 +42,7 @@ Espero esta pequeña contribución sea de ayuda para muchos. Agradezco a Robin, 
 Agradecemos a todas aquellas personas que por medio de Github nos han ayudado luego de publicar la primera versión de esta traducción:
 
 #### Kant 
-Darío Hereñú segun informacion de perfil en Github
+Darío Hereñú según información de perfil en Github
 [Kant](https://github.com/kant)
 
 {pagebreak}
