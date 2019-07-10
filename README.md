@@ -15,9 +15,9 @@ El repositorio oficial para [El Camino para aprender React](https://www.robinwie
 
 Puedes ayudar a mejorar el libro abriendo `Issues` y `Pull Requests (PR)`.
 
-Puede abrir cualquier `PR` para corregir errores ortográficos o explicar determinada lección con más detalle. Al escribir un libro técnico, es dificil distinguir entre qué necesita una mayor explicación y lo que ya está bien explicado.
+Puede abrir cualquier `PR` para corregir errores ortográficos o explicar determinada lección con más detalle. Al escribir un libro técnico, es difícil distinguir entre qué necesita una mayor explicación y lo que ya está bien explicado.
 
-Además, puedes abrir `Issues` cuando tengas problemas. Con el fin de llegar a la solución del problema de la manera más fácil como sea posible, por favor suminístranos detalles tales cómo el registro de errores e impresiones de pantalla, en cuál página del libro ocurrió, tu versión de Node (línea de comandos: `node -v`) y un enlace a tu repositorio. No todos estos detalles son obligatorios, pero pueden ayudar a solucionar el error y a mejorar el libro.
+Además, puedes abrir `Issues` cuando tengas problemas. Con el fin de llegar a la solución del problema de la manera más fácil como sea posible, por favor suminístranos detalles tales cómo el registro de errores e impresiones de pantalla, en cuál página del libro ocurrió, tu versión de Node (en línea de comandos: `node -v`) y un enlace a tu repositorio. No todos estos detalles son obligatorios, pero pueden ayudar a solucionar el error y a mejorar el libro.
 
 ---
 
@@ -25,6 +25,6 @@ Desde ya, agradecemos toda la ayuda que puedas brindar. Espero que puedas disfru
 
 [Robin Wieruch](https://twitter.com/rwieruch)
 
-## Conviertete en *Patron*
+## Conviértete en *Patron*
 
-El camino para Aprender React es un ebook gratuito que le permite a todo el mundo aprender acerca de React. Este tipo de material educativo necesita de tu apoyo para mantenerse vivo. Robin Wieruch también escribe mucho contenido educativo en [su sitio web](https://www.robinwieruch.de/). Puedes apoyarlo a través de Patreon convirtiendote en [*Patron*](https://www.patreon.com/rwieruch).
+El camino para Aprender React es un ebook gratuito que le permite a todo el mundo aprender acerca de React. Este tipo de material educativo necesita de tu apoyo para mantenerse vivo. Robin Wieruch también escribe mucho contenido educativo en [su sitio web](https://www.robinwieruch.de/). Puedes apoyarlo a través de Patreon convirtiéndote en [*Patron*](https://www.patreon.com/rwieruch).
