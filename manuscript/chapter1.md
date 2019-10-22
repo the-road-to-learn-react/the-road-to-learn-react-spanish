@@ -2,23 +2,23 @@
 
 Este capítulo es una introducción a React, una librería de JavaScript para renderizar interfaces en una página única y aplicaciones móviles, donde explico por qué los desarrolladores deberían considerar agregar la librería React a sus herramientas. Nos sumergiremos en el ecosistema de React para crear una aplicación desde cero sin configuración. En el camino introduciremos **JSX**, la sintaxis para React y **ReactDOM**, para que tengas entendimiento de los usos prácticos de React en aplicaciones web modernas.
 
-## Hola, mi nombre es React.
+## Hola, mi nombre es React
 
-En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript a construir aplicaciones web modernas más allá de lo que se podría lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs, apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primera generación de frameworks SPA llegó en un nivel empresarial, por lo que eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
+En los últimos años las Single Page Applications o Aplicaciones de Página Única ([SPA por sus siglas en Inglés](https://es.wikipedia.org/wiki/Single-page_application)) se han vuelto populares. Frameworks como Angular, Ember y Backbone permiten a los desarrolladores JavaScript construir aplicaciones web modernas más allá de lo que se podría lograr usando JavaScript puro (Vanilla JavaScript) y jQuery. Los tres frameworks mencionados están entre los primeros SPAs, apareciendo entre 2010 y 2011, pero hay muchas más opciones para el desarrollo de una sola página. La primera generación de frameworks SPA llegó en un nivel empresarial, por lo que eran menos flexibles. React, por otro lado, permanece como una librería innovadora que ha sido adoptada por líderes tecnológicos como ([Airbnb, Netflix y Facebook](https://github.com/facebook/react/wiki/Sites-Using-React)).
 
-La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que con todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras que los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista. Específicamente es una librería donde la vista es una jerarquía de componentes ensamblables(composable). 
+La versión inicial de React fue lanzada en 2013 por el equipo de desarrollo web de Facebook en 2013 como una librería para la capa de vistas, que representa la V en el Modelo Vista Controlador [(MVC por sus siglas en Inglés)](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador). Esta librería permite renderizar componentes como elementos visibles en un navegador, mientras que con todo el ecosistema React, es posible crear aplicaciones de una sola página. Mientras que los primeros frameworks trataron de resolver muchos problemas a la vez, React solo es usado para construir tu capa de vista. Específicamente es una librería donde la vista es una jerarquía de componentes ensamblables (composable). 
 
 En React, el enfoque permanece en la capa de Vistas hasta que se agreguen más aspectos a la aplicación. Estos son bloques de construcción para una SPA, que son esenciales para construir una aplicación madura, y tienen dos ventajas:
 
  *Puedes aprender a usar los bloques de construcción uno a la vez, sin preocuparte por entenderlos totalmente desde el principio. Esto es muy diferente a un Framework que incluye todo el set de bloques de construcción desde que inicias el proyecto. Este libro presenta a React como el primer bloque de construcción. Más bloques de construcción vendrán luego.
 
- *Todos los bloques de construcción son intercambiables. Lo que hace del ecosistema React algo innovador donde múltiples soluciones compiten entre sí para solucionar un problema, así que puedes elegir la solución más atractiva para ti y tu caso de uso.
+ *Todos los bloques de construcción son intercambiables. Esto hace del ecosistema React algo innovador donde múltiples soluciones compiten entre sí para solucionar un problema, así que puedes elegir la solución más atractiva para ti y tu caso de uso.
 
 Hoy en día, React es probablemente una de las mejores opciones para la construcción de sitios web modernos. De nuevo, React sólo se encarga de la capa de vista, [pero gracias a su amplio ecosistema, representa un framework completo, flexible e intercambiable](https://www.robinwieruch.de/essential-react-libraries-framework/). Además, cuenta con una API ligera, un ecosistema impresionante y una gran comunidad. 
 
 ### Ejercicios
 
-Si quieres saber más sobre por qué elegí React o información más profunda sobre los temas mencionados arriba, éstos artículos pueden darte una mayor perspectiva:
+Si quieres saber más sobre por qué elegí React o información más profunda sobre los temas mencionados arriba, estos artículos pueden darte una mayor perspectiva:
 
 * lee acerca de [por qué me cambié de Angular a React](https://www.robinwieruch.de/reasons-why-i-moved-from-angular-to-react/)
 * lee acerca de [el flexible ecosistema de React](https://www.robinwieruch.de/essential-react-libraries-framework/)
@@ -26,20 +26,20 @@ Si quieres saber más sobre por qué elegí React o información más profunda s
 
 ## Requerimientos
 
-Antes de seguir avanzando debes estar familiarizado con los fundamentos del desarrollo web. Se espera que sepas trabajar con HTML, CSS y JavaScript, además de lo que significa el término [API](https://www.robinwieruch.de/what-is-an-api-javascript/), estarás usando esto durante todo el libro.
+Antes de seguir avanzando debes estar familiarizado con los fundamentos del desarrollo web. Se espera que sepas trabajar con HTML, CSS y JavaScript, además de lo que significa el término [API](https://www.robinwieruch.de/what-is-an-api-javascript/), ya que estarás usando esto durante todo el libro.
 
 Te animo a que te unas al canal [Slack](https://slack-the-road-to-learn-react.wieruch.com/) oficial del libro para obtener ayuda o ayudar a otros.
 
 ### Editor y Terminal
 
-Para las lecciones necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas, esta guía está pensada para usuarios de Mac, sin embargo todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
+Para las lecciones necesitarás un editor de texto plano o IDE y la terminal (línea de comandos). Puedes leer [mi guía de configuración](https://www.robinwieruch.de/developer-setup/) para ayudarte a organizar tus herramientas. Esta guía está pensada para usuarios de Mac; sin embargo, todas las herramientas que necesitarás están disponibles para varios sistemas operativos. Opcionalmente, puedes utilizar Git y GitHub por tu cuenta mientras estés realizando los ejercicios del libro, para mantener tus proyectos en repositorios de GitHub. Aquí dispones de una [pequeña guía](https://www.robinwieruch.de/git-essential-commands/) sobre cómo usar estas herramientas. Sin embargo, no es obligatorio su uso, podría resultar extenuante intentar aprenderlo todo al mismo tiempo.
 
 
 ### Node y npm
 
 Por último, necesitarás instalar [Node y npm](https://nodejs.org/es/). Ambos se utilizan para administrar las bibliotecas que necesitarás en El Camino para aprender React. Instalarás paquetes externos Node a través del Gestor de Paquetes Node (npm, por sus siglas en Inglés). Estos paquetes pueden constituir bibliotecas o frameworks completos.
 
-Puedes verificar la versiones instaladas Node y npm, respectivamente dentro de la terminal. Si no obtienes ninguna salida en la terminal, así que debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
+Puedes verificar la versiones instaladas Node y npm respectivamente, dentro de la terminal. Si no obtienes ninguna salida en la terminal, debes verificar tu instalación Node y npm. Estas son mis versiones al momento de escribir este libro:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -49,7 +49,7 @@ npm --version
 *v6.4.1
 ~~~~~~~~
 
-A continuación, un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas puedes omitir este capítulo.
+A continuación, un pequeño curso intensivo Node y npm. No es exhaustivo, pero obtendrás todas las herramientas necesarias. Si ya estás familiarizado con estas, puedes omitir este capítulo.
 
 El gestor **npm** permite instalar **paquetes externos** desde la terminal. Estos paquetes pueden ser un conjunto de funciones de utilidad, bibliotecas o frameworks enteros. Estos representan dependencias de tu aplicación, y puedes instalarlos en tu carpeta global de paquetes Node o bien en la carpeta local de tu proyecto.
 
@@ -87,9 +87,9 @@ Hay otro comando npm que quiero mencionar, para prevenir confusiones:
 npm install --save-dev <paquete>
 ~~~~~~~~
 
-La etiqueta `--save-dev` indica que el paquete Node es sólo usado en el entorno de desarrollo, esto quiere decir que no será usado en producción cuando cuelgues tu aplicación en un servidor. Esto es útil para realizar pruebas a una aplicación usando un paquete Node, quieres excluirlo de tu entorno de producción.
+La etiqueta `--save-dev` indica que el paquete Node es sólo usado en el entorno de desarrollo: esto quiere decir que no será usado en producción cuando cuelgues tu aplicación en un servidor. Esto es útil para realizar pruebas a una aplicación usando un paquete Node, si luego quieres excluirlo de tu entorno de producción.
 
-Podrías querer usar otros gestores para trabajar con los paquetes Node. **Yarn** es un gestor de dependencias que trabaja de forma similar a **npm**. Tiene su propia lista de instrucciones, aún así tienes acceso al mismo registro de npm. Yarn fue creado para resolver problemas que npm no pudo, pero ambas herramientas han evolucionado hasta el punto de que cualquiera de las dos sería suficiente.
+Podrías querer usar otros gestores para trabajar con los paquetes Node. **Yarn** es un gestor de dependencias que trabaja de forma similar a **npm**. Tiene su propia lista de instrucciones, pero aún así tienes acceso al mismo registro de npm. Yarn fue creado para resolver problemas que npm no pudo, pero ambas herramientas han evolucionado hasta el punto de que cualquiera de las dos sería suficiente.
 
 ### Ejercicios:
 
@@ -104,7 +104,7 @@ Podrías querer usar otros gestores para trabajar con los paquetes Node. **Yarn*
 
 ## Instalación
 
-Existen varias maneras de comenzar una aplicación React. La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), o Red de Entrega de Contenidos (CDN por sus siglas en Inglés). Esto puede sonar complicado, pero no lo es. Muchas compañías usan CDNs que almacenan públicamente archivos para sus usuarios. Algunos de estos archivos que pueden ser una librería como React, ya que la librería empaquetada de React es únicamente un archivo JavaScript *react.js*.
+Existen varias maneras de comenzar una aplicación React. La primera es utilizar una [Content Delivery Network](https://es.wikipedia.org/wiki/Red_de_entrega_de_contenidos), o Red de Entrega de Contenidos (CDN por sus siglas en Inglés). Esto puede sonar complicado, pero no lo es. Muchas compañías usan CDNs que almacenan públicamente archivos para sus usuarios. Algunos de estos archivos pueden ser una librería como React, ya que la librería empaquetada de React es únicamente un archivo JavaScript *react.js*.
 
 Para utilizar React usando una CDN, puedes hacerlo insertando la etiqueta `<script>` en tu código HTML, con la URL de la CDN que desees utilizar. Para React necesitas dos archivos (librerías): *react* y *react-dom*.
 
@@ -131,7 +131,7 @@ Puede que tengas que lidiar con [Babel](http://babeljs.io/) también para hacer 
 
 ## Cero Configuraciones
 
-En El Camino para aprender React usarás [create-react-app](https://github.com/facebookincubator/create-react-app) para iniciar el desarrollo tu aplicación. Este kit lanzado por Facebook en 2016, permite rápidamente empezar a trabajar en tu aplicación sin preocuparte por configuraciones. La gente [lo recomienda a principiantes en un 96%](https://twitter.com/dan_abramov/status/806985854099062785). Cuando utilizas *create-react-app* las herramientas y configuración evolucionan en segundo plano, mientras que el foco se mantiene en la implementación de la aplicación.
+En El Camino para aprender React usarás [create-react-app](https://github.com/facebookincubator/create-react-app) para iniciar el desarrollo tu aplicación. Este kit, lanzado por Facebook en 2016, permite rápidamente empezar a trabajar en tu aplicación sin preocuparte por configuraciones. La gente [lo recomienda a principiantes en un 96%](https://twitter.com/dan_abramov/status/806985854099062785). Cuando utilizas *create-react-app* las herramientas y configuración evolucionan en segundo plano, mientras que el foco se mantiene en la implementación de la aplicación.
 
 Para empezar, deberás agregar el *create-react-app* a tus paquetes globales Node. A partir de ahora estará disponible en la terminal para inicializar nuevas aplicaciones React.
 
@@ -148,7 +148,7 @@ create-react-app --version
 *v2.0.2
 ~~~~~~~~
 
-Ahora, puedes comenzar con el desarrollo de tu primera aplicación React. La llamaremos *hackernews*, puedes escoger un nombre distinto. Iniciar tu aplicación tomará unos pocos segundos. Después de esto, simplemente navega hasta el nuevo directorio con tu terminal:
+Ahora puedes comenzar con el desarrollo de tu primera aplicación React. La llamaremos *hackernews*, pero puedes escoger un nombre distinto. Iniciar tu aplicación tomará unos pocos segundos. Después de esto, simplemente navega hasta el nuevo directorio con tu terminal:
 
 {title="Command Line",lang="text"}
 ~~~~~~~~
@@ -156,7 +156,7 @@ create-react-app hackernews
 cd hackernews
 ~~~~~~~~
 
-Ya puedes abrir la aplicación en tu editor de texto. La siguiente estructura de carpetas o variación de esta depende de la versión de *create-react-app* que tengas instalada, deberías poder ver algo cómo esto:
+Ya puedes abrir la aplicación en tu editor de texto. La siguiente estructura de carpetas o variación de esta depende de la versión de *create-react-app* que tengas instalada; deberías poder ver algo como esto:
 
 {title="Folder Structure",lang="text"}
 ~~~~~~~~
@@ -221,7 +221,7 @@ Estos scripts se encuentran definidos en el archivo *package.json*. Tu aplicaci�
 
 * ejecuta en la terminal, el comando `npm start` y visita la aplicación en tu navegador (puedes cancelar la ejecución de este comando presionando Control + C)
 * ejecuta el comando interactivo `npm test`
-* ejecuta el comando `npm run build` y verifica que la carpeta *build/* sea añadida a tu proyecto (puedes removerla después; nota que la carpeta build puede ser usada más tarde para [colocar tu aplicación en línea](https://www.robinwieruch.de/deploy-applications-digital-ocean/))
+* ejecuta el comando `npm run build` y verifica que la carpeta *build/* sea añadida a tu proyecto (puedes eliminarla después; nota que la carpeta build puede ser usada más tarde para [colocar tu aplicación en línea](https://www.robinwieruch.de/deploy-applications-digital-ocean/))
 * familiarízate con la estructura de carpetas
 * familiarízate con el contenido de los archivos
 * lee más sobre [los comandos npm y create-react-app](https://github.com/facebookincubator/create-react-app)
@@ -261,7 +261,7 @@ No te dejes intimidar por las instrucciones import/export y la declaración de c
 
 Dentro del archivo *src/App.js* se encuentra un **React ES6 class component o componente de clase React ES6** con el nombre `App`. Esto es una declaración de componente.
 
-Básicamente, después de haber declarado un componente puedes utilizarlo como elemento en cualquier parte de tu aplicación produciendo una **instancia** de tu **componente**, o mejor dicho: Instanciando el componente.
+Básicamente, después de haber declarado un componente puedes utilizarlo como elemento en cualquier parte de tu aplicación produciendo una **instancia** de tu **componente**, o mejor dicho, instanciando el componente.
 
 El **elemento** que es devuelto se especifica dentro del método `render()`. Los elementos son de lo que están hechos los componentes. Es útil que entiendas las diferencias entre los términos "componente", "instancia" y "elemento".
 
@@ -361,7 +361,7 @@ const helloWorld = {
 helloWorld.text = 'Hasta luego, React';
 ~~~~~~~~
 
-Hay diferentes opiniones sobre cuándo usar *const* y *let*. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable aunque los valores en objetos y arreglos se puedan modificar. La inmutabilidad es ampliamente adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable, aunque no se trata de inmutabilidad realmente, sino de asignar las variables una sola vez. Esto muestra la intención de no cambiar(reasignar) la variable incluso cuando el su contenido puede ser modificado.
+Hay diferentes opiniones sobre cuándo usar *const* y *let*. Sugiero usar `const` siempre que sea posible, indicando así que se desea mantener la estructura de datos inmutable aunque los valores en objetos y arreglos se puedan modificar. La inmutabilidad es ampliamente adoptada en React y su ecosistema. Es por eso que `const` debe ser la opción por defecto cuando se define una variable, aunque no se trata de inmutabilidad realmente, sino de asignar las variables una sola vez. Esto muestra la intención de no cambiar (reasignar) la variable incluso cuando el su contenido puede ser modificado.
 
 En tu aplicación utiliza `const` en vez de `var`.
 
@@ -705,7 +705,7 @@ Ahora tu código JSX es más conciso y legible. Al declarar `map` de esta manera
 
 JavaScript ES6 introdujo el uso clases, que comúnmente son utilizadas en lenguajes de programación orientados a objetos. JavaScript fue y sigue siendo muy flexible en sus paradigmas de programación. Funciona bien tanto con programación funcional como con programación orientada a objetos, lado a lado, para sus casos de uso particulares.
 
- React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las mejores cualidades de ambos paradigmas de programación.
+React adopta el paradigma programación funcional, sin embargo, al crear estructuras de datos inmutables las clases se utilizan para declarar componentes y se les llama componentes de clase ES6. React aprovecha las mejores cualidades de ambos paradigmas de programación.
 
 Considera la siguiente clase llamada `Developer` para examinar una clase de JavaScript ES6 sin pensar en componentes React.
 
@@ -756,7 +756,7 @@ La clase `App` extiende la funcionalidad de la clase `Component`. Para ser más 
 
 La clase `Component` encapsula todas las funcionalidades de React que un desarrollador no necesita ver. Permite a los desarrolladores utilizar las clases como componentes en React.
 
-Los métodos encapsulados dentro de la clase `Component` representan la interfaz pública. Uno de estos métodos debe ser sobrescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo próximo. El método `render()` tiene que ser sobrescrito, porque define la salida de React `Component`.
+Los métodos encapsulados dentro de la clase `Component` representan la interfaz pública. Uno de estos métodos debe ser sobreescrito, para los demás no es necesario. Aprenderás acerca de estos últimos cuando el libro llegue a los métodos del ciclo de vida en un capítulo próximo. El método `render()` tiene que ser sobrescrito, porque define la salida de React `Component`.
 
 Ahora que ya conoces los conceptos básicos de las clases JavaScript ES6 y cómo se utilizan en React para extenderlas a componentes, aprenderás más sobre los métodos de Componente cuando el libro describa los Métodos de Ciclo de Vida de React.
 

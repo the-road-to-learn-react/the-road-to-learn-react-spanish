@@ -11,13 +11,13 @@ El repositorio oficial para [El Camino para aprender React](https://www.robinwie
 * Obtener ayuda, mientras aprendes React con el libro o enseñar a otros, en el canal oficial [Slack Channel](https://slack-the-road-to-learn-react.wieruch.com/)
 * Averigua de qué manera puedes [Apoyar el Libro](https://www.robinwieruch.de/about/)
 
-## Como contribuir
+## Cómo contribuir
 
 Puedes ayudar a mejorar el libro abriendo `Issues` y `Pull Requests (PR)`.
 
 Puede abrir cualquier `PR` para corregir errores ortográficos o explicar determinada lección con más detalle. Al escribir un libro técnico, es difícil distinguir entre qué necesita una mayor explicación y lo que ya está bien explicado.
 
-Además, puedes abrir `Issues` cuando tengas problemas. Con el fin de llegar a la solución del problema de la manera más fácil como sea posible, por favor suminístranos detalles tales cómo el registro de errores e impresiones de pantalla, en cuál página del libro ocurrió, tu versión de Node (en línea de comandos: `node -v`) y un enlace a tu repositorio. No todos estos detalles son obligatorios, pero pueden ayudar a solucionar el error y a mejorar el libro.
+Además, puedes abrir `Issues` cuando tengas problemas. Con el fin de llegar a la solución del problema de la manera más fácil posible, por favor suminístranos detalles tales como el registro de errores e impresiones de pantalla, en qué página del libro ocurrió, tu versión de Node (en línea de comandos: `node -v`) y un enlace a tu repositorio. No todos estos detalles son obligatorios, pero pueden ayudar a solucionar el error y a mejorar el libro.
 
 ---
 
